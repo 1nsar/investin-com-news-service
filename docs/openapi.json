@@ -1,0 +1,249 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Company news component",
+    "description": "Standalone news backend. Resolves every catalogue ticker to its exchange and to the full set of venues it trades on, then keeps a deduplicated news feed per company.",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {}
+  },
+  "paths": {
+    "/v1/companies": {
+      "get": {
+        "tags": [
+          "companies"
+        ],
+        "description": "Tracked companies with their resolved listings.",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/companies/{ticker}": {
+      "get": {
+        "tags": [
+          "companies"
+        ],
+        "description": "One company and every exchange it is listed on.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "ticker",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/listings": {
+      "get": {
+        "tags": [
+          "companies"
+        ],
+        "description": "The resolved exchange/listing mapping for the whole catalogue, one row per listing.",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/market-news": {
+      "get": {
+        "tags": [
+          "news"
+        ],
+        "description": "Market-wide news: macro, geopolitical and sector stories that move prices without being about one company. Sourced from primary wires (Reuters, CNBC, Bloomberg).",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/companies/{ticker}/news": {
+      "get": {
+        "tags": [
+          "news"
+        ],
+        "description": "A company's news feed, newest first. Paginated and filterable by date.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "ticker",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/news": {
+      "get": {
+        "tags": [
+          "news"
+        ],
+        "description": "Cross-company news feed, newest first.",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "ops"
+        ],
+        "description": "Liveness probe.",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/ready": {
+      "get": {
+        "tags": [
+          "ops"
+        ],
+        "description": "Readiness probe.",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/status": {
+      "get": {
+        "tags": [
+          "ops"
+        ],
+        "description": "Service state: counts, provider health, and the last run's outcome.",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/fetch": {
+      "post": {
+        "tags": [
+          "ops"
+        ],
+        "description": "Trigger a fetch on demand. Returns a run id immediately unless wait=true.",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/runs": {
+      "get": {
+        "tags": [
+          "ops"
+        ],
+        "description": "Recent fetch runs, newest first.",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/runs/latest": {
+      "get": {
+        "tags": [
+          "ops"
+        ],
+        "description": "The most recent run, with its provider breakdown.",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/runs/{id}": {
+      "get": {
+        "tags": [
+          "ops"
+        ],
+        "description": "One run, with its provider breakdown.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/v1/runs/{id}/companies": {
+      "get": {
+        "tags": [
+          "ops"
+        ],
+        "description": "Per-company outcomes for a run. Filter by outcome to separate 'no_news' from 'refused'.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "companies",
+      "description": "Tracked companies and resolved listings"
+    },
+    {
+      "name": "news",
+      "description": "Article feeds"
+    },
+    {
+      "name": "ops",
+      "description": "Health, runs, and on-demand fetch"
+    }
+  ]
+}
