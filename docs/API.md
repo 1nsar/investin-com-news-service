@@ -1,7 +1,11 @@
 # API reference
 
-Base URL: `http://localhost:8080`. Interactive documentation, generated from the
-running service, is at **`/docs`**.
+Base URL: `http://localhost:8080`.
+
+- **Interactive docs** (generated from the running service): **`/docs`**
+- **Machine-readable OpenAPI 3 spec**: [`openapi.json`](openapi.json) in this
+  directory, or `/docs/json` from a running instance. Regenerate with
+  `npm run export:openapi`.
 
 Every response is JSON. Collections return `{ data, pagination }`; single
 resources return `{ data }`; errors return `{ error, detail }` with a matching

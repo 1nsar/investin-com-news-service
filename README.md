@@ -19,7 +19,7 @@ entirely by environment variables.
 | Document | What's in it |
 | --- | --- |
 | **[docs/COMPARISON.md](docs/COMPARISON.md)** | News provider options priced and **measured against this catalogue**, and the primary + fallback recommendation |
-| **[docs/API.md](docs/API.md)** | Full API reference (also live at `/docs`) |
+| **[docs/API.md](docs/API.md)** | Full API reference. Machine-readable spec: [docs/openapi.json](docs/openapi.json), also live at `/docs` |
 | **[docs/OPERATIONS.md](docs/OPERATIONS.md)** | Where this breaks first when it runs unattended for months, and what I deliberately did not build |
 | **[docs/REPORT.md](docs/REPORT.md)** | **Full project report** — coverage, accuracy, latency, freshness, sources, cost, and the free-vs-paid recommendation |
 
@@ -414,6 +414,7 @@ advisory lock so concurrent container boots cannot race.
 | `npm run ingest:market` | Fetch market-wide macro news |
 | `npm run coverage:probe` | Measure provider hit rates on a stratified sample |
 | `npm run export:listings` | Export the listing mapping |
+| `npm run export:openapi` | Regenerate `docs/openapi.json` from the routes |
 | `npm run metrics` | Regenerate every figure quoted in docs/REPORT.md from the live database |
 | `npm test` | Unit tests |
 | `./scripts/smoke-test.sh` | End-to-end check against a running instance |
