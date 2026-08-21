@@ -1,0 +1,128 @@
+import { config } from "../config/index.js";
+import { requestJson } from "../util/http.js";
+import { RateLimiter } from "../util/rateLimiter.js";
+import { logger } from "../util/logger.js";
+
+/** OpenFIGI is the primary identity resolver: it maps a ticker (optionally
+ *  narrowed to an exchange) onto Bloomberg's FIGI identifiers, which give us a
+ *  stable company identity and, through the share-class FIGI, every other line
+ *  of the same security.
+ *
+ *  Free and keyless. A free key only raises the limits:
+ *    no key  -> 25 requests/min, 10 jobs per request
+ *    free key-> 250 requests/min, 100 jobs per request
+ *  which is the difference between ~25 minutes and ~2 minutes for this
+ *  catalogue, so the key is worth requesting but never required. */
+
+const MAPPING_URL = "https://api.openfigi.com/v3/mapping";
+const SEARCH_URL = "https://api.openfigi.com/v3/search";
+
+export interface FigiRecord {
+  figi: string;
+  name: string;
+  ticker: string;
+  exchCode: string;
+  compositeFIGI: string | null;
+  shareClassFIGI: string | null;
+  securityType: string | null;
+  securityType2: string | null;
+  marketSector: string | null;
+  securityDescription: string | null;
+}
+
+export interface MappingJob {
+  idType: "TICKER" | "ID_BB_GLOBAL" | "ID_BB_GLOBAL_SHARE_CLASS_LEVEL" | "ID_ISIN";
+  idValue: string;
+  exchCode?: string;
+  micCode?: string;
+  currency?: string;
+}
+
+interface MappingResponseEntry {
+  data?: FigiRecord[];
+  warning?: string;
+  error?: string;
+}
+
+const hasKey = Boolean(config.OPENFIGI_API_KEY);
+export const OPENFIGI_BATCH_SIZE = hasKey ? 100 : 10;
+
+// A little under the documented ceiling: this client is not the only thing
+// that might be talking to the API, and a 429 here stalls the whole resolve.
+const limiter = new RateLimiter("openfigi", hasKey ? 200 : 24);
+
+function headers(): Record<string, string> {
+  const base: Record<string, string> = { "Content-Type": "application/json" };
+  if (hasKey) base["X-OPENFIGI-APIKEY"] = config.OPENFIGI_API_KEY;
+  return base;
+}
+
+/** Map a batch of jobs. Results line up positionally with `jobs`, and an entry
+ *  that found nothing comes back as an empty array rather than throwing, so
+ *  one unresolvable ticker never sinks the batch. */
+export async function mapIdentifiers(jobs: MappingJob[]): Promise<FigiRecord[][]> {
+  if (jobs.length === 0) return [];
+  const results: FigiRecord[][] = [];
+
+  for (let offset = 0; offset < jobs.length; offset += OPENFIGI_BATCH_SIZE) {
+    const batch = jobs.slice(offset, offset + OPENFIGI_BATCH_SIZE);
+    try {
+      const response = await requestJson<MappingResponseEntry[]>(MAPPING_URL, {
+        method: "POST",
+        headers: headers(),
+        body: JSON.stringify(batch),
+        limiter,
+        label: "openfigi/mapping",
+        timeoutMs: 30_000,
+        maxRetries: 3,
+      });
+      for (const entry of response) results.push(entry?.data ?? []);
+    } catch (error) {
+      logger.warn(
+        { err: error, batchStart: offset, batchSize: batch.length },
+        "openfigi batch failed; treating as unresolved",
+      );
+      for (let index = 0; index < batch.length; index++) results.push([]);
+    }
+  }
+
+  return results;
+}
+
+/** Free-text search, used when a ticker will not map - a renamed line, an
+ *  exchange we have no code for, or a symbol the supplier wrote differently
+ *  from the venue. Returns fewer guarantees than mapping, so callers must
+ *  still confirm the name. */
+export async function searchByName(
+  companyName: string,
+  exchCode?: string,
+): Promise<FigiRecord[]> {
+  try {
+    const body: Record<string, string> = { query: companyName };
+    if (exchCode) body.exchCode = exchCode;
+    const response = await requestJson<{ data?: FigiRecord[] }>(SEARCH_URL, {
+      method: "POST",
+      headers: headers(),
+      body: JSON.stringify(body),
+      limiter,
+      label: "openfigi/search",
+      timeoutMs: 30_000,
+      maxRetries: 2,
+    });
+    return response.data ?? [];
+  } catch (error) {
+    logger.warn({ err: error, companyName }, "openfigi search failed");
+    return [];
+  }
+}
+
+/** Every listing sharing a share class - the mechanism behind Task 2. */
+export async function listingsForShareClass(shareClassFigi: string): Promise<FigiRecord[]> {
+  const [records] = await mapIdentifiers([
+    { idType: "ID_BB_GLOBAL_SHARE_CLASS_LEVEL", idValue: shareClassFigi },
+  ]);
+  return records ?? [];
+}
+
+export const openFigiLimiter = limiter;
+export const openFigiHasKey = hasKey;

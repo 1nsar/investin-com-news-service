@@ -1,0 +1,52 @@
+# One command brings up the component and its own database:
+#   docker compose up --build
+#
+# The `setup` service runs migrations, loads the catalogue and resolves
+# listings, then exits. `api` waits for it to finish before serving.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: news
+      POSTGRES_PASSWORD: news
+      POSTGRES_DB: newsdb
+    volumes:
+      - news-db:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U news -d newsdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # Runs once: migrate, load the catalogue, resolve 1,515 tickers to their
+  # exchanges. Without an OPENFIGI_API_KEY this takes ~38 minutes (the keyless
+  # limit is 25 req/min) and `api` waits for it. With a free key: a few
+  # minutes. Later boots skip straight past - resolution is not repeated.
+  setup:
+    build: .
+    command: ["node", "dist/scripts/setup.js"]
+    env_file: [.env]
+    environment:
+      DATABASE_URL: postgres://news:news@db:5432/newsdb
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build: .
+    env_file: [.env]
+    environment:
+      DATABASE_URL: postgres://news:news@db:5432/newsdb
+      HOST: 0.0.0.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      setup:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  news-db:

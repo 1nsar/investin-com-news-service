@@ -1,0 +1,21 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Secrets. Only the template is tracked.
+.env
+.env.*
+!.env.example
+
+# Scratch output from local runs. The tracked deliverable copy lives at
+# data/listings-mapping.{csv,json} - see README section 10.
+data/out/
+
+# Downloaded reference data, re-fetched on demand and cached for a day.
+# ~7MB and rebuilt automatically; the catalogue CSV beside it IS tracked.
+data/catalogue/us-symbols.json
+logs/
+*.log
+
+.DS_Store
+coverage/

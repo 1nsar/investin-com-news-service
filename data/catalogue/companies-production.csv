@@ -1,0 +1,1516 @@
+ticker,company_name,sector,country,is_us_listed,exchange_hint
+A,Agilent Technologies Inc,,US,true,NYSE
+AAL,American Airlines Group,Airlines,US,true,NASDAQGS
+AAMI,Acadian Asset Management Inc,,US,true,NYSE
+AAON,AAON Inc,,US,true,NASDAQGS
+AAPL,Apple Inc,AI,US,true,NASDAQGS
+ABBV,AbbVie Inc,,US,true,NYSE
+ABNB,Airbnb Inc,,US,true,NASDAQGS
+ABT,Abbott Laboratories,,US,true,NYSE
+ABX,Abacus Global Management Inc,,US,true,NYSE
+ACA,Arcosa Inc,,US,true,NYSE
+ACAD,ACADIA Pharmaceuticals Inc,,US,true,NASDAQGS
+ACEL,Accel Entertainment Inc,,US,true,NYSE
+ACGL,Arch Capital Group Ltd,,BM,true,NASDAQGS
+ACIW,ACI Worldwide Inc,,US,true,NASDAQGS
+ACM,Aecom Technology Corporation,,US,true,NYSE
+ACMR,Acm Research Inc,,US,true,NASDAQGM
+ACN,Accenture plc,,IE,true,NYSE
+ADBE,Adobe Systems Inc,AI,US,true,
+ADI,Analog Devices Inc,,US,true,NASDAQGS
+ADM,Admiral Group PLC,,US,true,
+ADMA,ADMA Biologics Inc,,US,true,NASDAQGM
+ADP,Automatic Data Processing Inc,,US,true,NASDAQGS
+ADSK,Autodesk Inc,,US,true,NASDAQGS
+ADT,ADT Inc,,US,true,NYSE
+ADUS,Addus HomeCare Corporation,,US,true,NASDAQGS
+AEE,Ameren Corp,,US,true,NYSE
+AEM,Agnico Eagle Mines Ltd,,CA,true,
+AEO,American Eagle Outfitters Inc,,US,true,NYSE
+AEP,American Electric Power Company Inc,,US,true,NASDAQGS
+AES,The AES Corporation,,US,true,NYSE
+AFL,Aflac Inc,Insurance,US,true,NYSE
+AFYA,Afya Ltd,,US,true,NASDAQGS
+AG,First Majestic Silver Corp,,US,true,NYSE
+AGI,Alamos Gold Inc,,US,true,NYSE
+AGX,Argan Inc,,US,true,NYSE
+AGYS,Agilysys Inc,,US,true,NASDAQGS
+AIA,Athens International Airport SA,,US,true,ATSE
+AIG,American International Group Inc,Insurance,US,true,NYSE
+AIR,AAR Corp,,US,true,NYSE
+AIT,Applied Industrial Technologies,,US,true,NYSE
+AIZ,Assurant Inc,,US,true,NYSE
+AJG,Arthur J Gallagher & Co,,US,true,NYSE
+AKAM,Akamai Technologies Inc,,US,true,NASDAQGS
+ALAB,Astera Labs Inc,AI,US,true,NASDAQGS
+ALB,Albemarle Corp,,US,true,NYSE
+ALGN,Align Technology Inc,,US,true,NASDAQGS
+ALHC,Alignment Healthcare LLC,,US,true,NASDAQGS
+ALK,Alaska Air Group Inc,,US,true,NYSE
+ALKS,Alkermes Plc,,IE,true,NASDAQGS
+ALL,Allstate Corp,Insurance,US,true,NYSE
+ALLE,Allegion PLC,,US,true,NYSE
+ALNY,Alnylam Pharmaceuticals Inc,,US,true,NASDAQGS
+ALV,Autoliv Inc,Insurance,US,true,
+AM,Antero Midstream Corp,,US,true,NYSE
+AMAT,Applied Materials Inc,AI,US,true,NASDAQGS
+AMCR,Amcor,,GB,true,NYSE
+AMD,Advanced Micro Devices Inc,AI,US,true,NASDAQGS
+AME,Ametek Inc,,US,true,NYSE
+AMGN,Amgen Inc.,,US,true,
+AMP,Ameriprise Financial Inc,,US,true,NYSE
+AMRX,Amneal Pharmaceuticals Inc Class A,,US,true,NASDAQGS
+AMSC,American Superconductor Corporation,,US,true,NASDAQGS
+AMT,American Tower Corp,AI,US,true,NYSE
+AMTM,Amentum Holdings LLC,,US,true,NYSE
+AMZN,Amazon.com Inc,AI,US,true,NASDAQGS
+ANET,"Arista Networks, Inc.",AI,US,true,
+ANF,Abercrombie & Fitch Company,,US,true,NYSE
+ANIP,ANI Pharmaceuticals Inc,,US,true,NASDAQGM
+AON,Aon PLC,,IE,true,NYSE
+AORT,Artivion Inc,,US,true,NYSE
+AOS,Smith AO Corporation,,US,true,NYSE
+APA,APA Corporation,,US,true,NASDAQGS
+APAM,Artisan Partners Asset Management Inc,,US,true,NYSE
+APD,Air Products and Chemicals Inc,,US,true,NYSE
+APH,Amphenol Corporation,,US,true,
+APLD,Applied Digital Corp,AI,US,true,NASDAQGS
+APO,Apollo Global Management LLC Class A,,US,true,NYSE
+APP,Applovin Corp,,US,true,NASDAQGS
+APPF,Appfolio Inc,,US,true,NASDAQGM
+APTV,Aptiv PLC,,CH,true,NYSE
+ARCO,Arcos Dorados Holdings Inc,,UY,true,NYSE
+ARDT,Ardent Health Partners LLC,,US,true,NYSE
+ARE,Alexandria Real Estate Equities Inc,,US,true,NYSE
+ARES,Ares Management Corp Class A,,US,true,NYSE
+ARIS,Aris Mining Corp,,US,true,NYSE
+ARM,Arm Holdings ADR,AI,GB,true,NASDAQGS
+ARMK,Aramark Holdings,,US,true,NYSE
+AROC,Archrock Inc,,US,true,NYSE
+AS,Amer Sports Inc,,US,true,NYSE
+ASM,Avino Silver & Gold Mines Ltd,,CA,true,NYSEAM
+ASML,ASML Holding NV,AI,NL,true,
+ASO,Academy Sports Outdoors Inc,,US,true,NASDAQGS
+ASR,Grupo Aeroportuario del Sureste SAB de CV ADR,,US,true,NYSE
+ASTH,Astrana Health Inc,,US,true,NASDAQCM
+ATI,ATI Inc,,US,true,NYSE
+ATO,Atmos Energy Corporation,,US,true,NYSE
+ATRO,Astronics Corporation,,US,true,NASDAQGS
+AUGO,Aura Minerals Inc,,VG,true,NASDAQGS
+AUPH,Aurinia Pharmaceuticals Inc,,CA,true,NASDAQGM
+AVAH,Aveanna Healthcare Holdings Inc,,US,true,NASDAQGS
+AVB,AvalonBay Communities Inc,,US,true,NYSE
+AVGO,Broadcom Inc,AI,US,true,NASDAQGS
+AVO,Mission Produce Inc,,US,true,NASDAQGS
+AVPT,Avepoint Inc,,US,true,NASDAQGS
+AVY,Avery Dennison Corp,,US,true,NYSE
+AWI,Armstrong World Industries Inc,,US,true,NYSE
+AWK,American Water Works,,US,true,NYSE
+AWR,American States Water Company,,US,true,NYSE
+AXON,Axon Enterprise Inc,,US,true,NASDAQGS
+AXP,American Express Company,,US,true,NYSE
+AXS,AXIS Capital Holdings Ltd,,US,true,NYSE
+AYA,Aya Gold & Silver Inc,,CA,true,NASDAQGS
+AZN,AstraZeneca PLC,,US,true,
+AZO,AutoZone Inc,,US,true,NYSE
+AZZ,AZZ Incorporated,,US,true,NYSE
+B,Barrick Mining Corp,,US,true,SWX
+BA,Boeing Co,,US,true,NYSE
+BAB,Babcock International Group PLC,,US,true,LSE
+BABA,Alibaba Group Holdings Ltd ADR,AI,US,true,NYSE
+BAC,Bank of America Corp,,US,true,NYSE
+BAH,Booz Allen Hamilton Holding,,US,true,NYSE
+BALL,Ball Corporation,,US,true,NYSE
+BAM,Brookfield Asset Management Inc,,US,true,NYSE
+BAX,Baxter International Inc,,US,true,NYSE
+BBY,Balfour Beatty PLC,,US,true,
+BCO,Brinks Company,,US,true,NYSE
+BDX,Becton Dickinson and Co,,US,true,NYSE
+BE,Bloom Energy Corp,,US,true,
+BEN,Franklin Resources Inc,,US,true,NYSE
+BEPC,Brookfield Renewable Corp,AI,US,true,NYSE
+BEZ,Beazley PLC,,US,true,LSE
+BFAM,Bright Horizons Family Solutions Inc,,US,true,NYSE
+BF.B,Brown Forman,,US,true,NYSE
+BG,Bunge Limited,,CH,true,NYSE
+BIDU,Baidu Inc,AI,US,true,NASDAQGS
+BIIB,Biogen Inc,,US,true,NASDAQGS
+BIRK,Birkenstock Holding ltd,,US,true,NYSE
+BKE,Buckle Inc,,US,true,NYSE
+BKNG,Booking Holdings Inc,,US,true,NASDAQGS
+BKR,Baker Hughes Co,,US,true,
+BL,Blackline Inc,,US,true,NASDAQGS
+BLBD,Blue Bird Corp,,US,true,NASDAQGM
+BLDR,Builders FirstSource Inc,,US,true,NYSE
+BLK,BlackRock Inc,,US,true,NYSE
+BME,B&M European Value Retail PLC,,US,true,LSE
+BMI,Badger Meter Inc,,US,true,NYSE
+BMRN,Biomarin Pharmaceutical Inc,,US,true,NASDAQGS
+BMY,Bristol-Myers Squibb Company,,US,true,NYSE
+BNY,Bank of New York Mellon Corp,,US,true,NYSE
+BOOT,Boot Barn Holdings Inc,,US,true,NYSE
+BOW,Bowhead Specialty Holdings Inc,,US,true,NYSE
+BOX,Box Inc,,US,true,NYSE
+BR,Broadridge Financial Solutions Inc,,US,true,NYSE
+BRC,Brady Corporation,,US,true,NYSE
+BRK.B,Berkshire Hathaway B,Insurance,US,true,NYSE
+BRO,Brown & Brown Inc,,US,true,NYSE
+BROS,Dutch Bros Inc,,US,true,NYSE
+BSX,Boston Scientific Corporation,,US,true,
+BSY,Bentley Systems Inc,,US,true,NASDAQGS
+BTG,B2Gold Corp,,CA,true,NYSEAM
+BTSG,Brightspring Health Services Inc,Health Care,US,true,NASDAQGS
+BURL,Burlington Stores Inc,,US,true,NYSE
+BWLP,BW LPG Ltd,,US,true,NYSE
+BWXT,BWX Technologies Inc,,US,true,NYSE
+BX,Blackstone Inc,,US,true,NYSE
+BXP,BXP Inc,,US,true,NYSE
+C,Citigroup Inc,,US,true,NYSE
+CAAP,Corporacion America Airports,,US,true,NYSE
+CAE,CAE Inc,,CA,true,NYSE
+CAH,Cardinal Health Inc,,US,true,NYSE
+CAKE,The Cheesecake Factory,,US,true,NASDAQGS
+CALM,Cal-Maine Foods Inc,,US,true,NASDAQGS
+CAMT,Camtek Ltd,,US,true,NASDAQGM
+CARR,Carrier Global Corp,AI,US,true,NYSE
+CART,Instacart (Maplebear Inc.),,US,true,NASDAQGS
+CASY,Caseys General Stores Inc,,US,true,NASDAQGS
+CAT,Caterpillar Inc,,US,true,NYSE
+CAVA,CAVA Group Inc,,US,true,NYSE
+CB,Chubb Ltd,Insurance,CH,true,NYSE
+CBRE,CBRE Group Inc Class A,,US,true,NYSE
+CBRS,Cerebras Systems Inc,AI,US,true,NASDAQGS
+CBZ,CBIZ Inc,,US,true,NYSE
+CCC,Computacenter PLC,,US,true,LSE
+CCEP,Coca-Cola European Partners PLC,,US,true,
+CCI,Crown Castle International Corp,,US,true,NYSE
+CCJ,Cameco Corp,,US,true,NYSE
+CCL,Carnival Corporation,,US,true,NYSE
+CDE,Coeur Mining Inc,,US,true,NYSE
+CDNS,"Cadence Design Systems, Inc.",AI,US,true,
+CDRE,Cadre Holdings Inc,,US,true,NYSE
+CDW,CDW Corp,,US,true,NASDAQGS
+CECO,CECO Environmental Corp,,US,true,NASDAQGS
+CEG,Constellation Energy Corp,AI,US,true,NASDAQGS
+CELH,Celsius Holdings Inc,,US,true,NASDAQCM
+CF,CF Industries Holdings Inc,,US,true,NYSE
+CFG,Citizens Financial Group Inc,,US,true,NYSE
+CGAU,Centerra Gold Inc,,CA,true,NYSE
+CHD,Church & Dwight Company Inc,,US,true,NYSE
+CHDR.Y,Christian Dior SE ADR,lux,US,true,OTCPK
+CHE,Chemed Corp,,US,true,NYSE
+CHEF,The Chefs Warehouse Inc,,US,true,NASDAQGS
+CHKP,Check Point Software Technologies Ltd,,US,true,NASDAQGS
+CHRW,CH Robinson Worldwide Inc,,US,true,NASDAQGS
+CHTR,Charter Communications Inc,,US,true,NASDAQGS
+CHWY,Chewy Inc,,US,true,NYSE
+CI,Cigna Corp,Health Care,US,true,NYSE
+CIEN,Ciena Corp,AI,US,true,NYSE
+CINF,Cincinnati Financial Corporation,,US,true,NASDAQGS
+CL,Colgate-Palmolive Company,,US,true,NYSE
+CLBT,Cellebrite DI,,IL,true,NASDAQGS
+CLH,Clean Harbors Inc,,US,true,NYSE
+CLS,Celestica Inc,,CA,true,NYSE
+CLX,Clorox Co,,US,true,NYSE
+CMCSA,Comcast Corp,,US,true,NASDAQGS
+CME,CME Group Inc,,US,true,NASDAQGS
+CMG,"Chipotle Mexican Grill, Inc.",,US,true,
+CMI,Cummins Inc,,US,true,NYSE
+CMS,CMS Energy Corporation,,US,true,NYSE
+CNA,CNA Financial Corporation,,US,true,NYSE
+CNC,Centene Corp,Health Care,US,true,NYSE
+CNK,Cinemark Holdings Inc,,US,true,NYSE
+CNO,CNO Financial Group Inc,,US,true,NYSE
+CNP,CenterPoint Energy Inc,,US,true,NYSE
+COCO,Vita Coco Company Inc,,US,true,NASDAQGS
+CODY.Y,Compagnie de Saint-Gobain ADR,,US,true,OTCPK
+COF,Capital One Financial Corporation,,US,true,NYSE
+COHR,Coherent Corp.,AI,US,true,NYSE
+COIN,Coinbase Global Inc,,US,true,NASDAQGS
+COKE,Coca-Cola Bottling Co Consolidated,,US,true,NASDAQGS
+COLL,Collegium Pharmaceutical Inc,,US,true,NASDAQGS
+CON,Concentra Group Holdings Parent Inc,,US,true,NYSE
+COO,Cooper Companies Inc,,US,true,NASDAQGS
+COP,ConocoPhillips,,US,true,NYSE
+COR,Cencora Inc,,US,true,NYSE
+COST,Costco Wholesale Corp,Consumer Defensive,US,true,NASDAQGS
+CP,Canadian Pacific Kansas City Limited,,CA,true,NYSE
+CPA,Copa Holdings SA,,PA,true,NYSE
+CPAY,Corpay Inc,,US,true,NYSE
+CPRT,Copart Inc,,US,true,NASDAQGS
+CPRX,Catalyst Pharmaceuticals Inc,,US,true,NASDAQCM
+CPT,Camden Property Trust,,US,true,NYSE
+CR,Crane Co,,US,true,NYSE
+CRDO,Credo Technology Group Holding Ltd,AI,KY,true,NASDAQGS
+CRGY,Crescent Energy Co,Oil,US,true,NYSE
+CRH,CRH PLC ADR,,IE,true,NYSE
+CRL,Charles River Laboratories,,US,true,NYSE
+CRM,Salesforce Inc,AI,US,true,
+CROX,Crocs Inc,,US,true,NASDAQGS
+CRS,Carpenter Technology Corporation,,US,true,NYSE
+CRVL,CorVel Corp,,US,true,NASDAQGS
+CRWD,CrowdStrike Holdings Inc,,US,true,NASDAQGS
+CRWV,CoreWeave Inc,AI,US,true,NASDAQGS
+CSCO,Cisco Systems Inc,AI,US,true,NASDAQGS
+CSGP,CoStar Group Inc,,US,true,NASDAQGS
+CSW,CSW Industrials Inc,,US,true,NYSE
+CSX,CSX Corporation,,US,true,NASDAQGS
+CTAS,Cintas Corporation,,US,true,NASDAQGS
+CTSH,Cognizant Technology Solutions Corp Class A,,US,true,NASDAQGS
+CTVA,Corteva Inc,,US,true,NYSE
+CVLT,CommVault Systems Inc,,US,true,NASDAQGS
+CVNA,Carvana Co.,,US,true,
+CVS,CVS Health Corp,Health Care,US,true,NYSE
+CVSA,Covista Inc,,US,true,NYSE
+CVX,Chevron Corp,Oil,US,true,NYSE
+CW,Curtiss-Wright Corporation,,US,true,NYSE
+CWK,Cranswick PLC,,US,true,LSE
+CWST,Casella Waste Systems Inc,,US,true,NASDAQGS
+CXM,Sprinklr Inc,,US,true,NYSE
+CXT,Crane NXT Co,,US,true,NYSE
+CYD,China Yuchai International Limited,,SG,true,NYSE
+D,Dominion Energy Inc,AI,US,true,NYSE
+DAL,Delta Air Lines Inc,Airlines,US,true,NYSE
+DASH,DoorDash Inc,,US,true,NASDAQGS
+DAVE,Dave Inc,,US,true,NASDAQGM
+DBSD.Y,DBS Group Holdings Ltd ADR,,US,true,OTCPK
+DD,Dupont De Nemours Inc,AI,US,true,NYSE
+DDOG,Datadog Inc,AI,US,true,NASDAQGS
+DE,Deere & Company,,US,true,NYSE
+DECK,Deckers Outdoor Corporation,,US,true,NYSE
+DELL,Dell Technologies Inc,AI,US,true,NYSE
+DG,Dollar General Corporation,,US,true,NYSE
+DGX,Quest Diagnostics Incorporated,,US,true,NYSE
+DHI,DR Horton Inc,,US,true,NYSE
+DHR,Danaher Corporation,,US,true,NYSE
+DIS,Walt Disney Company,,US,true,NYSE
+DKNG,DraftKings Inc,,US,true,NASDAQGS
+DKS,Dick’s Sporting Goods Inc,,US,true,NYSE
+DLO,Dlocal Ltd,,UY,true,NASDAQGS
+DLR,Digital Realty Trust Inc,AI,US,true,NYSE
+DLTR,Dollar Tree Inc,,US,true,NASDAQGS
+DOC,Healthpeak Properties Inc,,US,true,NYSE
+DOCN,DigitalOcean Holdings Inc,,US,true,NYSE
+DOCS,Doximity Inc,,US,true,NYSE
+DOCU,DocuSign Inc,,US,true,NASDAQGS
+DORM,Dorman Products Inc,,US,true,NASDAQGS
+DOV,Dover Corporation,,US,true,NYSE
+DOW,Dow Inc,,US,true,NYSE
+DPZ,Domino’s Pizza Inc,,US,true,NASDAQGS
+DRI,Darden Restaurants Inc,,US,true,NYSE
+DRS,Leonardo DRS Inc,,US,true,NASDAQGS
+DSGX,Descartes Systems Group Inc,,CA,true,NASDAQGS
+DT,Dynatrace Inc,,US,true,NYSE
+DTE,DTE Energy Company,,US,true,NYSE
+DTM,DT Midstream Inc,,US,true,NYSE
+DUK,Duke Energy Corporation,AI,US,true,NYSE
+DUOL,Duolingo Inc,,US,true,NASDAQGS
+DV,DoubleVerify Holdings Inc,,US,true,NYSE
+DVA,DaVita HealthCare Partners Inc,,US,true,NYSE
+DVN,Devon Energy Corporation,,US,true,NYSE
+DXCM,"DexCom, Inc.",,US,true,
+DXPE,DXP Enterprises Inc,,US,true,NASDAQGS
+DY,Dycom Industries Inc,,US,true,NYSE
+EA,Electronic Arts Inc,,US,true,NASDAQGS
+EAT,Brinker International Inc,,US,true,NYSE
+EBAY,eBay Inc,,US,true,NASDAQGS
+ECG,Everus Construction Group Inc,,US,true,NYSE
+ECL,Ecolab Inc,,US,true,NYSE
+ECO,Okeanis Eco Tankers Corp,,GR,true,NYSE
+ED,Consolidated Edison Inc,,US,true,NYSE
+EDV,Endeavour Mining PLC,,US,true,LSE
+EEFT,Euronet Worldwide Inc,,US,true,NASDAQGS
+EFX,Equifax Inc,,US,true,NYSE
+EFXT,Enerflex Ltd,,CA,true,NYSE
+EG,Everest Re Group Ltd,,BM,true,NYSE
+EGO,Eldorado Gold Corporation,,CA,true,NYSE
+EHC,Encompass Health Corp,,US,true,NYSE
+EIX,Edison International,,US,true,NYSE
+EL,Estee Lauder Companies Inc,,US,true,NYSE
+ELF,ELF Beauty Inc,,US,true,NYSE
+ELV,Elevance Health Inc,,US,true,NYSE
+EME,EMCOR Group Inc,,US,true,NYSE
+EMR,Emerson Electric Company,AI,US,true,NYSE
+ENR,Siemens Energy AG,,US,true,SWX
+ENSG,The Ensign Group Inc,,US,true,NASDAQGS
+ENTG,Entegris Inc,AI,US,true,NASDAQGS
+EOG,EOG Resources Inc,,US,true,NYSE
+EQIX,Equinix Inc,AI,US,true,NASDAQGS
+EQR,Equity Residential,,US,true,NYSE
+EQT,EQT Corporation,,US,true,NYSE
+EQX,Equinox Gold Corp,,CA,true,NYSEAM
+ERIC,Telefonaktiebolaget LM Ericsson B ADR,AI,SE,true,NASDAQGS
+ERIE,Erie Indemnity Company,,US,true,NASDAQGS
+ERO,Ero Copper Corp,,CA,true,NYSE
+ES,Eversource Energy,,US,true,NYSE
+ESE,ESCO Technologies Inc,,US,true,NYSE
+ESLT,Elbit Systems Ltd,,IL,true,NASDAQGS
+ESNT,Essent Group Ltd,,BM,true,NYSE
+ESS,Essex Property Trust Inc,,US,true,NYSE
+ESTC,Elastic NV,AI,NL,true,NYSE
+ETN,Eaton Corporation PLC,AI,IE,true,NYSE
+ETR,Entergy Corporation,AI,US,true,NYSE
+EVRG,Evergy Inc,,US,true,NASDAQGS
+EVTC,Evertec Inc,,US,true,NYSE
+EW,Edwards Lifesciences Corp,,US,true,NYSE
+EXC,Exelon Corporation,,US,true,NASDAQGS
+EXE,Expand Energy Corp,,US,true,NASDAQGS
+EXEL,Exelixis Inc,,US,true,NASDAQGS
+EXLS,ExlService Holdings Inc,,US,true,NASDAQGS
+EXPD,Expeditors International of Washington Inc,,US,true,NYSE
+EXPE,Expedia Inc,,US,true,NASDAQGS
+EXR,Extra Space Storage Inc,,US,true,NYSE
+EZPW,EZCORP Inc,,US,true,NASDAQGS
+F,Ford Motor Company,,US,true,NYSE
+FANG,Diamondback Energy Inc,,US,true,NASDAQGS
+FAST,Fastenal Company,,US,true,NASDAQGS
+FCFS,FirstCash Inc,,US,true,NASDAQGS
+FCN,FTI Consulting Inc,,US,true,NYSE
+FCX,Freeport-McMoran Copper & Gold Inc,,US,true,NYSE
+FDS,FactSet Research Systems Inc,,US,true,NYSE
+FDX,FedEx Corporation,,US,true,NYSE
+FDXF,FedEx Freight Holding Company Inc,,US,true,NYSE
+FE,FirstEnergy Corporation,,US,true,NYSE
+FFIV,F5 Networks Inc,,US,true,NASDAQGS
+FG,F&G Annuities & Life Inc,,US,true,NYSE
+FHI,Federated Investors Inc B,,US,true,NYSE
+FICO,Fair Isaac Corporation,,US,true,NYSE
+FIGS,Figs Inc,,US,true,NYSE
+FIS,Fidelity National Information Services Inc,,US,true,NYSE
+FISV,Fiserv Inc,,US,true,NASDAQGS
+FITB,Fifth Third Bancorp,,US,true,NYSE
+FIVE,Five Below Inc,,US,true,NASDAQGS
+FIVN,Five9 Inc,,US,true,NASDAQGM
+FIX,Comfort Systems USA Inc,AI,US,true,NYSE
+FLEX,Flex Ltd,,US,true,NASDAQGS
+FLS,Flowserve Corporation,,US,true,NYSE
+FLYW,Flywire Corp,,US,true,NASDAQGS
+FN,Fabrinet,,US,true,NYSE
+FNF,Fidelity National Financial Inc,,US,true,NYSE
+FNV,Franco-Nevada Corporation,,CA,true,NYSE
+FOX,Fox Corp Class B,,US,true,NASDAQGS
+FOXA,Fox Corp Class A,,US,true,NASDAQGS
+FRO,Frontline Ltd,,CY,true,NYSE
+FRPT,Freshpet Inc,,US,true,NASDAQGM
+FRSH,Freshworks Inc,,US,true,NASDAQGS
+FRT,Federal Realty Investment Trust,,US,true,NYSE
+FSLR,First Solar Inc,,US,true,
+FSM,Fortuna Mining Corp,,US,true,NYSE
+FSS,Federal Signal Corporation,,US,true,NYSE
+FTAI,FTAI Aviation Ltd,,US,true,NASDAQGS
+FTDR,Frontdoor Inc,,US,true,NASDAQGS
+FTI,TechnipFMC PLC,,GB,true,NYSE
+FTK,flatexDEGIRO AG,,US,true,DB
+FTNT,"Fortinet, Inc.",,US,true,
+FTV,Fortive Corp,,US,true,NYSE
+G,Genpact Limited,Insurance,BM,true,
+GALD.Y,Galderma Group AG,,US,true,OTCPK
+GAP,Gap Inc,,US,true,NYSE
+GBTG,Global Business Travel Group Inc,,US,true,NYSE
+GCT,GigaCloud Technology Inc,,US,true,NASDAQGM
+GD,General Dynamics Corporation,,US,true,NYSE
+GDDY,Godaddy Inc,,US,true,NYSE
+GE,General Electric Co,,US,true,
+GEHC,GE HealthCare Technologies Inc,,US,true,NASDAQGS
+GEN,Gen Digital Inc,,US,true,NASDAQGS
+GEV,GE Vernova LLC,AI,US,true,NYSE
+GFS,GlobalFoundries Inc,AI,US,true,NASDAQGS
+GHC,Graham Holdings Co,,US,true,NYSE
+GHM,Graham Corporation,,US,true,NYSE
+GIB,CGI Inc,,CA,true,NYSE
+GIII,G-III Apparel Group Ltd,,US,true,NASDAQGS
+GILD,Gilead Sciences Inc,,US,true,NASDAQGS
+GILT,Gilat Satellite Networks Ltd,,US,true,NASDAQGS
+GIS,General Mills Inc,,US,true,NYSE
+GL,Globe Life Inc,,US,true,NYSE
+GLBE,Global-E Online Ltd,,IL,true,NASDAQGS
+GLOB,Globant SA,,LU,true,NYSE
+GLW,Corning Incorporated,,US,true,NYSE
+GM,General Motors Company,,US,true,NYSE
+GMED,Globus Medical,,US,true,NYSE
+GNRC,Generac Holdings Inc,,US,true,NYSE
+GNTX,Gentex Corporation,,US,true,NASDAQGS
+GOLD,Goldcom Inc,,US,true,NYSE
+GOLF,Acushnet Holdings Corp,,US,true,NYSE
+GOOGL,Alphabet Inc,AI,US,true,
+GPC,Genuine Parts Co,,US,true,NYSE
+GPN,Global Payments Inc,,US,true,NYSE
+GRAB,Grab Holdings Ltd,,SG,true,NASDAQGS
+GRBK,Green Brick Partners Inc,,US,true,NYSE
+GRC,Gorman-Rupp Company,,US,true,NYSE
+GRDN,Guardian Pharmacy Services Inc,,US,true,NYSE
+GRMN,Garmin Ltd,,US,true,NYSE
+GRND,Grindr,,US,true,NYSE
+GS,Goldman Sachs Group Inc,,US,true,NYSE
+GSL,Global Ship Lease Inc,,US,true,NYSE
+GVA,Granite Construction Incorporated,,US,true,NYSE
+GWRE,Guidewire Software Inc,,US,true,NYSE
+GWW,WW Grainger Inc,,US,true,NYSE
+GXO,GXO Logistics Inc,,US,true,NYSE
+HAFN,Hafnia Ltd,,US,true,NYSE
+HAL,Halliburton Company,,US,true,NYSE
+HALO,Halozyme Therapeutics Inc,,US,true,NASDAQGS
+HAS,Hasbro Inc,,US,true,NASDAQGS
+HBAN,Huntington Bancshares Incorporated,,US,true,NASDAQGS
+HBM,HudBay Minerals Inc,,US,true,NYSE
+HCA,HCA Holdings Inc,,US,true,NYSE
+HCI,HCI Group Inc,,US,true,NYSE
+HD,Home Depot Inc,,US,true,NYSE
+HEI,Heico Corporation,,US,true,NYSE
+HEI.A,Heico Corp A,,US,true,NYSE
+HESM,Hess Midstream Partners LP,,US,true,NYSE
+HG,Hamilton Insurance Group Ltd B,,BM,true,NYSE
+HGTY,Hagerty Inc,,US,true,NYSE
+HIG,Hartford Financial Services Group,Insurance,US,true,NYSE
+HII,Huntington Ingalls Industries Inc,,US,true,NYSE
+HL,Hecla Mining Company,,US,true,NYSE
+HLNE,Hamilton Lane Inc,,US,true,NASDAQGS
+HLT,Hilton Worldwide Holdings Inc,,US,true,NYSE
+HLX,Helix Energy Solutions Group Inc,,US,true,NYSE
+HMN,Horace Mann Educators Corporation,,US,true,NYSE
+HNNM.Y,H & M Hennes & Mauritz AB ADR,,US,true,OTCPK
+HON,Honeywell International Inc,,US,true,NASDAQGS
+HONA,Honeywell Aerospace Inc,,US,true,NASDAQGS
+HOOD,Robinhood Markets Inc,,US,true,NASDAQGS
+HOT,Hochtief AG,,US,true,SWX
+HPE,Hewlett Packard Enterprise Co,AI,US,true,NYSE
+HPQ,HP Inc,,US,true,NYSE
+HQY,Healthequity Inc,,US,true,NASDAQGS
+HRL,Hormel Foods Corporation,,US,true,NYSE
+HRMY,Harmony Biosciences Holdings,,US,true,NASDAQGM
+HSIC,Henry Schein Inc,,US,true,NASDAQGS
+HST,Host Hotels & Resorts Inc,,US,true,NASDAQGS
+HSY,Hershey Co,,US,true,NYSE
+HUBB,Hubbell Inc,AI,US,true,NYSE
+HUBS,HubSpot Inc,AI,US,true,NYSE
+HUM,Humana Inc,,US,true,NYSE
+HURN,Huron Consulting Group Inc,,US,true,NASDAQGS
+HWKN,Hawkins Inc,,US,true,NASDAQGS
+HWM,Howmet Aerospace Inc,,US,true,NYSE
+IAG,Iamgold Corporation,Airlines,CA,true,
+IBKR,Interactive Brokers Group Inc,,US,true,NASDAQGS
+IBM,International Business Machines,AI,US,true,NYSE
+ICE,Intercontinental Exchange Inc,,US,true,NYSE
+IDCC,InterDigital Inc,,US,true,NASDAQGS
+IDXX,IDEXX Laboratories Inc,,US,true,NASDAQGS
+IESC,IES Holdings Inc,,US,true,NASDAQGM
+IEX,IDEX Corporation,,US,true,NYSE
+IFF,International Flavors & Fragrances Inc,,US,true,NYSE
+IGIC,International General Insurance Holdings Ltd,,JO,true,NASDAQCM
+III,3I Group PLC,,US,true,LSE
+IMAX,Imax Corporation,,CA,true,NYSE
+INCY,Incyte Corporation,,US,true,NASDAQGS
+INOD,Innodata Inc,,US,true,NASDAQGM
+INSP,Inspire Medical Systems Inc,,US,true,NYSE
+INTC,Intel Corporation,AI,US,true,NASDAQGS
+INTU,Intuit Inc,AI,US,true,NASDAQGS
+INVA,Innoviva Inc,,US,true,NASDAQGS
+INVH,Invitation Homes Inc,,US,true,NYSE
+INVX,Innovex International Inc,,US,true,NYSE
+IP,International Paper,,US,true,NYSE
+IPAR,Inter Parfums Inc,,US,true,NASDAQGS
+IQV,IQVIA Holdings Inc,,US,true,NYSE
+IR,Ingersoll Rand Inc,,US,true,NYSE
+IRDM,Iridium Communications Inc,,US,true,NASDAQGS
+IRM,Iron Mountain Incorporated,AI,US,true,NYSE
+IRMD,Iradimed Co,,US,true,NASDAQGM
+ISRG,Intuitive Surgical Inc,,US,true,NASDAQGS
+IT,Gartner Inc,,US,true,NYSE
+ITGR,Integer Holdings Corp,,US,true,NYSE
+ITRI,Itron Inc,,US,true,NASDAQGS
+ITT,ITT Inc,,US,true,NYSE
+ITW,Illinois Tool Works Inc,,US,true,NYSE
+IVZ,Invesco Plc,,US,true,NYSE
+J,Jacobs Engineering Group Inc,,US,true,NYSE
+JBHT,JB Hunt Transport Services Inc,,US,true,NASDAQGS
+JBL,Jabil Circuit Inc,,US,true,NYSE
+JBS,JBS NV,,US,true,NYSE
+JBSS,John B Sanfilippo & Son Inc,,US,true,NASDAQGS
+JBTM,JBTMarel Corp,,US,true,NYSE
+JCI,Johnson Controls International PLC,AI,IE,true,NYSE
+JHG,Janus Henderson Group PLC,,US,true,NYSE
+JKHY,Jack Henry & Associates Inc,,US,true,NASDAQGS
+JNJ,Johnson & Johnson,Healthcare,US,true,
+JPM,JPMorgan Chase & Co,,US,true,NYSE
+KARO,Karooooo Ltd,,US,true,NASDAQCM
+KBR,KBR Inc,,US,true,NYSE
+KDP,Keurig Dr Pepper Inc,,US,true,NASDAQGS
+KEY,KeyCorp,,US,true,NYSE
+KEYS,Keysight Technologies Inc,AI,US,true,NYSE
+KG,Kinross Gold Corp,,US,true,SWX
+KGC,Kinross Gold Corp,,US,true,NYSE
+KGS,Kodiak Gas Services Inc,,US,true,NYSE
+KHC,Kraft Heinz Co,,US,true,NASDAQGS
+KIM,Kimco Realty Corp,,US,true,NYSE
+KKR,KKR & Co LP,,US,true,NYSE
+KLAC,KLA Corporation,AI,US,true,
+KMB,Kimberly-Clark Corp,,US,true,NASDAQGS
+KMI,Kinder Morgan Inc,,US,true,NYSE
+KN,Knowles Cor,,US,true,NYSE
+KNF,Knife River Corp,,US,true,NYSE
+KNSA,Kiniksa Pharmaceuticals Ltd,,US,true,NASDAQGS
+KNSL,Kinsale Capital Group Inc,,US,true,NYSE
+KO,Coca-Cola Co,Consumer Defensive,US,true,NYSE
+KR,Kroger Company,,US,true,NYSE
+KSPI,Kaspi.kz AO ADR,,KZ,true,NASDAQGS
+KTB,Kontoor Brands Inc,,US,true,NYSE
+KTOS,Kratos Defense & Security Solutions,,US,true,NASDAQGS
+KVUE,Kenvue Inc,,US,true,NYSE
+L,Loews Corp,,US,true,NYSE
+LAUR,Laureate Education Inc,,US,true,NASDAQGS
+LDOS,Leidos Holdings Inc,,US,true,NYSE
+LEN,Lennar Corporation,,US,true,NYSE
+LEU,Centrus Energy,,US,true,NYSE
+LEVI,Levi Strauss & Co Class A,,US,true,NYSE
+LFST,Lifestance Health Group Inc,,US,true,NASDAQGS
+LGND,Ligand Pharmaceuticals Incorporated,,US,true,NASDAQGM
+LH,Labcorp Holdings Inc,,US,true,NYSE
+LHX,L3Harris Technologies Inc,,US,true,NYSE
+LIF,Life360 Inc,,US,true,NASDAQGS
+LIFX,"Life360, Inc.",,US,true,OTCPK
+LII,Lennox International Inc,,US,true,NYSE
+LIN,Linde PLC,AI,GB,true,NASDAQGS
+LINC,Lincoln Educational Services,,US,true,NASDAQGS
+LITE,Lumentum Holdings Inc,AI,US,true,NASDAQGS
+LIVN,LivaNova PLC,,US,true,NASDAQGS
+LKNC.Y,Luckin Coffee,,US,true,OTCPK
+LLY,Eli Lilly and Company,,US,true,
+LMAT,LeMaitre Vascular Inc,,US,true,NASDAQGM
+LMT,Lockheed Martin Corporation,,US,true,NYSE
+LNT,Alliant Energy Corp,,US,true,NASDAQGS
+LNTH,Lantheus Holdings Inc,,US,true,NASDAQGM
+LNWO,Light & Wonder Inc,,US,true,OTCPK
+LOPE,Grand Canyon Education Inc,,US,true,NASDAQGS
+LOW,Lowe’s Companies Inc,,US,true,NYSE
+LPG,Dorian LPG Ltd,,US,true,NYSE
+LQDA,Liquidia Technologies Inc,,US,true,NASDAQCM
+LQDT,Liquidity Services Inc,,US,true,NASDAQGS
+LRCX,Lam Research Corp,AI,US,true,NASDAQGS
+LRN,Stride Inc,,US,true,NYSE
+LTH,Life Time Group Holdings Inc,,US,true,NYSE
+LTM,LATAM Airlines Group SA ADR,Airlines,US,true,NYSE
+LULU,Lululemon Athletica Inc,,CA,true,NASDAQGS
+LUV,Southwest Airlines Company,Airlines,US,true,NYSE
+LVMU.Y,LVMH Moet Hennessy Louis Vuitton SA ADR,Lux,US,true,OTCPK
+LVS,Las Vegas Sands Corp,,US,true,NYSE
+LW,Lamb Weston Holdings Inc,,US,true,NYSE
+LYB,LyondellBasell Industries NV,,US,true,NYSE
+LYV,Live Nation Entertainment Inc,,US,true,NYSE
+MA,Mastercard Inc,,US,true,
+MAA,Mid-America Apartment Communities Inc,,US,true,NYSE
+MANH,Manhattan Associates Inc,,US,true,NASDAQGS
+MAR,Marriott International Inc,,US,true,NASDAQGS
+MAS,Masco Corporation,,US,true,NYSE
+MCD,McDonald’s Corporation,,US,true,NYSE
+MCHP,Microchip Technology Inc,,US,true,NASDAQGS
+MCK,McKesson Corporation,,US,true,NYSE
+MCO,Moodys Corporation,,US,true,NYSE
+MCY,Mercury General Corporation,Insurance,US,true,NYSE
+MDA,MDA Space Ltd,,US,true,NYSE
+MDB,MongoDB,AI,US,true,NASDAQGM
+MDLN,Medline Inc,,US,true,NASDAQGS
+MDLZ,Mondelez International Inc,,US,true,NASDAQGS
+MDT,Medtronic PLC,,US,true,NYSE
+MEDP,Medpace Holdings Inc,,US,true,NASDAQGS
+MELI,MercadoLibre Inc,,UY,true,NASDAQGS
+MET,MetLife Inc,Insurance,US,true,NYSE
+META,Meta Platforms Inc,AI,US,true,
+MFC,Manulife Financial Corp,Insurance,CA,true,NYSE
+MGM,MGM Resorts International,,US,true,NYSE
+MGNI,Magnite Inc,,US,true,NASDAQGS
+MGRC,McGrath RentCorp,,US,true,NASDAQGS
+MGRT,Mega Fortune Co Ltd,,CN,true,NASDAQCM
+MIAX,Miami International Holdings Inc,,US,true,NYSE
+MIR,Mirion Technologies Inc,,US,true,NYSE
+MKC,McCormick & Company Incorporated,,US,true,NYSE
+MKL,Markel Group Inc,Insurance,US,true,NYSE
+MKTX,MarketAxess Holdings Inc,,US,true,NASDAQGS
+MLM,Martin Marietta Materials Inc,,US,true,NYSE
+MMM,3M Company,,US,true,NYSE
+MMS,Maximus Inc,,US,true,NYSE
+MMSI,Merit Medical Systems Inc,,US,true,NASDAQGS
+MMYT,MakeMyTrip Limited,,IN,true,NASDAQGS
+MNDY,Monday.Com Ltd,,IL,true,NASDAQGS
+MNST,Monster Beverage Corp,,US,true,NASDAQGS
+MO,Altria Group,,US,true,NYSE
+MOD,Modine Manufacturing Company,AI,US,true,NYSE
+MOG.A,Moog Inc,,US,true,NYSE
+MOG.B,Moog Inc B,,US,true,NYSE
+MOH,Molina Healthcare Inc,,US,true,NYSE
+MORN,Morningstar Inc,,US,true,NASDAQGS
+MOS,The Mosaic Company,,US,true,NYSE
+MOVE,Medacta Group SA,,US,true,SWX
+MPC,Marathon Petroleum Corp,,US,true,NYSE
+MPWR,Monolithic Power Systems Inc,,US,true,NASDAQGS
+MRK,Merck & Company Inc,,US,true,NYSE
+MRNA,Moderna Inc,,US,true,NASDAQGS
+MRSH,Marsh & McLennan Companies Inc,,US,true,NYSE
+MRVL,Marvell Technology Inc,AI,US,true,
+MS,Morgan Stanley,,US,true,NYSE
+MSA,MSA Safety,,US,true,NYSE
+MSCI,MSCI Inc,,US,true,NYSE
+MSFT,Microsoft Corp,AI,US,true,
+MSGE,Madison Square Garden Entertainment Corp,,US,true,NYSE
+MSI,Motorola Solutions Inc,,US,true,NYSE
+MTB,M&T Bank Corp,,US,true,NYSE
+MTD,Mettler-Toledo International Inc,,US,true,NYSE
+MTN,Vail Resorts Inc,,US,true,NYSE
+MTSI,MACOM Technology Solutions Holdings Inc,,US,true,NASDAQGS
+MTZ,MasTec Inc,,US,true,NYSE
+MU,Micron Technology Inc,AI,US,true,
+MYRG,MYR Group Inc,,US,true,NASDAQGS
+NBIS,Nebius Group NV,AI,US,true,NASDAQGS
+NBIX,Neurocrine Biosciences Inc,,US,true,NASDAQGS
+NCLH,Norwegian Cruise Line Holdings Ltd,,US,true,NYSE
+NCNO,Ncino,,US,true,NASDAQGS
+NDAQ,Nasdaq Inc,,US,true,NASDAQGS
+NDSN,Nordson Corporation,,US,true,NASDAQGS
+NE,Noble Corp,,US,true,NYSE
+NEE,Nextera Energy Inc,AI,US,true,NYSE
+NEM,Newmont Goldcorp Corp,,US,true,
+NFLX,Netflix Inc,,US,true,
+NHC,National HealthCare Corporation,,US,true,NYSEAM
+NI,NiSource Inc,,US,true,NYSE
+NIU,Niu Technologies,,US,true,NASDAQGM
+NKE,Nike Inc,,US,true,NYSE
+NMIH,NMI Holdings Inc,,US,true,NASDAQGM
+NOC,Northrop Grumman Corporation,,US,true,NYSE
+NOK,Nokia Corp ADR,AI,FI,true,NYSE
+NOV,Novo Nordisk A/S,,US,true,DB
+NOW,ServiceNow Inc,AI,US,true,NYSE
+NPKI,NPK International Inc,,US,true,NYSE
+NRG,NRG Energy Inc,AI,US,true,NYSE
+NSC,Norfolk Southern Corporation,,US,true,NYSE
+NSSC,NAPCO Security Technologies Inc,,US,true,NASDAQGS
+NTAP,NetApp Inc,,US,true,NASDAQGS
+NTRS,Northern Trust Corporation,,US,true,NASDAQGS
+NUE,Nucor Corp,,US,true,NYSE
+NUTX,Nutex Health Inc,,US,true,NASDAQCM
+NVDA,NVIDIA Corp,AI,US,true,
+NVGS,Navigator Holdings Ltd,,GB,true,NYSE
+NVMI,Nova Measuring Instruments Ltd,,IL,true,NASDAQGS
+NVR,NVR Inc,,US,true,NYSE
+NVT,nVent Electric PLC,AI,US,true,NYSE
+NWS,News Corp B,,US,true,NASDAQGS
+NWSA,News Corp A,,US,true,NASDAQGS
+NXGP.Y,Next PLC ADR,,US,true,OTCPK
+NXPI,NXP Semiconductors NV,,NL,true,NASDAQGS
+NXT,Nextpower Inc,,US,true,
+NYAX,Nayax Ltd,,IL,true,NASDAQGS
+NYT,New York Times Company,,US,true,NYSE
+O,Realty Income Corp,,US,true,NYSE
+ODC,Oil-Dri Corporation Of America,,US,true,NYSE
+ODFL,Old Dominion Freight Line Inc,,US,true,NASDAQGS
+OGC,OceanaGold Corp,,US,true,NYSE
+OII,Oceaneering International Inc,,US,true,NYSE
+OKE,ONEOK Inc,,US,true,NYSE
+OKTA,Okta Inc,,US,true,NASDAQGS
+OLLI,"Ollie's Bargain Outlet Holdings, Inc.",,US,true,NASDAQGM
+OMAB,Grupo Aeroportuario Del CentroNorte,,US,true,BMV
+OMC,Omnicom Group Inc,,US,true,NYSE
+ON,ON Semiconductor Corporation,,US,true,NASDAQGS
+ONON,On Holding AG,,CH,true,NYSE
+ONTO,Onto Innovation Inc,AI,US,true,NYSE
+OPCH,Option Care Health Inc,,US,true,NASDAQGS
+OR,OR Royalties Inc,,US,true,NYSE
+ORCL,Oracle Corporation,AI,US,true,NYSE
+ORLA,Orla Mining Ltd,,US,true,NYSEAM
+ORLY,O’Reilly Automotive Inc,,US,true,NASDAQGS
+OSIS,OSI Systems Inc,,US,true,NASDAQGS
+OSK,Oshkosh Corporation,,US,true,NYSE
+OSW,OneSpaWorld Holdings Ltd,,BS,true,NASDAQCM
+OTEX,Open Text Corporation,,CA,true,NASDAQGS
+OTIS,Otis Worldwide Corp,,US,true,NYSE
+OWL,Blue Owl Capital Inc,,US,true,NYSE
+OXY,Occidental Petroleum Corporation,,US,true,NYSE
+P,Pure Storage Inc,,US,true,NYSE
+PAAS,Pan American Silver Corp,,CA,true,
+PACS,PACS Group Inc,,US,true,NYSE
+PAGS,PagSeguro Digital Ltd,,US,true,NYSE
+PAHC,Phibro Animal Health Corporation,,US,true,NASDAQGM
+PANW,Palo Alto Networks Inc,,US,true,NASDAQGS
+PATH,UiPath Inc,AI,US,true,NYSE
+PAX,Patria Investments Ltd,,KY,true,NASDAQGS
+PAY,Paymentus Holdings Inc,,US,true,NYSE
+PAYC,Paycom,,US,true,NYSE
+PAYO,Payoneer Global Inc,,US,true,NASDAQGM
+PAYX,Paychex Inc,,US,true,NASDAQGS
+PBR,Petroleo Brasileiro Petrobras SA ADR,Oil,US,true,NYSE
+PCAR,PACCAR Inc,,US,true,NASDAQGS
+PCG,PG&E Corp,,US,true,NYSE
+PCTY,Paylocity Holdng,,US,true,NASDAQGS
+PDD,PDD Holdings Inc DRC,,US,true,NASDAQGS
+PDFS,PDF Solutions Inc,,US,true,NASDAQGS
+PEG,Public Service Enterprise Group Inc,AI,US,true,NYSE
+PEGA,Pegasystems Inc,,US,true,NASDAQGS
+PEN,Penumbra Inc,,US,true,NYSE
+PEP,PepsiCo Inc,,US,true,NASDAQGS
+PFE,Pfizer Inc,,US,true,NYSE
+PFG,Principal Financial Group Inc,,US,true,NASDAQGS
+PG,Procter & Gamble Company,,US,true,NYSE
+PGNY,Progyny Inc,,US,true,NASDAQGS
+PGR,Progressive Corp,Insurance,US,true,
+PGY,Pagaya,,US,true,NASDAQCM
+PH,Parker-Hannifin Corporation,,US,true,
+PHM,PulteGroup Inc,,US,true,NYSE
+PICS,PicS PicPay Inc,,US,true,NASDAQGS
+PINS,Pinterest Inc,,US,true,NYSE
+PKG,Packaging Corp of America,,US,true,NYSE
+PLD,Prologis Inc,,US,true,NYSE
+PLGO,Pelagos Insurance Capital Ltd,,US,true,NYSE
+PLMR,Palomar Holdings Inc,,US,true,NASDAQGS
+PLTR,Palantir Technologies Inc,AI,US,true,
+PM,Philip Morris International Inc,,US,true,NYSE
+PNC,PNC Financial Services Group Inc,,US,true,NYSE
+PNR,Pentair PLC,,GB,true,NYSE
+PNTG,Pennant Group Inc,,US,true,NASDAQGS
+PNW,Pinnacle West Capital Corp,,US,true,NYSE
+PODD,Insulet Corporation,,US,true,NASDAQGS
+POWL,Powell Industries Inc,,US,true,NASDAQGS
+PPC,Pilgrims Pride Corp,,US,true,NASDAQGS
+PPG,PPG Industries Inc,,US,true,NYSE
+PPL,PPL Corporation,,US,true,NYSE
+PPRU.Y,Kering SA,lux,US,true,OTCPK
+PR,Permian Resources Corp,,US,true,NYSE
+PRGS,Progress Software Corporation,,US,true,NASDAQGS
+PRI,Primerica Inc,,US,true,NYSE
+PRIM,Primoris Services Corporation,,US,true,NYSE
+PRMB,Primo Water Corp,,US,true,NYSE
+PRSU,Pursuit Attractions and Hospitality Inc,,US,true,NYSE
+PRU,Prudential PLC,Insurance,US,true,
+PRVA,Privia Health Group Inc,,US,true,NASDAQGS
+PSA,Public Storage,,US,true,NYSE
+PSKY,Paramount Skydance Corp,,US,true,NASDAQGS
+PSMT,PriceSmart Inc,,US,true,NASDAQGS
+PSN,Parsons Corp,,US,true,NYSE
+PSX,Phillips 66,,US,true,NYSE
+PTC,PTC Inc,,US,true,NASDAQGS
+PUK,Prudential Public Limited Company,Insurance,US,true,NYSE
+PWR,Quanta Services Inc,,US,true,NYSE
+PYPL,PayPal Holdings Inc,,US,true,
+Q,Qnity Electronics Inc,,US,true,NYSE
+QCOM,Qualcomm Incorporated,AI,US,true,NASDAQGS
+QLYS,Qualys Inc,,US,true,NASDAQGS
+QTWO,Q2 Holdings,,US,true,NYSE
+RACE,Ferrari NV,,IT,true,NYSE
+RAMP,Liveramp Holdings Inc,,US,true,NYSE
+RBA,RB Global Inc,,US,true,NYSE
+RBC,RBC Bearings Incorporated,,US,true,NYSE
+RCL,Royal Caribbean Cruises Ltd,,US,true,NYSE
+RDDT,Reddit Inc,,US,true,NYSE
+REG,Regency Centers Corporation,,US,true,NASDAQGS
+REGN,Regeneron Pharmaceuticals Inc,,US,true,NASDAQGS
+RELY,Remitly Global Inc,,US,true,NASDAQGS
+RF,Regions Financial Corporation,,US,true,NYSE
+RGA,Reinsurance Group of America,,US,true,NYSE
+RGLD,Royal Gold Inc,,US,true,NASDAQGS
+RJET,Republic Airways Holdings Inc,,US,true,NASDAQGS
+RJF,Raymond James Financial Inc,,US,true,NYSE
+RL,Ralph Lauren Corp Class A,,US,true,NYSE
+RMBS,Rambus Inc,,US,true,NASDAQGS
+RMD,ResMed Inc,,US,true,NYSE
+RNR,Renaissancere Holdings Ltd,Insurance,BM,true,NYSE
+ROAD,Construction Partners Inc,,US,true,NASDAQGS
+ROK,Rockwell Automation Inc,AI,US,true,NYSE
+ROKU,Roku Inc,,US,true,NASDAQGS
+ROL,Rollins Inc,,US,true,NYSE
+ROP,Roper Technologies Inc,,US,true,NASDAQGS
+ROST,Ross Stores Inc,,US,true,NASDAQGS
+RSG,Republic Services Inc,,US,true,NYSE
+RSI,Rush Street Interactive Inc,,US,true,NYSE
+RTX,Rtx Corp,,US,true,NYSE
+RVTY,Revvity Inc,,US,true,NYSE
+RYAA.Y,Ryanair Holdings PLC ADR,Airlines,US,true,NASDAQGS
+RYAN,Ryan Specialty Group Holdings Inc,,US,true,NYSE
+SAFT,Safety Insurance Group Inc,,US,true,NASDAQGS
+SAP,SAP SE,,DE,true,
+SARO,StandardAero Inc,,US,true,NYSE
+SATS,Satsuma Technology PLC,,US,true,LSE
+SBAC,SBA Communications Corp,,US,true,NASDAQGS
+SBUX,Starbucks Corporation,,US,true,NASDAQGS
+SCCO,Southern Copper Corporation,,US,true,NYSE
+SCHW,Charles Schwab Corp,,US,true,NYSE
+SCVP.Y,Siam Cement PCL ADR,,US,true,OTCPK
+SEZL,Sezzle Inc,,US,true,NASDAQCM
+SFM,Sprouts Farmers Market Inc,,US,true,NASDAQGS
+SGHC,SGHC Limited,,GG,true,NYSE
+SGI,Somnigroup International Inc,,US,true,NYSE
+SHAK,Shake Shack Inc,,US,true,NYSE
+SHC,Sotera Health Co,,US,true,NASDAQGS
+SHEL,Shell PLC ADR,Oil,US,true,NYSE
+SHLS,Shoals Technologies Group Inc,,US,true,NASDAQGM
+SHOO,Steven Madden Ltd,,US,true,NASDAQGS
+SHOP,Shopify Inc,,CA,true,NASDAQGS
+SHW,Sherwin-Williams Co,,US,true,NYSE
+SIGI,Selective Insurance Group Inc,,US,true,NASDAQGS
+SII,Sprott Inc,,CA,true,NYSE
+SJM,JM Smucker Company,,US,true,NYSE
+SKWD,Skyward Specialty Insurance Group Inc,,US,true,NASDAQGS
+SKYW,SkyWest Inc,,US,true,NASDAQGS
+SLB,Slb NV,,US,true,NYSE
+SLDE,Slide Insurance Holdings Inc,,US,true,NASDAQGS
+SLF,Sun Life Financial Inc,Insurance,US,true,NYSE
+SMCI,Super Micro Computer Inc,AI,US,true,NASDAQGS
+SMSG.Y,Samsonite International SA ADR,,US,true,OTCPK
+SN,Sharkninja Inc,,US,true,NYSE
+SNA,Snap-On Inc,,US,true,NYSE
+SNDK,SanDisk Corporation,AI,US,true,NASDAQGS
+SNOW,Snowflake Inc,AI,US,true,NYSE
+SNPS,Synopsys Inc,AI,US,true,NASDAQGS
+SO,Southern Company,AI,US,true,NYSE
+SOLV,Solventum Corp,,US,true,NYSE
+SON,Sonoco Products Company,,US,true,NYSE
+SPG,Simon Property Group Inc,,US,true,NYSE
+SPGI,S&P Global Inc,,US,true,NYSE
+SPNT,Siriuspoint Ltd,,US,true,NYSE
+SPOT,Spotify Technology SA,,US,true,NYSE
+SPSC,SPS Commerce Inc,,US,true,NASDAQGS
+SPXC,SPX Corp,AI,US,true,NYSE
+SRAD,Sportradar Group AG,,CH,true,NASDAQGS
+SRE,Sempra Energy,,US,true,NYSE
+SRPT,Sarepta Therapeutics Inc,,US,true,NASDAQGS
+SSRM,SSR Mining Inc,,US,true,NASDAQGS
+STE,STERIS plc,,IE,true,NYSE
+STLD,Steel Dynamics Inc,,US,true,NASDAQGS
+STN,Stantec Inc,,CA,true,NYSE
+STNE,StoneCo Ltd,,KY,true,NASDAQGS
+STRL,Sterling Construction Company Inc,,US,true,NASDAQGS
+STT,State Street Corp,,US,true,NYSE
+STX,Seagate Technology PLC,,SG,true,NASDAQGS
+STZ,Constellation Brands Inc Class A,,US,true,NYSE
+SW,Smurfit WestRock PLC,,US,true,NYSE
+SWBI,Smith & Wesson Brands Inc,,US,true,NASDAQGS
+SWK,Stanley Black & Decker Inc,,US,true,NYSE
+SWKS,Skyworks Solutions Inc,,US,true,NASDAQGS
+SXI,Standex International Corporation,,US,true,NYSE
+SYF,Synchrony Financial,,US,true,NYSE
+SYK,Stryker Corporation,,US,true,NYSE
+SYY,Sysco Corporation,,US,true,NYSE
+T,AT&T Inc,,US,true,NYSE
+TAP,Molson Coors Brewing Co Class B,,US,true,NYSE
+TBLA,Taboola,,US,true,NASDAQGS
+TDG,Transdigm Group Incorporated,,US,true,NYSE
+TDW,Tidewater Inc,,US,true,NYSE
+TDY,Teledyne Technologies Incorporated,,US,true,NYSE
+TECH,Bio-Techne Corp,,US,true,NASDAQGS
+TEL,TE Connectivity Ltd,,US,true,NYSE
+TEM,Tempus AI Inc,AI,US,true,NASDAQGS
+TER,Teradyne Inc,AI,US,true,NASDAQGS
+TFC,Truist Financial Corp,,US,true,NYSE
+TFPM,Triple Flag Precious Metals Corp,,CA,true,NYSE
+TGB,Trekor Metals Ltd,,US,true,NYSEAM
+TGLS,Tecnoglass Inc,,US,true,NYSE
+TGT,Target Corporation,,US,true,NYSE
+TGTX,TG Therapeutics Inc,,US,true,NASDAQCM
+THRM,Gentherm Inc,,US,true,NASDAQGS
+TJX,"The TJX Companies, Inc.",,US,true,
+TKO,TKO Group Holdings Inc,,US,true,NYSE
+TLN,Talen Energy Corp,AI,US,true,NASDAQGS
+TLX,Talanx AG,Insurance,AU,true,DB
+TMDX,TransMedics Group Inc,,US,true,NASDAQGM
+TME,Tencent Music Entertainment Group,,CN,true,NYSE
+TMO,Thermo Fisher Scientific Inc,,US,true,NYSE
+TMUS,T-Mobile US Inc,,US,true,NASDAQGS
+TOST,Toast Inc,,US,true,NYSE
+TPB,Turning Point Brands Inc,,US,true,NYSE
+TPC,Tutor Perini Corporation,,US,true,NYSE
+TPL,Texas Pacific Land Corp,,US,true,NYSE
+TPR,Tapestry Inc,,US,true,NYSE
+TRGP,Targa Resources Inc,,US,true,NYSE
+TRI,Thomson Reuters Corp,AI,CA,true,NYSE
+TRIP,Tripadvisor Inc,,US,true,NASDAQGS
+TRMB,Trimble Inc,,US,true,NASDAQGS
+TROW,T. Rowe Price Group Inc,,US,true,NASDAQGS
+TRU,TransUnion,,US,true,NYSE
+TRUP,Trupanion Inc,,US,true,NASDAQGM
+TRV,Travelers Companies,Insurance,US,true,NYSE
+TSCO,Tractor Supply Company,Consumer Cyclical,US,true,NASDAQGS
+TSEM,Tower Semiconductor Ltd,AI,US,true,NASDAQGS
+TSLA,Tesla Inc,,US,true,NASDAQGS
+TSM,Taiwan Semiconductor Manufacturing,AI,US,true,NYSE
+TSN,Tyson Foods Inc,,US,true,NYSE
+TT,Trane Technologies plc,AI,IE,true,NYSE
+TTAM,Titan America SA,,US,true,NYSE
+TTD,The Trade Desk,,US,true,NASDAQGM
+TTE,TotalEnergies SE ADR,Oil,FR,true,NYSE
+TTEK,Tetra Tech Inc,,US,true,NASDAQGS
+TTWO,Take-Two Interactive Software Inc,,US,true,NASDAQGS
+TWLO,Twilio Inc,,US,true,NYSE
+TXN,Texas Instruments Incorporated,,US,true,NASDAQGS
+TXRH,Texas Roadhouse Inc,,US,true,NASDAQGS
+TXT,Textron Inc,,US,true,NYSE
+TYL,Tyler Technologies Inc,,US,true,NYSE
+UAL,"United Airlines Holdings, Inc.",Airlines,US,true,
+UBER,Uber Technologies Inc,,US,true,
+UDR,UDR Inc,,US,true,NYSE
+UFCS,United Fire Group Inc,,US,true,NASDAQGS
+UFPT,UFP Technologies Inc,,US,true,NASDAQCM
+UHS,Universal Health Services Inc,,US,true,NYSE
+UI,Ubiquiti Networks Inc,,US,true,NYSE
+ULS,UL Solutions Inc,,US,true,NYSE
+ULTA,Ulta Beauty Inc,,US,true,NASDAQGS
+UMC,United Microelectronics,AI,TW,true,NYSE
+UNH,Unitedhealth Group,Healthcare,US,true,NYSE
+UNP,Union Pacific Corporation,,US,true,NYSE
+UPS,United Parcel Service Inc,,US,true,NYSE
+UPWK,Upwork Inc,,US,true,NASDAQGS
+URBN,Urban Outfitters Inc,,US,true,NASDAQGS
+URI,United Rentals Inc,,US,true,NYSE
+USB,U.S. Bancorp,,US,true,NYSE
+USLM,United States Lime & Minerals Inc,,US,true,NASDAQGS
+USPH,US Physicalrapy Inc,,US,true,NYSE
+UTHR,United Therapeutics Corporation,,US,true,NASDAQGS
+UTI,Universal Technical Institute Inc,,US,true,NYSE
+UVE,Universal Insurance Holdings Inc,,US,true,NYSE
+V,Visa Inc Class A,,US,true,
+VAL,Valaris Ltd,,BM,true,NYSE
+VALE,Vale SA ADR,,US,true,NYSE
+VCEL,Vericel Corp Ord,,US,true,NASDAQGM
+VCTR,Victory Capital Holdings Inc,,US,true,NASDAQGS
+VCYT,Veracyte Inc,,US,true,NASDAQGM
+VEEV,Veeva Systems Inc Class A,AI,US,true,NYSE
+VICI,VICI Properties Inc,,US,true,NYSE
+VIK,Viking Holdings Ltd,,US,true,NYSE
+VITL,Vital Farms Inc,,US,true,NASDAQGM
+VLO,Valero Energy Corporation,,US,true,NYSE
+VLTO,Veralto Corp,,US,true,NYSE
+VMC,Vulcan Materials Company,,US,true,NYSE
+VNOM,Viper Energy Inc,Oil,US,true,NASDAQGS
+VOYA,Voya Financial Inc,,US,true,NYSE
+VRSK,Verisk Analytics Inc,,US,true,NASDAQGS
+VRSN,VeriSign Inc,,US,true,NASDAQGS
+VRT,Vertiv Holdings Co,AI,US,true,NYSE
+VRTX,Vertex Pharmaceuticals Inc,,US,true,NASDAQGS
+VSEC,VSE Corporation,,US,true,NASDAQGS
+VST,Vistra Energy Corp,AI,US,true,NYSE
+VTOL,Bristow Group Inc,,US,true,NYSE
+VTR,Ventas Inc,,US,true,NYSE
+VTRS,Viatris Inc,,US,true,NASDAQGS
+VVV,Valvoline Inc,,US,true,NYSE
+VVX,V2X Inc,,US,true,NYSE
+VZ,Verizon Communications Inc,,US,true,NYSE
+WAB,Westinghouse Air Brake Technologies Corp,,US,true,NYSE
+WAT,Waters Corporation,,US,true,NYSE
+WAY,Waystar Holding Corp,,US,true,NASDAQGS
+WBD,Warner Bros Discovery Inc,,US,true,NASDAQGS
+WCN,Waste Connections Inc,,CA,true,NYSE
+WDAY,Workday Inc,,US,true,NASDAQGS
+WDC,Western Digital Corporation,AI,US,true,NASDAQGS
+WDFC,WD-40 Company,,US,true,NASDAQGS
+WEC,WEC Energy Group Inc,,US,true,NYSE
+WELL,Welltower Inc,,US,true,NYSE
+WES,Western Midstream Partners LP,,US,true,NYSE
+WFC,Wells Fargo & Company,,US,true,NYSE
+WHD,Cactus Inc,,US,true,NYSE
+WISE,Wise PLC,,US,true,LSE
+WLDN,Willdan Group Inc,,US,true,NASDAQGM
+WM,Waste Management Inc,,US,true,
+WMB,Williams Companies Inc,,US,true,NYSE
+WMT,Walmart Inc,,US,true,
+WPM,Wheaton Precious Metals Corp,,CA,true,
+WRB,W. R. Berkley Corp,Insurance,US,true,NYSE
+WSE,Wise PLC,,US,true,NASDAQGS
+WSM,Williams-Sonoma Inc,,US,true,NYSE
+WST,West Pharmaceutical Services Inc,,US,true,NYSE
+WT,WisdomTree Investments Inc,,US,true,NYSE
+WTM,White Mountains Insurance Group Ltd,,US,true,NYSE
+WTS,Watts Water Technologies Inc,,US,true,NYSE
+WTW,Willis Towers Watson PLC,,GB,true,NASDAQGS
+WWD,Woodward Inc,,US,true,NASDAQGS
+WY,Weyerhaeuser Company,,US,true,NYSE
+WYNN,Wynn Resorts Limited,,US,true,NASDAQGS
+XEL,Xcel Energy Inc,,US,true,NASDAQGS
+XERS,Xeris Pharmaceuticals Inc,,US,true,NASDAQGS
+XOM,Exxon Mobil Corp,Oil,US,true,NYSE
+XPEL,Xpel Inc,,US,true,NASDAQCM
+XPRO,Expro Group Holdings NV,,US,true,NYSE
+XYL,Xylem Inc,,US,true,NYSE
+XYZ,Block Inc,,US,true,NYSE
+XZO,Exzeo Group Inc,,US,true,NYSE
+YALA,Yalla Group Ltd,,US,true,NYSE
+YELP,Yelp Inc,,US,true,NYSE
+YETI,YETI Holdings Inc,,US,true,NYSE
+YMM,Full Truck Alliance Co Ltd ADR,,US,true,NYSE
+YOU,Clear Secure Inc,,US,true,NYSE
+YUM,Yum! Brands Inc,,US,true,NYSE
+YUMC,Yum China Holdings Inc,,US,true,NYSE
+ZBH,Zimmer Biomet Holdings Inc,,US,true,NYSE
+ZBRA,Zebra Technologies Corporation,,US,true,NASDAQGS
+ZGN,Ermenegildo Zegna NV,,IT,true,NYSE
+ZTS,Zoetis Inc,,US,true,NYSE
+ZWS,Zurn Water Solutions Corp,,US,true,NYSE
+000089,Shenzhen Airport Co Ltd,,CN,false,SZSE
+000333,Midea Group Co Ltd,,CN,false,SZSE
+000568,Luzhou Lao Jiao Co Ltd,,CN,false,SZSE
+0A0L,Sectra AB,,GB,false,LSE
+0A0X,Fox Corporation,,GB,false,LSE
+0A1U,Uber Technologies Inc,,GB,false,LSE
+0A4L,Bloom Energy Corporation,,GB,false,LSE
+0A4M,"DexCom, Inc.",,GB,false,LSE
+0A4W,ACADIA Pharmaceuticals Inc.,,GB,false,LSE
+0A6D,"Jack Henry & Associates, Inc.",,GB,false,LSE
+0A77,The Cigna Group,,GB,false,LSE
+0A79,Carvana Co.,,GB,false,LSE
+0A7R,Palantir Technologies Inc.,,GB,false,LSE
+0A8N,"Commvault Systems, Inc.",,GB,false,LSE
+0A8O,Vistra Corp.,,GB,false,LSE
+0A99,"Magnite, Inc.",,GB,false,LSE
+0ACC,Accelleron Industries Ltd,,GB,false,LSE
+0ACE,PTC Inc,,GB,false,LSE
+0ACI,"Copart, Inc.",,GB,false,LSE
+0AD5,Gen Digital Inc.,,GB,false,LSE
+0AD8,"Corpay, Inc.",,GB,false,LSE
+0ADB,FactSet Research Systems Inc.,,GB,false,LSE
+0ADC,"Monolithic Power Systems, Inc.",,GB,false,LSE
+0ADH,"Lamb Weston Holdings, Inc.",,GB,false,LSE
+0ADK,Deckers Outdoor Corporation,,GB,false,LSE
+0ADR,Insulet Corporation,,GB,false,LSE
+0AHJ,Hudbay Minerals Inc.,,GB,false,LSE
+0AI4,Carlsberg,,GB,false,LSE
+0E5M,De Longhi SpA,,GB,false,LSE
+0E64,DO & CO AG,,GB,false,LSE
+0EEE,CTS Eventim AG Co KGaA,,GB,false,LSE
+0EKE,Lisi SA,,GB,false,LSE
+0EPW,Hochtief AG,,GB,false,LSE
+0EV1,Carnival Corp,,GB,false,LSE
+0EXG,Jeronimo Martins SGPS,,GB,false,LSE
+0EYJ,Københavns Lufthavne A/S,,GB,false,LSE
+0FIN,Orkla L,,GB,false,LSE
+0FQI,Publicis Groupe L,,GB,false,LSE
+0FRJ,Rational,,GB,false,LSE
+0GQE,Clas Ohlson AB,,GB,false,LSE
+0GWL,Saab,,GB,false,LSE
+0H0G,Sweco AB,,GB,false,LSE
+0H3T,Deutsche Boerse,,GB,false,LSE
+0H9N,AECOM,,GB,false,LSE
+0HA9,Indra Sistemas L,,GB,false,LSE
+0HAC,ACS Actividades Constr y Srvcs,,GB,false,LSE
+0HAG,Sampo,,GB,false,LSE
+0HB2,Lagardere SCA,,GB,false,LSE
+0HCZ,The Allstate Corporation,,GB,false,LSE
+0HD2,"Alnylam Pharmaceuticals, Inc.",,GB,false,LSE
+0HD6,Alphabet Inc,,GB,false,LSE
+0HF3,"Cencora, Inc.",,GB,false,LSE
+0HF6,"Ameriprise Financial, Inc.",,GB,false,LSE
+0HFB,Amphenol Corporation,,GB,false,LSE
+0HGR,"Applied Industrial Technologies, Inc.",,GB,false,LSE
+0HHO,"Argan, Inc.",,GB,false,LSE
+0HHR,"Arista Networks, Inc.",,GB,false,LSE
+0HIN,"Assurant, Inc.",,GB,false,LSE
+0HJF,Autodesk Inc,,GB,false,LSE
+0HJH,"Autoliv, Inc.",,GB,false,LSE
+0HJI,"Automatic Data Processing, Inc.",,GB,false,LSE
+0HMZ,W. R. Berkley Corporation,,GB,false,LSE
+0HOT,Booz Allen Hamilton Holding Corporation,,GB,false,LSE
+0HOY,Boston Scientific Corporation,,GB,false,LSE
+0HP1,"Box, Inc.",,GB,false,LSE
+0HPW,"Broadridge Financial Solutions, Inc.",,GB,false,LSE
+0HQN,"Cboe Global Markets, Inc.",,GB,false,LSE
+0HR2,CME Group Inc,,GB,false,LSE
+0HS2,Cadence Design Systems Inc,,GB,false,LSE
+0HST,The Campbell's Company,,GB,false,LSE
+0HV2,Hermes International L,,GB,false,LSE
+0HXW,"Chipotle Mexican Grill, Inc.",,GB,false,LSE
+0HYA,Ciena Corporation,,GB,false,LSE
+0HYE,Cincinnati Financial Corporation,,GB,false,LSE
+0HYJ,Cintas Corp,,GB,false,LSE
+0I0T,"Coca-Cola Consolidated, Inc.",,GB,false,LSE
+0I47,Costco Wholesale Corp,,GB,false,LSE
+0I58,Cummins Inc.,,GB,false,LSE
+0I77,"Darden Restaurants, Inc.",,GB,false,LSE
+0I7E,DaVita Inc.,,GB,false,LSE
+0IC8,Dollar Tree Inc,,GB,false,LSE
+0IKJ,Wartsila Oyj Abp,,GB,false,LSE
+0IKW,Fastenal Co,,GB,false,LSE
+0IPD,"Five Below, Inc.",,GB,false,LSE
+0IQE,Flowserve Corporation,,GB,false,LSE
+0IR9,"Fortinet, Inc.",,GB,false,LSE
+0ITV,"Gartner, Inc.",,GB,false,LSE
+0IU8,Safran L,,GB,false,LSE
+0IUC,General Dynamics Corporation,,GB,false,LSE
+0IUJ,Interparfums SA,,GB,false,LSE
+0IW5,Thales SA,,GB,false,LSE
+0IZI,"W.W. Grainger, Inc.",,GB,false,LSE
+0J1Z,Nos SGPS,,GB,false,LSE
+0J22,"HCI Group, Inc.",,GB,false,LSE
+0J2O,"Halozyme Therapeutics, Inc.",,GB,false,LSE
+0J3H,"The Hartford Insurance Group, Inc.",,GB,false,LSE
+0J46,HEICO Corporation,,GB,false,LSE
+0J8P,IDEXX Laboratories Inc,,GB,false,LSE
+0J9P,Incyte Corporation,,GB,false,LSE
+0JCT,Intuit Inc.,,GB,false,LSE
+0JDO,Iridium Communications Inc.,,GB,false,LSE
+0JPN,"KBR, Inc.",,GB,false,LSE
+0JPO,KLA Corp,,GB,false,LSE
+0JT5,Lam Research Corporation,,GB,false,LSE
+0JVT,lululemon athletica inc.,,GB,false,LSE
+0JXF,Protector Forsikring ASA,,GB,false,LSE
+0JYZ,Loomis,,GB,false,LSE
+0K0E,"MercadoLibre, Inc.",,GB,false,LSE
+0K34,Monster Beverage Corp,,GB,false,LSE
+0K36,Moody's Corporation,,GB,false,LSE
+0K3H,"Motorola Solutions, Inc.",,GB,false,LSE
+0K4T,Nasdaq Inc,,GB,false,LSE
+0K6R,"Neurocrine Biosciences, Inc.",,GB,false,LSE
+0KAN,"Oceaneering International, Inc.",,GB,false,LSE
+0KBS,Recordati Industria Chimica e Farmaceutica SpA,,GB,false,LSE
+0KFZ,Parker-Hannifin Corporation,,GB,false,LSE
+0KGE,Paychex Inc,,GB,false,LSE
+0KGH,"Paycom Software, Inc.",,GB,false,LSE
+0KGS,Pegasystems Inc.,,GB,false,LSE
+0KOC,The Progressive Corporation,,GB,false,LSE
+0KSR,"Quanta Services, Inc.",,GB,false,LSE
+0KTS,Ralph Lauren Corporation,,GB,false,LSE
+0KV5,Fairfax Financial Holdings Limited,,GB,false,LSE
+0KVV,Airbus Group,,GB,false,LSE
+0KW1,"Republic Services, Inc.",,GB,false,LSE
+0KW4,ResMed Inc.,,GB,false,LSE
+0KXO,Ross Stores Inc,,GB,false,LSE
+0L8B,Southern Copper Corporation,,GB,false,LSE
+0LC6,Sysco Corporation,,GB,false,LSE
+0LF5,"The Trade Desk, Inc.",,GB,false,LSE
+0LI9,Ubiquiti Inc.,,GB,false,LSE
+0LIB,"Ulta Beauty, Inc.",,GB,false,LSE
+0LIU,"United Airlines Holdings, Inc.",,GB,false,LSE
+0LJL,"Universal Health Services, Inc.",,GB,false,LSE
+0LK3,"Vail Resorts, Inc.",,GB,false,LSE
+0LN7,Air France KLM L,,GB,false,LSE
+0LP3,Verisk Analytics Inc,,GB,false,LSE
+0LTG,"Waste Management, Inc.",,GB,false,LSE
+0M2O,Orion Oyj,,GB,false,LSE
+0M30,"Yum China Holdings, Inc.",,GB,false,LSE
+0M3Q,Zoetis Inc.,,GB,false,LSE
+0M6I,Heijmans NV,,GB,false,LSE
+0M6S,Allianz L,,GB,false,LSE
+0MEC,Nordex L,,GB,false,LSE
+0MET,Konecranes Abp,,GB,false,LSE
+0MGO,Jcdecaux SA,,GB,false,LSE
+0MH1,Bureau Veritas SA,,GB,false,LSE
+0MQG,Mycronic Ab,,GB,false,LSE
+0MYY,Powszechny Zaklad Ubezpiecz L,,GB,false,LSE
+0N6B,Arcadis L,,GB,false,LSE
+0NI1,Rheinmetall L,,GB,false,LSE
+0NJP,SOL SpA,,GB,false,LSE
+0NMK,Vestas Wind Systems,,GB,false,LSE
+0NNF,Alfa Laval AB,,GB,false,LSE
+0NPT,Eiffage SA,,GB,false,LSE
+0NQC,Pandora L,,GB,false,LSE
+0NQM,Vinci L,,GB,false,LSE
+0NUG,Magyar Telekom Tavkozlesi Nyrt,,GB,false,LSE
+0NUX,Prysmian L,,GB,false,LSE
+0NW4,SAP SE,,GB,false,LSE
+0NWV,Schneider Electric SE,,GB,false,LSE
+0NX3,ASM International L,,GB,false,LSE
+0NZT,UCB L,,GB,false,LSE
+0NZU,Zealand Pharma A/S,,GB,false,LSE
+0OAW,Mowi ASA,,GB,false,LSE
+0OIR,ALK-ABELLO A/S,,GB,false,LSE
+0OJC,Gjensidige Forsikring L,,GB,false,LSE
+0ON7,D’Ieteren SA,,GB,false,LSE
+0P0T,Wilh. Wilhelmsen Holding ASA,,GB,false,LSE
+0P2W,Amadeus IT Holding,,GB,false,LSE
+0Q1G,Eli Lilly and Company,,GB,false,LSE
+0Q6M,Unipol Gruppo Finanziario SpA,,GB,false,LSE
+0Q7S,Brunello Cucinelli SpA,,GB,false,LSE
+0Q8F,Hugo Boss L,,GB,false,LSE
+0QEP,Maire Tecnimont SpA,,GB,false,LSE
+0QI7,Addtech AB,,GB,false,LSE
+0QII,Moncler,,GB,false,LSE
+0QIU,Novo Nordisk L,,GB,false,LSE
+0QIX,BW LPG Ltd,,GB,false,LSE
+0QK3,Avolta AG,,GB,false,LSE
+0QLR,Novartis AG,,GB,false,LSE
+0QOQ,Partners Group Holding AG,,GB,false,LSE
+0QP2,Zurich Insurance Group AG,,GB,false,LSE
+0QVE,Fenix Outdoor International AG,,GB,false,LSE
+0QW0,argenx NV,,GB,false,LSE
+0QWA,Compania de Distribucion Integral Logista Holdings SA,,GB,false,LSE
+0QXP,Aker Solutions L,,GB,false,LSE
+0QY4,Las Vegas Sands Corp.,,GB,false,LSE
+0QYI,Netflix Inc,,GB,false,LSE
+0QYJ,"Salesforce, Inc.",,GB,false,LSE
+0QYL,Rambus Inc.,,GB,false,LSE
+0QYM,Fortuna Mining Corp.,,GB,false,LSE
+0QYN,B2Gold Corp.,,GB,false,LSE
+0QZ4,"Delta Air Lines, Inc.",,GB,false,LSE
+0QZU,Vertex Pharmaceuticals Incorporated,,GB,false,LSE
+0R06,First Solar Inc,,GB,false,LSE
+0R07,Pan American Silver Corp.,,GB,false,LSE
+0R1T,"Expedia Group, Inc.",,GB,false,LSE
+0R22,Barrick Gold Corp,,GB,false,LSE
+0R28,Newmont Corporation,,GB,false,LSE
+0R29,"Intuitive Surgical, Inc.",,GB,false,LSE
+0R2D,Kinross Gold Corporation,,GB,false,LSE
+0R2J,Agnico Eagle Mines Limited,,GB,false,LSE
+0R2S,Stryker Corporation,,GB,false,LSE
+0R2T,"Micron Technology, Inc.",,GB,false,LSE
+0R2Y,Adobe Inc,,GB,false,LSE
+0R2Z,Mastercard Incorporated,,GB,false,LSE
+0R32,Abercrombie & Fitch Co.,,GB,false,LSE
+0R4Y,Aena SME SA,,GB,false,LSE
+0R6R,Axfood AB,,GB,false,LSE
+0R87,Assa Abloy L,,GB,false,LSE
+0R9U,PayPal Holdings Inc,,GB,false,LSE
+0RD1,Camurus AB,,GB,false,LSE
+0REH,Frontline Plc,,GB,false,LSE
+0REQ,Per Aarsleff Holding A/S,,GB,false,LSE
+0RG1,Technogym SpA,,GB,false,LSE
+0RGT,William Demant Holding AS,,GB,false,LSE
+0RKF,Construcciones y Auxiliar de Ferrocarriles SA,,GB,false,LSE
+0RMV,TechnipFMC PLC,,GB,false,LSE
+0RQ9,Lundin Mining Corporation,,GB,false,LSE
+0RR8,Baker Hughes Co,,GB,false,LSE
+0RV0,Reply SpA,,GB,false,LSE
+0RYA,Ryanair Holdings,,GB,false,LSE
+0SPT,Spotify Technology SA,,GB,false,LSE
+0TCU,Howmet Aerospace Inc.,,GB,false,LSE
+0U3Q,"InterDigital, Inc.",,GB,false,LSE
+0UGS,Alamos Gold Inc.,,GB,false,LSE
+0UP5,Centerra Gold Inc.,,GB,false,LSE
+0XGN,IAMGOLD Corporation,,GB,false,LSE
+0XHL,Aon PLC,,GB,false,LSE
+0XNH,"DocuSign, Inc.",,GB,false,LSE
+0XXV,Atlas Copco AB Series B,,GB,false,LSE
+0Y2S,Trane Technologies PLC,,GB,false,LSE
+0Y3K,Eaton Corporation PLC,,GB,false,LSE
+0Y5C,Allegion PLC,,GB,false,LSE
+0Y9S,Check Point Software Technologies Ltd.,,GB,false,LSE
+0YAA,Nova Ltd.,,GB,false,LSE
+0YP5,Adyen NV,,GB,false,LSE
+0YSU,Epiroc AB Class A,,GB,false,LSE
+0YSV,Epiroc AB Class B,,GB,false,LSE
+1299,AIA Group Ltd,Insurance,HK,false,SEHK
+1585,Yadea Group Holdings Ltd,,HK,false,SEHK
+1909,Nippon Dry Chemical,,CA,false,TSE
+1913,Prada SpA,lux,HK,false,SEHK
+2318,Ping An Insurance,Insurance,HK,false,SEHK
+2328,PICC Property & Casualty-H,Insurance,HK,false,SEHK
+2601,China Pacific Insurance,Insurance,HK,false,SEHK
+2628,China Life Insurance Co Ltd,Insurance,HK,false,SEHK
+2670,ABC-Mart Inc,,CA,false,TSE
+2875,Toyo Suisan Kaisha Ltd,,CA,false,TSE
+600004,Guangzhou Baiyun International Airport Co Ltd,,US,false,SHSE
+600009,Shanghai International Airport Co Ltd,,US,false,SHSE
+600897,Xiamen International Airport Co Ltd,,US,false,SHSE
+603529,AIMA Technology Group Co Ltd,,US,false,SHSE
+603558,Zhejiang Jasan Holding Group Co Ltd,,US,false,SHSE
+6420,Galilei Co Ltd,,CA,false,TSE
+6455,Morita Holdings Corp,,CA,false,TSE
+669,Techtronic Industries Co Ltd,,HK,false,SEHK
+6745,Hochiki Corp,,CA,false,TSE
+690D,Qingdao Haier Co Ltd,,US,false,DB
+857,PetroChina Co Ltd Class H,Oil,HK,false,SEHK
+8630,Sompo Holdings Inc,Insurance,CA,false,TSE
+8725,MS&AD Insurance Group Holdings,Insurance,CA,false,TSE
+8750,Dai-ichi Life Holdings Inc,Insurance,CA,false,TSE
+8766,"Tokio Marine Holdings, Inc.",Insurance,CA,false,TSE
+9022,Central Japan Railway Co.,,CA,false,TSE
+AAF,Airtel Africa Plc,,GB,false,LSE
+ACGY.F,Subsea 7 S.A.,,US,false,OTCPK
+ACLN,Accelleron Industries AG,,CH,false,SWX
+ACLNE,Accelleron Industries AG,,CH,false,SWX
+ADYEN,Adyen NV,,CH,false,SWX
+AFMJ.F,Alphamin Resources Corp.,,US,false,OTCPK
+AFRA.F,Air France-KLM SA,Airlines,US,false,OTCPK
+AFRA_F,Air France-KLM SA,,,false,
+ALSS.F,Alsea SAB de CV,,US,false,OTCPK
+ANFG.F,Antofagasta PLC,,US,false,OTCPK
+ANPD.F,ANTA Sports Products Ltd,,US,false,OTCPK
+ASURB,Grupo Aeroportuario Del Sureste,,MX,false,BMV
+ATZA.F,Aritzia Inc,,US,false,OTCPK
+AUTO,Auto Trader Group Plc,,GB,false,LSE
+AV.,Aviva PLC,Insurance,GB,false,LSE
+AVOL,Avolta AG,,CH,false,SWX
+BA.,BAE Systems PLC,,GB,false,LSE
+BABW.F,International Consolidated Airlines Group S.A.,,US,false,OTCPK
+BAES.F,BAE Systems PLC,,US,false,OTCPK
+BCHN,Burckhardt Compression,,CH,false,SWX
+BEAN,Belimo Holding,,CH,false,SWX
+BMRM.F,Société Anonyme des Bains de Mer et du Cercle des Étrangers à Monaco,,US,false,OTCPK
+BMVAC,"Arca Continental, S.A.B. De C.V.",,US,false,
+BMVCBOE,"Cboe Global Markets, Inc.",,US,false,
+BMVCFLT,"Confluent, Inc.",AI,US,false,
+BOOZT,Boozt AB,,US,false,OM
+BRK_B,Berkshire Hathaway B,,,false,
+BSQK.Z,"Block, Inc.",,US,false,OTCPK
+BWEF.F,BW Energy Limited,,US,false,OTCPK
+BYDD.F,BYD Co Ltd,,US,false,OTCPK
+BZLY.F,Beazley plc,,US,false,OTCPK
+CAHP.F,Evolution Mining Ltd,,US,false,OTCPK
+CCH,Coca Cola HBC AG,,GB,false,LSE
+CDDR.F,Headwater Exploration Inc,,US,false,OTCPK
+CESD.F,CES Energy Solutions Corp,,US,false,OTCPK
+CHDR_Y,Christian Dior SE ADR,,,false,
+CIEZ.F,"Corporación Interamericana de Entretenimiento, S.A.B. de C.V.",,US,false,OTCPK
+CM2,"Cal-Maine Foods, Inc.",,US,false,DB
+CMBN,Cembra Money Bank AG,,CH,false,SWX
+CMXH.F,CSL Limited,,US,false,OTCPK
+CNSW.F,Constellation Software Inc,,US,false,OTCPK
+CPCA.F,Cathay Pacific Airways Ltd,,US,false,OTCPK
+CPG,Compass Group PLC,,GB,false,LSE
+CRRS.F,Cirrus Aircraft Limited,,US,false,OTCPK
+CS,AXA SA,Insurance,FR,false,ENXTPA
+CSCC.F,Capstone Copper Corp,,US,false,OTCPK
+CVAC,CureVac NV,,US,false,XNAS
+DNLM,Dunelm Group PLC,,GB,false,LSE
+DPLM,Diploma PLC,,GB,false,LSE
+DPML.F,DPM Metals Inc,,US,false,OTCPK
+DRDG.F,DRDGOLD Ltd,,US,false,OTCPK
+EADS.F,Airbus Group SE,,US,false,OTCPK
+EDVM.F,Endeavour Mining Corp,,US,false,OTCPK
+ELAL.F,El Al Israel Airlines Ltd,,US,false,OTCPK
+ELFI.F,E-L Financial Corporation Ltd,,US,false,OTCPK
+EMMN,Emmi AG,,CH,false,SWX
+EVD,CTS Eventim AG & Co KgaA,,CH,false,SWX
+EXET.F,Extendicare Inc,,US,false,OTCPK
+EXMR.F,Exmar NV,,US,false,OTCPK
+EXPG.F,Experian PLC,,US,false,OTCPK
+EXPN,Experian PLC,,GB,false,LSE
+EZJL,Easyjet,Airlines,US,false,BATS-CHIXE
+FFH,Fairfax Financial Holdings Ltd,Insurance,CA,false,TSX
+FHZN,Flughafen Zurich,,CH,false,SWX
+FIE,Fielmann AG,,CH,false,SWX
+FKUR.F,Fujikura Ltd,,US,false,OTCPK
+FNLP.F,Fresnillo PLC,,US,false,OTCPK
+FPLS.F,5N Plus Inc.,,US,false,OTCPK
+FRES,Fresnillo PLC,,GB,false,LSE
+FSPK.F,Fisher & Paykel Healthcare Corporation Ltd,,US,false,OTCPK
+FTRO.F,First Resources Limited,,US,false,OTCPK
+FUJH.F,Subaru Corp,,US,false,OTCPK
+G24,Scout24 SE,,CH,false,SWX
+GAW,Games Workshop Group PLC,,GB,false,LSE
+GEBN,Geberit AG,,CH,false,SWX
+GELY.F,Geely Automobile Holdings Ltd,,US,false,OTCPK
+GMBX.F,Grupo Mexico SAB de CV,,US,false,OTCPK
+GMWK.F,Games Workshop Group PLC,,US,false,OTCPK
+GQPI.L,GQG Partners Inc.,,US,false,OTCPK
+GRG,Greggs PLC,,GB,false,LSE
+GRUMAB,Gruma SAB de CV,,MX,false,BMV
+GWLL.F,Great Wall Motor Co Ltd,,US,false,OTCPK
+GXYE.F,Galaxy Entertainment Group Ltd,,US,false,OTCPK
+HCHD.F,Hochschild Mining PLC,,US,false,OTCPK
+HCXL.F,Hiscox Ltd,,US,false,OTCPK
+HIK,Hikma Pharmaceuticals PLC,,GB,false,LSE
+HILS,Hill & Smith PLC,,GB,false,LSE
+HLMA,Halma PLC,,GB,false,LSE
+HLMA.F,Halma PLC,,US,false,OTCPK
+HMDP.F,Hammond Power Solutions Inc,,US,false,OTCPK
+HNR1,Hannover Rueck SE,Insurance,US,false,DB
+HOC,Hochschild Mining PLC,,GB,false,LSE
+HSX,Hiscox Ltd,,GB,false,LSE
+HTWS,Helios Towers Plc,,GB,false,LSE
+IBAD.F,"Inaba Denki Sangyo Co.,Ltd.",,US,false,OTCPK
+ICTE.F,"International Container Terminal Services, Inc.",,US,false,OTCPK
+IFC,Intact Financial Corporation,Insurance,CA,false,TSX
+IFCN,Inficon Holding,,CH,false,SWX
+IGIF.F,IGM Financial Inc,,US,false,OTCPK
+IN,Infield Minerals Corp,AI,CA,false,TSXV
+IPHX.F,Phoenix Financial Ltd.,,US,false,OTCPK
+IPOA.F,Industrias Penoles SAB de CV,,US,false,OTCPK
+JAPA.F,Japan Tobacco Inc,,US,false,OTCPK
+JEN,Jensen-Group,,BE,false,ENXTBR
+JHIU.F,James Hardie Industries plc,,US,false,OTCPK
+KEDA,Keda Industrial Group Co Ltd DRC,,CH,false,SWX
+KID,Kid ASA,,NO,false,OB
+KITS,Kits Eyecare Ltd,,CA,false,TSX
+KNM,Konami Holdings Corporation,,GB,false,LSE
+KNTN.F,K92 Mining Inc,,US,false,OTCPK
+KRI,Kri-Kri Milk,,US,false,ATSE
+KXSC.F,Kinaxis Inc.,,US,false,OTCPK
+KYCC.F,Keyence Corp,,US,false,OTCPK
+LBGU.F,L E Lundbergföretagen AB (publ),,US,false,OTCPK
+LCSH.F,Lancashire Holdings Ltd,,US,false,OTCPK
+LGEN,Legal & General Group PLC,Insurance,GB,false,LSE
+LICI,Life Insurance Corporation Of India,Insurance,US,false,NSEI
+LISN,Chocoladefabriken Lindt & Spruengli AG N,,CH,false,SWX
+LISNE,Chocoladefabriken Lindt & Spruengli AG,,CH,false,SWX
+LMGI.F,Lumine Group Inc.,,US,false,OTCPK
+LUFTHANSA,Deutsche Lufthansa AG,Airlines,US,false,BUSE
+LUGD.F,Lundin Gold Inc,,US,false,OTCPK
+LUNM.F,Lundin Mining Corp,,US,false,OTCPK
+LVMH_F,"LVMH Moët Hennessy - Louis Vuitton, Société Européenne",,,false,
+LVMU_Y,LVMH Moet Hennessy Louis Vuitton SA ADR,,,false,
+MAKS.F,Marks and Spencer Group PLC,,US,false,OTCPK
+MGNS,Morgan Sindall Group PLC,,GB,false,LSE
+MGPU.F,M&G PLC,,US,false,OTCPK
+MIA,Malta International Airport PLC,,US,false,MTSE
+MLHK.F,H&K AG,,US,false,OTCPK
+MONC,Moncler SpA,lux,IT,false,BIT
+MTO,Mitie Group PLC,,GB,false,LSE
+MUV2,Munich Reinsurance,Insurance,DE,false,XTRA
+NCSY.F,NICE Ltd.,,US,false,OTCPK
+NDX1,Nordex SE,,CH,false,SWX
+NEMA,Nemetschek SE,,CH,false,SWX
+NEMC.L,Newmont Corporation,,US,false,OTCPK
+NESR.F,Northern Star Resources Ltd,,US,false,OTCPK
+NGCR.F,Nagacorp Ltd,,US,false,OTCPK
+NOVN,Novartis AG,,CH,false,SWX
+NOVNEE,Novartis AG,,CH,false,SWX
+NTTM.F,"Nittetsu Mining Co., Ltd.",,US,false,OTCPK
+NVPT.F,"Navitas Petroleum, Limited Partnership",,US,false,OTCPK
+NVZM.F,Novozymes AS,,US,false,OTCPK
+NWAR.F,Norwegian Air Shuttle ASA,,US,false,OTCPK
+NWOE.F,New Oriental Education & Technology Group Inc.,,US,false,OTCPK
+O4D,Oil-Dri Corporation of America,,US,false,BST
+ODFJ.F,Odfjell Drilling Ltd.,,US,false,OTCPK
+ONEX.F,Onex Corp,,US,false,OTCPK
+ORKL.F,Orkla ASA,,US,false,OTCPK
+ORZC.F,Orezone Gold Corp,,US,false,OTCPK
+PAF,Pan African Resources PLC,,GB,false,LSE
+PBTD.F,Plover Bay Technologies Limited,,US,false,OTCPK
+PGHN,Partners Group,,CH,false,SWX
+PGPH.F,Partners Group Holding AG,,US,false,OTCPK
+PPRU_Y,Kering SA,,,false,
+PROS.F,Prosus NV,,US,false,OTCPK
+PRX,Prosus NV,,CH,false,SWX
+QBEI.F,QBE Insurance Group Limited,Insurance,US,false,OTCPK
+QBEI_F,QBE Insurance Group Limited,,,false,
+QQ.,Qinetiq Group PLC,,GB,false,LSE
+R3NK,RENK Group AG,,CH,false,SWX
+RGRN.F,Regis Resources Ltd,,US,false,OTCPK
+RHM,Rheinmetall AG,,CH,false,SWX
+RMLR.F,Ramelius Resources Ltd,,US,false,OTCPK
+RMS,Hermes International SCA,lux,FR,false,ENXTPA
+RMV,Rightmove PLC,,GB,false,LSE
+ROCKA,Rockwool International A,,DK,false,CPSE
+ROR,Rotork PLC,,GB,false,LSE
+RPYT.F,Reply SpA,,US,false,OTCPK
+RR.,Rolls-Royce Holdings PLC,,GB,false,LSE
+RYAA_Y,Ryanair Holdings PLC ADR,,,false,
+RYAO.F,Ryanair Holdings PLC,,US,false,OTCPK
+RYCE.F,Rolls-Royce Holdings PLC,,US,false,OTCPK
+SAFARI,Safari Industries,,US,false,NSEI
+SAFR.F,Safran SA,,US,false,OTCPK
+SAMPO,Sampo Oyj A,Insurance,US,false,HLSE
+SAPG.F,SAP SE,,US,false,OTCPK
+SCHY.F,Sands China Ltd.,,US,false,OTCPK
+SCT,Softcat PLC,,GB,false,LSE
+SEPL,Seplat Petroleum Development Company PLC,,GB,false,LSE
+SEPL.F,Seplat Energy Plc,,US,false,OTCPK
+SGE,Sage Group PLC,,GB,false,LSE
+SIXG,Sixt SE,,DE,false,XTRA
+SKX,Skechers USA Inc,,US,false,NYSE
+SMSO.F,Samsonite Group S.A.,,US,false,OTCPK
+SNPT.F,Sunny Optical Technology Group Co Ltd,,US,false,OTCPK
+SQN,Swissquote Group Holding SA,,CH,false,SWX
+SREN,Swiss Re AG,Insurance,CH,false,SWX
+SSRG.F,SSR Mining Inc.,,US,false,OTCPK
+SUPA,Super Bank Indonesia Tbk Pt,AI,US,false,IDX
+SYNSAM,Synsam AB,,US,false,OM
+TKOM.F,Tokio Marine Holdings Inc,,US,false,OTCPK
+TMIC.F,Trend Micro Inc,,US,false,OTCPK
+TORX.F,Torex Gold Resources Inc,,US,false,OTCPK
+TUI1,TUI AG,,CH,false,SWX
+VSOG.F,"Vista Energy, S.A.B. de C.V.",,US,false,OTCPK
+VWSY.F,Vestas Wind Systems A/S,,US,false,OTCPK
+VZN,VZ Holding AG,,CH,false,SWX
+WCPR.F,Whitecap Resources Inc,,US,false,OTCPK
+WLHS.F,Wilh. Wilhelmsen Holding ASA,,US,false,OTCPK
+WMMV.F,Wal Mart de Mexico SAB de CV,,US,false,OTCPK
+WOSG,Watches Of Switzerland Group PLC,,GB,false,LSE
+WXIB.F,Wuxi Biologics (Cayman) ADR,,US,false,OTCPK
+WXIBF,WuXi Biologics,,US,false,OTCPK
+XIAC.F,Xiaomi Corp,,US,false,OTCPK
+YPSN,Ypsomed Holding AG,,CH,false,SWX
+ZIJM.F,Zijin Mining Group Co Ltd,,US,false,OTCPK
+ZURN,Zurich Insurance Group AG,Insurance,CH,false,SWX
