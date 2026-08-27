@@ -5,7 +5,7 @@ import {
   isUsExchCode,
   symbolFormatFor,
 } from "../catalogue/exchanges.js";
-import { NAME_MATCH_THRESHOLD, nameSimilarity, normalizeName } from "../catalogue/names.js";
+import { NAME_MATCH_THRESHOLD, nameSimilarity, normalizeName, sharedTokenCount } from "../catalogue/names.js";
 import { mapWithConcurrency } from "../util/async.js";
 import { logger } from "../util/logger.js";
 import {
@@ -50,6 +50,11 @@ const CONFIDENCE = {
    *  ADRs are discovered - they carry their own share class, so nothing links
    *  them structurally to the home line. */
   nameMatchedUs: 0.75,
+  /** Ticker matched on the hinted exchange, but the name only partly agrees -
+   *  almost always a company that has been renamed since the catalogue was
+   *  compiled (Sterling Construction -> Sterling Infrastructure). Accepted at
+   *  reduced confidence and flagged, rather than dropped. */
+  renamed: 0.6,
 } as const;
 
 function bestByName(records: FigiRecord[], companyName: string): { record: FigiRecord; score: number } | null {
@@ -234,16 +239,31 @@ async function resolvePrimaries(
             ? `name match ${match.score.toFixed(2)} against "${match.record.name}"`
             : null,
       });
+    } else if (slot.exchCode && records.length > 0) {
+      // The ticker resolved on the venue the catalogue pointed at, but the
+      // name only partly agrees. Distinguish a RENAME from a COLLISION:
+      // every known collision in this catalogue shares zero tokens with the
+      // impostor, while renames share at least one. Ticker + hinted exchange
+      // + partial name is strong enough to accept at reduced confidence.
+      const candidate = records[0] as FigiRecord;
+      const shared = sharedTokenCount(slot.company.companyName, candidate.name ?? "");
+      if (shared >= 1 && !existing?.record) {
+        outcome.set(slot.company.id, {
+          record: candidate,
+          usRow: null,
+          confidence: CONFIDENCE.renamed,
+          note: `likely renamed: catalogue says "${slot.company.companyName}", venue says "${candidate.name}"`,
+        });
+      } else if (!existing) {
+        outcome.set(slot.company.id, {
+          record: null,
+          usRow: null,
+          confidence: 0,
+          note: `rejected "${candidate.name}" on ${slot.exchCode}: name does not match`,
+        });
+      }
     } else if (!existing) {
-      const attempted = records.length > 0 ? records[0]?.name ?? "" : "";
-      outcome.set(slot.company.id, {
-        record: null,
-        usRow: null,
-        confidence: 0,
-        note: attempted
-          ? `rejected "${attempted}" on ${slot.exchCode ?? "any venue"}: name does not match`
-          : null,
-      });
+      outcome.set(slot.company.id, { record: null, usRow: null, confidence: 0, note: null });
     }
   }
 
@@ -338,6 +358,18 @@ async function expandListings(
   directory: UsDirectory,
 ): Promise<ResolvedListing[]> {
   const listings = new Map<string, ResolvedListing>();
+
+  // Confidence cannot exceed the weakest link in the chain that produced it.
+  //
+  // A share-class join is exact GIVEN the primary security is right. When the
+  // primary was only established by a partial name match (a suspected rename),
+  // every listing derived from it inherits that uncertainty. Without this cap,
+  // the 0.90 "share class" row overwrote the 0.60 rename row on the same
+  // exchange:symbol key and the flag was silently lost - 10 of 12 renamed
+  // companies presented as high-confidence.
+  const ceiling = primary.confidence;
+  const capped = (value: number): number => Math.min(value, ceiling);
+
   const add = (listing: ResolvedListing) => {
     const key = `${listing.exchangeCode}:${listing.symbol}`;
     const existing = listings.get(key);
@@ -367,7 +399,7 @@ async function expandListings(
     // Every US line of the same share class, straight from the local
     // directory: no API call, and exact rather than inferred.
     for (const row of directory.byShareClass.get(shareClassFigi) ?? []) {
-      add(listingFromUsDirectory(row, { isPrimary: false, confidence: CONFIDENCE.shareClass }));
+      add(listingFromUsDirectory(row, { isPrimary: false, confidence: capped(CONFIDENCE.shareClass) }));
     }
   }
 
@@ -380,8 +412,11 @@ async function expandListings(
       add(
         listingFromUsDirectory(row, {
           isPrimary: false,
-          // An exact share-class hit is stronger evidence than a name hit.
-          confidence: row.shareClassFIGI === shareClassFigi ? CONFIDENCE.shareClass : CONFIDENCE.nameMatchedUs,
+          // An exact share-class hit is stronger evidence than a name hit -
+          // but neither can exceed the confidence of the primary it derives from.
+          confidence: capped(
+            row.shareClassFIGI === shareClassFigi ? CONFIDENCE.shareClass : CONFIDENCE.nameMatchedUs,
+          ),
         }),
       );
     }

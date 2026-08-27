@@ -114,6 +114,20 @@ export function isUsExchCode(exchCode: string | null | undefined): boolean {
 /** How a venue writes its symbols - decides which providers can be asked. */
 export type SymbolFormat = "us" | "suffixed" | "numeric_suffixed" | "unknown";
 
+/** The symbol a global market-data API expects for a venue: VOD + LN -> VOD.L,
+ *  7203 + JT -> 7203.T. Listings store the venue's own bare symbol, which is
+ *  ambiguous across exchanges - "BBY" is Balfour Beatty in London and Best Buy
+ *  in New York - so anything querying a GLOBAL provider must qualify it. */
+export function marketSymbol(exchCode: string, symbol: string): string | null {
+  const ref = exchangeForCode(exchCode);
+  // No suffix mapping for this venue - the bare symbol is ambiguous to a
+  // global provider, so return null rather than a symbol that means a
+  // different company somewhere else. Affects London International board
+  // codes (LO), TRACE, and a handful of others: 97 listings here.
+  if (!ref || !ref.suffix) return null;
+  return symbol.includes(".") ? symbol : `${symbol}${ref.suffix}`;
+}
+
 export function symbolFormatFor(exchCode: string, symbol: string): SymbolFormat {
   if (isUsExchCode(exchCode)) return "us";
   const ref = exchangeForCode(exchCode);

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { NAME_MATCH_THRESHOLD, nameSimilarity, normalizeName, searchableName } from "../src/catalogue/names.js";
+import { NAME_MATCH_THRESHOLD, nameSimilarity, normalizeName, searchableName, sharedTokenCount } from "../src/catalogue/names.js";
 
 describe("normalizeName", () => {
   it("strips legal forms and depositary noise to a shared key", () => {
@@ -72,5 +72,35 @@ describe("searchableName", () => {
   it("drops legal suffixes that suppress news search results", () => {
     expect(searchableName("Munich Reinsurance Company AG")).toBe("Munich Reinsurance");
     expect(searchableName("Admiral Group PLC")).toBe("Admiral");
+  });
+});
+
+describe("sharedTokenCount — separating renames from collisions", () => {
+  it("gives zero for every known ticker collision", () => {
+    const collisions: [string, string][] = [
+      ["Balfour Beatty PLC", "BEST BUY CO INC"],
+      ["Admiral Group PLC", "ARCHER-DANIELS-MIDLAND CO"],
+      ["Novo Nordisk A/S", "NOV INC"],
+      ["Siemens Energy AG", "ENERGIZER HOLDINGS INC"],
+      ["flatexDEGIRO AG", "FLOTEK INDUSTRIES INC"],
+      ["Cranswick PLC", "CUSHMAN & WAKEFIELD PLC"],
+      ["Medacta Group SA", "CORVEX INC"],
+    ];
+    for (const [left, right] of collisions) {
+      expect(sharedTokenCount(left, right), `${left} vs ${right}`).toBe(0);
+    }
+  });
+
+  it("gives at least one for a company that was renamed", () => {
+    const renames: [string, string][] = [
+      ["Sterling Construction Company Inc", "STERLING INFRASTRUCTURE INC"],
+      ["Primo Water Corp", "PRIMO BRANDS CORP"],
+      ["Xeris Pharmaceuticals Inc", "XERIS BIOPHARMA HOLDINGS INC"],
+      ["Nova Measuring Instruments Ltd", "NOVA LTD"],
+      ["Seplat Petroleum Development Company PLC", "SEPLAT ENERGY PLC"],
+    ];
+    for (const [left, right] of renames) {
+      expect(sharedTokenCount(left, right), `${left} vs ${right}`).toBeGreaterThanOrEqual(1);
+    }
   });
 });

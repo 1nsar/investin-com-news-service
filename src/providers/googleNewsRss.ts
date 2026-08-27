@@ -183,7 +183,9 @@ export class GoogleNewsRssProvider implements NewsProvider {
 
     const withinWindow = best.filter((article) => article.publishedAt >= req.from);
     if (withinWindow.length === 0) {
-      return { kind: "no_news", symbolUsed: name, listingId: capability.listingId };
+      // Last resort in the chain: nothing follows it, so its silence ends the
+      // question either way.
+      return { kind: "no_news", symbolUsed: name, listingId: capability.listingId, authoritative: true };
     }
     return {
       kind: "ok",

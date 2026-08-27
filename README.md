@@ -45,11 +45,15 @@ That brings up Postgres, applies migrations, loads the catalogue, resolves
 listings, and starts the API on **http://localhost:8080**. Interactive API docs
 are at **http://localhost:8080/docs**.
 
-> **First boot resolves 1,515 tickers before the API answers.** Without an
-> OpenFIGI key that takes **~38 minutes**, because the free keyless limit is 25
-> requests/minute. **Add a free `OPENFIGI_API_KEY` and it drops to a few
-> minutes** — it takes a minute to get one at <https://www.openfigi.com/api>
-> and it is the single highest-value setting in this component.
+> **First boot resolves 1,515 tickers before the API answers.**
+>
+> - With a free `OPENFIGI_API_KEY`: **~9 minutes** (measured)
+> - Without one: **~38 minutes**, because the keyless limit is 25 requests/min
+>
+> The key is free and takes a minute to obtain at
+> <https://www.openfigi.com/api>. It raises the batch size from 10 to 100 and
+> the rate from 25 to 250 requests/minute, and it is the single highest-value
+> optional setting in this component.
 >
 > Resolution runs **once**. Later boots start immediately.
 
@@ -89,7 +93,8 @@ It is also the complete list of settings, with defaults and comments.
 | `FINNHUB_API_KEY` | **yes** | Company news for US-listed symbols, and the US symbol directory the resolver depends on. Free, no card: <https://finnhub.io/register> |
 | `DATABASE_URL` | has a default | Points at the Compose database by default |
 | `OPENFIGI_API_KEY` | no, but see below | Free key at <https://www.openfigi.com/api>. Raises listing resolution from ~25 requests/min to ~250, cutting a full resolve from ~20 minutes to ~2 |
-| `NEWS_PROVIDER_ORDER` | no | Provider preference, e.g. `finnhub,google_news_rss` |
+| `MARKETAUX_API_KEY` | no | Entity-tagged global news — 80+ markets, 30+ languages. Closes the international and OTC gaps the free stack cannot reach. Free tier at <https://www.marketaux.com> is enough to evaluate |
+| `NEWS_PROVIDER_ORDER` | no | Provider preference, e.g. `finnhub,marketaux,google_news_rss` |
 | `SCHEDULER_ENABLED` | no | In-process daily timer. Off by default — see [section 7](#7-scheduling) |
 
 **No paid API is required.** The component runs entirely on free tiers. What a
@@ -139,12 +144,60 @@ curl localhost:8080/v1/market-news       # macro, geopolitical, sector stories
 ```
 
 It is cheap (one request per category, a couple of seconds) and it is the
-highest-quality source in the component: **60.6% primary wire** — Reuters, CNBC,
+highest-quality source in the component: **66% primary wire** — Reuters, CNBC,
 Bloomberg — against a company feed that is 97% aggregator. Run it far more
 often than the company sweep.
 
 Macro stories are stored market-scope and linked to a company only on hard
 evidence, so they never flood 1,500 company timelines.
+
+### Turning on Marketaux
+
+Two values in `.env`, and nothing else:
+
+```bash
+MARKETAUX_API_KEY=your-key      # free tier at https://www.marketaux.com
+MARKETAUX_PAGE_SIZE=3           # free tier caps the page size at 3
+```
+
+The provider order already includes it by default, so no code or config change
+is needed — restart and it is in the chain. If you have an older `.env` that
+pins `NEWS_PROVIDER_ORDER` without `marketaux`, the service logs a warning at
+startup rather than ignoring the key silently.
+
+Measure before paying:
+
+```bash
+npm run evaluate -- --per-segment 8
+```
+
+That samples the segments where coverage is actually missing (OTC-only, no US
+line, unresolved) plus a US control group — roughly 100 requests, which fits a
+free-tier daily quota. Sampling the catalogue evenly would spend the whole
+quota re-confirming the 74% that already works.
+
+### Coverage: which provider serves which company
+
+The chain is `finnhub → marketaux → google_news_rss`, and each is there for a
+reason measured on this catalogue:
+
+| Provider | Serves | Hit rate |
+| --- | --- | --- |
+| **Finnhub** (free) | Companies on a real US exchange | **87%**, ~11 articles each |
+| **Marketaux** (optional) | Non-US listings and thin OTC lines | to be measured — see `npm run evaluate` |
+| **Google News RSS** (free) | Last resort, searched by company name | ~90%, but name-matched |
+
+**A zero result is not always a final answer.** Finnhub returns a clean zero
+both for a quiet NYSE company and for one whose only US presence is a thin OTC
+line — but its hit rate is 87% on the first and **21%** on the second. So each
+provider now declares whether its own silence is *meaningful*; a
+non-authoritative zero falls through to the next source instead of ending the
+question. That one rule affected **224 companies** that were previously never
+offered to the fallback at all.
+
+Once Marketaux is proven on your catalogue, drop `google_news_rss` from the
+order: it is name-matched, and it is the origin of every misattribution the
+relevance layer has to filter out.
 
 ### Filtering for quality
 
@@ -203,41 +256,40 @@ The key is free and takes a minute to obtain: <https://www.openfigi.com/api>.
 It is the single highest-value optional setting in this component. Resolution
 runs once — after it, only new or changed catalogue rows are re-resolved.
 
-**Result:** 1,474 of 1,515 companies resolved (**97.3%**), 2,021 listings,
-149 depositary receipts identified.
+**Result:** 1,463 of 1,515 companies resolved (**96.6%**), 1,987 listings,
+140 depositary receipts identified.
 
 ### A full news run
 
 ```
-Run finished in 1603.4s (26.7 min)
+Run finished in 1570s (26.2 min)
   companies attempted        1515
-  with articles              1098
-  no news (clean zero)        376
+  with articles              1192
+  no news (clean zero)        272
   provider refused              0
   failed                        0
-  unresolved (no listing)      41
-  articles seen             13247
-  articles new               6522
-  articles rejected           309
+  unresolved (no listing)      51
+  articles seen             14653
+  articles new               6309
+  articles rejected          3041
 
 By provider and outcome
-  finnhub            ok         1074 companies
-  finnhub            no_news     371 companies
-  google_news_rss    ok           24 companies
-  google_news_rss    no_news       5 companies
-  -                  unresolved   41 companies
+  finnhub            ok          943 companies
+  finnhub            no_news     258 companies
+  google_news_rss    ok          249 companies
+  google_news_rss    no_news      14 companies
+  -                  unresolved   51 companies
 ```
 
-Those numbers add up exactly as the resolution predicted: **1,445 companies had
-a US listing and went to Finnhub, 29 had none and went to Google News, 41 were
-unresolved.**
+**1,434 companies had a US listing and went to Finnhub; the rest fell through
+to name-based search or had no listing to ask about.**
 
 - **Time: ~27 minutes**, set almost entirely by Finnhub's free tier of 60
-  requests/minute. 1,445 companies is 1,445 calls; at the configured 55/min
+  requests/minute. 1,434 companies is 1,434 calls; at the configured 55/min
   that is ~26 minutes of deliberate waiting. Raising `INGEST_CONCURRENCY`
   will not help — the rate limit is the constraint, not parallelism. A paid
   tier with a higher limit is the only thing that shortens this materially.
-- **13,247 articles seen, 6,522 stored, 309 rejected as not about the company.** The gap is deduplication: one wire
+- **14,653 articles seen, 6,309 stored, 3,041 rejected as not about the company.** The gap is deduplication: one wire
   story mentioning several companies becomes one article row with several
   links, and a repeat of a URL already held is discarded. Re-running the same
   window stores **0**. Articles that could not be verified as being about a
@@ -263,12 +315,12 @@ recommended way to run it. A crashed API server should not silently stop the
 daily fetch, and a stuck fetch should not take the API down with it.
 
 **Use three tiers, not one cadence.** News volume in this catalogue is heavily
-skewed — 9% of companies produce 60% of the articles, and 28% produce none in a
+skewed — 7% of companies produce 49% of the articles, and 26% produce none in a
 given week — so a single refresh rate spends most of its request budget asking
 silent companies whether anything happened:
 
 ```cron
-# Busiest ~9% of companies - 60% of all news volume. Takes 70 seconds.
+# Busiest ~7% of companies - 49% of all news volume. Takes ~70 seconds.
 0 * * * *      cd /srv/news-component && npm run ingest -- --tier hot
 
 # The working middle. Takes ~11 minutes.
@@ -413,6 +465,7 @@ advisory lock so concurrent container boots cannot race.
 | `npm run ingest` | Fetch company news (`-- --tier hot\|active\|quiet` to refresh by news velocity) |
 | `npm run ingest:market` | Fetch market-wide macro news |
 | `npm run coverage:probe` | Measure provider hit rates on a stratified sample |
+| `npm run evaluate` | Measure a provider against the segments where coverage is *missing* (OTC-only, no US line, unresolved) — designed for a small free-tier quota |
 | `npm run export:listings` | Export the listing mapping |
 | `npm run export:openapi` | Regenerate `docs/openapi.json` from the routes |
 | `npm run metrics` | Regenerate every figure quoted in docs/REPORT.md from the live database |

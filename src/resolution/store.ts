@@ -67,6 +67,29 @@ export async function saveResolutions(resolutions: CompanyResolution[]): Promise
       // every article already stored. Two parallel arrays rather than a
       // delimiter: Postgres text cannot contain a NUL, and symbols legitimately
       // contain dots and dashes.
+      // An EMPTY resolution never deletes.
+      //
+      // A failed resolve looks identical to "this company has no security":
+      // both arrive here as `listings: []`. With empty keep-arrays the
+      // NOT EXISTS below is universally true and every listing for the company
+      // is deleted - so one flaky OpenFIGI minute during `resolve --all`
+      // destroys verified listings and nulls `article_companies.listing_id`
+      // for every article already attributed to them. Measured: 52 companies
+      // and 99 article links lost that way in a single run.
+      //
+      // Keeping stale listings is strictly safer than deleting good ones: the
+      // company is still marked unresolved, so the state is visible, and the
+      // next successful resolve overwrites them.
+      if (resolution.listings.length === 0) {
+        await client.query(
+          `UPDATE companies
+              SET resolution_status = $2, resolution_note = $3, resolved_at = now()
+            WHERE id = $1`,
+          [resolution.companyId, resolution.status, resolution.note],
+        );
+        continue;
+      }
+
       const keepExchanges: string[] = [];
       const keepSymbols: string[] = [];
       for (const listing of resolution.listings) {
@@ -100,8 +123,20 @@ export async function saveResolutions(resolutions: CompanyResolution[]): Promise
              mic = EXCLUDED.mic,
              symbol_format = EXCLUDED.symbol_format,
              security_kind = EXCLUDED.security_kind,
-             confidence = GREATEST(listings.confidence, EXCLUDED.confidence),
-             is_primary = listings.is_primary OR EXCLUDED.is_primary,
+             -- The resolver is authoritative on every run, so confidence is
+             -- overwritten rather than maxed. GREATEST() made it monotonically
+             -- increasing: once a listing had been recorded at 0.90, a later
+             -- run that correctly LOWERED it (because the identity turned out
+             -- to rest on a weak rename match) could never write the
+             -- correction. A confidence that can only go up is not a
+             -- confidence.
+             confidence = EXCLUDED.confidence,
+             -- Overwritten, not OR-ed. expandListings guarantees exactly
+             -- one primary per company in memory; unioning that with whatever
+             -- was primary on a previous run produced TWO primaries once a
+             -- company's primary venue changed between resolves. Same
+             -- monotonic flaw as the old GREATEST() on confidence.
+             is_primary = EXCLUDED.is_primary,
              resolved_at = now()`,
           [
             resolution.companyId,

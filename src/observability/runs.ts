@@ -26,6 +26,9 @@ export interface RunTotals {
   companiesRefused: number;
   companiesFailed: number;
   companiesUnresolved: number;
+  /** No configured provider could serve the company at all. Previously fell
+   *  through the totals switch and was counted nowhere. */
+  companiesSkipped: number;
   articlesSeen: number;
   articlesNew: number;
   /** Links dropped by the relevance gate - not stored, and not a duplicate. */
@@ -102,9 +105,11 @@ export async function finishRun(
   totals: RunTotals,
   error?: string | null,
 ): Promise<void> {
+  // A skipped company means no configured provider could serve it - that is a
+  // coverage gap, not a clean run.
   const status = error
     ? "failed"
-    : totals.companiesFailed + totals.companiesRefused > 0
+    : totals.companiesFailed + totals.companiesRefused + totals.companiesSkipped > 0
       ? "partial"
       : "succeeded";
 
@@ -114,6 +119,7 @@ export async function finishRun(
        duration_ms = EXTRACT(EPOCH FROM (now() - started_at)) * 1000,
        companies_total = $3, companies_ok = $4, companies_no_news = $5,
        companies_refused = $6, companies_failed = $7, companies_unresolved = $8,
+       companies_skipped = $13,
        articles_seen = $9, articles_new = $10, error = $11,
        articles_rejected = $12
      WHERE id = $1`,
@@ -130,6 +136,7 @@ export async function finishRun(
       totals.articlesNew,
       error ?? null,
       totals.articlesRejected,
+      totals.companiesSkipped,
     ],
   );
 }
@@ -147,6 +154,7 @@ export interface RunSummary {
   companies_refused: number;
   companies_failed: number;
   companies_unresolved: number;
+  companies_skipped: number;
   articles_seen: number;
   articles_new: number;
   articles_rejected: number;

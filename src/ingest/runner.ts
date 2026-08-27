@@ -216,21 +216,55 @@ async function ingestCompany(
       };
     }
 
-    if (result.kind === "no_news") {
-      // A clean zero is a real answer. Record it and stop: asking a weaker
-      // provider afterwards would trade a confident "quiet week" for a
-      // name-matched guess.
+    if (result.kind === "no_news" && !result.authoritative) {
+      // A zero the provider itself does not vouch for. Finnhub returns this
+      // for a company whose only US line is a thinly-covered OTC symbol,
+      // where its hit rate is 21% rather than 87% - so the silence is
+      // evidence about the PROVIDER, not about the company. Fall through and
+      // let the next source answer.
+      declined.push(`${provider.name}: zero results, but not authoritative for this listing`);
       await recordFetchState(company.id, provider.name, "no_news", null);
+      logger.debug(
+        { ticker: company.ticker, provider: provider.name },
+        "non-authoritative zero; trying next provider",
+      );
+      continue;
+    }
+
+    if (result.kind === "no_news") {
+      // A clean zero from a provider that genuinely covers this listing is a
+      // real answer. Record it and stop: asking a weaker provider afterwards
+      // would trade a confident "quiet week" for a name-matched guess.
+      await recordFetchState(company.id, provider.name, "no_news", null);
+
+      // But an ACCESS DENIAL from an earlier provider outranks it. Reporting
+      // "no news" when a provider refused us would merge the two facts the
+      // outcome taxonomy exists to keep apart - the run would look clean while
+      // coverage was silently degrading.
+      // Any provider FAILURE outranks a later clean zero, not just a refusal.
+      // Marketaux's dominant free-tier failure is quota exhaustion, which maps
+      // to `rate_limited` - reporting "no news" there would hide an exhausted
+      // provider behind a healthy-looking run.
+      const reportable =
+        lastFailure && lastFailure.outcome !== "no_news" ? lastFailure : null;
       await recordCompanyOutcome({
         runId,
         companyId: company.id,
-        provider: provider.name,
-        symbolUsed: result.symbolUsed,
-        outcome: "no_news",
+        provider: reportable ? reportable.provider : provider.name,
+        symbolUsed: reportable ? null : result.symbolUsed,
+        outcome: reportable ? reportable.outcome : "no_news",
+        httpStatus: reportable?.status ?? null,
+        error: reportable ? reportable.message : null,
         durationMs: Date.now() - startedAt,
         providerAttempts: attempts,
       });
-      return { outcome: "no_news", provider: provider.name, articlesSeen: 0, articlesNew: 0, articlesRejected: 0 };
+      return {
+        outcome: reportable ? reportable.outcome : "no_news",
+        provider: reportable ? reportable.provider : provider.name,
+        articlesSeen: 0,
+        articlesNew: 0,
+        articlesRejected: 0,
+      };
     }
 
     if (result.kind === "unsupported") {
@@ -317,6 +351,7 @@ export async function runIngest(options: IngestOptions = {}): Promise<IngestResu
     companiesRefused: 0,
     companiesFailed: 0,
     companiesUnresolved: 0,
+    companiesSkipped: 0,
     articlesSeen: 0,
     articlesNew: 0,
     articlesRejected: 0,
@@ -348,6 +383,7 @@ export async function runIngest(options: IngestOptions = {}): Promise<IngestResu
 
       switch (result.outcome) {
         case "ok": totals.companiesOk += 1; break;
+        case "skipped": totals.companiesSkipped += 1; break;
         case "no_news": totals.companiesNoNews += 1; break;
         case "refused": totals.companiesRefused += 1; break;
         case "unresolved": totals.companiesUnresolved += 1; break;

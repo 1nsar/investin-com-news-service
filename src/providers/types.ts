@@ -67,7 +67,15 @@ export interface FetchRequest {
  *  unnoticed for a month. */
 export type ProviderOutcome =
   | { kind: "ok"; articles: RawArticle[]; symbolUsed: string; matchMethod: "ticker" | "name_match"; listingId?: number }
-  | { kind: "no_news"; symbolUsed: string; listingId?: number }
+  /** `authoritative` says whether this zero-result is EVIDENCE OF QUIET or
+   *  merely evidence this provider does not cover the symbol well.
+   *
+   *  Finnhub answers a clean zero for a company on the NYSE and for a company
+   *  whose only US presence is a thin OTC line - but its hit rate is 87% on
+   *  the first and 21% on the second. Treating both as final meant 224
+   *  companies were never offered to the fallback at all. Only the provider
+   *  knows how much its own silence is worth, so it declares it here. */
+  | { kind: "no_news"; symbolUsed: string; listingId?: number; authoritative: boolean }
   | { kind: "refused"; httpStatus: number; message: string; symbolUsed?: string }
   | { kind: "rate_limited"; message: string; symbolUsed?: string }
   | { kind: "error"; message: string; symbolUsed?: string }

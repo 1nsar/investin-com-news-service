@@ -23,7 +23,8 @@
     "typecheck": "tsc --noEmit",
     "ingest:market": "tsx scripts/run-market-news.ts",
     "metrics": "tsx scripts/report-metrics.ts",
-    "export:openapi": "tsx scripts/export-openapi.ts"
+    "export:openapi": "tsx scripts/export-openapi.ts",
+    "evaluate": "tsx scripts/evaluate-provider.ts"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.1",
