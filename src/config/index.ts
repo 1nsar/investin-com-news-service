@@ -16,9 +16,17 @@ const Schema = z.object({
   API_AUTH_TOKEN: z.string().default(""),
 
   FINNHUB_API_KEY: z.string().default(""),
+  /** Optional. Entity-tagged global news; closes the international and OTC
+   *  gaps the free stack cannot. Free tier is enough to evaluate. */
+  MARKETAUX_API_KEY: z.string().default(""),
+  MARKETAUX_RATE_LIMIT_PER_MIN: z.coerce.number().int().positive().default(60),
+  /** Page size. Free tier caps this at 3, Basic 20, Standard 50, Pro 100 -
+   *  asking for more than the plan allows is silently truncated. */
+  MARKETAUX_PAGE_SIZE: z.coerce.number().int().min(1).max(100).default(50),
+  MARKETAUX_LANGUAGES: z.string().default("en"),
   OPENFIGI_API_KEY: z.string().default(""),
 
-  NEWS_PROVIDER_ORDER: z.string().default("finnhub,google_news_rss"),
+  NEWS_PROVIDER_ORDER: z.string().default("finnhub,marketaux,google_news_rss"),
   FINNHUB_RATE_LIMIT_PER_MIN: z.coerce.number().int().positive().default(55),
   GOOGLE_NEWS_RATE_LIMIT_PER_MIN: z.coerce.number().int().positive().default(40),
 

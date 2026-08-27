@@ -1,3 +1,4 @@
+import { config } from "../config/index.js";
 import { backoffDelayMs, sleep } from "./async.js";
 import type { RateLimiter } from "./rateLimiter.js";
 import { logger } from "./logger.js";
@@ -5,7 +6,7 @@ import { logger } from "./logger.js";
 /** Query parameters that carry credentials. Providers put API keys in the
  *  query string, so any URL that reaches a log, an error message or the
  *  database has to have them removed first. */
-const SECRET_PARAMS = /^(token|api_?key|apikey|key|access_?token|auth|password|secret)$/i;
+const SECRET_PARAMS = /^(token|api_?token|api_?key|apikey|key|access_?token|auth|password|secret)$/i;
 
 /** Strip credentials from a URL before it is shown to anyone.
  *
@@ -13,17 +14,37 @@ const SECRET_PARAMS = /^(token|api_?key|apikey|key|access_?token|auth|password|s
  *  `fetch_run_companies.error` and served by `GET /v1/runs/:id/companies`, so
  *  an un-redacted URL would publish the Finnhub key over the API and leave a
  *  copy in the database and the logs. */
+/** Every credential this process holds. Redacting the literal VALUES is exact
+ *  where pattern-matching is not: a provider is free to phrase an error as
+ *  "Your api_token ABC123 is not valid", which no `key=value` pattern catches.
+ *  Short values are skipped so an empty or trivial setting cannot blank out
+ *  unrelated text. */
+function knownSecrets(): string[] {
+  return [config.FINNHUB_API_KEY, config.MARKETAUX_API_KEY, config.OPENFIGI_API_KEY, config.API_AUTH_TOKEN]
+    .filter((value): value is string => typeof value === "string" && value.length >= 8);
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export function redactUrl(rawUrl: string): string {
+  // Literal secret values first: exact, and independent of phrasing.
+  let text = rawUrl;
+  for (const secret of knownSecrets()) {
+    text = text.replace(new RegExp(escapeRegExp(secret), "g"), "REDACTED");
+  }
+
   try {
-    const url = new URL(rawUrl);
+    const url = new URL(text);
     for (const key of [...url.searchParams.keys()]) {
       if (SECRET_PARAMS.test(key)) url.searchParams.set(key, "REDACTED");
     }
     return url.toString();
   } catch {
-    // Not a parseable URL - redact anything that looks like a key=value secret.
-    return rawUrl.replace(
-      /\b(token|api_?key|apikey|key|access_?token|auth|password|secret)=[^&\s]+/gi,
+    // Not a parseable URL - also redact anything shaped like a key=value secret.
+    return text.replace(
+      /\b(token|api_?token|api_?key|apikey|key|access_?token|auth|password|secret)[=:]\s*[^&\s"']+/gi,
       "$1=REDACTED",
     );
   }

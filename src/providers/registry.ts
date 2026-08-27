@@ -2,6 +2,7 @@ import { config } from "../config/index.js";
 import { logger } from "../util/logger.js";
 import { FinnhubProvider } from "./finnhub.js";
 import { GoogleNewsRssProvider } from "./googleNewsRss.js";
+import { MarketauxProvider } from "./marketaux.js";
 import type { NewsProvider } from "./types.js";
 
 /** Provider registry.
@@ -19,6 +20,7 @@ type ProviderFactory = () => NewsProvider;
 
 const FACTORIES: Record<string, ProviderFactory> = {
   finnhub: () => new FinnhubProvider(),
+  marketaux: () => new MarketauxProvider(),
   google_news_rss: () => new GoogleNewsRssProvider(),
 };
 
@@ -48,6 +50,25 @@ export function getProviders(): NewsProvider[] {
       continue;
     }
     providers.push(provider);
+  }
+
+  // A provider that is fully configured but missing from NEWS_PROVIDER_ORDER
+  // is the quietest possible misconfiguration: the key is set, the adapter is
+  // registered, and nothing happens. Say so.
+  for (const [name, factory] of Object.entries(FACTORIES)) {
+    if (config.providerOrder.includes(name)) continue;
+    let configured = false;
+    try {
+      configured = factory().isConfigured();
+    } catch {
+      configured = false;
+    }
+    if (configured) {
+      logger.warn(
+        { provider: name, order: config.providerOrder },
+        `${name} is configured but is not listed in NEWS_PROVIDER_ORDER, so it will never be used - add it to the order`,
+      );
+    }
   }
 
   if (providers.length === 0) {

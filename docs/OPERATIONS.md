@@ -81,6 +81,14 @@ SELECT attempt->>'provider' AS failed, f.provider AS then_served_by, count(*)
 The lesson generalises: **a fallback that works is indistinguishable from a
 primary that works, unless you record the difference.**
 
+**A zero is not always an answer.** Providers now declare whether their own
+silence is authoritative. Finnhub's hit rate is 87% on real US exchange
+listings and 21% on OTC-only ones, so a zero from the second means "we do not
+really cover this symbol", not "nothing happened". Non-authoritative zeros fall
+through to the next provider. Watch this: if `no_news` starts climbing for a
+provider on listings it *does* cover, that is coverage degrading, not the news
+going quiet.
+
 **What it does not do.** There is no automatic provider failover on degradation
 — only per-company fallthrough. Demoting a failing provider is a config change
 (`NEWS_PROVIDER_ORDER`) and a restart, deliberately: automatic failover between
@@ -150,8 +158,25 @@ suppressed for 24 hours so the run stops paying for calls that cannot succeed �
 and the suppression always expires, because a permanent silent drop is exactly
 the failure being avoided.
 
-**What it does not do.** There is no corporate-actions feed. A merger is
-noticed only as a rising failure count, which is late.
+**What it does not do.** There is no corporate-actions feed, so a rename or a
+delisting is inferred rather than announced. In practice the resolver already
+separates the two cases, because they look different:
+
+| Signal | Meaning | Example seen in this catalogue |
+| --- | --- | --- |
+| No identifier found for the ticker at all | **Delisted or acquired** | `EA`, `EQR` — OpenFIGI has no security for either |
+| Ticker resolves on the hinted venue, name partly agrees | **Renamed** | Sterling Construction → Sterling Infrastructure |
+| Ticker resolves, name shares **nothing** | **Collision** — a different company | `ADM` on London is Archer-Daniels-Midland, not Admiral |
+
+The middle case is accepted at reduced confidence and flagged; the last is
+rejected outright. The distinguishing signal is simple and held across the
+whole catalogue: every known collision shares **zero** name tokens with the
+impostor, while renames share at least one.
+
+Two companies still need a manual alias because the rename left no shared
+token at all — Munich Reinsurance is listed as `MUENCHENER RUECKVER AG-REG`,
+and Westinghouse Air Brake as `WABTEC CORP`. That is the shape of the human
+review queue this needs: small, and about identity rather than news.
 
 ---
 

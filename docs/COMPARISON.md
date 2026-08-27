@@ -41,13 +41,13 @@ these companies can be given a US symbol?"
 
 | Segment | Companies | Share |
 | --- | ---: | ---: |
-| Has a US **exchange** listing | 1,160 | 76.6% |
-| Has a US **OTC** line only | 285 | 18.8% |
-| **Total reachable with a US symbol** | **1,445** | **95.4%** |
+| Has a US **exchange** listing | 1,252 | 82.6% |
+| Has a US **OTC** line only | 182 | 12.0% |
+| **Total reachable with a US symbol** | **1,434** | **94.6%** |
 | No US line at all | 29 | 1.9% |
-| Could not be resolved | 41 | 2.7% |
+| Could not be resolved | 52 | 3.4% |
 
-**95.4% of the catalogue can be served by a ticker-native US provider.** That
+**94.6% of the catalogue can be served by a ticker-native US provider.** That
 is what makes a free primary viable at this scale, and it is the single most
 important number in this document.
 
@@ -57,7 +57,7 @@ unresolvable at all, but rejected by an over-strict name check. The reference
 source writes `SMITH (A.O.) CORP`, `BRINK'S CO/THE`, `BABCOCK INTL GROUP PLC`
 and `CONCENTRA GROUP HOLDINGS PAR` (truncated at 28 characters); the catalogue
 writes them out in full. Teaching the matcher about abbreviations, punctuation
-and truncation moved resolution to 97.3% **without loosening it enough to let
+and truncation moved resolution to 96.6% **without loosening it enough to let
 any of the seven ticker collisions through** — there is a regression test that
 holds both properties at once.
 
@@ -141,7 +141,7 @@ answer in a few hundred milliseconds.
 
 | Option | Coverage on this catalogue | Quality | Cost at ~1,500/day | Verdict |
 | --- | --- | --- | --- | --- |
-| **Finnhub free** | 95.4% reachable, 76% hit on US exchange | Ticker-native, structured, dedupeable | $0, 60 req/min | **Primary** |
+| **Finnhub free** | 94.6% reachable, 76% hit on US exchange | Ticker-native, structured, dedupeable | $0, 60 req/min | **Primary** |
 | **Google News RSS** | ~90% across every segment | Name-matched, headline+URL only, no summary | $0, no formal limit | **Fallback** |
 | Finnhub paid | Adds non-US symbols directly | Same, ticker-native everywhere | Tiered, roughly $12–$100/mo for the relevant tiers; confirm at purchase | See §6 |
 | Search API + LLM extraction | Broad, but unbounded | Free-text; needs an LLM to structure it | LLM cost per company per day, plus search | **Rejected** |
@@ -178,7 +178,7 @@ NEWS_PROVIDER_ORDER=finnhub,google_news_rss
 
 Per company, first provider that can serve it wins:
 
-1. **Finnhub** if the company has any US listing — 95.4% of the catalogue.
+1. **Finnhub** if the company has any US listing — 94.6% of the catalogue.
    Ticker-native, so attribution is certain.
 2. **Google News RSS** otherwise, searched by company name against the home
    country's edition. Locale matters more than it looks: Munich Re returns
@@ -199,17 +199,17 @@ The full run over all 1,515 companies, with the stack above:
 
 | Provider | Companies served | Outcome |
 | --- | ---: | --- |
-| Finnhub | 1,074 | returned articles |
-| Finnhub | 371 | clean `no_news` |
-| Google News RSS | 24 | returned articles |
-| Google News RSS | 5 | clean `no_news` |
-| — | 41 | unresolved, no listing to ask about |
+| Finnhub | 943 | returned articles |
+| Finnhub | 258 | clean `no_news` |
+| Google News RSS | 249 | returned articles |
+| Google News RSS | 14 | clean `no_news` |
+| — | 51 | unresolved, no listing to ask about |
 | **Total** | **1,515** | 0 refused, 0 failed |
 
-The split matches the resolution exactly: **1,445 companies had a US listing
-and were served ticker-native; only 29 needed name-based search.** That ratio
-is the whole argument of this document. Without listing resolution, all 425
-non-US companies would have landed on the name-matched fallback.
+The split follows the resolution: **1,434 companies had a US listing and were
+served ticker-native.** That ratio is the whole argument of this document —
+without listing resolution, every non-US company would have landed on the
+name-matched fallback.
 
 The effect on data quality is direct and measurable: **98.7% of stored articles
 carry certain, ticker-native attribution**, and only 1.3% come from name
@@ -257,7 +257,7 @@ off, and deduplication makes the overlap free.
 ## 6. What a paid tier would buy, and when to buy it
 
 **It would not buy much more coverage.** Listing resolution already reaches
-95.4% of the catalogue with a free ticker-native provider. A paid global feed
+94.6% of the catalogue with a free ticker-native provider. A paid global feed
 would add the 25 companies with no US line and improve the 270 OTC-only ones —
 roughly 2–18% of the list depending on how strictly you count.
 
@@ -287,12 +287,64 @@ could not verify.
 
 ---
 
+## 6a. Closing the gap: Marketaux
+
+The recommendation in §6 was "stay free for now, and here is the trigger to
+revisit". Reviewing where coverage is actually missing sharpened that: the gap
+is not spread evenly, it is concentrated in two segments the free stack
+structurally cannot serve.
+
+| Segment | Companies | Zero articles |
+| --- | ---: | ---: |
+| US exchange listing | 1,160 | 12.9% — mostly genuinely quiet |
+| **US OTC line only** | **285** | **77.2%** |
+| **No US line at all** | **29** | 48.3% |
+| **Unresolved** | **41** | 100% |
+
+Two things follow.
+
+**First, part of that gap was ours, not the provider's.** Finnhub answers a
+clean zero for an OTC-only company just as it does for a quiet NYSE company,
+and the ingest treated both as final — so 224 companies were never offered to
+the fallback. Providers now declare whether their own silence is meaningful.
+That fix costs nothing and is the single largest recovery available.
+
+**Second, what remains is genuinely a provider limitation.** Finnhub's free
+company-news draws on **six publishers**; nothing about a thin OTC line or a
+Frankfurt-only listing is going to appear in them. That is what
+[Marketaux](https://www.marketaux.com) is for:
+
+| | Free stack | Marketaux |
+| --- | --- | --- |
+| Sources | 6 publishers | 5,000+ |
+| Markets | US only (free tier) | 80+ |
+| Languages | English | 30+ |
+| Entities | — | 200,000+, tagged per article |
+| Attribution | ticker or *our* name matching | provider's own entity tags |
+| Cost | $0 | $0 / $29 / $49 / $99 / $199 per month |
+
+The attribution row matters as much as the coverage rows. Name matching is the
+least trustworthy code in this component — it is what filed a film review under
+Kid ASA. A provider that tags entities itself removes that entire class of
+error rather than filtering it after the fact.
+
+**Billing shape also matters for later.** Marketaux charges per request-day
+with a page size, which is the shape a bulk "everything since X" pull needs.
+Alpha Vantage charges per request-minute, which is the shape per-company
+polling needs — and per-company polling stops working around a few thousand
+companies. Same monthly price, opposite trajectory.
+
+**Status: adapter built, not yet measured.** `npm run evaluate` samples the
+failing segments specifically, rather than the catalogue evenly, so a free-tier
+quota of 100 requests/day is enough to answer whether it covers our gaps.
+The recommendation stays provisional until that runs.
+
 ## 7. What is still weak
 
 Stated plainly, because pretending otherwise would be the wrong kind of
 write-up:
 
-- **41 companies (2.7%) did not resolve.** Mostly OTC pink sheets and a handful
+- **52 companies (3.4%) did not resolve** — 45 of them are delisted or acquired. Mostly OTC pink sheets and a handful
   of LSE lines whose supplier ticker matches nothing. They are reported as
   `unresolved`, never silently skipped, and Google News still serves them by
   name at a 92% hit rate.

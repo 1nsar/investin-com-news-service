@@ -14,7 +14,7 @@
  *  reduce to the same key. */
 const NOISE_WORDS = new Set([
   "inc", "incorporated", "corp", "corporation", "co", "company", "cos",
-  "ltd", "limited", "plc", "llc", "lp", "llp", "trust", "the",
+  "ltd", "limited", "plc", "llc", "lp", "llp", "trust", "the", "companies",
   "sa", "sas", "sca", "se", "ag", "kgaa", "nv", "bv", "as", "asa", "ab", "oyj", "oy",
   "spa", "srl", "aps", "a", "s", "gmbh", "pcl", "tbk", "bhd", "pte", "pt",
   "holding", "holdings", "hldgs", "hldg", "group", "grp", "groupe",
@@ -36,18 +36,18 @@ const ACCENTS = /[\u0300-\u036f]/g;
  *  resolved rather than as an obvious bug. */
 const ABBREVIATIONS: Record<string, string> = {
   intl: "international", intn: "international", intnl: "international",
-  natl: "national", nat: "national",
-  amer: "american", am: "american",
+  natl: "national",
+  amer: "american",
   wash: "washington",
   mfg: "manufacturing", mfrs: "manufacturers",
-  ind: "industries", inds: "industries", indus: "industries",
+  inds: "industries", indus: "industries",
   svc: "services", svcs: "services", serv: "services",
   tech: "technologies", techs: "technologies", technol: "technologies",
   pharm: "pharmaceuticals", pharma: "pharmaceuticals",
   fin: "financial", finl: "financial",
-  res: "resources", rlty: "realty", ppty: "property", prop: "properties",
+  rlty: "realty", ppty: "property", prop: "properties",
   comms: "communications", comm: "communications",
-  sys: "systems", lab: "laboratories", labs: "laboratories",
+  sys: "systems", labs: "laboratories",
   entmt: "entertainment", enterp: "enterprises",
   dev: "development", mgmt: "management",
   intl_: "international",
@@ -67,6 +67,10 @@ export function normalizeName(raw: string): string {
     // Apostrophes and periods are dropped WITHOUT a space, so "BRINK'S"
     // becomes "brinks" and "(A.O.)" becomes "ao" rather than fragmenting into
     // single letters that the noise filter then eats.
+    // Web TLDs are part of a brand's spelling, not its identity:
+    // "TABOOLA.COM LTD" and "Taboola" are one company, but stripping the dot
+    // without removing "com" produced "taboolacom" and scored 0.000.
+    .replace(/\.(com|net|org|io|ai|co)\b/g, "")
     .replace(/['’.]/g, "")
     .replace(/[^a-z0-9]+/g, " ")
     .split(" ")
@@ -106,7 +110,21 @@ export function nameSimilarity(left: string, right: string): number {
   let shared = 0;
   for (const token of new Set(shorter)) {
     if (longerSet.has(token)) shared += 1;
-    else if (token.length >= 3 && longer.some((other) => other.startsWith(token) || token.startsWith(other))) {
+    else if (
+      token.length >= 3 &&
+      // Truncation only has a signature when there is more than one token: a
+      // clipped final word alongside intact earlier ones. A lone token that
+      // happens to prefix another is just a coincidence - it made "Nova"
+      // match "Novartis", "Cat" match "Caterpillar" and "Micro" match
+      // "Microsoft".
+      shorter.length >= 2 &&
+      // Only the last token may match by prefix. Reference descriptions are
+      // truncated at a fixed width ("CONCENTRA GROUP HOLDINGS PAR"), which
+      // clips the final word and nothing else. Allowing prefix credit on any
+      // token made "Nova" match "Novartis" and "Cat" match "Caterpillar".
+      token === shorter[shorter.length - 1] &&
+      longer.some((other) => other.startsWith(token) || token.startsWith(other))
+    ) {
       shared += 0.85;
     }
   }
@@ -117,8 +135,37 @@ export function nameSimilarity(left: string, right: string): number {
   // Weighted towards containment, but a much longer name still costs a little.
   const score = containment * 0.75 + jaccard * 0.25;
 
-  // A single shared token is weak evidence when either name has several
-  // ("Shanghai Airport" vs "Shanghai Electric"), so cap it.
+  // One name being wholly contained in the other is strong evidence, even on a
+  // single token: "AECOM" vs "AECOM Technology", "Travelers" vs "Travelers
+  // Companies", "HCA" vs "HCA Healthcare" are all the same company written at
+  // different lengths.
+  //
+  // But containment of a ONE-token name into a much longer one is not: "Apple"
+  // sits inside "Apple Hospitality REIT" and they are unrelated. So a
+  // single-token name only counts as contained when the other name is short
+  // too - a genuine abbreviation, not a coincidental prefix.
+  // Containment counts only when the contained name has at least TWO tokens.
+  //
+  // A one-token containment is structurally ambiguous and cannot be resolved
+  // from the names alone: "AECOM" inside "AECOM Technology" is the same
+  // company, "Prudential" inside "Prudential Financial" is a different one
+  // (a UK insurer versus a US insurer, both real rows in this catalogue).
+  // An earlier version allowed it whenever the longer name had <= 2 tokens,
+  // which accepted Prudential, "Apple" vs "Apple Hospitality", "Sea Limited"
+  // vs "Sea World" and "Nike" vs "Nike Securities".
+  //
+  // Those cases are not lost - they fall to the rename path in the resolver,
+  // which additionally requires the ticker to have matched on the hinted
+  // exchange and records the result at reduced confidence with a flag.
+  const shorterSize = Math.min(setA.size, setB.size);
+  const fullyContained = shared === shorterSize;
+  if (fullyContained && shorterSize >= 2) {
+    return Math.min(1, Math.max(score, 0.75));
+  }
+
+  // Otherwise a single shared token is weak evidence when either name has
+  // several ("Shanghai Airport" vs "Shanghai Electric"), so cap it below the
+  // acceptance threshold.
   if (shared <= 1 && (setA.size > 1 || setB.size > 1)) return Math.min(score, 0.59);
   return Math.min(1, score);
 }
@@ -127,6 +174,24 @@ export function nameSimilarity(left: string, right: string): number {
  *  the catalogue: 0.6 accepts "Novo Nordisk A/S" vs "NOVO NORDISK A/S-B" and
  *  rejects the ticker collisions this catalogue is full of. */
 export const NAME_MATCH_THRESHOLD = 0.6;
+
+/** How many distinctive tokens two names share.
+ *
+ *  Used to separate a RENAME from a COLLISION. Both look like "the resolved
+ *  name does not match the catalogue name", but they are opposites:
+ *
+ *    rename    Sterling Construction  vs STERLING INFRASTRUCTURE   -> 1 shared
+ *    collision Admiral Group          vs ARCHER-DANIELS-MIDLAND    -> 0 shared
+ *
+ *  Measured across this catalogue, every one of the seven known ticker
+ *  collisions shares zero tokens, while renames share at least one. */
+export function sharedTokenCount(left: string, right: string): number {
+  const a = new Set(normalizeName(left).split(" ").filter(Boolean));
+  const b = new Set(normalizeName(right).split(" ").filter(Boolean));
+  let shared = 0;
+  for (const token of a) if (b.has(token)) shared += 1;
+  return shared;
+}
 
 /** Search-friendly form: legal suffixes gone, accents kept. Feeding "Muenchener
  *  Rueckversicherungs-Gesellschaft AG" to a news search returns nothing; the

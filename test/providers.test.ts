@@ -89,3 +89,37 @@ describe("GoogleNewsRssProvider.supports", () => {
     expect(result.matchMethod).toBe("name_match");
   });
 });
+
+describe("no_news authority", () => {
+  const provider = new FinnhubProvider();
+
+  // 224 companies were never offered to the fallback because a zero from a
+  // thin OTC line was treated as a final answer.
+  it("marks a zero from a real US exchange listing as authoritative", () => {
+    const result = provider.supports(
+      company({ listings: [listing({ symbol: "ACME", mic: "XNYS", isPrimary: true })] }),
+    );
+    expect(result.supported).toBe(true);
+    expect(result.symbol).toBe("ACME");
+  });
+
+  it("chooses the exchange listing over an OTC one when both exist", () => {
+    const result = provider.supports(
+      company({
+        listings: [
+          listing({ id: 1, symbol: "ACMEF", mic: "OOTC", isPrimary: true }),
+          listing({ id: 2, symbol: "ACME", mic: "XNAS", isPrimary: false }),
+        ],
+      }),
+    );
+    expect(result.symbol).toBe("ACME");
+  });
+
+  it("still serves an OTC-only company, so it can be tried before falling through", () => {
+    const result = provider.supports(
+      company({ listings: [listing({ symbol: "AMIGY", mic: "OOTC", securityKind: "adr" })] }),
+    );
+    expect(result.supported).toBe(true);
+    expect(result.symbol).toBe("AMIGY");
+  });
+});
