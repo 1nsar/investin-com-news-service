@@ -47,8 +47,15 @@ ul,ol { margin:0 0 7px; padding-left:16px; } li { margin-bottom:3.5px; }
 ol li { margin-bottom:4.5px; }
 strong { font-weight:650; } em { font-style:italic; }
 a { color:#14181f; text-decoration:none; }
+img { max-width:100%; height:auto; display:block; margin:7px 0 3px;
+      border:1px solid #dde2e8; border-radius:3px; page-break-inside:avoid; }
+img + em, p > em:only-child { font-size:7.9pt; color:#5a6472; display:block; margin-bottom:9px; }
 </style>
 CSS
+
+# Images are referenced relatively from docs/REPORT.md, and the render happens
+# in $BUILD, so they have to travel with the HTML or they silently vanish.
+[ -d docs/screenshots ] && cp -R docs/screenshots "$BUILD/screenshots"
 
 pandoc "$SRC" -f gfm -t html5 -s -H "$BUILD/style.html" -o "$BUILD/report.html"
 

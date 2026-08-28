@@ -229,6 +229,61 @@ too.
 The lost coverage is real, and it is the clearest argument for a paid provider:
 one returns genuine publisher links and images for exactly these companies.
 
+## What happens when a reader clicks
+
+Links now go straight to the publisher. That fixed the broken ones — but it
+exposes a second problem that is worth stating plainly, because it is the
+clearest argument for buying content.
+
+**Every headline leaves our platform**, and where it lands is the publisher's
+site, not ours:
+
+| Publisher | Share of articles | What the reader sees |
+| --- | ---: | --- |
+| finance.yahoo.com | 32.3% | Opens normally |
+| **benzinga.com** | **31.5%** | Often a bot check or a sign-up prompt |
+| **seekingalpha.com** | **15.6%** | Often a registration wall |
+| fool.com, cnbc.com, and 71 others | ~20% | Mostly opens normally |
+
+**So roughly half of all clicks (47%) land on a site that may ask the reader to
+register before showing the article.** Nothing is broken — these are the correct
+publisher URLs, correctly resolved. The reader simply meets someone else's
+paywall on a link we presented as ours, and a different site layout each time.
+
+**We did not remove them.** Benzinga and Seeking Alpha serve real browsers
+perfectly well; they only refuse automated clients, so we cannot reliably detect
+a wall in advance. Dropping both would delete **47% of the catalogue's articles**
+to avoid an inconvenience that many readers never hit.
+
+**This is not fixable with the current providers.** Finnhub and Marketaux
+license a headline, a teaser and a **link** — their terms require the link out.
+Rendering the full text anyway, or scraping the publisher's page for it, is
+republishing copyrighted work. The fix is to license content we are permitted to
+display, which is what the recommendation below is about.
+
+## The component in use
+
+The service has no UI of its own — it is a backend. These are from the existing
+research app consuming it over its HTTP API, which is how it would be integrated.
+
+![The catalogue served over the API: per-company article counts, the exchange each ticker resolved to, and the US symbol that makes news fetchable.](screenshots/global-news.png)
+
+*Every company in the catalogue, with the venues it resolved to. `LN:0A1U` is
+the London line, `US:UBER` the US symbol news is actually fetched with. A `0`
+with "no news" is a clean zero, not an error — the distinction the run reporting
+is built around.*
+
+![Search resolves a name to the catalogue row and its resolved listings.](screenshots/search-microsoft.png)
+
+*Search by name or ticker. The result shows the resolved listing (`US:MSFT`) and
+the stored article count.*
+
+![A single company's feed: 117 stored articles, each with source, age, and how it was attributed.](screenshots/company-microsoft.png)
+
+*One company's feed. "also mentions 1 other" is the shared-article model: a story
+naming several companies is stored once and linked to each, never duplicated per
+company.*
+
 ## The two timing numbers
 
 They measure different things.
@@ -259,18 +314,71 @@ again.
   read it and decide what gets stored would hand outsiders influence over the
   pipeline. The rules used instead are unit-tested against real failures.
 
-## Do we need to pay?
+## Do we need to pay? — and what to buy
 
-**Not for coverage** — 94.6% is already reachable free and ticker-native.
+**Not for coverage.** 94.6% is already reachable free and ticker-native.
 
-**Yes, if two things matter.** First, the ~170 companies whose only links were
-unopenable or whose OTC coverage is thin. Second, **provenance**: most company
-news comes from a handful of aggregators rather than primary wires.
+**Yes, for the reading experience.** Three problems are not solvable with any
+free tier, and they are the ones a user actually feels:
 
-Marketaux was evaluated on its free tier. It returns genuine publisher links
-and images and has real depth for major international names (4,960 articles for
-Legal & General), but it does not cover Chinese A-shares. Its adapter is built
-and activates on an API key, so the decision is reversible at any time.
+1. **Every headline leaves our platform.** The reader lands on Yahoo, Benzinga,
+   Seeking Alpha or Fool — a different site, a different layout, each time.
+2. **Some of those sites demand a sign-up or a subscription** before showing the
+   article. We cannot tell in advance which, so the reader plays paywall
+   roulette on links we presented as ours.
+3. **We cannot legally fix that ourselves.** Free and low-cost APIs — Finnhub,
+   Marketaux, Alpha Vantage — license a **headline, a short teaser and a link**.
+   Their terms require the link out. Displaying the full text we did not license,
+   or scraping the publisher's page for it, is republishing someone else's
+   copyrighted work. Financial publishers enforce this actively, and it is not a
+   risk worth taking to save a click.
+
+**So the requirement "show the article in our own UI" is a licensing decision,
+not an engineering one.** The fix is to buy content we are permitted to display.
+
+### Recommendation: Benzinga's licensed newsfeed as primary
+
+Benzinga owns its newsroom, so it can license what an aggregator cannot. Its
+paid tiers are **explicitly embeddable** — the full body and the image may be
+published inside our own interface, with no redirect and no third-party
+sign-in. Its free tier is headline + teaser + link, which is exactly the
+constraint we are trying to escape.
+
+| Requirement | How Benzinga meets it |
+| --- | --- |
+| Show the article without redirecting | Paid tiers license the **full body and image** for display on our platform |
+| Always fresh, automatically | Pull REST with `updatedSince`, plus **WebSocket, TCP stream and webhooks** — push, not polling |
+| No per-company rate ceiling | A firehose of the newsroom, not one request per company — the cost stops scaling with catalogue size |
+| One consistent source | One publisher, one voice, one layout — no paywall roulette |
+
+That last row also solves the scale problem in the section above: polling costs
+one request per company per day, so 50,000 companies is 50,000 requests. A
+stream costs the same regardless of how many companies we track.
+
+**The honest limitation.** Benzinga publishes roughly 130–160 full articles a
+day from a US-focused newsroom. That is deep, not wide — it will not cover
+Chinese A-shares or thin European lines. It replaces the *quality* of our feed,
+not all of its *breadth*.
+
+### The two-provider architecture
+
+Exactly two, which is the practical minimum that still covers the catalogue:
+
+| Tier | Provider | Licence | Reader experience |
+| --- | --- | --- | --- |
+| **Primary** | **Benzinga (paid)** | Full body embeddable | Reads in our UI. No redirect, no sign-in |
+| **Fallback** | **Marketaux** | Headline + link | Opens the publisher — only for companies Benzinga does not cover |
+
+Everything needed to make this switch already exists: providers sit behind one
+adapter interface and are ordered by `NEWS_PROVIDER_ORDER`, so adding Benzinga
+is a new adapter plus a config change, and Finnhub can be dropped the day the
+licensed feed proves out. The article schema already carries `image_url` and a
+summary; a licensed body needs one nullable `body` column and a UI that renders
+it instead of linking out.
+
+**Pricing is not published** — content licensing is quoted per customer, via
+`licensing@benzinga.com`. The brief offers to provision a paid key, so the ask
+is a quote for the embeddable-body tier at ~1,500 companies, with room to grow.
 
 ## Known limits
 
