@@ -32,12 +32,18 @@ export async function exportGaps(): Promise<{ rows: number; file: string }> {
            CASE
              WHEN c.resolution_status <> 'resolved' AND rn.covered_as IS NOT NULL
                THEN 'duplicate_listing_line'
-             WHEN c.resolution_status <> 'resolved' AND c.ticker_raw ~ '^0[A-Z0-9]{3}$'
+             -- Venue is decided by the ticker's suffix. Both separators the
+             -- catalogue uses are accepted ('.F' and '_F'), because which one a
+             -- supplier row happens to carry says nothing about the exchange.
+             WHEN c.resolution_status <> 'resolved'
+                  AND (c.ticker_raw ~ '^0[A-Z0-9]{3}$' OR c.ticker_raw LIKE '%.L')
                THEN 'unresolved_london_secondary_line'
-             WHEN c.resolution_status <> 'resolved' AND c.ticker_raw LIKE '%.F'
+             WHEN c.resolution_status <> 'resolved'
+                  AND (c.ticker_raw LIKE '%.F' OR c.ticker_raw LIKE '%\\_F')
                THEN 'unresolved_frankfurt_line'
-             WHEN c.resolution_status <> 'resolved' AND c.ticker_raw LIKE '%\\_%'
-               THEN 'unresolved_malformed_ticker'
+             WHEN c.resolution_status <> 'resolved'
+                  AND (c.ticker_raw LIKE '%.Y' OR c.ticker_raw LIKE '%\\_Y')
+               THEN 'unresolved_depositary_line'
              WHEN c.resolution_status <> 'resolved' AND c.resolution_note LIKE 'rejected%'
                THEN 'unresolved_name_check_rejected'
              WHEN c.resolution_status <> 'resolved'
