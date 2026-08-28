@@ -291,7 +291,7 @@ The key is free and takes a minute to obtain: <https://www.openfigi.com/api>.
 It is the single highest-value optional setting in this component. Resolution
 runs once — after it, only new or changed catalogue rows are re-resolved.
 
-**Result:** 1,463 of 1,515 companies resolved (**96.6%**), 1,987 listings,
+**Result:** 1,465 of 1,515 companies resolved (**96.6%**), 1,990 listings,
 140 depositary receipts identified.
 
 ### A full news run

@@ -52,11 +52,11 @@ these companies can be given a US symbol?"
 | --- | ---: | ---: |
 | Has a US **exchange** listing | 1,252 | 82.6% |
 | Has a US **OTC** line only | 182 | 12.0% |
-| **Total reachable with a US symbol** | **1,434** | **94.6%** |
+| **Total reachable with a US symbol** | **1,434** | **94.8%** |
 | No US line at all | 29 | 1.9% |
 | Could not be resolved | 52 | 3.4% |
 
-**94.6% of the catalogue can be served by a ticker-native US provider.** That
+**94.8% of the catalogue can be served by a ticker-native US provider.** That
 is what makes a free primary viable at this scale, and it is the single most
 important number in this document.
 
@@ -150,7 +150,7 @@ answer in a few hundred milliseconds.
 
 | Option | Coverage on this catalogue | Quality | Cost at ~1,500/day | Verdict |
 | --- | --- | --- | --- | --- |
-| **Finnhub free** | 94.6% reachable, 76% hit on US exchange | Ticker-native, structured, dedupeable | $0, 60 req/min | **Primary** |
+| **Finnhub free** | 94.8% reachable, 76% hit on US exchange | Ticker-native, structured, dedupeable | $0, 60 req/min | **Primary** |
 | **Google News RSS** | ~90% across every segment | Name-matched, headline+URL only, no summary, **links cannot be opened** | $0, no formal limit | **Retired** — see §1 |
 | **Marketaux free** | 75% US exchange, 50% OTC, 0% no-US-line | Ticker-native, structured, real publisher links **and images** | $0 at 100 req/day; $29–$199/mo paid | **Fallback** |
 | Finnhub paid | Adds non-US symbols directly | Same, ticker-native everywhere | Tiered, roughly $12–$100/mo for the relevant tiers; confirm at purchase | See §6 |
@@ -189,7 +189,7 @@ NEWS_PROVIDER_ORDER=finnhub,marketaux
 
 Per company, first provider that can serve it wins:
 
-1. **Finnhub** if the company has any US listing — 94.6% of the catalogue.
+1. **Finnhub** if the company has any US listing — 94.8% of the catalogue.
    Ticker-native, so attribution is certain.
 2. **Marketaux** otherwise, queried by **exchange-qualified** symbol — `BBY.L`,
    never bare `BBY`, because a bare symbol silently returns the wrong company
@@ -289,7 +289,7 @@ off, and deduplication makes the overlap free.
 > reasoning below is kept because it is why we are *not* paying for coverage.
 
 **It would not buy much more coverage.** Listing resolution already reaches
-94.6% of the catalogue with a free ticker-native provider. A paid global feed
+94.8% of the catalogue with a free ticker-native provider. A paid global feed
 would add the 29 companies with no US line and improve the 182 OTC-only ones —
 roughly 2–18% of the list depending on how strictly you count.
 
@@ -328,14 +328,14 @@ structurally cannot serve.
 
 | Segment | Companies | Zero articles |
 | --- | ---: | ---: |
-| US exchange listing | 1,252 | 22.0% — mostly genuinely quiet |
-| **US OTC line only** | **182** | **84.6%** |
-| **Unresolved** | **52** | 98.1% |
+| US exchange listing | 1,253 | 22.0% — mostly genuinely quiet |
+| **US OTC line only** | **183** | **84.6%** |
+| **Unresolved** | **50** | 98.0% |
 | **No US line at all** | **29** | 100% |
 
-*(Regenerate with `npm run metrics` and `npm run export:gaps`. The zero-article
-rates are higher than an earlier draft of this table reported, because the
-retirement of Google News RSS removed ~1,400 unopenable links — see §1.)*
+*(Regenerate with `npm run metrics` and `npm run export:gaps`. These rates
+reflect the corpus after Google News RSS was retired, which removed ~1,400
+unopenable links — see §1.)*
 
 Two things follow.
 
@@ -380,10 +380,9 @@ The recommendation stays provisional until that runs.
 Stated plainly, because pretending otherwise would be the wrong kind of
 write-up:
 
-- **52 companies (3.4%) did not resolve.** An earlier draft called these
-  "45 delisted, which is correct"; checking them individually showed that was
-  wrong. Most are foreign secondary listings our identifier sources do not
-  index — 16 London `0XXX` lines (Orkla, Safran, Vinci, Barrick Gold), 13
+- **50 companies (3.3%) did not resolve** — meaning the ticker matched no
+  identifier in our sources, not that the company is delisted. Most are foreign
+  secondary listings our identifier sources do not index — 16 London `0XXX` lines (Orkla, Safran, Vinci, Barrick Gold), 13
   Frankfurt `.F` lines (Airbus, Marks & Spencer) — and 7 are duplicate rows for
   companies already covered under another ticker. The full breakdown is in
   `data/coverage-gaps.csv` (`npm run export:gaps`). They are reported as

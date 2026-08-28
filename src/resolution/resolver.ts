@@ -5,7 +5,7 @@ import {
   isUsExchCode,
   symbolFormatFor,
 } from "../catalogue/exchanges.js";
-import { NAME_MATCH_THRESHOLD, nameSimilarity, normalizeName, sharedTokenCount } from "../catalogue/names.js";
+import { NAME_MATCH_THRESHOLD, nameSimilarity, normalizeName, sharedTokenCount, tickerVariants } from "../catalogue/names.js";
 import { mapWithConcurrency } from "../util/async.js";
 import { logger } from "../util/logger.js";
 import {
@@ -166,7 +166,12 @@ async function resolvePrimaries(
       continue;
     }
 
-    const candidates = directory.bySymbol.get(company.ticker.toUpperCase()) ?? [];
+    // Try equivalent ticker spellings: some supplier rows use `_` where the
+    // rest of the catalogue uses `.` as the venue separator, and the
+    // underscore form matches nothing in any identifier source.
+    const candidates = tickerVariants(company.ticker).flatMap(
+      (symbol) => directory.bySymbol.get(symbol) ?? [],
+    );
     const scored = candidates
       .map((row) => ({ row, score: nameSimilarity(company.companyName, row.description ?? "") }))
       .filter((entry) => entry.score >= NAME_MATCH_THRESHOLD)
@@ -273,7 +278,12 @@ async function resolvePrimaries(
   for (const company of companies) {
     const current = outcome.get(company.id);
     if (current?.record) continue;
-    const candidates = directory.bySymbol.get(company.ticker.toUpperCase()) ?? [];
+    // Try equivalent ticker spellings: some supplier rows use `_` where the
+    // rest of the catalogue uses `.` as the venue separator, and the
+    // underscore form matches nothing in any identifier source.
+    const candidates = tickerVariants(company.ticker).flatMap(
+      (symbol) => directory.bySymbol.get(symbol) ?? [],
+    );
     const scored = candidates
       .map((row) => ({ row, score: nameSimilarity(company.companyName, row.description ?? "") }))
       .filter((entry) => entry.score >= NAME_MATCH_THRESHOLD)

@@ -284,8 +284,8 @@ catalogue_ticker,company_name,catalogue_country,catalogue_exchange_hint,catalogu
 0M2O,Orion Oyj,GB,LSE,false,resolved,resolved without an exchange filter to LO,LO,,0M2O,unknown,ordinary,,,BBG000W06Y57,BBG001SK5KV8,,true,false,0.8,openfigi
 0M2O,Orion Oyj,GB,LSE,false,resolved,resolved without an exchange filter to LO,US,OOTC,ORINF,us,ordinary,US,USD,BBG000BZR2W0,BBG001SK5KV8,,false,true,0.8,finnhub_directory
 0M2O,Orion Oyj,GB,LSE,false,resolved,resolved without an exchange filter to LO,US,OOTC,ORINY,us,adr,US,USD,BBG000WB08P4,BBG001T7T2F8,,false,true,0.75,finnhub_directory
-0M2O,Orion Oyj,GB,LSE,false,resolved,resolved without an exchange filter to LO,US,XNYS,ORN,us,ordinary,US,USD,BBG000BG8N39,BBG001S9Z927,,false,true,0.75,finnhub_directory
 0M2O,Orion Oyj,GB,LSE,false,resolved,resolved without an exchange filter to LO,US,XNYS,OEC,us,ordinary,US,USD,BBG006MC4LP7,BBG006MC4LQ6,,false,true,0.75,finnhub_directory
+0M2O,Orion Oyj,GB,LSE,false,resolved,resolved without an exchange filter to LO,US,XNYS,ORN,us,ordinary,US,USD,BBG000BG8N39,BBG001S9Z927,,false,true,0.75,finnhub_directory
 0M30,"Yum China Holdings, Inc.",GB,LSE,false,resolved,,LN,XLON,0M30,numeric_suffixed,ordinary,GB,GBP,BBG00JVRN3F6,BBG00B8N0HH0,,true,false,0.95,openfigi
 0M30,"Yum China Holdings, Inc.",GB,LSE,false,resolved,,US,XNYS,YUMC,us,ordinary,US,USD,BBG00B8N0HG1,BBG00B8N0HH0,,false,true,0.9,finnhub_directory
 0M3Q,Zoetis Inc.,GB,LSE,false,resolved,,LN,XLON,0M3Q,numeric_suffixed,ordinary,GB,GBP,BBG00JRYD7W9,BBG0039320P7,,true,false,0.95,openfigi
@@ -490,12 +490,12 @@ catalogue_ticker,company_name,catalogue_country,catalogue_exchange_hint,catalogu
 0YP5,Adyen NV,GB,LSE,false,resolved,resolved without an exchange filter to LO,US,OOTC,ADYEY,us,adr,US,USD,BBG00QB3LQG5,BBG00QB3LR64,,false,true,0.75,finnhub_directory
 0YSU,Epiroc AB Class A,GB,LSE,false,resolved,,LN,XLON,0YSU,numeric_suffixed,ordinary,GB,GBP,BBG00LK81QN9,BBG00JWT5W76,,true,false,0.95,openfigi
 0YSU,Epiroc AB Class A,GB,LSE,false,resolved,,US,OOTC,EPIAF,us,ordinary,US,USD,BBG00LMY0LP0,BBG00JWT5W76,,false,true,0.9,finnhub_directory
-0YSU,Epiroc AB Class A,GB,LSE,false,resolved,,US,OOTC,EPOAY,us,adr,US,USD,BBG01TCJQX81,BBG01TCJQYC4,,false,true,0.75,finnhub_directory
 0YSU,Epiroc AB Class A,GB,LSE,false,resolved,,US,OOTC,EPIPF,us,ordinary,US,USD,BBG00N20FM83,BBG00KRMTPX4,,false,true,0.75,finnhub_directory
+0YSU,Epiroc AB Class A,GB,LSE,false,resolved,,US,OOTC,EPOAY,us,adr,US,USD,BBG01TCJQX81,BBG01TCJQYC4,,false,true,0.75,finnhub_directory
 0YSV,Epiroc AB Class B,GB,LSE,false,resolved,,LN,XLON,0YSV,numeric_suffixed,ordinary,GB,GBP,BBG00LN7HYR0,BBG00KRMTPX4,,true,false,0.95,openfigi
 0YSV,Epiroc AB Class B,GB,LSE,false,resolved,,US,OOTC,EPIPF,us,ordinary,US,USD,BBG00N20FM83,BBG00KRMTPX4,,false,true,0.9,finnhub_directory
-0YSV,Epiroc AB Class B,GB,LSE,false,resolved,,US,OOTC,EPOAY,us,adr,US,USD,BBG01TCJQX81,BBG01TCJQYC4,,false,true,0.75,finnhub_directory
 0YSV,Epiroc AB Class B,GB,LSE,false,resolved,,US,OOTC,EPIAF,us,ordinary,US,USD,BBG00LMY0LP0,BBG00JWT5W76,,false,true,0.75,finnhub_directory
+0YSV,Epiroc AB Class B,GB,LSE,false,resolved,,US,OOTC,EPOAY,us,adr,US,USD,BBG01TCJQX81,BBG01TCJQYC4,,false,true,0.75,finnhub_directory
 1299,AIA Group Ltd,HK,SEHK,false,resolved,,HK,XHKG,1299,numeric_suffixed,ordinary,HK,HKD,BBG0016XR1Q8,BBG001T6WWK4,,true,false,0.95,openfigi
 1299,AIA Group Ltd,HK,SEHK,false,resolved,,US,OOTC,AAIGF,us,ordinary,US,USD,BBG001BDZ212,BBG001T6WWK4,,false,true,0.9,finnhub_directory
 1585,Yadea Group Holdings Ltd,HK,SEHK,false,resolved,,HK,XHKG,1585,numeric_suffixed,ordinary,HK,HKD,BBG00CW0KK19,BBG00CW0KK00,,true,false,0.95,openfigi
@@ -567,8 +567,8 @@ ACLN,Accelleron Industries AG,CH,SWX,false,resolved,,SW,XSWX,ACLN,suffixed,ordin
 ACLN,Accelleron Industries AG,CH,SWX,false,resolved,,US,OOTC,ACLIF,us,ordinary,US,USD,BBG019Z20WD1,BBG018XV6BC2,,false,true,0.9,finnhub_directory
 ACLN,Accelleron Industries AG,CH,SWX,false,resolved,,US,OOTC,ACLLY,us,adr,US,USD,BBG019PK8Q74,BBG019PK8R45,,false,true,0.75,finnhub_directory
 ACLNE,Accelleron Industries AG,CH,SWX,false,resolved,"likely renamed: catalogue says ""Accelleron Industries AG"", venue says ""ACCELLERON N 2 LINIE""",SW,XSWX,ACLNE,suffixed,ordinary,CH,CHF,BBG022G35N76,BBG022G35NQ5,,true,false,0.6,openfigi
-ACLNE,Accelleron Industries AG,CH,SWX,false,resolved,"likely renamed: catalogue says ""Accelleron Industries AG"", venue says ""ACCELLERON N 2 LINIE""",US,OOTC,ACLIF,us,ordinary,US,USD,BBG019Z20WD1,BBG018XV6BC2,,false,true,0.6,finnhub_directory
 ACLNE,Accelleron Industries AG,CH,SWX,false,resolved,"likely renamed: catalogue says ""Accelleron Industries AG"", venue says ""ACCELLERON N 2 LINIE""",US,OOTC,ACLLY,us,adr,US,USD,BBG019PK8Q74,BBG019PK8R45,,false,true,0.6,finnhub_directory
+ACLNE,Accelleron Industries AG,CH,SWX,false,resolved,"likely renamed: catalogue says ""Accelleron Industries AG"", venue says ""ACCELLERON N 2 LINIE""",US,OOTC,ACLIF,us,ordinary,US,USD,BBG019Z20WD1,BBG018XV6BC2,,false,true,0.6,finnhub_directory
 ACM,Aecom Technology Corporation,US,NYSE,true,resolved,"likely renamed: catalogue says ""Aecom Technology Corporation"", venue says ""AECOM""",US,XNYS,ACM,us,ordinary,US,USD,BBG000F61RJ8,BBG001SKTTF1,,true,true,0.6,finnhub_directory
 ACMR,Acm Research Inc,US,NASDAQGM,true,resolved,matched US directory as ACMR,US,XNAS,ACMR,us,ordinary,US,USD,BBG00HPSG933,BBG00HPSG942,,true,true,0.95,finnhub_directory
 ACN,Accenture plc,IE,NYSE,true,resolved,matched US directory as ACN,US,XNYS,ACN,us,ordinary,US,USD,BBG000D9D830,BBG001SCXK90,,true,true,0.95,finnhub_directory
@@ -679,8 +679,8 @@ AUPH,Aurinia Pharmaceuticals Inc,CA,NASDAQGM,true,resolved,matched US directory 
 AUTO,Auto Trader Group Plc,GB,LSE,false,resolved,,LN,XLON,AUTO,suffixed,ordinary,GB,GBP,BBG0086LKMG1,BBG0086LKMK6,,true,false,0.95,openfigi
 AUTO,Auto Trader Group Plc,GB,LSE,false,resolved,,US,OOTC,ATDRF,us,ordinary,US,USD,BBG00BKZXTV1,BBG0086LKMK6,,false,true,0.9,finnhub_directory
 AV.,Aviva PLC,GB,LSE,false,resolved,resolved by name search to 0AV=1 on LN,LN,XLON,0AV=1,numeric_suffixed,other,GB,GBP,BBG0099W7XD6,,,true,false,0.7,openfigi
-AV.,Aviva PLC,GB,LSE,false,resolved,resolved by name search to 0AV=1 on LN,US,OOTC,AIVAF,us,ordinary,US,USD,BBG000DDCHT4,BBG001S5RM52,,false,true,0.7,finnhub_directory
 AV.,Aviva PLC,GB,LSE,false,resolved,resolved by name search to 0AV=1 on LN,US,OOTC,AVVIY,us,adr,US,USD,BBG000KB0YY0,BBG001T5D6H8,,false,true,0.7,finnhub_directory
+AV.,Aviva PLC,GB,LSE,false,resolved,resolved by name search to 0AV=1 on LN,US,OOTC,AIVAF,us,ordinary,US,USD,BBG000DDCHT4,BBG001S5RM52,,false,true,0.7,finnhub_directory
 AVAH,Aveanna Healthcare Holdings Inc,US,NASDAQGS,true,resolved,matched US directory as AVAH,US,XNAS,AVAH,us,ordinary,US,USD,BBG00G6D6H96,BBG00G6D6HB3,,true,true,0.95,finnhub_directory
 AVB,AvalonBay Communities Inc,US,NYSE,true,unresolved,resolved without an exchange filter to null,,,,,,,,,,,,,,
 AVGO,Broadcom Inc,US,NASDAQGS,true,resolved,matched US directory as AVGO,US,XNAS,AVGO,us,ordinary,US,USD,BBG00KHY5S69,BBG00KHY5SY8,,true,true,0.95,finnhub_directory
@@ -704,8 +704,8 @@ B,Barrick Mining Corp,US,SWX,true,resolved,,SW,XSWX,B,suffixed,ordinary,CH,CHF,B
 B,Barrick Mining Corp,US,SWX,true,resolved,,US,XNYS,B,us,ordinary,US,USD,BBG000BB07P9,BBG001S5N9P3,,false,true,0.9,finnhub_directory
 BA,Boeing Co,US,NYSE,true,resolved,matched US directory as BA,US,XNYS,BA,us,ordinary,US,USD,BBG000BCSST7,BBG001S5P0V3,,true,true,0.95,finnhub_directory
 BA.,BAE Systems PLC,GB,LSE,false,resolved,resolved by name search to BA/ on LN,LN,XLON,BA/,suffixed,ordinary,GB,GBP,BBG000BD5TW4,BBG001S615R1,,true,false,0.7,openfigi
-BA.,BAE Systems PLC,GB,LSE,false,resolved,resolved by name search to BA/ on LN,US,OOTC,BAESF,us,ordinary,US,USD,BBG000C4J989,BBG001S615R1,,false,true,0.7,finnhub_directory
 BA.,BAE Systems PLC,GB,LSE,false,resolved,resolved by name search to BA/ on LN,US,OOTC,BAESY,us,adr,US,USD,BBG000C4JN42,BBG001SF9272,,false,true,0.7,finnhub_directory
+BA.,BAE Systems PLC,GB,LSE,false,resolved,resolved by name search to BA/ on LN,US,OOTC,BAESF,us,ordinary,US,USD,BBG000C4J989,BBG001S615R1,,false,true,0.7,finnhub_directory
 BAB,Babcock International Group PLC,US,LSE,true,resolved,,LN,XLON,BAB,suffixed,ordinary,GB,GBP,BBG000BQNKS9,BBG001S6L287,,true,false,0.95,openfigi
 BAB,Babcock International Group PLC,US,LSE,true,resolved,,US,OOTC,BCKIF,us,ordinary,US,USD,BBG000D64LZ2,BBG001S6L287,,false,true,0.9,finnhub_directory
 BABA,Alibaba Group Holdings Ltd ADR,US,NYSE,true,resolved,"likely renamed: catalogue says ""Alibaba Group Holdings Ltd ADR"", venue says ""ALIBABA GROUP HOLDING-SP ADR""",US,XNYS,BABA,us,adr,US,USD,BBG006G2JVL2,BBG006G2JWB1,,true,true,0.6,finnhub_directory
@@ -835,8 +835,8 @@ CHD,Church & Dwight Company Inc,US,NYSE,true,resolved,matched US directory as CH
 CHDR.Y,Christian Dior SE ADR,US,OTCPK,true,resolved,resolved by name search to CHDRY on US,US,XNYS,CHDRY,us,adr,US,USD,BBG000FHS8M3,BBG001SSXGC0,,true,true,0.7,finnhub_directory
 CHDR.Y,Christian Dior SE ADR,US,OTCPK,true,resolved,resolved by name search to CHDRY on US,US,OOTC,CHDRF,us,ordinary,US,USD,BBG000BSQFQ5,BBG001S705J9,,false,true,0.7,finnhub_directory
 CHDR_Y,Christian Dior SE ADR,,,false,resolved,resolved by name search to CHDRYUSD on XU,XU,,CHDRYUSD,unknown,adr,,,BBG0120BWL07,BBG001SSXGC0,,true,false,0.7,openfigi
-CHDR_Y,Christian Dior SE ADR,,,false,resolved,resolved by name search to CHDRYUSD on XU,US,OOTC,CHDRY,us,adr,US,USD,BBG000FHS8M3,BBG001SSXGC0,,false,true,0.7,finnhub_directory
 CHDR_Y,Christian Dior SE ADR,,,false,resolved,resolved by name search to CHDRYUSD on XU,US,OOTC,CHDRF,us,ordinary,US,USD,BBG000BSQFQ5,BBG001S705J9,,false,true,0.7,finnhub_directory
+CHDR_Y,Christian Dior SE ADR,,,false,resolved,resolved by name search to CHDRYUSD on XU,US,OOTC,CHDRY,us,adr,US,USD,BBG000FHS8M3,BBG001SSXGC0,,false,true,0.7,finnhub_directory
 CHE,Chemed Corp,US,NYSE,true,resolved,matched US directory as CHE,US,XNYS,CHE,us,ordinary,US,USD,BBG000C19QW1,BBG001S679X0,,true,true,0.95,finnhub_directory
 CHEF,The Chefs Warehouse Inc,US,NASDAQGS,true,resolved,matched US directory as CHEF,US,XNAS,CHEF,us,ordinary,US,USD,BBG001MFW6D6,BBG001V11JN2,,true,true,0.95,finnhub_directory
 CHKP,Check Point Software Technologies Ltd,US,NASDAQGS,true,resolved,matched US directory as CHKP,US,XNAS,CHKP,us,ordinary,US,USD,BBG000K82ZT8,BBG001SB85K0,,true,true,0.95,finnhub_directory
@@ -889,8 +889,8 @@ CPAY,Corpay Inc,US,NYSE,true,resolved,matched US directory as CPAY,US,XNYS,CPAY,
 CPCA.F,Cathay Pacific Airways Ltd,US,OTCPK,false,resolved,resolved by name search to CPCAF on US,US,XNYS,CPCAF,us,ordinary,US,USD,BBG000BXSVX9,BBG001S6HNM0,,true,true,0.7,finnhub_directory
 CPG,Compass Group PLC,GB,LSE,false,resolved,,LN,XLON,CPG,suffixed,ordinary,GB,GBP,BBG000FNNYW7,BBG001SD8R91,,true,false,0.95,openfigi
 CPG,Compass Group PLC,GB,LSE,false,resolved,,US,OOTC,CMPGF,us,ordinary,US,USD,BBG000GBTYM7,BBG001SD8R91,,false,true,0.9,finnhub_directory
-CPG,Compass Group PLC,GB,LSE,false,resolved,,US,OOTC,CMPGY,us,adr,US,USD,BBG000BX9406,BBG001SCW2F4,,false,true,0.75,finnhub_directory
 CPG,Compass Group PLC,GB,LSE,false,resolved,,US,XNYS,COMP,us,ordinary,US,USD,BBG00J5SXTH3,BBG00J5SXTJ1,,false,true,0.75,finnhub_directory
+CPG,Compass Group PLC,GB,LSE,false,resolved,,US,OOTC,CMPGY,us,adr,US,USD,BBG000BX9406,BBG001SCW2F4,,false,true,0.75,finnhub_directory
 CPRT,Copart Inc,US,NASDAQGS,true,resolved,matched US directory as CPRT,US,XNAS,CPRT,us,ordinary,US,USD,BBG000BM9RH1,BBG001S7MTB1,,true,true,0.95,finnhub_directory
 CPRX,Catalyst Pharmaceuticals Inc,US,NASDAQCM,true,unresolved,no identifier matched this ticker and name,,,,,,,,,,,,,,
 CPT,Camden Property Trust,US,NYSE,true,resolved,matched US directory as CPT,US,XNYS,CPT,us,other,US,USD,BBG000BB0V03,BBG001S5Q6V9,,true,true,0.95,finnhub_directory
@@ -1263,10 +1263,10 @@ IESC,IES Holdings Inc,US,NASDAQGM,true,resolved,matched US directory as IESC,US,
 IEX,IDEX Corporation,US,NYSE,true,resolved,matched US directory as IEX,US,XNYS,IEX,us,ordinary,US,USD,BBG000C1HN22,BBG001S67N14,,true,true,0.95,finnhub_directory
 IFC,Intact Financial Corporation,CA,TSX,false,resolved,,CN,XTSE,IFC,suffixed,ordinary,CA,CAD,BBG000QDQ4F9,BBG001SMH2T4,,true,false,0.95,openfigi
 IFC,Intact Financial Corporation,CA,TSX,false,resolved,,US,OOTC,IFCZF,us,ordinary,US,USD,BBG000Q9QBV4,BBG001SMH2T4,,false,true,0.9,finnhub_directory
-IFC,Intact Financial Corporation,CA,TSX,false,resolved,,US,OOTC,INTAF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
-IFC,Intact Financial Corporation,CA,TSX,false,resolved,,US,OOTC,IFTPF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
-IFC,Intact Financial Corporation,CA,TSX,false,resolved,,US,OOTC,INFFF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 IFC,Intact Financial Corporation,CA,TSX,false,resolved,,US,OOTC,ITFCY,us,adr,US,USD,BBG01VV0LY70,BBG01VV0LZ68,,false,true,0.75,finnhub_directory
+IFC,Intact Financial Corporation,CA,TSX,false,resolved,,US,OOTC,INTAF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
+IFC,Intact Financial Corporation,CA,TSX,false,resolved,,US,OOTC,INFFF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
+IFC,Intact Financial Corporation,CA,TSX,false,resolved,,US,OOTC,IFTPF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 IFCN,Inficon Holding,CH,SWX,false,resolved,,SW,XSWX,IFCN,suffixed,ordinary,CH,CHF,BBG000CMKZ52,BBG001S8GBM3,,true,false,0.95,openfigi
 IFCN,Inficon Holding,CH,SWX,false,resolved,,US,OOTC,IFCNF,us,ordinary,US,USD,BBG000BDZXM3,BBG001S8GBM3,,false,true,0.9,finnhub_directory
 IFF,International Flavors & Fragrances Inc,US,NYSE,true,resolved,matched US directory as IFF,US,XNYS,IFF,us,ordinary,US,USD,BBG000BLSL58,BBG001S5S5F7,,true,true,0.95,finnhub_directory
@@ -1362,8 +1362,8 @@ LCSH.F,Lancashire Holdings Ltd,US,OTCPK,false,resolved,resolved by name search t
 LCSH.F,Lancashire Holdings Ltd,US,OTCPK,false,resolved,resolved by name search to LCSHF on US,US,OOTC,LCSHY,us,adr,US,USD,BBG00RTY2DC0,BBG00RTY2F35,,false,true,0.7,finnhub_directory
 LDOS,Leidos Holdings Inc,US,NYSE,true,resolved,matched US directory as LDOS,US,XNYS,LDOS,us,ordinary,US,USD,BBG000C23PB0,BBG001SKW6M9,,true,true,0.95,finnhub_directory
 LEN,Lennar Corporation,US,NYSE,true,resolved,matched US directory as LEN,US,XNYS,LEN,us,ordinary,US,USD,BBG000BN5HF7,BBG001S5SRK3,,true,true,0.95,finnhub_directory
-LEN,Lennar Corporation,US,NYSE,true,resolved,matched US directory as LEN,US,XNYS,LEN.WD,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 LEN,Lennar Corporation,US,NYSE,true,resolved,matched US directory as LEN,US,XNYS,LEN.B,us,ordinary,US,USD,BBG000KKVD81,BBG001SKR1T9,,false,true,0.75,finnhub_directory
+LEN,Lennar Corporation,US,NYSE,true,resolved,matched US directory as LEN,US,XNYS,LEN.WD,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 LEU,Centrus Energy,US,NYSE,true,resolved,matched US directory as LEU,US,XNYS,LEU,us,ordinary,US,USD,BBG000BQ2JM1,BBG001S9F7B3,,true,true,0.95,finnhub_directory
 LEVI,Levi Strauss & Co Class A,US,NYSE,true,resolved,matched US directory as LEVI,US,XNYS,LEVI,us,ordinary,US,USD,BBG000BQDF10,BBG001S9NVN8,,true,true,0.95,finnhub_directory
 LFST,Lifestance Health Group Inc,US,NASDAQGS,true,resolved,matched US directory as LFST,US,XNAS,LFST,us,ordinary,US,USD,BBG01138DGZ7,BBG01138DHT2,,true,true,0.95,finnhub_directory
@@ -1436,9 +1436,9 @@ MELI,MercadoLibre Inc,UY,NASDAQGS,true,resolved,matched US directory as MELI,US,
 MET,MetLife Inc,US,NYSE,true,resolved,matched US directory as MET,US,XNYS,MET,us,ordinary,US,USD,BBG000BB6KF5,BBG001S5T3R8,,true,true,0.95,finnhub_directory
 META,Meta Platforms Inc,US,,true,resolved,matched US directory as META,US,XNAS,META,us,ordinary,US,USD,BBG000MM2P62,BBG001SQCQC5,,true,true,0.95,finnhub_directory
 MFC,Manulife Financial Corp,CA,NYSE,true,resolved,matched US directory as MFC,US,XNYS,MFC,us,ordinary,US,USD,BBG000C0Q0K4,BBG001S76KD6,,true,true,0.95,finnhub_directory
+MFC,Manulife Financial Corp,CA,NYSE,true,resolved,matched US directory as MFC,US,OOTC,MNUFF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 MFC,Manulife Financial Corp,CA,NYSE,true,resolved,matched US directory as MFC,US,OOTC,MNUPF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 MFC,Manulife Financial Corp,CA,NYSE,true,resolved,matched US directory as MFC,US,OOTC,MNLCF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
-MFC,Manulife Financial Corp,CA,NYSE,true,resolved,matched US directory as MFC,US,OOTC,MNUFF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 MGM,MGM Resorts International,US,NYSE,true,resolved,matched US directory as MGM,US,XNYS,MGM,us,ordinary,US,USD,BBG000C2BXK4,BBG001S6BYT5,,true,true,0.95,finnhub_directory
 MGNI,Magnite Inc,US,NASDAQGS,true,resolved,matched US directory as MGNI,US,XNAS,MGNI,us,ordinary,US,USD,BBG000PBDRC0,BBG001T5LB97,,true,true,0.95,finnhub_directory
 MGNS,Morgan Sindall Group PLC,GB,LSE,false,resolved,,LN,XLON,MGNS,suffixed,ordinary,GB,GBP,BBG000CGJSS8,BBG001SGQLB4,,true,false,0.95,openfigi
@@ -1477,8 +1477,8 @@ MOVE,Medacta Group SA,US,SWX,true,resolved,,US,OOTC,MEDGF,us,ordinary,US,USD,BBG
 MPC,Marathon Petroleum Corp,US,NYSE,true,resolved,matched US directory as MPC,US,XNYS,MPC,us,ordinary,US,USD,BBG001DCCGR8,BBG001S169P1,,true,true,0.95,finnhub_directory
 MPWR,Monolithic Power Systems Inc,US,NASDAQGS,true,resolved,matched US directory as MPWR,US,XNAS,MPWR,us,ordinary,US,USD,BBG000C30L48,BBG001SDRGP6,,true,true,0.95,finnhub_directory
 MRK,Merck & Company Inc,US,NYSE,true,resolved,matched US directory as MRK,US,XNYS,MRK,us,ordinary,US,USD,BBG000BPD168,BBG001S5TC52,,true,true,0.95,finnhub_directory
-MRK,Merck & Company Inc,US,NYSE,true,resolved,matched US directory as MRK,US,OOTC,MKKGY,us,adr,US,USD,BBG00H8V3ZJ4,BBG00H8V4073,,false,true,0.75,finnhub_directory
 MRK,Merck & Company Inc,US,NYSE,true,resolved,matched US directory as MRK,US,OOTC,MKGAF,us,ordinary,US,USD,BBG000P3VNQ2,BBG001S79GY9,,false,true,0.75,finnhub_directory
+MRK,Merck & Company Inc,US,NYSE,true,resolved,matched US directory as MRK,US,OOTC,MKKGY,us,adr,US,USD,BBG00H8V3ZJ4,BBG00H8V4073,,false,true,0.75,finnhub_directory
 MRNA,Moderna Inc,US,NASDAQGS,true,resolved,matched US directory as MRNA,US,XNAS,MRNA,us,ordinary,US,USD,BBG003PHHZT1,BBG003PHHZV8,,true,true,0.95,finnhub_directory
 MRSH,Marsh & McLennan Companies Inc,US,NYSE,true,resolved,matched US directory as MRSH,US,XNYS,MRSH,us,ordinary,US,USD,BBG000BP4MH0,BBG001S5T7M4,,true,true,0.95,finnhub_directory
 MRVL,Marvell Technology Inc,US,,true,resolved,matched US directory as MRVL,US,XNAS,MRVL,us,ordinary,US,USD,BBG00ZXBJ153,BBG00ZXBJ162,,true,true,0.95,finnhub_directory
@@ -1497,7 +1497,8 @@ MTO,Mitie Group PLC,GB,LSE,false,resolved,,US,OOTC,MITFF,us,ordinary,US,USD,BBG0
 MTSI,MACOM Technology Solutions Holdings Inc,US,NASDAQGS,true,resolved,matched US directory as MTSI,US,XNAS,MTSI,us,ordinary,US,USD,BBG000LJQ3H1,BBG001T4BB37,,true,true,0.95,finnhub_directory
 MTZ,MasTec Inc,US,NYSE,true,resolved,matched US directory as MTZ,US,XNYS,MTZ,us,ordinary,US,USD,BBG000DYXD23,BBG001S95HF8,,true,true,0.95,finnhub_directory
 MU,Micron Technology Inc,US,,true,resolved,matched US directory as MU,US,XNAS,MU,us,ordinary,US,USD,BBG000C5Z1S3,BBG001S6P675,,true,true,0.95,finnhub_directory
-MUV2,Munich Reinsurance,DE,XTRA,false,unresolved,"rejected ""MUENCHENER RUECKVER AG-REG"" on GY: name does not match",,,,,,,,,,,,,,
+MUV2,Munich Reinsurance,DE,XTRA,false,resolved,,GY,XETR,MUV2,suffixed,ordinary,DE,EUR,BBG000BD9FD1,BBG001S6LNJ9,,true,false,0.95,openfigi
+MUV2,Munich Reinsurance,DE,XTRA,false,resolved,,US,OOTC,MURGF,us,ordinary,US,USD,BBG000BW32R9,BBG001S6LNJ9,,false,true,0.9,finnhub_directory
 MYRG,MYR Group Inc,US,NASDAQGS,true,resolved,"likely renamed: catalogue says ""MYR Group Inc"", venue says ""MYR GROUP INC/DELAWARE""",US,XNYS,MYRG,us,ordinary,US,USD,BBG000BC7VW9,BBG001S8GYM3,,true,true,0.6,finnhub_directory
 NBIS,Nebius Group NV,US,NASDAQGS,true,resolved,matched US directory as NBIS,US,XNAS,NBIS,us,ordinary,US,USD,BBG001NVJ6W4,BBG001TBY593,,true,true,0.95,finnhub_directory
 NBIX,Neurocrine Biosciences Inc,US,NASDAQGS,true,resolved,matched US directory as NBIX,US,XNAS,NBIX,us,ordinary,US,USD,BBG000GJS7C1,BBG001S8W4X9,,true,true,0.95,finnhub_directory
@@ -1662,8 +1663,8 @@ PPL,PPL Corporation,US,NYSE,true,resolved,matched US directory as PPL,US,XNYS,PP
 PPRU.Y,Kering SA,US,OTCPK,true,resolved,resolved by name search to PPRUF on US,US,XNYS,PPRUF,us,ordinary,US,USD,BBG000BXDCS3,BBG001S698B4,,true,true,0.7,finnhub_directory
 PPRU.Y,Kering SA,US,OTCPK,true,resolved,resolved by name search to PPRUF on US,US,OOTC,PPRUY,us,adr,US,USD,BBG000MH8HP4,BBG001T32G92,,false,true,0.7,finnhub_directory
 PPRU_Y,Kering SA,,,false,resolved,resolved by name search to KERD=1 on SA,SA,,KERD=1,unknown,other,,,BBG005681TY2,,,true,false,0.7,openfigi
-PPRU_Y,Kering SA,,,false,resolved,resolved by name search to KERD=1 on SA,US,OOTC,PPRUY,us,adr,US,USD,BBG000MH8HP4,BBG001T32G92,,false,true,0.7,finnhub_directory
 PPRU_Y,Kering SA,,,false,resolved,resolved by name search to KERD=1 on SA,US,OOTC,PPRUF,us,ordinary,US,USD,BBG000BXDCS3,BBG001S698B4,,false,true,0.7,finnhub_directory
+PPRU_Y,Kering SA,,,false,resolved,resolved by name search to KERD=1 on SA,US,OOTC,PPRUY,us,adr,US,USD,BBG000MH8HP4,BBG001T32G92,,false,true,0.7,finnhub_directory
 PR,Permian Resources Corp,US,NYSE,true,resolved,matched US directory as PR,US,XNYS,PR,us,ordinary,US,USD,BBG00CNYBQ76,BBG00D61Y2G3,,true,true,0.95,finnhub_directory
 PRGS,Progress Software Corporation,US,NASDAQGS,true,resolved,matched US directory as PRGS,US,XNAS,PRGS,us,ordinary,US,USD,BBG000C4QP94,BBG001S6MCY5,,true,true,0.95,finnhub_directory
 PRI,Primerica Inc,US,NYSE,true,resolved,matched US directory as PRI,US,XNYS,PRI,us,ordinary,US,USD,BBG000T8ZF80,BBG001T5ZSQ6,,true,true,0.95,finnhub_directory
@@ -1798,9 +1799,9 @@ SKYW,SkyWest Inc,US,NASDAQGS,true,resolved,matched US directory as SKYW,US,XNAS,
 SLB,Slb NV,US,NYSE,true,resolved,matched US directory as SLB,US,XNYS,SLB,us,ordinary,US,USD,BBG000BT41Q8,BBG001S5W4C8,,true,true,0.95,finnhub_directory
 SLDE,Slide Insurance Holdings Inc,US,NASDAQGS,true,resolved,matched US directory as SLDE,US,XNAS,SLDE,us,ordinary,US,USD,BBG013PZCC16,BBG013PZCC52,,true,true,0.95,finnhub_directory
 SLF,Sun Life Financial Inc,US,NYSE,true,resolved,matched US directory as SLF,US,XNYS,SLF,us,ordinary,US,USD,BBG000LRMSB8,BBG001S7XWH6,,true,true,0.95,finnhub_directory
+SLF,Sun Life Financial Inc,US,NYSE,true,resolved,matched US directory as SLF,US,OOTC,SUNFF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 SLF,Sun Life Financial Inc,US,NYSE,true,resolved,matched US directory as SLF,US,OOTC,SLFIF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 SLF,Sun Life Financial Inc,US,NYSE,true,resolved,matched US directory as SLF,US,OOTC,SLFQF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
-SLF,Sun Life Financial Inc,US,NYSE,true,resolved,matched US directory as SLF,US,OOTC,SUNFF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
 SMCI,Super Micro Computer Inc,US,NASDAQGS,true,resolved,matched US directory as SMCI,US,XNAS,SMCI,us,ordinary,US,USD,BBG000MYZDJ3,BBG001SQGH95,,true,true,0.95,finnhub_directory
 SMSG.Y,Samsonite International SA ADR,US,OTCPK,true,unresolved,no identifier matched this ticker and name,,,,,,,,,,,,,,
 SMSO.F,Samsonite Group S.A.,US,OTCPK,false,resolved,resolved by name search to SMSOF on US,US,XNYS,SMSOF,us,ordinary,US,USD,BBG002YG7031,BBG001V1H038,,true,true,0.7,finnhub_directory
@@ -1968,7 +1969,7 @@ VWSY.F,Vestas Wind Systems A/S,US,OTCPK,false,resolved,resolved by name search t
 VZ,Verizon Communications Inc,US,NYSE,true,resolved,matched US directory as VZ,US,XNYS,VZ,us,ordinary,US,USD,BBG000HS77T5,BBG001S67QY1,,true,true,0.95,finnhub_directory
 VZN,VZ Holding AG,CH,SWX,false,resolved,,SW,XSWX,VZN,suffixed,ordinary,CH,CHF,BBG000CR3CG9,BBG001SM4MH7,,true,false,0.95,openfigi
 VZN,VZ Holding AG,CH,SWX,false,resolved,,US,OOTC,VZHGF,us,other,US,USD,,,,false,true,0.75,finnhub_directory
-WAB,Westinghouse Air Brake Technologies Corp,US,NYSE,true,unresolved,"rejected ""WABTEC CORP"" on US: name does not match",,,,,,,,,,,,,,
+WAB,Westinghouse Air Brake Technologies Corp,US,NYSE,true,resolved,matched US directory as WAB,US,XNYS,WAB,us,ordinary,US,USD,BBG000BDD940,BBG001S5XBT3,,true,true,0.95,finnhub_directory
 WAT,Waters Corporation,US,NYSE,true,resolved,matched US directory as WAT,US,XNYS,WAT,us,ordinary,US,USD,BBG000FQRVM3,BBG001S8MDG9,,true,true,0.95,finnhub_directory
 WAY,Waystar Holding Corp,US,NASDAQGS,true,resolved,matched US directory as WAY,US,XNAS,WAY,us,ordinary,US,USD,BBG01JRQSDB9,BBG01JRQSF60,,true,true,0.95,finnhub_directory
 WBD,Warner Bros Discovery Inc,US,NASDAQGS,true,resolved,matched US directory as WBD,US,XNAS,WBD,us,ordinary,US,USD,BBG011386VF4,BBG011386VG3,,true,true,0.95,finnhub_directory

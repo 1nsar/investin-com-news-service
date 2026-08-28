@@ -26,7 +26,7 @@ const BATCH = 200;
 interface Row { id: string; url: string }
 
 async function main(): Promise<void> {
-  const stats = { seen: 0, rewritten: 0, merged: 0, dead: 0, unresolved: 0 };
+  const stats = { seen: 0, rewritten: 0, merged: 0, dead: 0, unresolved: 0, writeFailed: 0 };
   // Keyset pagination. Without it, a row that resolves but cannot be written
   // (statement timeout, a constraint added later) stays at the head of an
   // `ORDER BY id LIMIT n` window and is re-fetched over the network on every
@@ -102,7 +102,7 @@ async function main(): Promise<void> {
       } catch (error) {
         await client.query("ROLLBACK").catch(() => undefined);
         logger.warn({ id: row.id, err: error }, "could not rewrite link");
-        stats.unresolved += 1;
+        stats.writeFailed += 1;
       } finally {
         client.release();
       }

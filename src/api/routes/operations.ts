@@ -4,6 +4,7 @@ import { z } from "zod";
 import { config } from "../../config/index.js";
 import { pool } from "../../db/pool.js";
 import { isIngestRunning, runIngestExclusive } from "../../ingest/runner.js";
+import { companiesForFetch } from "../../ingest/store.js";
 import { getProviders } from "../../providers/registry.js";
 import {
   getRun,
@@ -154,29 +155,49 @@ export async function operationsRoutes(app: FastifyInstance): Promise<void> {
       return reply.code(409).send({ error: "already_running", detail: "an ingest is already in progress" });
     }
 
-    // A run over zero companies used to be recorded as `succeeded`, so an
-    // integrator who typoed a ticker in their scheduler got 202s and green runs
-    // forever while nothing was ever fetched. Silence that looks like success
-    // is the exact failure mode the run reporting exists to prevent, so
-    // unknown tickers are rejected before a run is created.
-    if (parsed.data.tickers?.length) {
-      // Deliberately the SAME predicate the ingest uses to select companies
-      // (store.ts: `c.is_active AND c.ticker_raw = ANY($1)`) - exact match, no
-      // case folding. Validating more loosely than the run selects would accept
-      // a ticker here and then quietly fetch nothing, which is the bug this
-      // check exists to prevent.
-      const requested = parsed.data.tickers;
-      const { rows } = await pool.query<{ ticker_raw: string }>(
-        "SELECT ticker_raw FROM companies WHERE is_active AND ticker_raw = ANY($1::text[])",
-        [requested],
-      );
-      const known = new Set(rows.map((row) => row.ticker_raw));
-      const unknown = requested.filter((ticker) => !known.has(ticker));
-      if (unknown.length) {
+    // A run over zero companies is recorded as `succeeded`, so an integrator
+    // who typos a ticker - or asks for a tier the ticker is not in - would get
+    // 202s and green runs forever while nothing was ever fetched. Silence that
+    // looks like success is the exact failure mode the run reporting exists to
+    // prevent, so an empty selection is rejected before a run is created.
+    //
+    // The check runs `companiesForFetch` itself rather than reimplementing its
+    // WHERE clause. An earlier version duplicated the ticker predicate, which
+    // left `tier` unvalidated: `{"tickers":["MSFT"],"tier":"quiet"}` passed the
+    // check and then selected nothing.
+    if (parsed.data.tickers?.length || parsed.data.tier) {
+      const selected = await companiesForFetch(parsed.data);
+
+      if (parsed.data.tickers?.length) {
+        const known = new Set(selected.map((company) => company.ticker));
+        const unknown = parsed.data.tickers.filter((ticker) => !known.has(ticker));
+        if (unknown.length) {
+          // Distinguish "no such ticker" from "excluded by the tier filter",
+          // because the caller fixes them differently.
+          const { rows } = await pool.query<{ ticker_raw: string }>(
+            "SELECT ticker_raw FROM companies WHERE is_active AND ticker_raw = ANY($1::text[])",
+            [unknown],
+          );
+          const existing = new Set(rows.map((row) => row.ticker_raw));
+          const absent = unknown.filter((ticker) => !existing.has(ticker));
+          const filtered = unknown.filter((ticker) => existing.has(ticker));
+
+          return reply.code(400).send({
+            error: absent.length ? "unknown_tickers" : "no_companies_selected",
+            detail: [
+              absent.length ? `not in the catalogue: ${absent.join(", ")}` : "",
+              filtered.length
+                ? `excluded by tier "${parsed.data.tier}": ${filtered.join(", ")}`
+                : "",
+            ].filter(Boolean).join("; "),
+            ...(absent.length ? { unknown: absent } : {}),
+            ...(filtered.length ? { excludedByTier: filtered } : {}),
+          });
+        }
+      } else if (selected.length === 0) {
         return reply.code(400).send({
-          error: "unknown_tickers",
-          detail: `not in the catalogue: ${unknown.join(", ")}`,
-          unknown,
+          error: "no_companies_selected",
+          detail: `tier "${parsed.data.tier}" matches no companies right now`,
         });
       }
     }
