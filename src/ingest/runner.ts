@@ -4,6 +4,7 @@ import type { FetchableCompany, NewsProvider, ProviderOutcome } from "../provide
 import { mapWithConcurrency, withTimeout } from "../util/async.js";
 import { logger } from "../util/logger.js";
 import { canonicalize } from "./canonicalize.js";
+import { resolveWrappers } from "./resolveRedirect.js";
 import {
   companiesForFetch,
   loadFetchState,
@@ -170,8 +171,27 @@ async function ingestCompany(
     });
 
     if (result.kind === "ok") {
+      // Swap provider redirect wrappers for the publisher's own URL BEFORE
+      // canonicalising. Order matters: the dedupe key and the dead-host filter
+      // both key off the URL, and neither can see through a wrapper.
+      // Bounded by the same per-company timeout as the fetch: resolution is
+      // best-effort, and an unresolved wrapper is already a supported
+      // degradation, so a slow publisher must not stall the whole run.
+      const realUrls = await withTimeout(
+        resolveWrappers(
+          result.articles.map((article) => article.url ?? "").filter(Boolean),
+          3,
+          provider.limiter,
+        ),
+        config.INGEST_COMPANY_TIMEOUT_MS,
+        `resolve links for ${company.ticker}`,
+      ).catch(() => new Map<string, string>());
+
       const canonical = result.articles
-        .map((article) => canonicalize(article, provider.name))
+        .map((article) => {
+          const real = article.url ? realUrls.get(article.url) : undefined;
+          return canonicalize(real ? { ...article, url: real } : article, provider.name);
+        })
         .filter((article): article is NonNullable<typeof article> => article !== null);
 
       const stored = await storeArticles(

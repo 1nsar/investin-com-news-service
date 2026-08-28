@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import type { RawArticle } from "../providers/types.js";
+import { isDeadHost } from "./deadHosts.js";
 
 /** Article canonicalisation and the dedupe key.
  *
@@ -91,11 +92,36 @@ export interface CanonicalArticle {
  *  real publisher is appended to the RSS title as " - Reuters". */
 const GOOGLE_TITLE_SOURCE = /\s+-\s+([^-]{2,40})$/;
 
+/** Links that cannot be opened by a reader.
+ *
+ *  Google News RSS returns an interstitial under news.google.com whose article
+ *  token is an opaque Google identifier - it decodes to a protobuf containing
+ *  no publisher URL, the page returns an empty body to non-browser clients,
+ *  and browsers frequently refuse the redirect outright. There is no supported
+ *  way to recover the real article address.
+ *
+ *  Storing one is worse than storing nothing: the feed fills with headlines
+ *  that fail when clicked, and the article can never carry an image either. */
+const UNRESOLVABLE_HOSTS = /(^|\.)news\.google\.com$/i;
+
+export function isReadableArticleUrl(url: string): boolean {
+  try {
+    if (UNRESOLVABLE_HOSTS.test(new URL(url).hostname)) return false;
+  } catch {
+    return false;
+  }
+  // A host that refuses the connection for everyone is just as unreadable as
+  // an interstitial, it simply fails one step later - at the reader's click.
+  return !isDeadHost(url);
+}
+
 export function canonicalize(article: RawArticle, provider: string): CanonicalArticle | null {
   const url = (article.url ?? "").trim();
   const headline = (article.headline ?? "").trim();
   if (!url || !headline) return null;
   if (!/^https?:\/\//i.test(url)) return null;
+  // A headline the reader cannot open is not worth storing.
+  if (!isReadableArticleUrl(url)) return null;
 
   const publishedAt =
     article.publishedAt instanceof Date && !Number.isNaN(article.publishedAt.getTime())
@@ -117,6 +143,7 @@ export function canonicalize(article: RawArticle, provider: string): CanonicalAr
     }
   }
 
+  const imageUrl = article.imageUrl?.trim() || null;
   const urlCanonical = canonicalizeUrl(url);
   return {
     dedupeHash: dedupeHash(urlCanonical),
@@ -127,7 +154,9 @@ export function canonicalize(article: RawArticle, provider: string): CanonicalAr
     summary: article.summary?.trim() || null,
     source: source?.trim() || null,
     publishedAt,
-    imageUrl: article.imageUrl?.trim() || null,
+    // An image on a dead host renders as a broken box. Better no thumbnail
+    // than a broken one - the article itself is still worth showing.
+    imageUrl: isDeadHost(imageUrl) ? null : imageUrl,
     language: article.language ?? null,
   };
 }

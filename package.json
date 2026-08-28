@@ -24,7 +24,8 @@
     "ingest:market": "tsx scripts/run-market-news.ts",
     "metrics": "tsx scripts/report-metrics.ts",
     "export:openapi": "tsx scripts/export-openapi.ts",
-    "evaluate": "tsx scripts/evaluate-provider.ts"
+    "evaluate": "tsx scripts/evaluate-provider.ts",
+    "resolve:links": "tsx scripts/resolve-links.ts"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.1",

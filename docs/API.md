@@ -203,7 +203,7 @@ provider.
 
 ```json
 {
-  "counts": { "companies": 1515, "companies_resolved": 1497, "listings": 2673, "articles": 8214 },
+  "counts": { "companies": 1515, "companies_resolved": 1463, "listings": 1987, "articles": 4882 },
   "providers": [{ "name": "finnhub", "configured": true, "rateLimit": { "perMinute": 55, "available": 55, "pausedMs": 0 } }],
   "lastRun": {
     "id": 12, "status": "partial",
@@ -235,6 +235,18 @@ nothing errored at the run level. It is also a quality signal: those 156
 companies silently moved from ticker-native attribution to name matching.
 
 ### `POST /v1/fetch`
+
+An unknown ticker is rejected before a run is created:
+
+```bash
+curl -X POST localhost:8080/v1/fetch -H 'content-type: application/json' \
+  -d '{"tickers":["NOPE"]}'
+# 400 {"error":"unknown_tickers","detail":"not in the catalogue: NOPE","unknown":["NOPE"]}
+```
+
+Matching is exact and case-sensitive, the same predicate the ingest uses to
+select companies. Without this, a typo produced a `202` and a run recorded as
+`succeeded` over zero companies — success-looking silence.
 
 Trigger a fetch without waiting for the schedule.
 

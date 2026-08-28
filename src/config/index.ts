@@ -26,7 +26,7 @@ const Schema = z.object({
   MARKETAUX_LANGUAGES: z.string().default("en"),
   OPENFIGI_API_KEY: z.string().default(""),
 
-  NEWS_PROVIDER_ORDER: z.string().default("finnhub,marketaux,google_news_rss"),
+  NEWS_PROVIDER_ORDER: z.string().default("finnhub,marketaux"),
   FINNHUB_RATE_LIMIT_PER_MIN: z.coerce.number().int().positive().default(55),
   GOOGLE_NEWS_RATE_LIMIT_PER_MIN: z.coerce.number().int().positive().default(40),
 

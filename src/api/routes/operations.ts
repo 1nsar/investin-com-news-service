@@ -154,6 +154,33 @@ export async function operationsRoutes(app: FastifyInstance): Promise<void> {
       return reply.code(409).send({ error: "already_running", detail: "an ingest is already in progress" });
     }
 
+    // A run over zero companies used to be recorded as `succeeded`, so an
+    // integrator who typoed a ticker in their scheduler got 202s and green runs
+    // forever while nothing was ever fetched. Silence that looks like success
+    // is the exact failure mode the run reporting exists to prevent, so
+    // unknown tickers are rejected before a run is created.
+    if (parsed.data.tickers?.length) {
+      // Deliberately the SAME predicate the ingest uses to select companies
+      // (store.ts: `c.is_active AND c.ticker_raw = ANY($1)`) - exact match, no
+      // case folding. Validating more loosely than the run selects would accept
+      // a ticker here and then quietly fetch nothing, which is the bug this
+      // check exists to prevent.
+      const requested = parsed.data.tickers;
+      const { rows } = await pool.query<{ ticker_raw: string }>(
+        "SELECT ticker_raw FROM companies WHERE is_active AND ticker_raw = ANY($1::text[])",
+        [requested],
+      );
+      const known = new Set(rows.map((row) => row.ticker_raw));
+      const unknown = requested.filter((ticker) => !known.has(ticker));
+      if (unknown.length) {
+        return reply.code(400).send({
+          error: "unknown_tickers",
+          detail: `not in the catalogue: ${unknown.join(", ")}`,
+          unknown,
+        });
+      }
+    }
+
     const options = { ...parsed.data, trigger: "api" as const };
 
     if (parsed.data.wait) {

@@ -95,6 +95,7 @@ It is also the complete list of settings, with defaults and comments.
 | `OPENFIGI_API_KEY` | no, but see below | Free key at <https://www.openfigi.com/api>. Raises listing resolution from ~25 requests/min to ~250, cutting a full resolve from ~20 minutes to ~2 |
 | `MARKETAUX_API_KEY` | no | Entity-tagged global news — 80+ markets, 30+ languages. Closes the international and OTC gaps the free stack cannot reach. Free tier at <https://www.marketaux.com> is enough to evaluate |
 | `NEWS_PROVIDER_ORDER` | no | Provider preference, e.g. `finnhub,marketaux,google_news_rss` |
+| `DEAD_ARTICLE_HOSTS` | no | Hosts whose links/images are dropped at ingest. Defaults to `chartmill.com`; empty disables |
 | `SCHEDULER_ENABLED` | no | In-process daily timer. Off by default — see [section 7](#7-scheduling) |
 
 **No paid API is required.** The component runs entirely on free tiers. What a
@@ -178,14 +179,23 @@ quota re-confirming the 74% that already works.
 
 ### Coverage: which provider serves which company
 
-The chain is `finnhub → marketaux → google_news_rss`, and each is there for a
-reason measured on this catalogue:
+The default chain is `finnhub → marketaux`, and each is there for a reason
+measured on this catalogue:
 
 | Provider | Serves | Hit rate |
 | --- | --- | --- |
 | **Finnhub** (free) | Companies on a real US exchange | **87%**, ~11 articles each |
-| **Marketaux** (optional) | Non-US listings and thin OTC lines | to be measured — see `npm run evaluate` |
-| **Google News RSS** (free) | Last resort, searched by company name | ~90%, but name-matched |
+| **Marketaux** (optional) | Non-US listings and thin OTC lines | 75% US exchange, 50% OTC, 0% no-US-line |
+| **Google News RSS** | *Retired from the default order* — see below | ~90%, but name-matched |
+
+**Google News RSS is built but no longer enabled by default.** It returns
+`news.google.com` redirect links rather than publisher addresses, and those
+links cannot be opened: the token decodes to an opaque Google identifier rather
+than the article's URL, the page returns nothing to a non-browser client, and
+browsers frequently refuse the redirect. Such an article can also never carry an
+image. The adapter remains in the tree and can be re-enabled by adding
+`google_news_rss` to `NEWS_PROVIDER_ORDER`, but it costs ~140 companies of
+coverage to gain links that fail when clicked.
 
 **A zero result is not always a final answer.** Finnhub returns a clean zero
 both for a quiet NYSE company and for one whose only US presence is a thin OTC
@@ -195,9 +205,34 @@ non-authoritative zero falls through to the next source instead of ending the
 question. That one rule affected **224 companies** that were previously never
 offered to the fallback at all.
 
-Once Marketaux is proven on your catalogue, drop `google_news_rss` from the
-order: it is name-matched, and it is the origin of every misattribution the
-relevance layer has to filter out.
+Dropping `google_news_rss` also removed the origin of nearly every
+misattribution the relevance layer had to filter out: it is the only
+name-matched source in the chain.
+
+### Link resolution
+
+Finnhub does not return the article's URL. It returns a link into its own
+domain — `finnhub.io/api/news?id=...` — which 302s onward to the publisher.
+Ingest resolves that wrapper **before storing**, so what lands in the database
+is the publisher's own address.
+
+This is not cosmetic. Storing the wrapper meant every reader paid an extra hop
+and the link died entirely if Finnhub was down; it **hid the destination**, so a
+dead publisher could not be filtered until the reader clicked; and it broke
+dedupe, since every wrapper carries a distinct `id`, so one wire story
+syndicated to three outlets was three separate articles.
+
+Resolution is one hop, best-effort, at concurrency 3 — the endpoint is
+rate-limited, and 10-wide returned `429` for 30% of links while 3-wide resolved
+every one. A failure keeps the wrapper, which still works, so an outage degrades
+link quality rather than dropping articles.
+
+To rewrite links stored before this existed:
+
+```bash
+npx tsx scripts/resolve-links.ts --dry-run   # report only
+npx tsx scripts/resolve-links.ts             # rewrite, merging duplicates
+```
 
 ### Filtering for quality
 
