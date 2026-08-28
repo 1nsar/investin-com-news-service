@@ -44,13 +44,28 @@ describe("canonicalize", () => {
     const result = canonicalize(
       {
         headline: "Acme wins contract - Financial Times",
-        url: "https://news.google.com/rss/articles/abc",
+        url: "https://www.ft.com/content/acme-wins-contract",
         publishedAt: new Date("2026-08-19T09:00:00Z"),
       },
       "google_news_rss",
     );
     expect(result?.headline).toBe("Acme wins contract");
     expect(result?.source).toBe("Financial Times");
+  });
+
+  /** A news.google.com token decodes to an opaque Google identifier, not the
+   *  publisher's address, and the page returns nothing to a non-browser. The
+   *  reader gets a dead link, so the article is not stored at all. */
+  it("rejects Google News interstitial links, which cannot be opened", () => {
+    const result = canonicalize(
+      {
+        headline: "Acme wins contract - Financial Times",
+        url: "https://news.google.com/rss/articles/CBMikgFBVV95cUxOMFJoa0FVQkk0",
+        publishedAt: new Date("2026-08-19T09:00:00Z"),
+      },
+      "google_news_rss",
+    );
+    expect(result).toBeNull();
   });
 
   it("rejects rows a provider cannot make usable", () => {

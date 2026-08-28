@@ -33,3 +33,19 @@ describe(".env.example", () => {
     }
   });
 });
+
+/** `cp .env.example .env` must not change behaviour compared with no .env at
+ *  all. An assignment with an empty value is NOT the same as an absent one for
+ *  any setting that treats "" as meaningful - DEAD_ARTICLE_HOSTS reads an empty
+ *  value as "disable the filter", so shipping `DEAD_ARTICLE_HOSTS=` in the
+ *  template silently turned off dead-link filtering for every fresh clone while
+ *  working perfectly in a dev environment that had no such line. */
+it("does not assign an empty value to settings where empty means something", () => {
+  const template = readFileSync(new URL("../.env.example", import.meta.url), "utf8");
+  const emptyMeansDisabled = ["DEAD_ARTICLE_HOSTS"];
+
+  for (const key of emptyMeansDisabled) {
+    const assigned = new RegExp(`^\\s*${key}\\s*=\\s*$`, "m").test(template);
+    expect(assigned, `${key}= is assigned empty in .env.example; comment it out instead`).toBe(false);
+  }
+});

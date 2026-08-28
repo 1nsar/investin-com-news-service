@@ -8,10 +8,19 @@ Everything below is measured on that catalogue, not quoted from a vendor page.
 The measurement command is in the repo (`npm run coverage:probe`) and the
 per-company results are written to `data/out/coverage-probe.json`.
 
-**Conclusion up front:** Finnhub as primary, Google News RSS as fallback, both
-on free tiers, with listing resolution doing the heavy lifting that would
-otherwise require a paid global feed. The paid upgrade worth buying is
-discussed in §6 — and it is a *quality* upgrade, not a coverage one.
+**Conclusion up front:** Finnhub as primary, Marketaux as fallback, both on
+free tiers, with listing resolution doing the heavy lifting that would otherwise
+require a paid global feed. The paid upgrade worth buying is discussed in §6 —
+and it is a *quality* upgrade, not a coverage one.
+
+**Revised after measurement.** Google News RSS was the original fallback and is
+still the widest-hitting free source in the table below. It was **retired from
+the default order** anyway, because its links are `news.google.com` redirects
+that cannot be opened: the token decodes to an opaque Google identifier rather
+than the article's address, the page returns nothing to a non-browser client,
+and browsers frequently refuse the redirect. Those articles can also never carry
+an image. Hit rate is not the metric that matters if the reader cannot open the
+result.
 
 ---
 
@@ -142,11 +151,13 @@ answer in a few hundred milliseconds.
 | Option | Coverage on this catalogue | Quality | Cost at ~1,500/day | Verdict |
 | --- | --- | --- | --- | --- |
 | **Finnhub free** | 94.6% reachable, 76% hit on US exchange | Ticker-native, structured, dedupeable | $0, 60 req/min | **Primary** |
-| **Google News RSS** | ~90% across every segment | Name-matched, headline+URL only, no summary | $0, no formal limit | **Fallback** |
+| **Google News RSS** | ~90% across every segment | Name-matched, headline+URL only, no summary, **links cannot be opened** | $0, no formal limit | **Retired** — see §1 |
+| **Marketaux free** | 75% US exchange, 50% OTC, 0% no-US-line | Ticker-native, structured, real publisher links **and images** | $0 at 100 req/day; $29–$199/mo paid | **Fallback** |
 | Finnhub paid | Adds non-US symbols directly | Same, ticker-native everywhere | Tiered, roughly $12–$100/mo for the relevant tiers; confirm at purchase | See §6 |
 | Search API + LLM extraction | Broad, but unbounded | Free-text; needs an LLM to structure it | LLM cost per company per day, plus search | **Rejected** |
 | Perplexity / LLM-native search | Broad | Prose, not records; hard to dedupe | Per-query, and the most expensive per company | **Rejected** |
-| Marketaux / general news APIs | Global, ticker-tagged | Structured | Paid tiers; pricing page not publicly fetchable at time of writing | Viable alternative to a Finnhub upgrade |
+| Alpha Vantage | US-centric, ticker-tagged | Structured, sentiment-scored | $49.99–$249.99/mo | Viable alternative to a Finnhub upgrade |
+| Polygon.io | US-centric | Structured | $29–$199/mo, licensed *individual use only* | **Rejected** — licence |
 
 ### Why search + LLM was rejected
 
@@ -173,16 +184,23 @@ LLMs are the right tool for *interpreting* a feed. They are the wrong tool for
 ## 4. The recommended stack
 
 ```
-NEWS_PROVIDER_ORDER=finnhub,google_news_rss
+NEWS_PROVIDER_ORDER=finnhub,marketaux
 ```
 
 Per company, first provider that can serve it wins:
 
 1. **Finnhub** if the company has any US listing — 94.6% of the catalogue.
    Ticker-native, so attribution is certain.
-2. **Google News RSS** otherwise, searched by company name against the home
-   country's edition. Locale matters more than it looks: Munich Re returns
-   almost nothing in `en-US` and a full feed in `de-DE`.
+2. **Marketaux** otherwise, queried by **exchange-qualified** symbol — `BBY.L`,
+   never bare `BBY`, because a bare symbol silently returns the wrong company
+   (see §2). Its entity confirmation is mandatory: an article is accepted only
+   when Marketaux itself reports the qualified symbol as an entity of the story.
+
+`google_news_rss` remains in the tree and can be re-enabled by adding it to the
+order. It was searched by company name against the home country's edition, and
+locale mattered more than it looks — Munich Re returned almost nothing in
+`en-US` and a full feed in `de-DE`. It is off by default only because of the
+unopenable-link problem in §1.
 
 A clean `no_news` from Finnhub **stops** the chain rather than falling through.
 Trading a confident "quiet week" for a name-matched guess would make the data
