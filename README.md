@@ -487,6 +487,7 @@ advisory lock so concurrent container boots cannot race.
 | Comparison write-up | [docs/COMPARISON.md](docs/COMPARISON.md) |
 | Resolved exchange/listing mapping, as data | `npm run export:listings` → `data/out/listings.csv` and `.json`; also `GET /v1/listings` |
 | How it was produced | [docs/COMPARISON.md](docs/COMPARISON.md) §1, and `src/resolution/` |
+| Which companies are **not** covered, and why | `npm run export:gaps` → [data/coverage-gaps.csv](data/coverage-gaps.csv); analysed in [docs/REPORT.md](docs/REPORT.md) |
 | Think past the happy path | [docs/OPERATIONS.md](docs/OPERATIONS.md) |
 
 ## 11. Commands
@@ -502,6 +503,8 @@ advisory lock so concurrent container boots cannot race.
 | `npm run coverage:probe` | Measure provider hit rates on a stratified sample |
 | `npm run evaluate` | Measure a provider against the segments where coverage is *missing* (OTC-only, no US line, unresolved) — designed for a small free-tier quota |
 | `npm run export:listings` | Export the listing mapping |
+| `npm run export:gaps` | Export every company with no news and a `gap_reason` → `data/coverage-gaps.csv` |
+| `npm run resolve:links` | Rewrite stored provider redirect wrappers to publisher URLs (`-- --dry-run` to report only) |
 | `npm run export:openapi` | Regenerate `docs/openapi.json` from the routes |
 | `npm run metrics` | Regenerate every figure quoted in docs/REPORT.md from the live database |
 | `npm test` | Unit tests |

@@ -1,0 +1,511 @@
+ticker,company_name,country,resolution_status,gap_reason,also_covered_as,note
+AFRA.F,Air France-KLM SA,US,unresolved,duplicate_listing_line,AFRA_F,no identifier matched this ticker and name
+EADS.F,Airbus Group SE,US,unresolved,duplicate_listing_line,0KVV,no identifier matched this ticker and name
+EDVM.F,Endeavour Mining Corp,US,unresolved,duplicate_listing_line,EDV,no identifier matched this ticker and name
+NEMC.L,Newmont Corporation,US,unresolved,duplicate_listing_line,0R28,no identifier matched this ticker and name
+QBEI.F,QBE Insurance Group Limited,US,unresolved,duplicate_listing_line,QBEI_F,no identifier matched this ticker and name
+RYAA.Y,Ryanair Holdings PLC ADR,US,unresolved,duplicate_listing_line,0RYA,no identifier matched this ticker and name
+RYAA_Y,Ryanair Holdings PLC ADR,,unresolved,duplicate_listing_line,0RYA,no identifier matched this ticker and name
+000089,Shenzhen Airport Co Ltd,CN,resolved,no_news_no_us_line,,
+000568,Luzhou Lao Jiao Co Ltd,CN,resolved,no_news_no_us_line,,
+0E64,DO & CO AG,GB,resolved,no_news_no_us_line,,resolved without an exchange filter to LO
+0GQE,Clas Ohlson AB,GB,resolved,no_news_no_us_line,,resolved without an exchange filter to LO
+0H0G,Sweco AB,GB,resolved,no_news_no_us_line,,resolved without an exchange filter to LO
+0M6I,Heijmans NV,GB,resolved,no_news_no_us_line,,"likely renamed: catalogue says ""Heijmans NV"", venue says ""KONINKLIJKE HEIJMANS N.V"""
+0M6S,Allianz L,GB,resolved,no_news_no_us_line,,resolved by name search to STAPGYL on LN
+0NI1,Rheinmetall L,GB,resolved,no_news_no_us_line,,resolved by name search to RHM3 on LN
+0NUG,Magyar Telekom Tavkozlesi Nyrt,GB,resolved,no_news_no_us_line,,"name match 0.60 against ""MAGYAR TELEKOM TELECOMMUNICA"""
+0REQ,Per Aarsleff Holding A/S,GB,resolved,no_news_no_us_line,,resolved without an exchange filter to LO
+1909,Nippon Dry Chemical,CA,resolved,no_news_no_us_line,,
+600004,Guangzhou Baiyun International Airport Co Ltd,US,resolved,no_news_no_us_line,,"name match 0.88 against ""GUANGZHOU BAIYUN INTERNATI-A"""
+600009,Shanghai International Airport Co Ltd,US,resolved,no_news_no_us_line,,"name match 0.94 against ""SHANGHAI INTERNATIONAL AIR-A"""
+600897,Xiamen International Airport Co Ltd,US,resolved,no_news_no_us_line,,"name match 0.94 against ""XIAMEN INTERNATIONAL AIR-A"""
+603529,AIMA Technology Group Co Ltd,US,resolved,no_news_no_us_line,,"name match 0.92 against ""AIMA TECHNOLOGY GROUP CO L-A"""
+603558,Zhejiang Jasan Holding Group Co Ltd,US,resolved,no_news_no_us_line,,resolved without an exchange filter to CH
+6745,Hochiki Corp,CA,resolved,no_news_no_us_line,,
+BMVCFLT,"Confluent, Inc.",US,resolved,no_news_no_us_line,,resolved by name search to CFLT 0 01/15/27 on TRACE
+JEN,Jensen-Group,BE,resolved,no_news_no_us_line,,
+KEDA,Keda Industrial Group Co Ltd DRC,CH,resolved,no_news_no_us_line,,"name match 0.92 against ""KEDA INDUSTRIAL GROUP CO-GDR"""
+KID,Kid ASA,NO,resolved,no_news_no_us_line,,
+KRI,Kri-Kri Milk,US,resolved,no_news_no_us_line,,"name match 0.92 against ""KRI-KRI MILK INDUSTRY SA"""
+LICI,Life Insurance Corporation Of India,US,resolved,no_news_no_us_line,,"name match 0.92 against ""LIFE INSURANCE CORPORATION"""
+MGNS,Morgan Sindall Group PLC,GB,resolved,no_news_no_us_line,,
+MIA,Malta International Airport PLC,US,resolved,no_news_no_us_line,,
+SAFARI,Safari Industries,US,resolved,no_news_no_us_line,,resolved by name search to SII on IS
+SCT,Softcat PLC,GB,resolved,no_news_no_us_line,,
+SUPA,Super Bank Indonesia Tbk Pt,US,resolved,no_news_no_us_line,,
+SYNSAM,Synsam AB,US,resolved,no_news_no_us_line,,
+000333,Midea Group Co Ltd,CN,resolved,no_news_otc_only,,
+0A0L,Sectra AB,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0AI4,Carlsberg,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0E5M,De Longhi SpA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0EKE,Lisi SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0EPW,Hochtief AG,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0EXG,Jeronimo Martins SGPS,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0EYJ,Københavns Lufthavne A/S,GB,resolved,no_news_otc_only,,"likely renamed: catalogue says ""Københavns Lufthavne A/S"", venue says ""KOBENHAVNS LUFTHAVNE"""
+0FRJ,Rational,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0H3T,Deutsche Boerse,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0HA9,Indra Sistemas L,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0HAG,Sampo,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0HB2,Lagardere SCA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0HV2,Hermes International L,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0IKJ,Wartsila Oyj Abp,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0IW5,Thales SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0J1Z,Nos SGPS,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0JXF,Protector Forsikring ASA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0JYZ,Loomis,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0KBS,Recordati Industria Chimica e Farmaceutica SpA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0KV5,Fairfax Financial Holdings Limited,GB,resolved,no_news_otc_only,,
+0KVV,Airbus Group,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0LN7,Air France KLM L,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0MGO,Jcdecaux SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0MH1,Bureau Veritas SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0MQG,Mycronic Ab,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0NJP,SOL SpA,GB,resolved,no_news_otc_only,,
+0NNF,Alfa Laval AB,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0NX3,ASM International L,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0NZU,Zealand Pharma A/S,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0OAW,Mowi ASA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0ON7,D’Ieteren SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0P0T,Wilh. Wilhelmsen Holding ASA,GB,resolved,no_news_otc_only,,
+0P2W,Amadeus IT Holding,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0Q7S,Brunello Cucinelli SpA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0Q8F,Hugo Boss L,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0QI7,Addtech AB,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0QII,Moncler,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0QK3,Avolta AG,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0QOQ,Partners Group Holding AG,GB,resolved,no_news_otc_only,,
+0QVE,Fenix Outdoor International AG,GB,resolved,no_news_otc_only,,
+0QWA,Compania de Distribucion Integral Logista Holdings SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0QXP,Aker Solutions L,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0R4Y,Aena SME SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0R6R,Axfood AB,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0R87,Assa Abloy L,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0RD1,Camurus AB,GB,resolved,no_news_otc_only,,
+0RG1,Technogym SpA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0RQ9,Lundin Mining Corporation,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0RV0,Reply SpA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0RYA,Ryanair Holdings,GB,resolved,no_news_otc_only,,
+0XXV,Atlas Copco AB Series B,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0YSU,Epiroc AB Class A,GB,resolved,no_news_otc_only,,
+0YSV,Epiroc AB Class B,GB,resolved,no_news_otc_only,,
+1585,Yadea Group Holdings Ltd,HK,resolved,no_news_otc_only,,
+1913,Prada SpA,HK,resolved,no_news_otc_only,,
+2328,PICC Property & Casualty-H,HK,resolved,no_news_otc_only,,
+2601,China Pacific Insurance,HK,resolved,no_news_otc_only,,"name match 0.90 against ""CHINA PACIFIC INSURANCE GR-H"""
+2628,China Life Insurance Co Ltd,HK,resolved,no_news_otc_only,,"name match 0.94 against ""CHINA LIFE INSURANCE CO-H"""
+2670,ABC-Mart Inc,CA,resolved,no_news_otc_only,,
+2875,Toyo Suisan Kaisha Ltd,CA,resolved,no_news_otc_only,,
+6420,Galilei Co Ltd,CA,resolved,no_news_otc_only,,
+6455,Morita Holdings Corp,CA,resolved,no_news_otc_only,,
+669,Techtronic Industries Co Ltd,HK,resolved,no_news_otc_only,,
+690D,Qingdao Haier Co Ltd,US,resolved,no_news_otc_only,,"likely renamed: catalogue says ""Qingdao Haier Co Ltd"", venue says ""HAIER SMART HOME CO LTD-D"""
+857,PetroChina Co Ltd Class H,HK,resolved,no_news_otc_only,,
+8630,Sompo Holdings Inc,CA,resolved,no_news_otc_only,,
+8725,MS&AD Insurance Group Holdings,CA,resolved,no_news_otc_only,,"name match 0.92 against ""MS&AD INSURANCE GROUP HOLDIN"""
+8750,Dai-ichi Life Holdings Inc,CA,resolved,no_news_otc_only,,
+8766,"Tokio Marine Holdings, Inc.",CA,resolved,no_news_otc_only,,
+9022,Central Japan Railway Co.,CA,resolved,no_news_otc_only,,
+AAF,Airtel Africa Plc,GB,resolved,no_news_otc_only,,
+ADM,Admiral Group PLC,US,resolved,no_news_otc_only,,
+AFRA_F,Air France-KLM SA,,resolved,no_news_otc_only,,resolved by name search to AFIG=H2 on SA
+AIA,Athens International Airport SA,US,resolved,no_news_otc_only,,
+ASML,ASML Holding NV,NL,resolved,no_news_otc_only,,
+ASURB,Grupo Aeroportuario Del Sureste,MX,resolved,no_news_otc_only,,"name match 0.71 against ""GRUPO AEROPORT DEL SURESTE-B"""
+AUTO,Auto Trader Group Plc,GB,resolved,no_news_otc_only,,
+AVOL,Avolta AG,CH,resolved,no_news_otc_only,,
+BAB,Babcock International Group PLC,US,resolved,no_news_otc_only,,
+BBY,Balfour Beatty PLC,US,resolved,no_news_otc_only,,
+BCHN,Burckhardt Compression,CH,resolved,no_news_otc_only,,"name match 0.92 against ""BURCKHARDT COMPRESSION HOLDI"""
+BEAN,Belimo Holding,CH,resolved,no_news_otc_only,,
+BEZ,Beazley PLC,US,resolved,no_news_otc_only,,
+BME,B&M European Value Retail PLC,US,resolved,no_news_otc_only,,"name match 0.95 against ""B&M EUROPEAN VALUE RETAIL PL"""
+BMVAC,"Arca Continental, S.A.B. De C.V.",US,resolved,no_news_otc_only,,resolved by name search to AJZ on GR
+BOOZT,Boozt AB,US,resolved,no_news_otc_only,,
+CCC,Computacenter PLC,US,resolved,no_news_otc_only,,
+CCH,Coca Cola HBC AG,GB,resolved,no_news_otc_only,,"name match 0.94 against ""COCA-COLA HBC AG-DI"""
+CHDR_Y,Christian Dior SE ADR,,resolved,no_news_otc_only,,resolved by name search to CHDRYUSD on XU
+CMBN,Cembra Money Bank AG,CH,resolved,no_news_otc_only,,
+CS,AXA SA,FR,resolved,no_news_otc_only,,
+CVAC,CureVac NV,US,resolved,no_news_otc_only,,resolved without an exchange filter to UP
+CWK,Cranswick PLC,US,resolved,no_news_otc_only,,
+DNLM,Dunelm Group PLC,GB,resolved,no_news_otc_only,,
+DPLM,Diploma PLC,GB,resolved,no_news_otc_only,,
+EDV,Endeavour Mining PLC,US,resolved,no_news_otc_only,,
+EMMN,Emmi AG,CH,resolved,no_news_otc_only,,
+EXPN,Experian PLC,GB,resolved,no_news_otc_only,,
+EZJL,Easyjet,US,resolved,no_news_otc_only,,
+FFH,Fairfax Financial Holdings Ltd,CA,resolved,no_news_otc_only,,
+FHZN,Flughafen Zurich,CH,resolved,no_news_otc_only,,
+FIE,Fielmann AG,CH,resolved,no_news_otc_only,,
+FTK,flatexDEGIRO AG,US,resolved,no_news_otc_only,,
+G24,Scout24 SE,CH,resolved,no_news_otc_only,,
+GAW,Games Workshop Group PLC,GB,resolved,no_news_otc_only,,
+GEBN,Geberit AG,CH,resolved,no_news_otc_only,,
+GRG,Greggs PLC,GB,resolved,no_news_otc_only,,
+GRUMAB,Gruma SAB de CV,MX,resolved,no_news_otc_only,,"name match 0.88 against ""GRUMA S.A.B.-B"""
+HIK,Hikma Pharmaceuticals PLC,GB,resolved,no_news_otc_only,,
+HILS,Hill & Smith PLC,GB,resolved,no_news_otc_only,,
+HLMA,Halma PLC,GB,resolved,no_news_otc_only,,
+HNR1,Hannover Rueck SE,US,resolved,no_news_otc_only,,
+HOT,Hochtief AG,US,resolved,no_news_otc_only,,
+HSX,Hiscox Ltd,GB,resolved,no_news_otc_only,,
+HTWS,Helios Towers Plc,GB,resolved,no_news_otc_only,,
+IFC,Intact Financial Corporation,CA,resolved,no_news_otc_only,,
+IFCN,Inficon Holding,CH,resolved,no_news_otc_only,,
+III,3I Group PLC,US,resolved,no_news_otc_only,,
+IN,Infield Minerals Corp,CA,resolved,no_news_otc_only,,
+KITS,Kits Eyecare Ltd,CA,resolved,no_news_otc_only,,
+KNM,Konami Holdings Corporation,GB,resolved,no_news_otc_only,,
+LGEN,Legal & General Group PLC,GB,resolved,no_news_otc_only,,
+LISN,Chocoladefabriken Lindt & Spruengli AG N,CH,resolved,no_news_otc_only,,"name match 0.88 against ""CHOCOLADEFABRIKEN LINDT-REG"""
+LISNE,Chocoladefabriken Lindt & Spruengli AG,CH,resolved,no_news_otc_only,,"name match 0.92 against ""CHOCOLADEFABRIKEN LINDT-NEW"""
+LNWO,Light & Wonder Inc,US,resolved,no_news_otc_only,,matched US directory as LNWO
+LUFTHANSA,Deutsche Lufthansa AG,US,resolved,no_news_otc_only,,resolved by name search to LHAGR L 02/13/14 FA on null
+MONC,Moncler SpA,IT,resolved,no_news_otc_only,,
+MOVE,Medacta Group SA,US,resolved,no_news_otc_only,,
+NDX1,Nordex SE,CH,resolved,no_news_otc_only,,
+NEMA,Nemetschek SE,CH,resolved,no_news_otc_only,,
+OMAB,Grupo Aeroportuario Del CentroNorte,US,resolved,no_news_otc_only,,"name match 0.95 against ""GRUPO AEROPORTUARIO DEL CENT"""
+PAF,Pan African Resources PLC,GB,resolved,no_news_otc_only,,
+PGHN,Partners Group,CH,resolved,no_news_otc_only,,
+PPRU_Y,Kering SA,,resolved,no_news_otc_only,,resolved by name search to KERD=1 on SA
+PRX,Prosus NV,CH,resolved,no_news_otc_only,,
+QBEI_F,QBE Insurance Group Limited,,resolved,no_news_otc_only,,resolved by name search to QBEAU L 12/30/04 ** on null
+QQ.,Qinetiq Group PLC,GB,resolved,no_news_otc_only,,resolved by name search to QQ/ on LN
+R3NK,RENK Group AG,CH,resolved,no_news_otc_only,,
+RHM,Rheinmetall AG,CH,resolved,no_news_otc_only,,
+RMS,Hermes International SCA,FR,resolved,no_news_otc_only,,
+RMV,Rightmove PLC,GB,resolved,no_news_otc_only,,
+RR.,Rolls-Royce Holdings PLC,GB,resolved,no_news_otc_only,,resolved by name search to RR/ on LN
+SAMPO,Sampo Oyj A,US,resolved,no_news_otc_only,,
+SATS,Satsuma Technology PLC,US,resolved,no_news_otc_only,,
+SEPL,Seplat Petroleum Development Company PLC,GB,resolved,no_news_otc_only,,"likely renamed: catalogue says ""Seplat Petroleum Development Company PLC"", venue says ""SEPLAT ENERGY PLC"""
+SGE,Sage Group PLC,GB,resolved,no_news_otc_only,,
+SIXG,Sixt SE,DE,resolved,no_news_otc_only,,resolved by name search to SIX2 on GY
+SQN,Swissquote Group Holding SA,CH,resolved,no_news_otc_only,,
+SREN,Swiss Re AG,CH,resolved,no_news_otc_only,,
+TUI1,TUI AG,CH,resolved,no_news_otc_only,,
+VZN,VZ Holding AG,CH,resolved,no_news_otc_only,,
+WOSG,Watches Of Switzerland Group PLC,GB,resolved,no_news_otc_only,,
+YPSN,Ypsomed Holding AG,CH,resolved,no_news_otc_only,,
+0ADH,"Lamb Weston Holdings, Inc.",GB,resolved,no_news_us_exchange,,
+0I0T,"Coca-Cola Consolidated, Inc.",GB,resolved,no_news_us_exchange,,
+0IUJ,Interparfums SA,GB,resolved,no_news_us_exchange,,resolved without an exchange filter to LO
+0KAN,"Oceaneering International, Inc.",GB,resolved,no_news_us_exchange,,
+0M2O,Orion Oyj,GB,resolved,no_news_us_exchange,,resolved without an exchange filter to LO
+0QYM,Fortuna Mining Corp.,GB,resolved,no_news_us_exchange,,
+0QYN,B2Gold Corp.,GB,resolved,no_news_us_exchange,,
+0U3Q,"InterDigital, Inc.",GB,resolved,no_news_us_exchange,,
+0UP5,Centerra Gold Inc.,GB,resolved,no_news_us_exchange,,
+0Y5C,Allegion PLC,GB,resolved,no_news_us_exchange,,
+0Y9S,Check Point Software Technologies Ltd.,GB,resolved,no_news_us_exchange,,
+AAMI,Acadian Asset Management Inc,US,resolved,no_news_us_exchange,,matched US directory as AAMI
+ABX,Abacus Global Management Inc,US,resolved,no_news_us_exchange,,matched US directory as ABX
+ACA,Arcosa Inc,US,resolved,no_news_us_exchange,,matched US directory as ACA
+ACGY.F,Subsea 7 S.A.,US,resolved,no_news_us_exchange,,resolved by name search to ACGYF on US
+ADMA,ADMA Biologics Inc,US,resolved,no_news_us_exchange,,matched US directory as ADMA
+ADT,ADT Inc,US,resolved,no_news_us_exchange,,matched US directory as ADT
+AFMJ.F,Alphamin Resources Corp.,US,resolved,no_news_us_exchange,,resolved by name search to AFMJF on US
+AG,First Majestic Silver Corp,US,resolved,no_news_us_exchange,,matched US directory as AG
+AGYS,Agilysys Inc,US,resolved,no_news_us_exchange,,matched US directory as AGYS
+ALLE,Allegion PLC,US,resolved,no_news_us_exchange,,matched US directory as ALLE
+ALSS.F,Alsea SAB de CV,US,resolved,no_news_us_exchange,,resolved by name search to ALSSF on US
+ANFG.F,Antofagasta PLC,US,resolved,no_news_us_exchange,,resolved by name search to ANFGF on US
+ANIP,ANI Pharmaceuticals Inc,US,resolved,no_news_us_exchange,,matched US directory as ANIP
+ANPD.F,ANTA Sports Products Ltd,US,resolved,no_news_us_exchange,,resolved by name search to ANPDF on US
+AORT,Artivion Inc,US,resolved,no_news_us_exchange,,matched US directory as AORT
+AOS,Smith AO Corporation,US,resolved,no_news_us_exchange,,matched US directory as AOS
+APAM,Artisan Partners Asset Management Inc,US,resolved,no_news_us_exchange,,matched US directory as APAM
+ARDT,Ardent Health Partners LLC,US,resolved,no_news_us_exchange,,matched US directory as ARDT
+ARIS,Aris Mining Corp,US,resolved,no_news_us_exchange,,matched US directory as ARIS
+AROC,Archrock Inc,US,resolved,no_news_us_exchange,,matched US directory as AROC
+ASR,Grupo Aeroportuario del Sureste SAB de CV ADR,US,resolved,no_news_us_exchange,,matched US directory as ASR
+ASTH,Astrana Health Inc,US,resolved,no_news_us_exchange,,matched US directory as ASTH
+ATZA.F,Aritzia Inc,US,resolved,no_news_us_exchange,,resolved by name search to ATZIY on US
+AVO,Mission Produce Inc,US,resolved,no_news_us_exchange,,matched US directory as AVO
+AVPT,Avepoint Inc,US,resolved,no_news_us_exchange,,matched US directory as AVPT
+AYA,Aya Gold & Silver Inc,CA,resolved,no_news_us_exchange,,matched US directory as AYA
+AZZ,AZZ Incorporated,US,resolved,no_news_us_exchange,,matched US directory as AZZ
+BABW.F,International Consolidated Airlines Group S.A.,US,resolved,no_news_us_exchange,,resolved by name search to ICAGY on US
+BALL,Ball Corporation,US,resolved,no_news_us_exchange,,matched US directory as BALL
+BCO,Brinks Company,US,resolved,no_news_us_exchange,,matched US directory as BCO
+BEPC,Brookfield Renewable Corp,US,resolved,no_news_us_exchange,,matched US directory as BEPC
+BF.B,Brown Forman,US,resolved,no_news_us_exchange,,matched US directory as BF.B
+BFAM,Bright Horizons Family Solutions Inc,US,resolved,no_news_us_exchange,,matched US directory as BFAM
+BOW,Bowhead Specialty Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as BOW
+BRC,Brady Corporation,US,resolved,no_news_us_exchange,,matched US directory as BRC
+BTG,B2Gold Corp,CA,resolved,no_news_us_exchange,,matched US directory as BTG
+BZLY.F,Beazley plc,US,resolved,no_news_us_exchange,,resolved by name search to BZLYF on US
+CAE,CAE Inc,CA,resolved,no_news_us_exchange,,matched US directory as CAE
+CAHP.F,Evolution Mining Ltd,US,resolved,no_news_us_exchange,,resolved by name search to CAHPF on US
+CBZ,CBIZ Inc,US,resolved,no_news_us_exchange,,matched US directory as CBZ
+CCEP,Coca-Cola European Partners PLC,US,resolved,no_news_us_exchange,,matched US directory as CCEP
+CDDR.F,Headwater Exploration Inc,US,resolved,no_news_us_exchange,,resolved by name search to CDDRF on US
+CECO,CECO Environmental Corp,US,resolved,no_news_us_exchange,,matched US directory as CECO
+CESD.F,CES Energy Solutions Corp,US,resolved,no_news_us_exchange,,resolved by name search to CESDF on US
+CGAU,Centerra Gold Inc,CA,resolved,no_news_us_exchange,,matched US directory as CGAU
+CHDR.Y,Christian Dior SE ADR,US,resolved,no_news_us_exchange,,resolved by name search to CHDRY on US
+CHE,Chemed Corp,US,resolved,no_news_us_exchange,,matched US directory as CHE
+CHKP,Check Point Software Technologies Ltd,US,resolved,no_news_us_exchange,,matched US directory as CHKP
+CLBT,Cellebrite DI,IL,resolved,no_news_us_exchange,,matched US directory as CLBT
+CNA,CNA Financial Corporation,US,resolved,no_news_us_exchange,,matched US directory as CNA
+CODY.Y,Compagnie de Saint-Gobain ADR,US,resolved,no_news_us_exchange,,resolved by name search to CODYY on US
+COKE,Coca-Cola Bottling Co Consolidated,US,resolved,no_news_us_exchange,,matched US directory as COKE
+COLL,Collegium Pharmaceutical Inc,US,resolved,no_news_us_exchange,,matched US directory as COLL
+CON,Concentra Group Holdings Parent Inc,US,resolved,no_news_us_exchange,,matched US directory as CON
+CPCA.F,Cathay Pacific Airways Ltd,US,resolved,no_news_us_exchange,,resolved by name search to CPCAF on US
+CPG,Compass Group PLC,GB,resolved,no_news_us_exchange,,
+CRVL,CorVel Corp,US,resolved,no_news_us_exchange,,matched US directory as CRVL
+CSCC.F,Capstone Copper Corp,US,resolved,no_news_us_exchange,,resolved by name search to CSCCF on US
+CSW,CSW Industrials Inc,US,resolved,no_news_us_exchange,,matched US directory as CSW
+CXM,Sprinklr Inc,US,resolved,no_news_us_exchange,,matched US directory as CXM
+CXT,Crane NXT Co,US,resolved,no_news_us_exchange,,matched US directory as CXT
+CYD,China Yuchai International Limited,SG,resolved,no_news_us_exchange,,matched US directory as CYD
+DAVE,Dave Inc,US,resolved,no_news_us_exchange,,matched US directory as DAVE
+DBSD.Y,DBS Group Holdings Ltd ADR,US,resolved,no_news_us_exchange,,resolved by name search to DBSDY on US
+DORM,Dorman Products Inc,US,resolved,no_news_us_exchange,,matched US directory as DORM
+DPML.F,DPM Metals Inc,US,resolved,no_news_us_exchange,,resolved by name search to DPMLF on US
+DRDG.F,DRDGOLD Ltd,US,resolved,no_news_us_exchange,,resolved by name search to DRDGF on US
+DSGX,Descartes Systems Group Inc,CA,resolved,no_news_us_exchange,,matched US directory as DSGX
+DXPE,DXP Enterprises Inc,US,resolved,no_news_us_exchange,,matched US directory as DXPE
+ELAL.F,El Al Israel Airlines Ltd,US,resolved,no_news_us_exchange,,resolved by name search to ELALF on US
+ERIC,Telefonaktiebolaget LM Ericsson B ADR,SE,resolved,no_news_us_exchange,,matched US directory as ERIC
+ERIE,Erie Indemnity Company,US,resolved,no_news_us_exchange,,matched US directory as ERIE
+ES,Eversource Energy,US,resolved,no_news_us_exchange,,matched US directory as ES
+ESE,ESCO Technologies Inc,US,resolved,no_news_us_exchange,,matched US directory as ESE
+EVRG,Evergy Inc,US,resolved,no_news_us_exchange,,matched US directory as EVRG
+EVTC,Evertec Inc,US,resolved,no_news_us_exchange,,matched US directory as EVTC
+EXE,Expand Energy Corp,US,resolved,no_news_us_exchange,,matched US directory as EXE
+EXET.F,Extendicare Inc,US,resolved,no_news_us_exchange,,resolved by name search to EXETF on US
+EXMR.F,Exmar NV,US,resolved,no_news_us_exchange,,resolved by name search to EXMRF on US
+EXPG.F,Experian PLC,US,resolved,no_news_us_exchange,,resolved by name search to EXPGF on US
+EZPW,EZCORP Inc,US,resolved,no_news_us_exchange,,matched US directory as EZPW
+FCN,FTI Consulting Inc,US,resolved,no_news_us_exchange,,matched US directory as FCN
+FG,F&G Annuities & Life Inc,US,resolved,no_news_us_exchange,,matched US directory as FG
+FHI,Federated Investors Inc B,US,resolved,no_news_us_exchange,,"likely renamed: catalogue says ""Federated Investors Inc B"", venue says ""FEDERATED HERMES INC"""
+FIGS,Figs Inc,US,resolved,no_news_us_exchange,,matched US directory as FIGS
+FKUR.F,Fujikura Ltd,US,resolved,no_news_us_exchange,,resolved by name search to FKURF on US
+FNV,Franco-Nevada Corporation,CA,resolved,no_news_us_exchange,,matched US directory as FNV
+FRPT,Freshpet Inc,US,resolved,no_news_us_exchange,,matched US directory as FRPT
+FRSH,Freshworks Inc,US,resolved,no_news_us_exchange,,matched US directory as FRSH
+FSM,Fortuna Mining Corp,US,resolved,no_news_us_exchange,,matched US directory as FSM
+FUJH.F,Subaru Corp,US,resolved,no_news_us_exchange,,resolved by name search to FUJHF on US
+GALD.Y,Galderma Group AG,US,resolved,no_news_us_exchange,,resolved by name search to GDERF on US
+GBTG,Global Business Travel Group Inc,US,resolved,no_news_us_exchange,,matched US directory as GBTG
+GCT,GigaCloud Technology Inc,US,resolved,no_news_us_exchange,,matched US directory as GCT
+GHC,Graham Holdings Co,US,resolved,no_news_us_exchange,,matched US directory as GHC
+GIB,CGI Inc,CA,resolved,no_news_us_exchange,,matched US directory as GIB
+GIII,G-III Apparel Group Ltd,US,resolved,no_news_us_exchange,,matched US directory as GIII
+GILT,Gilat Satellite Networks Ltd,US,resolved,no_news_us_exchange,,matched US directory as GILT
+GMBX.F,Grupo Mexico SAB de CV,US,resolved,no_news_us_exchange,,resolved by name search to GMBXF on US
+GMWK.F,Games Workshop Group PLC,US,resolved,no_news_us_exchange,,resolved by name search to GWKSY on US
+GOLF,Acushnet Holdings Corp,US,resolved,no_news_us_exchange,,matched US directory as GOLF
+GRBK,Green Brick Partners Inc,US,resolved,no_news_us_exchange,,matched US directory as GRBK
+GRDN,Guardian Pharmacy Services Inc,US,resolved,no_news_us_exchange,,matched US directory as GRDN
+GRND,Grindr,US,resolved,no_news_us_exchange,,matched US directory as GRND
+GVA,Granite Construction Incorporated,US,resolved,no_news_us_exchange,,matched US directory as GVA
+GXYE.F,Galaxy Entertainment Group Ltd,US,resolved,no_news_us_exchange,,resolved by name search to GXYEF on US
+HAFN,Hafnia Ltd,US,resolved,no_news_us_exchange,,matched US directory as HAFN
+HCXL.F,Hiscox Ltd,US,resolved,no_news_us_exchange,,resolved by name search to HCXLF on US
+HG,Hamilton Insurance Group Ltd B,BM,resolved,no_news_us_exchange,,matched US directory as HG
+HGTY,Hagerty Inc,US,resolved,no_news_us_exchange,,matched US directory as HGTY
+HLMA.F,Halma PLC,US,resolved,no_news_us_exchange,,resolved by name search to HLMAF on US
+HLNE,Hamilton Lane Inc,US,resolved,no_news_us_exchange,,matched US directory as HLNE
+HMN,Horace Mann Educators Corporation,US,resolved,no_news_us_exchange,,matched US directory as HMN
+HNNM.Y,H & M Hennes & Mauritz AB ADR,US,resolved,no_news_us_exchange,,resolved by name search to HNNMY on US
+HQY,Healthequity Inc,US,resolved,no_news_us_exchange,,matched US directory as HQY
+IBAD.F,"Inaba Denki Sangyo Co.,Ltd.",US,resolved,no_news_us_exchange,,resolved by name search to IBADF on US
+ICTE.F,"International Container Terminal Services, Inc.",US,resolved,no_news_us_exchange,,resolved by name search to ICTEF on US
+IDCC,InterDigital Inc,US,resolved,no_news_us_exchange,,matched US directory as IDCC
+IFF,International Flavors & Fragrances Inc,US,resolved,no_news_us_exchange,,matched US directory as IFF
+IGIC,International General Insurance Holdings Ltd,JO,resolved,no_news_us_exchange,,matched US directory as IGIC
+IGIF.F,IGM Financial Inc,US,resolved,no_news_us_exchange,,resolved by name search to IGIFF on US
+INOD,Innodata Inc,US,resolved,no_news_us_exchange,,matched US directory as INOD
+INSP,Inspire Medical Systems Inc,US,resolved,no_news_us_exchange,,matched US directory as INSP
+INVA,Innoviva Inc,US,resolved,no_news_us_exchange,,matched US directory as INVA
+IPAR,Inter Parfums Inc,US,resolved,no_news_us_exchange,,matched US directory as IPAR
+IPOA.F,Industrias Penoles SAB de CV,US,resolved,no_news_us_exchange,,resolved by name search to IPOAF on US
+IR,Ingersoll Rand Inc,US,resolved,no_news_us_exchange,,matched US directory as IR
+IRMD,Iradimed Co,US,resolved,no_news_us_exchange,,matched US directory as IRMD
+ITGR,Integer Holdings Corp,US,resolved,no_news_us_exchange,,matched US directory as ITGR
+JAPA.F,Japan Tobacco Inc,US,resolved,no_news_us_exchange,,resolved by name search to JAPAF on US
+KARO,Karooooo Ltd,US,resolved,no_news_us_exchange,,matched US directory as KARO
+KGS,Kodiak Gas Services Inc,US,resolved,no_news_us_exchange,,matched US directory as KGS
+KN,Knowles Cor,US,resolved,no_news_us_exchange,,"likely renamed: catalogue says ""Knowles Cor"", venue says ""KNOWLES CORP"""
+KNF,Knife River Corp,US,resolved,no_news_us_exchange,,matched US directory as KNF
+KNSA,Kiniksa Pharmaceuticals Ltd,US,resolved,no_news_us_exchange,,matched US directory as KNSA
+KNTN.F,K92 Mining Inc,US,resolved,no_news_us_exchange,,resolved by name search to KNTNF on US
+KTB,Kontoor Brands Inc,US,resolved,no_news_us_exchange,,matched US directory as KTB
+KXSC.F,Kinaxis Inc.,US,resolved,no_news_us_exchange,,resolved by name search to KXSCF on US
+KYCC.F,Keyence Corp,US,resolved,no_news_us_exchange,,resolved by name search to KYCCF on US
+LCSH.F,Lancashire Holdings Ltd,US,resolved,no_news_us_exchange,,resolved by name search to LCSHF on US
+LEVI,Levi Strauss & Co Class A,US,resolved,no_news_us_exchange,,matched US directory as LEVI
+LIF,Life360 Inc,US,resolved,no_news_us_exchange,,matched US directory as LIF
+LIFX,"Life360, Inc.",US,resolved,no_news_us_exchange,,"likely renamed: catalogue says ""Life360, Inc."", venue says ""LIFE360 INC-CDI"""
+LINC,Lincoln Educational Services,US,resolved,no_news_us_exchange,,matched US directory as LINC
+LKNC.Y,Luckin Coffee,US,resolved,no_news_us_exchange,,resolved by name search to LKNCY on US
+LMAT,LeMaitre Vascular Inc,US,resolved,no_news_us_exchange,,matched US directory as LMAT
+LMGI.F,Lumine Group Inc.,US,resolved,no_news_us_exchange,,resolved by name search to LMGIF on US
+LPG,Dorian LPG Ltd,US,resolved,no_news_us_exchange,,matched US directory as LPG
+LQDA,Liquidia Technologies Inc,US,resolved,no_news_us_exchange,,"likely renamed: catalogue says ""Liquidia Technologies Inc"", venue says ""LIQUIDIA CORP"""
+LTH,Life Time Group Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as LTH
+LTM,LATAM Airlines Group SA ADR,US,resolved,no_news_us_exchange,,matched US directory as LTM
+LUGD.F,Lundin Gold Inc,US,resolved,no_news_us_exchange,,resolved by name search to LUGDF on US
+LUNM.F,Lundin Mining Corp,US,resolved,no_news_us_exchange,,resolved by name search to LNDMY on US
+LW,Lamb Weston Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as LW
+MANH,Manhattan Associates Inc,US,resolved,no_news_us_exchange,,matched US directory as MANH
+MCY,Mercury General Corporation,US,resolved,no_news_us_exchange,,matched US directory as MCY
+MFC,Manulife Financial Corp,CA,resolved,no_news_us_exchange,,matched US directory as MFC
+MGPU.F,M&G PLC,US,resolved,no_news_us_exchange,,resolved by name search to MGPFY on US
+MGRC,McGrath RentCorp,US,resolved,no_news_us_exchange,,matched US directory as MGRC
+MGRT,Mega Fortune Co Ltd,CN,resolved,no_news_us_exchange,,matched US directory as MGRT
+MIAX,Miami International Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as MIAX
+MKTX,MarketAxess Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as MKTX
+MLHK.F,H&K AG,US,resolved,no_news_us_exchange,,resolved by name search to MLHKF on US
+MMS,Maximus Inc,US,resolved,no_news_us_exchange,,matched US directory as MMS
+MMSI,Merit Medical Systems Inc,US,resolved,no_news_us_exchange,,matched US directory as MMSI
+MMYT,MakeMyTrip Limited,IN,resolved,no_news_us_exchange,,matched US directory as MMYT
+MOG.B,Moog Inc B,US,resolved,no_news_us_exchange,,matched US directory as MOG.B
+NCSY.F,NICE Ltd.,US,resolved,no_news_us_exchange,,resolved by name search to NCSYF on US
+NE,Noble Corp,US,resolved,no_news_us_exchange,,matched US directory as NE
+NGCR.F,Nagacorp Ltd,US,resolved,no_news_us_exchange,,resolved by name search to NGCRF on US
+NHC,National HealthCare Corporation,US,resolved,no_news_us_exchange,,matched US directory as NHC
+NMIH,NMI Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as NMIH
+NPKI,NPK International Inc,US,resolved,no_news_us_exchange,,matched US directory as NPKI
+NTTM.F,"Nittetsu Mining Co., Ltd.",US,resolved,no_news_us_exchange,,resolved by name search to NTTMF on US
+NVGS,Navigator Holdings Ltd,GB,resolved,no_news_us_exchange,,matched US directory as NVGS
+NWAR.F,Norwegian Air Shuttle ASA,US,resolved,no_news_us_exchange,,resolved by name search to NWARF on US
+NWOE.F,New Oriental Education & Technology Group Inc.,US,resolved,no_news_us_exchange,,resolved by name search to NWOEF on US
+NWS,News Corp B,US,resolved,no_news_us_exchange,,matched US directory as NWS
+NXGP.Y,Next PLC ADR,US,resolved,no_news_us_exchange,,resolved by name search to NXGPY on US
+O4D,Oil-Dri Corporation of America,US,resolved,no_news_us_exchange,,
+ODC,Oil-Dri Corporation Of America,US,resolved,no_news_us_exchange,,matched US directory as ODC
+ODFJ.F,Odfjell Drilling Ltd.,US,resolved,no_news_us_exchange,,resolved by name search to ODFJF on US
+OGC,OceanaGold Corp,US,resolved,no_news_us_exchange,,matched US directory as OGC
+OII,Oceaneering International Inc,US,resolved,no_news_us_exchange,,matched US directory as OII
+ONEX.F,Onex Corp,US,resolved,no_news_us_exchange,,resolved by name search to ONEXF on US
+OR,OR Royalties Inc,US,resolved,no_news_us_exchange,,matched US directory as OR
+ORZC.F,Orezone Gold Corp,US,resolved,no_news_us_exchange,,resolved by name search to ORZCF on US
+PACS,PACS Group Inc,US,resolved,no_news_us_exchange,,matched US directory as PACS
+PAX,Patria Investments Ltd,KY,resolved,no_news_us_exchange,,matched US directory as PAX
+PDFS,PDF Solutions Inc,US,resolved,no_news_us_exchange,,matched US directory as PDFS
+PGPH.F,Partners Group Holding AG,US,resolved,no_news_us_exchange,,resolved by name search to PGPHF on US
+PGY,Pagaya,US,resolved,no_news_us_exchange,,"likely renamed: catalogue says ""Pagaya"", venue says ""PAGAYA TECHNOLOGIES LTD -A"""
+PLGO,Pelagos Insurance Capital Ltd,US,resolved,no_news_us_exchange,,matched US directory as PLGO
+PLMR,Palomar Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as PLMR
+PPRU.Y,Kering SA,US,resolved,no_news_us_exchange,,resolved by name search to PPRUF on US
+PRGS,Progress Software Corporation,US,resolved,no_news_us_exchange,,matched US directory as PRGS
+PRMB,Primo Water Corp,US,resolved,no_news_us_exchange,,"likely renamed: catalogue says ""Primo Water Corp"", venue says ""PRIMO BRANDS CORP"""
+PROS.F,Prosus NV,US,resolved,no_news_us_exchange,,resolved by name search to PROSF on US
+PRVA,Privia Health Group Inc,US,resolved,no_news_us_exchange,,matched US directory as PRVA
+RJET,Republic Airways Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as RJET
+RPYT.F,Reply SpA,US,resolved,no_news_us_exchange,,resolved by name search to RPYTF on US
+RVTY,Revvity Inc,US,resolved,no_news_us_exchange,,matched US directory as RVTY
+RYAN,Ryan Specialty Group Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as RYAN
+RYAO.F,Ryanair Holdings PLC,US,resolved,no_news_us_exchange,,resolved by name search to RYAOF on US
+RYCE.F,Rolls-Royce Holdings PLC,US,resolved,no_news_us_exchange,,resolved by name search to RYCEF on US
+SAFR.F,Safran SA,US,resolved,no_news_us_exchange,,resolved by name search to SAFRF on US
+SAFT,Safety Insurance Group Inc,US,resolved,no_news_us_exchange,,matched US directory as SAFT
+SCHY.F,Sands China Ltd.,US,resolved,no_news_us_exchange,,resolved by name search to SCHYF on US
+SCVP.Y,Siam Cement PCL ADR,US,resolved,no_news_us_exchange,,resolved by name search to SCVPY on US
+SEPL.F,Seplat Energy Plc,US,resolved,no_news_us_exchange,,resolved by name search to SEPLF on US
+SGHC,SGHC Limited,GG,resolved,no_news_us_exchange,,"likely renamed: catalogue says ""SGHC Limited"", venue says ""SUPER GROUP SGHC LTD"""
+SHAK,Shake Shack Inc,US,resolved,no_news_us_exchange,,matched US directory as SHAK
+SII,Sprott Inc,CA,resolved,no_news_us_exchange,,matched US directory as SII
+SLF,Sun Life Financial Inc,US,resolved,no_news_us_exchange,,matched US directory as SLF
+SMSO.F,Samsonite Group S.A.,US,resolved,no_news_us_exchange,,resolved by name search to SMSOF on US
+SPNT,Siriuspoint Ltd,US,resolved,no_news_us_exchange,,matched US directory as SPNT
+SPSC,SPS Commerce Inc,US,resolved,no_news_us_exchange,,matched US directory as SPSC
+SRAD,Sportradar Group AG,CH,resolved,no_news_us_exchange,,matched US directory as SRAD
+SRPT,Sarepta Therapeutics Inc,US,resolved,no_news_us_exchange,,matched US directory as SRPT
+SSRG.F,SSR Mining Inc.,US,resolved,no_news_us_exchange,,resolved by name search to SSRM on US
+SSRM,SSR Mining Inc,US,resolved,no_news_us_exchange,,matched US directory as SSRM
+SW,Smurfit WestRock PLC,US,resolved,no_news_us_exchange,,matched US directory as SW
+SWBI,Smith & Wesson Brands Inc,US,resolved,no_news_us_exchange,,matched US directory as SWBI
+SXI,Standex International Corporation,US,resolved,no_news_us_exchange,,matched US directory as SXI
+TBLA,Taboola,US,resolved,no_news_us_exchange,,matched US directory as TBLA
+TDW,Tidewater Inc,US,resolved,no_news_us_exchange,,matched US directory as TDW
+TGLS,Tecnoglass Inc,US,resolved,no_news_us_exchange,,matched US directory as TGLS
+THRM,Gentherm Inc,US,resolved,no_news_us_exchange,,matched US directory as THRM
+TKOM.F,Tokio Marine Holdings Inc,US,resolved,no_news_us_exchange,,resolved by name search to TKOMF on US
+TMDX,TransMedics Group Inc,US,resolved,no_news_us_exchange,,matched US directory as TMDX
+TMIC.F,Trend Micro Inc,US,resolved,no_news_us_exchange,,resolved by name search to TMICF on US
+TORX.F,Torex Gold Resources Inc,US,resolved,no_news_us_exchange,,resolved by name search to TORXF on US
+TPB,Turning Point Brands Inc,US,resolved,no_news_us_exchange,,matched US directory as TPB
+TRIP,Tripadvisor Inc,US,resolved,no_news_us_exchange,,matched US directory as TRIP
+TTAM,Titan America SA,US,resolved,no_news_us_exchange,,matched US directory as TTAM
+UFCS,United Fire Group Inc,US,resolved,no_news_us_exchange,,matched US directory as UFCS
+UFPT,UFP Technologies Inc,US,resolved,no_news_us_exchange,,matched US directory as UFPT
+ULS,UL Solutions Inc,US,resolved,no_news_us_exchange,,matched US directory as ULS
+UMC,United Microelectronics,TW,resolved,no_news_us_exchange,,matched US directory as UMC
+UPWK,Upwork Inc,US,resolved,no_news_us_exchange,,matched US directory as UPWK
+USLM,United States Lime & Minerals Inc,US,resolved,no_news_us_exchange,,matched US directory as USLM
+USPH,US Physicalrapy Inc,US,resolved,no_news_us_exchange,,matched US directory as USPH
+UTI,Universal Technical Institute Inc,US,resolved,no_news_us_exchange,,matched US directory as UTI
+UVE,Universal Insurance Holdings Inc,US,resolved,no_news_us_exchange,,matched US directory as UVE
+VCEL,Vericel Corp Ord,US,resolved,no_news_us_exchange,,matched US directory as VCEL
+VCYT,Veracyte Inc,US,resolved,no_news_us_exchange,,matched US directory as VCYT
+VSOG.F,"Vista Energy, S.A.B. de C.V.",US,resolved,no_news_us_exchange,,resolved by name search to VSOGF on US
+VTOL,Bristow Group Inc,US,resolved,no_news_us_exchange,,matched US directory as VTOL
+VTRS,Viatris Inc,US,resolved,no_news_us_exchange,,matched US directory as VTRS
+VVX,V2X Inc,US,resolved,no_news_us_exchange,,matched US directory as VVX
+WCPR.F,Whitecap Resources Inc,US,resolved,no_news_us_exchange,,resolved by name search to WCPRF on US
+WDFC,WD-40 Company,US,resolved,no_news_us_exchange,,matched US directory as WDFC
+WEC,WEC Energy Group Inc,US,resolved,no_news_us_exchange,,matched US directory as WEC
+WISE,Wise PLC,US,resolved,no_news_us_exchange,,
+WLHS.F,Wilh. Wilhelmsen Holding ASA,US,resolved,no_news_us_exchange,,resolved by name search to WLHSF on US
+WMMV.F,Wal Mart de Mexico SAB de CV,US,resolved,no_news_us_exchange,,resolved by name search to WMMVF on US
+WSE,Wise PLC,US,resolved,no_news_us_exchange,,matched US directory as WSE
+WT,WisdomTree Investments Inc,US,resolved,no_news_us_exchange,,"likely renamed: catalogue says ""WisdomTree Investments Inc"", venue says ""WISDOMTREE INC"""
+WTM,White Mountains Insurance Group Ltd,US,resolved,no_news_us_exchange,,matched US directory as WTM
+XPEL,Xpel Inc,US,resolved,no_news_us_exchange,,matched US directory as XPEL
+XPRO,Expro Group Holdings NV,US,resolved,no_news_us_exchange,,matched US directory as XPRO
+YALA,Yalla Group Ltd,US,resolved,no_news_us_exchange,,matched US directory as YALA
+YELP,Yelp Inc,US,resolved,no_news_us_exchange,,matched US directory as YELP
+ZGN,Ermenegildo Zegna NV,IT,resolved,no_news_us_exchange,,matched US directory as ZGN
+ZWS,Zurn Water Solutions Corp,US,resolved,no_news_us_exchange,,matched US directory as ZWS
+ADBE,Adobe Systems Inc,US,unresolved,unresolved_absent_from_directory,,resolved by name search to ADBE L 07/27/20 1 on null
+AVB,AvalonBay Communities Inc,US,unresolved,unresolved_absent_from_directory,,resolved without an exchange filter to null
+CPRX,Catalyst Pharmaceuticals Inc,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
+EA,Electronic Arts Inc,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
+EQR,Equity Residential,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
+JHG,Janus Henderson Group PLC,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
+LVMU.Y,LVMH Moet Hennessy Louis Vuitton SA ADR,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
+ORLA,Orla Mining Ltd,US,unresolved,unresolved_absent_from_directory,,resolved without an exchange filter to null
+SKX,Skechers USA Inc,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
+SMSG.Y,Samsonite International SA ADR,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
+BMRM.F,Société Anonyme des Bains de Mer et du Cercle des Étrangers à Monaco,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+BWEF.F,BW Energy Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+CIEZ.F,"Corporación Interamericana de Entretenimiento, S.A.B. de C.V.",US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+CMXH.F,CSL Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+CRRS.F,Cirrus Aircraft Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+ELFI.F,E-L Financial Corporation Ltd,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+FSPK.F,Fisher & Paykel Healthcare Corporation Ltd,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+FTRO.F,First Resources Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+LBGU.F,L E Lundbergföretagen AB (publ),US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+MAKS.F,Marks and Spencer Group PLC,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+NVPT.F,"Navitas Petroleum, Limited Partnership",US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+NVZM.F,Novozymes AS,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+PBTD.F,Plover Bay Technologies Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+0FIN,Orkla L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0FQI,Publicis Groupe L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0HAC,ACS Actividades Constr y Srvcs,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0IU8,Safran L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0MEC,Nordex L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0MET,Konecranes Abp,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0N6B,Arcadis L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0NQC,Pandora L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0NQM,Vinci L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0NUX,Prysmian L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0NZT,UCB L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0Q6M,Unipol Gruppo Finanziario SpA,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0QEP,Maire Tecnimont SpA,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0R22,Barrick Gold Corp,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0RGT,William Demant Holding AS,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+0RKF,Construcciones y Auxiliar de Ferrocarriles SA,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
+LVMH_F,"LVMH Moët Hennessy - Louis Vuitton, Société Européenne",,unresolved,unresolved_malformed_ticker,,no identifier matched this ticker and name
+LVMU_Y,LVMH Moet Hennessy Louis Vuitton SA ADR,,unresolved,unresolved_malformed_ticker,,no identifier matched this ticker and name
+MUV2,Munich Reinsurance,DE,unresolved,unresolved_name_check_rejected,,"rejected ""MUENCHENER RUECKVER AG-REG"" on GY: name does not match"
+P,Pure Storage Inc,US,unresolved,unresolved_name_check_rejected,,"rejected ""EVERPURE INC-A"" on US: name does not match"
+WAB,Westinghouse Air Brake Technologies Corp,US,unresolved,unresolved_name_check_rejected,,"rejected ""WABTEC CORP"" on US: name does not match"

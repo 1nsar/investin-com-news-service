@@ -116,27 +116,68 @@ Articles that fail are **never stored** — not saved and quietly marked
 "low quality". **3,041 were thrown away in the last run.** A wrong article never
 reaches the feed at all.
 
-## Why some companies have no news
+## Which companies have no news, and why
 
-**"All 1,515 fetched correctly" is already true** — zero refusals, zero
-failures. Every company was asked the right source with the right symbol. What
-varies is whether news existed, and whether we could show it:
+The full list is exported as data — **[`data/coverage-gaps.csv`](../data/coverage-gaps.csv)**,
+one row per company with a `gap_reason`, regenerated with `npm run export:gaps`.
+**510 of 1,515** produced no news. They are not one problem:
 
-| Cause | Companies | Fixable? |
+| Gap reason | Companies | Whose problem is it? |
 | --- | ---: | --- |
-| Genuinely quiet that week | ~270 | **No — and shouldn't be.** A clean zero is a real answer |
-| **Link could not be opened** (see below) | ~140 | Yes, with a paid provider |
-| Delisted or acquired | 45 | No — the company no longer exists |
-| Thin OTC-only coverage | ~30 | Yes, with a paid provider |
-| Renamed beyond recognition | 4 | Needs a manual alias |
+| `no_news_us_exchange` | 276 | **Nobody's.** Identified correctly, asked correctly, genuinely quiet that week |
+| `no_news_otc_only` | 154 | Thin OTC coverage — a paid provider would help |
+| `no_news_no_us_line` | 29 | Trades only abroad; no free US-centric source reaches it |
+| `unresolved_london_secondary_line` | 16 | Ours — `0XXX` LSE codes are not in our identifier sources |
+| `unresolved_frankfurt_line` | 13 | Ours — same, for `.F` Frankfurt lines |
+| `unresolved_absent_from_directory` | 10 | Absent from Finnhub's US directory |
+| `duplicate_listing_line` | 7 | **Nothing is missing** — same company already covered under another ticker |
+| `unresolved_name_check_rejected` | 3 | Ours — the safety check fired, twice wrongly |
+| `unresolved_malformed_ticker` | 2 | The catalogue's — `LVMH_F` uses `_` where every other row uses `.` |
 
-**On "45 delisted, which is correct":** *resolving* means taking a ticker and
-working out which real, tradeable share it refers to. That failed for 52
-companies — but for 45 of them the company **no longer exists**: acquired,
-merged, or taken private. `EA` (Electronic Arts) and `EQR` are two examples,
-neither a listed security today. You cannot find news for a company that no
-longer trades, so the system is right to report failure rather than invent a
-match. The catalogue is simply a little older than reality.
+**A correction worth stating plainly.** An earlier draft of this report said the
+52 unresolved were "45 delisted, which is correct." That was overconfident. What
+is actually true is narrower: **45 could not be matched to an identifier in the
+sources we use.** Checking them individually shows most are not delisted at all:
+
+- **16 are London `0XXX` lines** — `0FIN` Orkla, `0IU8` Safran, `0NQM` Vinci,
+  `0R22` Barrick Gold. Large, actively traded companies. The `0XXX` code is an
+  LSE convention our identifier sources do not index.
+- **13 are Frankfurt `.F` lines** — `EADS.F` Airbus, `MAKS.F` Marks & Spencer,
+  `CMXH.F` CSL. Same story.
+- **7 are duplicates** — `EADS.F` Airbus is already covered as `0KVV`;
+  `RYAA.Y` Ryanair as `0RYA`. Nothing is missing for these at all.
+- **10 are plain US tickers absent from Finnhub's 30,995-symbol US directory** —
+  `EA`, `SKX`, `EQR`, `JHG`. Some are genuine take-privates; others look like
+  directory gaps. We do not claim to know which without checking each.
+
+**Two of the three name-check rejections are our bug, not a bad match.** `WAB`
+was rejected because the catalogue says "Westinghouse Air Brake Technologies"
+and the directory says "WABTEC CORP" — the same company under its trading name.
+`MUV2` was rejected because the directory carries Munich Re's German name,
+"MUENCHENER RUECKVER AG-REG". The matcher compares surface forms and has no
+notion of an abbreviation or a translation. The third rejection, `P` →
+"EVERPURE INC-A" against a catalogue row for Pure Storage, is **correct** — those
+really are different companies, and it is the same protection that caught the
+seven ticker collisions.
+
+**The catalogue also double-counts.** 1,515 rows are not 1,515 distinct
+businesses: Novartis appears three times (`NOVN`, `NOVNEE`, `0QLR`), SAP three
+times (`SAP`, `0NW4`, `SAPG.F`), Alphabet twice (`GOOGL`, `0HD6`). Coverage
+percentages are therefore computed per *row*, and the true per-business figure
+is somewhat better than the headline suggests.
+
+### What is actually fixable
+
+| Fix | Companies recovered | Effort |
+| --- | ---: | --- |
+| Treat `_` as `.` when parsing tickers | 2 | Trivial |
+| Alias table for trade names and non-English names | 2 | Small, manual |
+| Collapse duplicate listing rows onto one company | 7 | Small |
+| Map `0XXX` / `.F` codes via an LSE/Deutsche Börse identifier source | 29 | Medium |
+| Paid provider for OTC and non-US lines | up to 183 | Cost, not code |
+
+The first three are ~11 companies for an afternoon's work. The last row is the
+only one that requires spending money, and it is the largest by far.
 
 ## Every link now points at the publisher
 
@@ -233,7 +274,8 @@ and activates on an API key, so the decision is reversible at any time.
 
 ## Known limits
 
-- **52 companies (3.4%) unresolved** — 45 are delisted, which is correct.
+- **52 companies (3.4%) unresolved** — see the table above; most are foreign
+  secondary listings our identifier sources do not index, not delistings.
 - **Name matching is the weakest component.** Some pairs are undecidable from
   names alone: "Adobe Systems" vs "Adobe" is indistinguishable from
   "Prudential" vs "Prudential Financial" — the first is one company, the second

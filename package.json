@@ -25,7 +25,8 @@
     "metrics": "tsx scripts/report-metrics.ts",
     "export:openapi": "tsx scripts/export-openapi.ts",
     "evaluate": "tsx scripts/evaluate-provider.ts",
-    "resolve:links": "tsx scripts/resolve-links.ts"
+    "resolve:links": "tsx scripts/resolve-links.ts",
+    "export:gaps": "tsx scripts/export-gaps.ts"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.1",
