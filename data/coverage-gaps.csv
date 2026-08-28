@@ -1,11 +1,5 @@
 ticker,company_name,country,resolution_status,gap_reason,also_covered_as,note
-AFRA.F,Air France-KLM SA,US,unresolved,duplicate_listing_line,AFRA_F,no identifier matched this ticker and name
-EADS.F,Airbus Group SE,US,unresolved,duplicate_listing_line,0KVV,no identifier matched this ticker and name
-EDVM.F,Endeavour Mining Corp,US,unresolved,duplicate_listing_line,EDV,no identifier matched this ticker and name
 NEMC.L,Newmont Corporation,US,unresolved,duplicate_listing_line,0R28,no identifier matched this ticker and name
-QBEI.F,QBE Insurance Group Limited,US,unresolved,duplicate_listing_line,QBEI_F,no identifier matched this ticker and name
-RYAA.Y,Ryanair Holdings PLC ADR,US,unresolved,duplicate_listing_line,0RYA,no identifier matched this ticker and name
-RYAA_Y,Ryanair Holdings PLC ADR,,unresolved,duplicate_listing_line,0RYA,no identifier matched this ticker and name
 000089,Shenzhen Airport Co Ltd,CN,resolved,no_news_no_us_line,,
 000568,Luzhou Lao Jiao Co Ltd,CN,resolved,no_news_no_us_line,,
 0E64,DO & CO AG,GB,resolved,no_news_no_us_line,,resolved without an exchange filter to LO
@@ -473,13 +467,17 @@ EQR,Equity Residential,US,unresolved,unresolved_absent_from_directory,,no identi
 JHG,Janus Henderson Group PLC,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
 LVMU.Y,LVMH Moet Hennessy Louis Vuitton SA ADR,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
 ORLA,Orla Mining Ltd,US,unresolved,unresolved_absent_from_directory,,resolved without an exchange filter to null
+RYAA.Y,Ryanair Holdings PLC ADR,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
 SKX,Skechers USA Inc,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
 SMSG.Y,Samsonite International SA ADR,US,unresolved,unresolved_absent_from_directory,,no identifier matched this ticker and name
+AFRA.F,Air France-KLM SA,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 BMRM.F,Société Anonyme des Bains de Mer et du Cercle des Étrangers à Monaco,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 BWEF.F,BW Energy Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 CIEZ.F,"Corporación Interamericana de Entretenimiento, S.A.B. de C.V.",US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 CMXH.F,CSL Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 CRRS.F,Cirrus Aircraft Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+EADS.F,Airbus Group SE,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+EDVM.F,Endeavour Mining Corp,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 ELFI.F,E-L Financial Corporation Ltd,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 FSPK.F,Fisher & Paykel Healthcare Corporation Ltd,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 FTRO.F,First Resources Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
@@ -488,6 +486,7 @@ MAKS.F,Marks and Spencer Group PLC,US,unresolved,unresolved_frankfurt_line,,no i
 NVPT.F,"Navitas Petroleum, Limited Partnership",US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 NVZM.F,Novozymes AS,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 PBTD.F,Plover Bay Technologies Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
+QBEI.F,QBE Insurance Group Limited,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 0FIN,Orkla L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
 0FQI,Publicis Groupe L,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
 0HAC,ACS Actividades Constr y Srvcs,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
@@ -506,6 +505,7 @@ PBTD.F,Plover Bay Technologies Limited,US,unresolved,unresolved_frankfurt_line,,
 0RKF,Construcciones y Auxiliar de Ferrocarriles SA,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
 LVMH_F,"LVMH Moët Hennessy - Louis Vuitton, Société Européenne",,unresolved,unresolved_malformed_ticker,,no identifier matched this ticker and name
 LVMU_Y,LVMH Moet Hennessy Louis Vuitton SA ADR,,unresolved,unresolved_malformed_ticker,,no identifier matched this ticker and name
+RYAA_Y,Ryanair Holdings PLC ADR,,unresolved,unresolved_malformed_ticker,,no identifier matched this ticker and name
 MUV2,Munich Reinsurance,DE,unresolved,unresolved_name_check_rejected,,"rejected ""MUENCHENER RUECKVER AG-REG"" on GY: name does not match"
 P,Pure Storage Inc,US,unresolved,unresolved_name_check_rejected,,"rejected ""EVERPURE INC-A"" on US: name does not match"
 WAB,Westinghouse Air Brake Technologies Corp,US,unresolved,unresolved_name_check_rejected,,"rejected ""WABTEC CORP"" on US: name does not match"

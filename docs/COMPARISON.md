@@ -40,7 +40,7 @@ these companies can be given a US symbol?"
 
 1. **OpenFIGI** (`/v3/mapping`, no key required) maps ticker + exchange onto
    Bloomberg FIGI identifiers, giving a stable identity and a share class.
-2. **Finnhub's US symbol directory** — one download, 30,970 rows, each carrying
+2. **Finnhub's US symbol directory** — one download, 30,995 rows, each carrying
    `shareClassFIGI`, `mic`, `isin` and a description. Held in memory and joined
    two ways: by share class (exact), and by normalised company name (which is
    how sponsored ADRs are found, since an ADR is a separate share class and
@@ -213,7 +213,14 @@ adapter interface is the only thing a new source has to satisfy.
 
 ## 4b. What the recommended stack actually did
 
-The full run over all 1,515 companies, with the stack above:
+The full run over all 1,515 companies. **Measured with
+`NEWS_PROVIDER_ORDER=finnhub,google_news_rss`, which is not the shipped
+default.** Google News RSS was retired afterwards (§1), and its 249 companies
+are the coverage that retirement cost. The recommended `finnhub,marketaux`
+order has an adapter and per-segment measurements (§6a) but has **not** been run
+at catalogue scale, because the free Marketaux tier allows 100 requests a day
+against ~260 companies that need it. Reproducing this exact table requires the
+old order:
 
 | Provider | Companies served | Outcome |
 | --- | ---: | --- |
@@ -274,9 +281,16 @@ off, and deduplication makes the overlap free.
 
 ## 6. What a paid tier would buy, and when to buy it
 
+> **Superseded by §9.** This section answers "is free good enough for
+> *coverage*?" — and the answer, still, is yes. It was written before the
+> reading experience was examined: half of all links land on a publisher that
+> may demand a sign-up, and no free tier can fix that because none of them
+> license the article body. §9 revises the recommendation accordingly. The
+> reasoning below is kept because it is why we are *not* paying for coverage.
+
 **It would not buy much more coverage.** Listing resolution already reaches
 94.6% of the catalogue with a free ticker-native provider. A paid global feed
-would add the 25 companies with no US line and improve the 270 OTC-only ones —
+would add the 29 companies with no US line and improve the 182 OTC-only ones —
 roughly 2–18% of the list depending on how strictly you count.
 
 **It would buy attribution quality**, which is the real weakness. Today, a
@@ -314,10 +328,14 @@ structurally cannot serve.
 
 | Segment | Companies | Zero articles |
 | --- | ---: | ---: |
-| US exchange listing | 1,160 | 12.9% — mostly genuinely quiet |
-| **US OTC line only** | **285** | **77.2%** |
-| **No US line at all** | **29** | 48.3% |
-| **Unresolved** | **41** | 100% |
+| US exchange listing | 1,252 | 22.0% — mostly genuinely quiet |
+| **US OTC line only** | **182** | **84.6%** |
+| **Unresolved** | **52** | 98.1% |
+| **No US line at all** | **29** | 100% |
+
+*(Regenerate with `npm run metrics` and `npm run export:gaps`. The zero-article
+rates are higher than an earlier draft of this table reported, because the
+retirement of Google News RSS removed ~1,400 unopenable links — see §1.)*
 
 Two things follow.
 
@@ -379,13 +397,13 @@ write-up:
   property of the securities, not of the provider.
 - **The rate limiter is in-process**, so the ingest is a single worker by
   design. Scaling horizontally needs a shared token bucket first.
-- **A full run takes ~27 minutes** and that is set by Finnhub's 60 requests per
+- **A full run takes 26 minutes** and that is set by Finnhub's 60 requests per
   minute, not by anything in this component. It is the one number a paid tier
   would improve immediately.
 
 ---
 
-## 7. LLM-native search: Perplexity and Grok
+## 8. LLM-native search: Perplexity and Grok
 
 The brief lists "LLM tools such as Perplexity" among the options, so this is a
 considered rejection rather than an omission.
@@ -424,7 +442,7 @@ not identity resolution.
 for the ~29 foreign secondary listings — a bounded task worth an afternoon, not
 an architecture.
 
-## 8. Revised recommendation: what to actually buy
+## 9. Revised recommendation: what to actually buy
 
 The stack above is the best *free* answer. It is not the best answer if the
 product needs articles to open inside our own interface.

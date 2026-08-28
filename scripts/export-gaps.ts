@@ -17,9 +17,15 @@ import { isMainModule } from "../src/util/main.js";
 export async function exportGaps(): Promise<{ rows: number; file: string }> {
   const { rows } = await pool.query<Record<string, string>>(`
     WITH covered AS (SELECT DISTINCT company_id FROM article_companies),
+    -- A twin only counts as "already covered" if it actually HAS news. An
+    -- earlier version joined on resolution status alone, which labelled six
+    -- rows "nothing is missing" when their twin was itself empty.
     resolved_names AS (
-      SELECT name_normalized, min(ticker_raw) AS covered_as
-      FROM companies WHERE resolution_status = 'resolved' GROUP BY name_normalized
+      SELECT c.name_normalized, min(c.ticker_raw) AS covered_as
+        FROM companies c
+        JOIN (SELECT DISTINCT company_id FROM article_companies) a ON a.company_id = c.id
+       WHERE c.resolution_status = 'resolved'
+       GROUP BY c.name_normalized
     )
     SELECT c.ticker_raw, c.company_name, coalesce(c.country_raw,'') AS country,
            c.resolution_status,

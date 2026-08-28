@@ -319,7 +319,7 @@ By provider and outcome
 **1,434 companies had a US listing and went to Finnhub; the rest fell through
 to name-based search or had no listing to ask about.**
 
-- **Time: ~27 minutes**, set almost entirely by Finnhub's free tier of 60
+- **Time: 26 minutes**, set almost entirely by Finnhub's free tier of 60
   requests/minute. 1,434 companies is 1,434 calls; at the configured 55/min
   that is ~26 minutes of deliberate waiting. Raising `INGEST_CONCURRENCY`
   will not help — the rate limit is the constraint, not parallelism. A paid
@@ -485,7 +485,7 @@ advisory lock so concurrent container boots cannot race.
 | --- | --- |
 | Backend component + README | this repo |
 | Comparison write-up | [docs/COMPARISON.md](docs/COMPARISON.md) |
-| Resolved exchange/listing mapping, as data | `npm run export:listings` → `data/out/listings.csv` and `.json`; also `GET /v1/listings` |
+| Resolved exchange/listing mapping, as data | `npm run export:listings` → [data/listings-mapping.csv](data/listings-mapping.csv) and `.json` (both tracked); also `GET /v1/listings` |
 | How it was produced | [docs/COMPARISON.md](docs/COMPARISON.md) §1, and `src/resolution/` |
 | Which companies are **not** covered, and why | `npm run export:gaps` → [data/coverage-gaps.csv](data/coverage-gaps.csv); analysed in [docs/REPORT.md](docs/REPORT.md) |
 | Think past the happy path | [docs/OPERATIONS.md](docs/OPERATIONS.md) |

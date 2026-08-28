@@ -38,7 +38,7 @@ supplier values are stored untouched in `*_raw` columns beside the resolved
 truth, so the mapping is also the evidence of what was wrong.
 
 **What it does not do.** It does not correct the source file, and it does not
-attempt automated reconciliation of the 176 duplicate names — some are genuine
+attempt automated reconciliation of the 179 duplicate names — some are genuine
 cross-listings that Task 2 merges, others are separate share classes that must
 stay separate. That needs a human decision per case.
 
@@ -207,7 +207,7 @@ free-tier budgets hold. Two things break before the others as it grows:
    name-based search where budget allows. This is a coverage *quality* upgrade,
    not a coverage *quantity* one — see the comparison write-up.
 4. **Retention and partitioning** on `articles`.
-5. **Human review queue** for the 176 duplicate-name groups, the 41 companies
+5. **Human review queue** for the 179 duplicate-name groups, the 52 companies
    that still do not resolve, and any company resolved below a confidence
    floor.
 

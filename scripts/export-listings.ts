@@ -5,7 +5,7 @@ import { logger } from "../src/util/logger.js";
 
 /** Export the resolved exchange/listing mapping - a named deliverable.
  *
- *   npm run export:listings                  -> data/out/listings.csv + .json
+ *   npm run export:listings                  -> data/listings-mapping.csv + .json
  *   npm run export:listings -- path/prefix
  *
  *  Every row carries the catalogue's original claim next to what we resolved,
@@ -27,7 +27,7 @@ function toCsv(rows: Record<string, unknown>[]): string {
 
 async function main(): Promise<void> {
   // Default writes the tracked deliverable copy. Pass a prefix to write
-  // elsewhere, e.g. `npm run export:listings -- data/out/listings`.
+  // elsewhere, e.g. `npm run export:listings -- data/listings-mapping`.
   const prefix = process.argv[2] ?? "data/listings-mapping";
 
   const rows = await query(`
