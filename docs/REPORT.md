@@ -129,10 +129,10 @@ one row per company with a `gap_reason`, regenerated with `npm run export:gaps`.
 | `no_news_us_exchange` | 276 | **Nobody's.** Identified correctly, asked correctly, genuinely quiet that week |
 | `no_news_otc_only` | 154 | Thin OTC coverage — a paid provider would help |
 | `no_news_no_us_line` | 29 | Trades only abroad; no free US-centric source reaches it |
-| `unresolved_frankfurt_line` | 17 | Ours — `.F` Frankfurt lines are not in our identifier sources |
+| `unresolved_frankfurt_line` | 18 | Ours — `.F` Frankfurt lines are not in our identifier sources |
 | `unresolved_london_secondary_line` | 16 | Ours — same, for `0XXX` LSE codes |
-| `unresolved_absent_from_directory` | 11 | Absent from Finnhub's US directory |
-| `unresolved_malformed_ticker` | 3 | The catalogue's — `LVMH_F` uses `_` where every other row uses `.` |
+| `unresolved_absent_from_directory` | 8 | Absent from Finnhub's US directory |
+| `unresolved_depositary_line` | 5 | `.Y` / `_Y` lines matching no identifier |
 | `unresolved_name_check_rejected` | 1 | The safety check correctly refusing a ticker collision |
 | `duplicate_listing_line` | 1 | **Nothing is missing** — same company already covered, *with news*, under another ticker |
 
@@ -170,6 +170,110 @@ businesses: Novartis appears three times (`NOVN`, `NOVNEE`, `0QLR`), SAP three
 times (`SAP`, `0NW4`, `SAPG.F`), Alphabet twice (`GOOGL`, `0HD6`). Coverage
 percentages are therefore computed per *row*, and the true per-business figure
 is somewhat better than the headline suggests.
+
+### The 50 unresolved companies
+
+Every one listed, with why it did not resolve. Grouping comes from `gap_reason`
+in [`data/coverage-gaps.csv`](../data/coverage-gaps.csv) (`npm run export:gaps`),
+so this table and that file cannot drift apart.
+
+**"Unresolved" means the ticker matched no identifier in our sources — not that
+the company is delisted.** Each note states only what the data shows: the
+supplier's exchange hint, the resolver's own reason, and whether the same
+company resolves under a different ticker. Where a company's real-world status
+is unknown to us, the note reports what was observed rather than guessing.
+
+
+**Frankfurt secondary lines — 18**
+
+| Ticker | Company | Why it did not resolve |
+| --- | --- | --- |
+| `AFRA.F` | Air France-KLM SA | Same company resolves as `AFRA_F`, but that row is also quiet |
+| `BMRM.F` | Société Anonyme des Bains de M | OTC pink-sheet line; not carried in the US exchange directory |
+| `BWEF.F` | BW Energy Limited | OTC pink-sheet line; not carried in the US exchange directory |
+| `CIEZ.F` | Corporación Interamericana de  | OTC pink-sheet line; not carried in the US exchange directory |
+| `CMXH.F` | CSL Limited | OTC pink-sheet line; not carried in the US exchange directory |
+| `CRRS.F` | Cirrus Aircraft Limited | OTC pink-sheet line; not carried in the US exchange directory |
+| `EADS.F` | Airbus Group SE | Same company resolves as `0KVV`, but that row is also quiet |
+| `EDVM.F` | Endeavour Mining Corp | Same company resolves as `EDV`, but that row is also quiet |
+| `ELFI.F` | E-L Financial Corporation Ltd | OTC pink-sheet line; not carried in the US exchange directory |
+| `FSPK.F` | Fisher & Paykel Healthcare Cor | OTC pink-sheet line; not carried in the US exchange directory |
+| `FTRO.F` | First Resources Limited | OTC pink-sheet line; not carried in the US exchange directory |
+| `LBGU.F` | L E Lundbergföretagen AB (publ | OTC pink-sheet line; not carried in the US exchange directory |
+| `LVMH_F` | LVMH Moët Hennessy - Louis Vui | No exchange hint supplied, and the symbol matched no identifier |
+| `MAKS.F` | Marks and Spencer Group PLC | OTC pink-sheet line; not carried in the US exchange directory |
+| `NVPT.F` | Navitas Petroleum, Limited Par | OTC pink-sheet line; not carried in the US exchange directory |
+| `NVZM.F` | Novozymes AS | OTC pink-sheet line; not carried in the US exchange directory |
+| `PBTD.F` | Plover Bay Technologies Limite | OTC pink-sheet line; not carried in the US exchange directory |
+| `QBEI.F` | QBE Insurance Group Limited | Same company resolves as `QBEI_F`, but that row is also quiet |
+
+
+**London secondary lines — 16**
+
+| Ticker | Company | Why it did not resolve |
+| --- | --- | --- |
+| `0FIN` | Orkla L | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0FQI` | Publicis Groupe L | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0HAC` | ACS Actividades Constr y Srvcs | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0IU8` | Safran L | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0MEC` | Nordex L | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0MET` | Konecranes Abp | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0N6B` | Arcadis L | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0NQC` | Pandora L | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0NQM` | Vinci L | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0NUX` | Prysmian L | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0NZT` | UCB L | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0Q6M` | Unipol Gruppo Finanziario SpA | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0QEP` | Maire Tecnimont SpA | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0R22` | Barrick Gold Corp | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0RGT` | William Demant Holding AS | London line; the LSE code is not in OpenFIGI or the US directory |
+| `0RKF` | Construcciones y Auxiliar de F | London line; the LSE code is not in OpenFIGI or the US directory |
+
+
+**Absent from the US directory — 8**
+
+| Ticker | Company | Why it did not resolve |
+| --- | --- | --- |
+| `ADBE` | Adobe Systems Inc | Matched only a derivative contract (`ADBE L 07/27/20 1`), not an equity line |
+| `AVB` | AvalonBay Communities Inc | Matched an identifier with no exchange attached, so no venue could be confirmed |
+| `CPRX` | Catalyst Pharmaceuticals Inc | Hint says NASDAQCM, but the symbol is absent from the 30,995-row US directory |
+| `EA` | Electronic Arts Inc | Hint says NASDAQGS, but the symbol is absent from the 30,995-row US directory |
+| `EQR` | Equity Residential | Hint says NYSE, but the symbol is absent from the 30,995-row US directory |
+| `JHG` | Janus Henderson Group PLC | Hint says NYSE, but the symbol is absent from the 30,995-row US directory |
+| `ORLA` | Orla Mining Ltd | Matched an identifier with no exchange attached, so no venue could be confirmed |
+| `SKX` | Skechers USA Inc | Hint says NYSE, but the symbol is absent from the 30,995-row US directory |
+
+
+**Depositary-receipt lines — 5**
+
+| Ticker | Company | Why it did not resolve |
+| --- | --- | --- |
+| `LVMU.Y` | LVMH Moet Hennessy Louis Vuitt | OTC pink-sheet line; not carried in the US exchange directory |
+| `LVMU_Y` | LVMH Moet Hennessy Louis Vuitt | No exchange hint supplied, and the symbol matched no identifier |
+| `RYAA.Y` | Ryanair Holdings PLC ADR | Same company resolves as `0RYA`, but that row is also quiet |
+| `RYAA_Y` | Ryanair Holdings PLC ADR | Same company resolves as `0RYA`, but that row is also quiet |
+| `SMSG.Y` | Samsonite International SA ADR | OTC pink-sheet line; not carried in the US exchange directory |
+
+
+**Covered under another ticker — 1**
+
+| Ticker | Company | Why it did not resolve |
+| --- | --- | --- |
+| `NEMC.L` | Newmont Corporation | Same company resolves as `0R28`, which has news — nothing missing |
+
+
+**Refused by the name check — 1**
+
+| Ticker | Company | Why it did not resolve |
+| --- | --- | --- |
+| `P` | Pure Storage Inc | Directory row is **EVERPURE INC-A** — refused, correctly |
+
+
+**Unresolved but still served — 1**
+
+| Ticker | Company | Why it did not resolve |
+| --- | --- | --- |
+| `GOLD` | Goldcom Inc | Directory row is **GOLD.COM INC** — refused, correctly; found by name search, so not a coverage gap |
 
 ### What is actually fixable
 
