@@ -58,7 +58,9 @@ export async function exportGaps(): Promise<{ rows: number; file: string }> {
      ORDER BY gap_reason, c.ticker_raw`);
 
   const headers = ["ticker","company_name","country","resolution_status","gap_reason","also_covered_as","note"];
-  const escape = (v: string): string => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
+  // \r as well as \n: a lone carriage return in a supplier-provided company
+  // name would otherwise split the row for a strict CSV reader.
+  const escape = (v: string): string => (/[",\r\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
   const csv = [
     headers.join(","),
     ...rows.map((r) => [

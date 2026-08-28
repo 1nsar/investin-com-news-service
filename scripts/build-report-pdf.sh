@@ -76,12 +76,37 @@ PY
   --run-all-compositor-stages-before-draw --virtual-time-budget=4000 \
   --print-to-pdf="$BUILD/report.pdf" "file://$BUILD/report.html" 2>/dev/null
 
-# A local path in a distributed PDF leaks the build environment. Fail loudly.
-if strings "$BUILD/report.pdf" | grep -q 'file:///'; then
-  echo "FAIL: the PDF still references a local path:"
-  strings "$BUILD/report.pdf" | grep -o 'file:///[^)]*' | sort -u
-  exit 1
-fi
+# A local path in a distributed PDF leaks the build environment. `strings` only
+# sees uncompressed bytes, and Chrome can place link annotations inside a
+# Flate-compressed object stream - so inflate every stream before checking, and
+# look for the build directory and the home path too, not just file:// URLs.
+python3 - "$BUILD/report.pdf" <<'GATE'
+import re, sys, zlib
+
+path = sys.argv[1]
+raw = open(path, "rb").read()
+
+haystacks = [raw]
+for match in re.finditer(rb"stream\r?\n", raw):
+    chunk = raw[match.end(): raw.find(b"endstream", match.end())]
+    try:
+        haystacks.append(zlib.decompress(chunk))
+    except zlib.error:
+        pass
+
+# Any absolute filesystem path or file: URL means the build environment leaked
+# into a document meant for distribution. Matching on paths rather than a list
+# of vendor names catches build directories we have not thought of.
+patterns = [rb"file://", rb"/Users/", rb"/home/", rb"/private/", rb"/var/folders/", rb"[A-Z]:\\\\Users"]
+hits = sorted({
+    p.decode("ascii", "replace")
+    for h in haystacks for p in patterns
+    if re.search(p, h, re.IGNORECASE)
+})
+if hits:
+    sys.exit("FAIL: the PDF leaks build-environment strings: " + ", ".join(hits))
+print(f"  leak gate: clean ({len(haystacks) - 1} streams inflated and checked)")
+GATE
 
 cp "$BUILD/report.pdf" "$OUT"
 echo "wrote $OUT ($(wc -c < "$OUT" | tr -d ' ') bytes)"

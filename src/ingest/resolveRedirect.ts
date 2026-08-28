@@ -1,5 +1,5 @@
 import { backoffDelayMs, mapWithConcurrency, sleep, withTimeout } from "../util/async.js";
-import type { RateLimiter } from "../util/rateLimiter.js";
+import { RateLimiter } from "../util/rateLimiter.js";
 import { logger } from "../util/logger.js";
 
 /** Turning a provider's redirect wrapper into the publisher's own address.
@@ -27,7 +27,15 @@ import { logger } from "../util/logger.js";
  *
  *  Concurrency defaults to 3 because the redirect endpoint is rate-limited:
  *  measured over 40 links, 10-wide returned 429 for 30% of them and 6-wide for
- *  20%, while 3-wide resolved every one. Retries cover the rest. */
+ *  20%, while 3-wide resolved every one. Retries cover the rest.
+ *
+ *  It gets its OWN limiter rather than the provider's. The wrapper URL carries
+ *  no API token - it is a separate, unauthenticated endpoint, limited by IP
+ *  rather than by key - so it does not draw on the provider's quota. Sharing
+ *  the provider's bucket made resolution queue behind the company fetches until
+ *  the per-company timeout fired, and every timed-out article was then stored
+ *  with the wrapper URL intact: 204 of them in one run. */
+const resolverLimiter = new RateLimiter("finnhub-redirect", 120);
 
 /** Hosts whose links are redirect wrappers rather than articles. */
 const WRAPPER_HOSTS = /(^|\.)finnhub\.io$/i;
@@ -117,7 +125,7 @@ export async function resolveOneHop(
 export async function resolveWrappers(
   urls: readonly string[],
   concurrency = 3,
-  limiter?: RateLimiter,
+  limiter: RateLimiter = resolverLimiter,
 ): Promise<Map<string, string>> {
   const unique = [...new Set(urls.filter(isWrapperUrl))];
   const resolved = new Map<string, string>();

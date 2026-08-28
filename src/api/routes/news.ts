@@ -3,6 +3,10 @@ import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { getCompany, listMarketNews, listNews } from "../repository.js";
 
+/** Default round-up cut-off for a single company's feed. 3 keeps stories that
+ *  compare a company with one or two peers, and drops list articles. */
+const DEFAULT_COMPANY_FEED_MAX_COMPANIES = 3;
+
 const NewsQuery = z.object({
   from: z.coerce.date().optional(),
   to: z.coerce.date().optional(),
@@ -81,7 +85,12 @@ export async function newsRoutes(app: FastifyInstance): Promise<void> {
       return reply.code(404).send({ error: "not_found", detail: `no tracked company '${ticker}'` });
     }
 
-    const filters = parsed.data;
+    // A company's own feed defaults to excluding round-ups. An article filed
+    // against many tickers ("today's top movers", "10 IT stocks with whale
+    // alerts") is rarely news about any one of them, and left unfiltered those
+    // dominate the feed of a widely-mentioned company like MSFT or AAPL.
+    // Callers that want the unfiltered set pass max_companies explicitly.
+    const filters = { max_companies: DEFAULT_COMPANY_FEED_MAX_COMPANIES, ...parsed.data };
     const { items, total } = await listNews({
       ticker,
       from: filters.from,

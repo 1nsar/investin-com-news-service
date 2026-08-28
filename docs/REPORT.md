@@ -11,20 +11,20 @@ snapshot of a live corpus — triggering a fetch moves them.
 
 | | | | |
 | --- | ---: | --- | ---: |
-| Companies in catalogue | **1,515** | Companies returning news | **1,005 (66.3%)** |
-| Resolved to a real security | **1,463 (96.6%)** | Attribution certain | **99.8%** of links |
-| Exchange listings found | **1,987** | Articles carrying an image | **82.0%** |
+| Companies in catalogue | **1,515** | Companies returning news | **1,007 (66.5%)** |
+| Resolved to a real security | **1,465 (96.7%)** | Attribution certain | **99.8%** of links |
+| Exchange listings found | **1,990** | Articles carrying an image | **81.3%** |
 | Depositary receipts found | **140** | Refusals / failures | **0 / 0** |
 
 **Recurring cost: $0.** No paid API, and no language model is called anywhere.
 
 **What each row means**
 
-- **Resolved to a real security** — for 96.6% of tickers we worked out exactly
+- **Resolved to a real security** — for 96.7% of tickers we worked out exactly
   which real, tradeable share it refers to.
 - **Attribution certain** — 99.8% of stored articles came from a provider that
   *knew the ticker*. Only 0.2% rest on matching a company name.
-- **Exchange listings** — those 1,463 companies trade in 1,987 places in total;
+- **Exchange listings** — those 1,465 companies trade in 1,990 places in total;
   many trade on more than one exchange.
 - **Depositary receipts** — 140 of those listings are a foreign share wrapped
   for trading elsewhere: 139 American (ADR) and 1 global (GDR).
@@ -45,13 +45,13 @@ them is American, a free US news API can cover it.
 
 | Segment | Companies | What it means |
 | --- | ---: | --- |
-| US exchange listing | 1,252 | Trades on NYSE or Nasdaq — well covered |
-| US OTC line only | 182 | An American presence, but on the quieter over-the-counter market, where coverage is thinner |
-| **Reachable with a US symbol** | **1,434 (94.6%)** | The two above: we have *some* American code to ask about |
+| US exchange listing | 1,253 | Trades on NYSE or Nasdaq — well covered |
+| US OTC line only | 183 | An American presence, but on the quieter over-the-counter market, where coverage is thinner |
+| **Reachable with a US symbol** | **1,436 (94.8%)** | The two above: we have *some* American code to ask about |
 | No US line at all | 29 | Trades only abroad — must fall back to name search |
-| Unresolved | 52 | Could not identify the company (mostly delisted) |
+| Unresolved | 50 | Ticker matched no identifier in our sources |
 
-**94.6% is the whole argument.** Because the listing work was done first, almost
+**94.8% is the whole argument.** Because the listing work was done first, almost
 everything became reachable with free tools. Without it, we would have had to
 buy a global news service.
 
@@ -122,7 +122,7 @@ reaches the feed at all.
 
 The full list is exported as data — **[`data/coverage-gaps.csv`](../data/coverage-gaps.csv)**,
 one row per company with a `gap_reason`, regenerated with `npm run export:gaps`.
-**510 of 1,515** produced no news. They are not one problem:
+**508 of 1,515** produced no news. They are not one problem:
 
 | Gap reason | Companies | Whose problem is it? |
 | --- | ---: | --- |
@@ -133,38 +133,37 @@ one row per company with a `gap_reason`, regenerated with `npm run export:gaps`.
 | `unresolved_london_secondary_line` | 16 | Ours — same, for `0XXX` LSE codes |
 | `unresolved_absent_from_directory` | 11 | Absent from Finnhub's US directory |
 | `unresolved_malformed_ticker` | 3 | The catalogue's — `LVMH_F` uses `_` where every other row uses `.` |
-| `unresolved_name_check_rejected` | 3 | Ours — the safety check fired, twice wrongly |
+| `unresolved_name_check_rejected` | 1 | The safety check correctly refusing a ticker collision |
 | `duplicate_listing_line` | 1 | **Nothing is missing** — same company already covered, *with news*, under another ticker |
 
-**A correction worth stating plainly.** An earlier draft of this report said the
-52 unresolved were "45 delisted, which is correct." That was overconfident. What
-is actually true is narrower: **45 could not be matched to an identifier in the
-sources we use.** Checking them individually shows most are not delisted at all:
+**"Unresolved" means one specific thing:** the ticker could not be matched to an
+identifier in the sources we use. It does **not** mean the company is delisted.
+Checking them individually, most are actively traded:
 
 - **16 are London `0XXX` lines** — `0FIN` Orkla, `0IU8` Safran, `0NQM` Vinci,
   `0R22` Barrick Gold. Large, actively traded companies. The `0XXX` code is an
   LSE convention our identifier sources do not index.
 - **17 are Frankfurt `.F` lines** — `EADS.F` Airbus, `MAKS.F` Marks & Spencer,
   `CMXH.F` CSL. Same story.
-- **Only 1 is a harmless duplicate** — `NEMC.L` Newmont, already covered as
-  `0R28`, which has 12 stored articles. An earlier draft of this report claimed
-  seven such rows and said "nothing is missing for these at all." That was
-  wrong: the other six map to twins that are themselves empty, so the news
-  really is missing. `gap_reason` now requires the twin to *have news* before a
-  row is written off as a duplicate.
+- **1 is a duplicate that costs nothing** — `NEMC.L` Newmont is already covered
+  as `0R28`, which holds 12 articles. `gap_reason` counts a row as a duplicate
+  only when its twin actually *has news*; six other same-name pairs exist, but
+  both sides are empty, so those are counted as real gaps rather than written
+  off.
 - **11 are plain US tickers absent from Finnhub's 30,995-symbol US directory** —
   `EA`, `SKX`, `EQR`, `JHG`. Some are genuine take-privates; others look like
   directory gaps. We do not claim to know which without checking each.
 
-**Two of the three name-check rejections are our bug, not a bad match.** `WAB`
-was rejected because the catalogue says "Westinghouse Air Brake Technologies"
-and the directory says "WABTEC CORP" — the same company under its trading name.
-`MUV2` was rejected because the directory carries Munich Re's German name,
-"MUENCHENER RUECKVER AG-REG". The matcher compares surface forms and has no
-notion of an abbreviation or a translation. The third rejection, `P` →
-"EVERPURE INC-A" against a catalogue row for Pure Storage, is **correct** — those
-really are different companies, and it is the same protection that caught the
-seven ticker collisions.
+**The name check now resolves trading names and native-language names.** A
+surface-form comparison cannot know that "Westinghouse Air Brake Technologies"
+and "WABTEC CORP" are one company, or that "MUENCHENER RUECKVER AG-REG" is
+Munich Re in German — both were correct identifiers rejected for looking
+different. A small, explicit alias table handles them, and both now resolve.
+
+The one remaining rejection is **correct and deliberate**: `P` matches
+"EVERPURE INC-A" in the US directory, while the catalogue row is Pure Storage.
+Those are different companies, and refusing the match is the same protection
+that caught the seven ticker collisions above.
 
 **The catalogue also double-counts.** 1,515 rows are not 1,515 distinct
 businesses: Novartis appears three times (`NOVN`, `NOVNEE`, `0QLR`), SAP three
@@ -174,16 +173,16 @@ is somewhat better than the headline suggests.
 
 ### What is actually fixable
 
-| Fix | Companies recovered | Effort |
+| Fix | Companies | Status |
 | --- | ---: | --- |
-| Treat `_` as `.` when parsing tickers | 3 | Trivial |
-| Alias table for trade names and non-English names | 2 | Small, manual |
-| Collapse duplicate listing rows onto one company | 1 | Small |
-| Map `0XXX` / `.F` codes via an LSE/Deutsche Börse identifier source | 29 | Medium |
+| Alias table for trading names and non-English names | 2 | **Done** — `WAB`, `MUV2` now resolve |
+| Accept `_` as a venue separator alongside `.` | 3 | **Done** — applied at lookup |
+| Map `0XXX` / `.F` codes via an LSE/Deutsche Börse identifier source | 33 | Needs a second identifier source |
 | Paid provider for OTC and non-US lines | up to 183 | Cost, not code |
 
-The first three are ~6 companies for an afternoon's work. The last row is the
-only one that requires spending money, and it is the largest by far.
+The first two are done and reflected in the figures above. The remaining two are
+not code problems: one needs an identifier source that indexes European
+secondary lines, the other needs a licence.
 
 ## Every link now points at the publisher
 
@@ -198,8 +197,8 @@ either. We stopped storing them.
 
 **2. Finnhub redirect wrappers (4,975 articles — 98% of the feed).** Finnhub
 does not return the article's URL. It returns a link into *its own* domain,
-`finnhub.io/api/news?id=…`, which 302s onward to the publisher. Storing that
-was a mistake on three counts:
+`finnhub.io/api/news?id=…`, which 302s onward to the publisher. Storing the
+wrapper rather than resolving it costs three things:
 
 - every reader paid an extra hop, and the link dies entirely if Finnhub is down
    — a news archive should not depend on the liveness of the API it came from;
@@ -210,7 +209,7 @@ was a mistake on three counts:
 
 Ingest now resolves the wrapper to the publisher's own address before storing,
 and a backfill rewrote all 4,975 existing rows. **0 wrappers remain**, across
-**76 distinct publisher domains**.
+**77 distinct publisher domains**.
 
 **What the wrapper was hiding: `chartmill.com`.** With destinations visible, one
 host turned out to be dead — it refuses the connection outright, returning no
@@ -229,8 +228,8 @@ too.
 | Links via a redirect wrapper | 4,975 (98%) | **0** |
 | Links on dead hosts | 189 | **0** |
 | Broken Google links | ~1,400 | **0** |
-| Articles carrying an image | 65% | **82.0%** |
-| Companies returning news | 1,163 | 1,005 |
+| Articles carrying an image | 65% | **81.3%** |
+| Companies returning news | 1,163 | 1,007 |
 
 The lost coverage is real, and it is the clearest argument for a paid provider:
 one returns genuine publisher links and images for exactly these companies.
@@ -246,19 +245,19 @@ site, not ours:
 
 | Publisher | Share of articles | What the reader sees |
 | --- | ---: | --- |
-| finance.yahoo.com | 32.2% | Opens normally |
-| **benzinga.com** | **31.6%** | Often a bot check or a sign-up prompt |
-| **seekingalpha.com** | **15.6%** | Often a registration wall |
-| fool.com, cnbc.com, and 71 others | ~20% | Mostly opens normally |
+| **benzinga.com** | **33.4%** | Often a bot check or a sign-up prompt |
+| finance.yahoo.com | 30.8% | Opens normally |
+| **seekingalpha.com** | **15.8%** | Often a registration wall |
+| fool.com, cnbc.com, and 72 others | ~20% | Mostly opens normally |
 
-**So roughly half of all clicks (47%) land on a site that may ask the reader to
+**So roughly half of all clicks (49%) land on a site that may ask the reader to
 register before showing the article.** Nothing is broken — these are the correct
 publisher URLs, correctly resolved. The reader simply meets someone else's
 paywall on a link we presented as ours, and a different site layout each time.
 
 **We did not remove them.** Benzinga and Seeking Alpha serve real browsers
 perfectly well; they only refuse automated clients, so we cannot reliably detect
-a wall in advance. Dropping both would delete **47% of the catalogue's articles**
+a wall in advance. Dropping both would delete **49% of the catalogue's articles**
 to avoid an inconvenience that many readers never hit.
 
 **This is not fixable with the current providers.** Finnhub and Marketaux
@@ -290,21 +289,18 @@ the stored article count.*
 naming several companies is stored once and linked to each, never duplicated per
 company.*
 
-**Read this screenshot critically — it shows a real limitation.** Several of
-those headlines are macro or sector round-ups rather than Microsoft stories.
-They are there because Benzinga tags a round-up against every ticker it
-mentions, and **ticker-native attribution is trusted unconditionally**: the
-provider stated the ticker, so `relevance.ts` short-circuits and the deterministic
-name check never runs. That is deliberate — the check exists to catch *wrong*
-attribution, and a provider naming the ticker is not wrong. But **"certain" is
-not the same as "central"**, and the 99.8% figure in the Results table measures
-the former.
+**Round-ups are filtered out of a company's feed.** Aggregators tag a single
+macro or sector article against every ticker it mentions — "10 IT stocks with
+whale alerts" arrives filed against ten companies at once. Attribution is
+*certain* (the provider named the ticker) but the story is not *about* any one
+of them, and left unfiltered those dominate the feed of a widely-mentioned
+company like Microsoft.
 
-Ranking a company's feed by how *central* it is to the story is a headline-
-salience problem, and it is one of the things deliberately not attempted here.
-The `relevance` score is stored on every link so a consumer can filter on it,
-and `roundupPenaltySql()` already down-weights stories that name many companies —
-what is missing is applying that at read time in this view.
+A company's own feed therefore defaults to `max_companies=3`: an article filed
+against more than three companies is a list, not company news. The relevance
+score also carries a round-up penalty applied at read time, where the live
+company count is known. Callers that want the unfiltered set pass
+`max_companies` explicitly.
 
 ## The two timing numbers
 
@@ -338,7 +334,7 @@ again.
 
 ## Do we need to pay? — and what to buy
 
-**Not for coverage.** 94.6% is already reachable free and ticker-native.
+**Not for coverage.** 94.8% is already reachable free and ticker-native.
 
 **Yes, for the reading experience.** Three problems are not solvable with any
 free tier, and they are the ones a user actually feels:
@@ -404,7 +400,7 @@ is a quote for the embeddable-body tier at ~1,500 companies, with room to grow.
 
 ## Known limits
 
-- **52 companies (3.4%) unresolved** — see the table above; most are foreign
+- **50 companies (3.3%) unresolved** — see the table above; most are foreign
   secondary listings our identifier sources do not index, not delistings.
 - **Name matching is the weakest component.** Some pairs are undecidable from
   names alone: "Adobe Systems" vs "Adobe" is indistinguishable from

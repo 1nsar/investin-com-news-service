@@ -178,11 +178,7 @@ async function ingestCompany(
       // best-effort, and an unresolved wrapper is already a supported
       // degradation, so a slow publisher must not stall the whole run.
       const realUrls = await withTimeout(
-        resolveWrappers(
-          result.articles.map((article) => article.url ?? "").filter(Boolean),
-          3,
-          provider.limiter,
-        ),
+        resolveWrappers(result.articles.map((article) => article.url ?? "").filter(Boolean)),
         config.INGEST_COMPANY_TIMEOUT_MS,
         `resolve links for ${company.ticker}`,
       ).catch(() => new Map<string, string>());

@@ -506,6 +506,4 @@ QBEI.F,QBE Insurance Group Limited,US,unresolved,unresolved_frankfurt_line,,no i
 LVMH_F,"LVMH Moët Hennessy - Louis Vuitton, Société Européenne",,unresolved,unresolved_malformed_ticker,,no identifier matched this ticker and name
 LVMU_Y,LVMH Moet Hennessy Louis Vuitton SA ADR,,unresolved,unresolved_malformed_ticker,,no identifier matched this ticker and name
 RYAA_Y,Ryanair Holdings PLC ADR,,unresolved,unresolved_malformed_ticker,,no identifier matched this ticker and name
-MUV2,Munich Reinsurance,DE,unresolved,unresolved_name_check_rejected,,"rejected ""MUENCHENER RUECKVER AG-REG"" on GY: name does not match"
 P,Pure Storage Inc,US,unresolved,unresolved_name_check_rejected,,"rejected ""EVERPURE INC-A"" on US: name does not match"
-WAB,Westinghouse Air Brake Technologies Corp,US,unresolved,unresolved_name_check_rejected,,"rejected ""WABTEC CORP"" on US: name does not match"

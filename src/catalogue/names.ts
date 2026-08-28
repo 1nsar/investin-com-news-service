@@ -56,6 +56,47 @@ const ABBREVIATIONS: Record<string, string> = {
 /** Aggressive key used for equality: accents folded, punctuation dropped,
  *  legal forms removed. "Moet Hennessy Louis Vuitton SE" -> "moet hennessy
  *  louis vuitton". */
+/** Known equivalences the surface-form matcher cannot derive.
+ *
+ *  `nameSimilarity` compares normalised tokens, so it cannot know that a
+ *  company's trading name is the same entity as its legal name, or that a
+ *  supplier's English name and a directory's native-language name refer to one
+ *  company. Both produce a *false rejection*: the identifier is right, the
+ *  names simply do not look alike.
+ *
+ *  Deliberately a small, explicit, auditable list rather than fuzzy matching -
+ *  each entry is a decision someone made and can check. Keys are normalised
+ *  names, so add entries in whatever case is convenient. */
+const NAME_ALIASES: Array<[string, string]> = [
+  // Trading name vs legal name.
+  ["wabtec", "westinghouse air brake technologies"],
+  // Native-language directory name vs the supplier's English name.
+  ["muenchener rueckver", "munich reinsurance"],
+  ["muenchener rueckversicherungs", "munich reinsurance"],
+];
+
+const ALIAS_INDEX: Map<string, Set<string>> = (() => {
+  const index = new Map<string, Set<string>>();
+  const link = (a: string, b: string): void => {
+    const key = normalizeName(a);
+    if (!index.has(key)) index.set(key, new Set());
+    index.get(key)!.add(normalizeName(b));
+  };
+  for (const [a, b] of NAME_ALIASES) {
+    link(a, b);
+    link(b, a);
+  }
+  return index;
+})();
+
+/** True when two names are known to denote the same company. */
+export function isKnownAlias(left: string, right: string): boolean {
+  const a = normalizeName(left);
+  const b = normalizeName(right);
+  if (!a || !b) return false;
+  return Boolean(ALIAS_INDEX.get(a)?.has(b)) || Boolean(ALIAS_INDEX.get(b)?.has(a));
+}
+
 export function normalizeName(raw: string): string {
   if (!raw) return "";
   const folded = raw.normalize("NFD").replace(ACCENTS, "").toLowerCase();
@@ -87,6 +128,9 @@ export function normalizeName(raw: string): string {
  *  superset ("SIEMENS ENERGY AG SPON ADR"), and penalising the extra tokens
  *  would reject correct matches. */
 export function nameSimilarity(left: string, right: string): number {
+  // A curated equivalence outranks surface similarity: these are the pairs the
+  // token comparison provably gets wrong.
+  if (isKnownAlias(left, right)) return 1;
   const a = normalizeName(left);
   const b = normalizeName(right);
   if (!a || !b) return 0;
@@ -212,4 +256,19 @@ export function searchableName(raw: string): string {
   }
   const result = kept.join(" ").replace(/\s+/g, " ").trim();
   return result || raw.trim();
+}
+
+/** Supplier tickers occasionally use `_` where the rest of the catalogue uses
+ *  `.` as the venue separator — `LVMH_F` beside `SAPG.F`, `RYAA_Y` beside
+ *  `LVMU.Y`. The underscore form matches nothing in any identifier source, so
+ *  the row resolves to nothing for a purely cosmetic reason.
+ *
+ *  Returns the ticker as given, plus any equivalent spellings worth trying,
+ *  most-likely first and without duplicates. */
+export function tickerVariants(raw: string): string[] {
+  const ticker = raw.trim().toUpperCase();
+  const variants = [ticker];
+  if (ticker.includes("_")) variants.push(ticker.replace(/_/g, "."));
+  if (ticker.includes(".")) variants.push(ticker.replace(/\./g, "_"));
+  return [...new Set(variants.filter(Boolean))];
 }
