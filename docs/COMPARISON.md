@@ -362,10 +362,14 @@ The recommendation stays provisional until that runs.
 Stated plainly, because pretending otherwise would be the wrong kind of
 write-up:
 
-- **52 companies (3.4%) did not resolve** — 45 of them are delisted or acquired. Mostly OTC pink sheets and a handful
-  of LSE lines whose supplier ticker matches nothing. They are reported as
-  `unresolved`, never silently skipped, and Google News still serves them by
-  name at a 92% hit rate.
+- **52 companies (3.4%) did not resolve.** An earlier draft called these
+  "45 delisted, which is correct"; checking them individually showed that was
+  wrong. Most are foreign secondary listings our identifier sources do not
+  index — 16 London `0XXX` lines (Orkla, Safran, Vinci, Barrick Gold), 13
+  Frankfurt `.F` lines (Airbus, Marks & Spencer) — and 7 are duplicate rows for
+  companies already covered under another ticker. The full breakdown is in
+  `data/coverage-gaps.csv` (`npm run export:gaps`). They are reported as
+  `unresolved`, never silently skipped.
 - **Name matching is the weakest link** in the whole component. It is the
   fallback for exactly the companies with the least other coverage, and it is
   where a wrong article would enter. Mitigated by storing `match_method` and
@@ -378,3 +382,72 @@ write-up:
 - **A full run takes ~27 minutes** and that is set by Finnhub's 60 requests per
   minute, not by anything in this component. It is the one number a paid tier
   would improve immediately.
+
+---
+
+## 7. LLM-native search: Perplexity and Grok
+
+The brief lists "LLM tools such as Perplexity" among the options, so this is a
+considered rejection rather than an omission.
+
+**Not in the ingest path.** Four properties make them unsuitable, and the first
+two are disqualifying rather than merely inconvenient:
+
+| Property | Why it breaks this component |
+| --- | --- |
+| Returns prose, not records | The schema keys on a canonical URL. An LLM answer has no stable URL, no `published_at`, no dedupe key — criterion 4 stops being satisfiable |
+| Non-deterministic | The same query twice gives different text. Criterion 5 requires a daily re-run to create no duplicates; a paraphrase cannot be deduped |
+| Reads attacker-controlled text | Article bodies are written by strangers. A model that reads them and decides what gets stored hands outsiders influence over the pipeline |
+| Summarises rather than attributes | It does not guarantee a source said what it reports. Misattributed financial news is precisely what the relevance layer exists to prevent |
+
+Cost and latency are secondary but real: ~1,500 LLM queries a day against $0
+today, at seconds per query rather than tens of milliseconds.
+
+**Where one would genuinely earn its place: offline identity resolution.** The
+52 unresolved companies are a different kind of problem — *"which company does
+LSE code `0IU8` refer to?"*, *"is 'Westinghouse Air Brake Technologies' the same
+company as 'WABTEC CORP'?"* Those are exactly what a search-grounded model is
+good at, and the task has the properties the ingest path lacks:
+
+- **bounded** — 52 rows once, not 1,500 a day
+- **offline** — a resolution pass, not a per-article hot path
+- **verifiable** — the output is an identifier, checked against OpenFIGI before
+  anything is written
+- **cheap** — tens of queries, not tens of thousands
+
+A wrong answer costs nothing because it is confirmed before use. **Perplexity
+over Grok** for this, because it cites sources and a citation is what makes the
+answer checkable; Grok's advantage is real-time X access, which suits sentiment,
+not identity resolution.
+
+**Verdict:** rejected as a news source, recommended as a one-off resolution aid
+for the ~29 foreign secondary listings — a bounded task worth an afternoon, not
+an architecture.
+
+## 8. Revised recommendation: what to actually buy
+
+The stack above is the best *free* answer. It is not the best answer if the
+product needs articles to open inside our own interface.
+
+Free and low-cost APIs — Finnhub, Marketaux, Alpha Vantage — license a headline,
+a teaser and a **link**, and their terms require the link out. Rendering the
+full text anyway, or scraping the publisher's page for it, is republishing
+copyrighted work. So "read it without leaving our site" is a licensing question,
+not an engineering one.
+
+**Buy Benzinga's embeddable newsfeed as the primary source.** It owns its
+newsroom, so it can license what an aggregator cannot: paid tiers permit the
+**full body and image to be displayed on our platform**, with no redirect and no
+third-party sign-in. Delivery is REST with `updatedSince` plus WebSocket, TCP
+stream and webhooks — push, so freshness stops depending on how often we poll,
+and cost stops scaling with catalogue size. Its free tier is headline + teaser +
+link, i.e. exactly the constraint we want to escape.
+
+The limitation, stated plainly: ~130–160 articles a day from a US-focused
+newsroom. Deep, not wide. Keep **Marketaux** as the single fallback for
+companies it does not reach, and drop Finnhub once the licensed feed proves out
+— two providers total, which is the practical minimum for this catalogue.
+
+Pricing is quoted per customer via `licensing@benzinga.com` rather than
+published, so the ask is a quote for the embeddable-body tier at ~1,500
+companies.
