@@ -60,12 +60,18 @@ async function main(): Promise<void> {
            (SELECT count(*) FROM articles WHERE is_market_wide)::int AS market_wide,
            (SELECT count(*) FROM articles WHERE NOT is_market_wide)::int AS company_scope,
            (SELECT count(*) FROM article_companies)::int AS links,
-           (SELECT count(DISTINCT source) FROM articles WHERE source IS NOT NULL)::int AS publishers`);
+           (SELECT count(DISTINCT source) FROM articles WHERE source IS NOT NULL)::int AS publishers,
+           -- The report quotes publisher DOMAINS, not the provider's own source
+           -- label. Both are printed so every figure in the docs is reproducible
+           -- from this one command without ambiguity.
+           (SELECT count(DISTINCT split_part(regexp_replace(url,'^https?://(www\\.)?','','i'),'/',1))
+              FROM articles)::int AS publisher_domains`);
   out("articles (total)", art?.articles);
   out("  company-scope", art?.company_scope);
   out("  market-wide", art?.market_wide);
   out("article-company links", art?.links);
-  out("distinct publishers", art?.publishers);
+  out("distinct source labels", art?.publishers);
+  out("distinct publisher domains", art?.publisher_domains);
 
   const attr = await query<{ match_method: string; links: number; pct: number }>(`
     SELECT match_method, count(*)::int AS links,

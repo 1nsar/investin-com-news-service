@@ -3,7 +3,9 @@
 A standalone backend that keeps a news feed for every company in a
 **1,515-company catalogue**. Its own process, its own database, no UI.
 
-Every figure comes from one run and is reproducible with `npm run metrics`.
+Every figure comes from one run and is reproducible with `npm run metrics`
+(coverage gaps: `npm run export:gaps`). Article counts are a point-in-time
+snapshot of a live corpus — triggering a fetch moves them.
 
 ## Results
 
@@ -127,12 +129,12 @@ one row per company with a `gap_reason`, regenerated with `npm run export:gaps`.
 | `no_news_us_exchange` | 276 | **Nobody's.** Identified correctly, asked correctly, genuinely quiet that week |
 | `no_news_otc_only` | 154 | Thin OTC coverage — a paid provider would help |
 | `no_news_no_us_line` | 29 | Trades only abroad; no free US-centric source reaches it |
-| `unresolved_london_secondary_line` | 16 | Ours — `0XXX` LSE codes are not in our identifier sources |
-| `unresolved_frankfurt_line` | 13 | Ours — same, for `.F` Frankfurt lines |
-| `unresolved_absent_from_directory` | 10 | Absent from Finnhub's US directory |
-| `duplicate_listing_line` | 7 | **Nothing is missing** — same company already covered under another ticker |
+| `unresolved_frankfurt_line` | 17 | Ours — `.F` Frankfurt lines are not in our identifier sources |
+| `unresolved_london_secondary_line` | 16 | Ours — same, for `0XXX` LSE codes |
+| `unresolved_absent_from_directory` | 11 | Absent from Finnhub's US directory |
+| `unresolved_malformed_ticker` | 3 | The catalogue's — `LVMH_F` uses `_` where every other row uses `.` |
 | `unresolved_name_check_rejected` | 3 | Ours — the safety check fired, twice wrongly |
-| `unresolved_malformed_ticker` | 2 | The catalogue's — `LVMH_F` uses `_` where every other row uses `.` |
+| `duplicate_listing_line` | 1 | **Nothing is missing** — same company already covered, *with news*, under another ticker |
 
 **A correction worth stating plainly.** An earlier draft of this report said the
 52 unresolved were "45 delisted, which is correct." That was overconfident. What
@@ -142,11 +144,15 @@ sources we use.** Checking them individually shows most are not delisted at all:
 - **16 are London `0XXX` lines** — `0FIN` Orkla, `0IU8` Safran, `0NQM` Vinci,
   `0R22` Barrick Gold. Large, actively traded companies. The `0XXX` code is an
   LSE convention our identifier sources do not index.
-- **13 are Frankfurt `.F` lines** — `EADS.F` Airbus, `MAKS.F` Marks & Spencer,
+- **17 are Frankfurt `.F` lines** — `EADS.F` Airbus, `MAKS.F` Marks & Spencer,
   `CMXH.F` CSL. Same story.
-- **7 are duplicates** — `EADS.F` Airbus is already covered as `0KVV`;
-  `RYAA.Y` Ryanair as `0RYA`. Nothing is missing for these at all.
-- **10 are plain US tickers absent from Finnhub's 30,995-symbol US directory** —
+- **Only 1 is a harmless duplicate** — `NEMC.L` Newmont, already covered as
+  `0R28`, which has 12 stored articles. An earlier draft of this report claimed
+  seven such rows and said "nothing is missing for these at all." That was
+  wrong: the other six map to twins that are themselves empty, so the news
+  really is missing. `gap_reason` now requires the twin to *have news* before a
+  row is written off as a duplicate.
+- **11 are plain US tickers absent from Finnhub's 30,995-symbol US directory** —
   `EA`, `SKX`, `EQR`, `JHG`. Some are genuine take-privates; others look like
   directory gaps. We do not claim to know which without checking each.
 
@@ -170,13 +176,13 @@ is somewhat better than the headline suggests.
 
 | Fix | Companies recovered | Effort |
 | --- | ---: | --- |
-| Treat `_` as `.` when parsing tickers | 2 | Trivial |
+| Treat `_` as `.` when parsing tickers | 3 | Trivial |
 | Alias table for trade names and non-English names | 2 | Small, manual |
-| Collapse duplicate listing rows onto one company | 7 | Small |
+| Collapse duplicate listing rows onto one company | 1 | Small |
 | Map `0XXX` / `.F` codes via an LSE/Deutsche Börse identifier source | 29 | Medium |
 | Paid provider for OTC and non-US lines | up to 183 | Cost, not code |
 
-The first three are ~11 companies for an afternoon's work. The last row is the
+The first three are ~6 companies for an afternoon's work. The last row is the
 only one that requires spending money, and it is the largest by far.
 
 ## Every link now points at the publisher
@@ -204,7 +210,7 @@ was a mistake on three counts:
 
 Ingest now resolves the wrapper to the publisher's own address before storing,
 and a backfill rewrote all 4,975 existing rows. **0 wrappers remain**, across
-**76 distinct publishers**.
+**76 distinct publisher domains**.
 
 **What the wrapper was hiding: `chartmill.com`.** With destinations visible, one
 host turned out to be dead — it refuses the connection outright, returning no
@@ -240,8 +246,8 @@ site, not ours:
 
 | Publisher | Share of articles | What the reader sees |
 | --- | ---: | --- |
-| finance.yahoo.com | 32.3% | Opens normally |
-| **benzinga.com** | **31.5%** | Often a bot check or a sign-up prompt |
+| finance.yahoo.com | 32.2% | Opens normally |
+| **benzinga.com** | **31.6%** | Often a bot check or a sign-up prompt |
 | **seekingalpha.com** | **15.6%** | Often a registration wall |
 | fool.com, cnbc.com, and 71 others | ~20% | Mostly opens normally |
 
@@ -283,6 +289,22 @@ the stored article count.*
 *One company's feed. "also mentions 1 other" is the shared-article model: a story
 naming several companies is stored once and linked to each, never duplicated per
 company.*
+
+**Read this screenshot critically — it shows a real limitation.** Several of
+those headlines are macro or sector round-ups rather than Microsoft stories.
+They are there because Benzinga tags a round-up against every ticker it
+mentions, and **ticker-native attribution is trusted unconditionally**: the
+provider stated the ticker, so `relevance.ts` short-circuits and the deterministic
+name check never runs. That is deliberate — the check exists to catch *wrong*
+attribution, and a provider naming the ticker is not wrong. But **"certain" is
+not the same as "central"**, and the 99.8% figure in the Results table measures
+the former.
+
+Ranking a company's feed by how *central* it is to the story is a headline-
+salience problem, and it is one of the things deliberately not attempted here.
+The `relevance` score is stored on every link so a consumer can filter on it,
+and `roundupPenaltySql()` already down-weights stories that name many companies —
+what is missing is applying that at read time in this view.
 
 ## The two timing numbers
 

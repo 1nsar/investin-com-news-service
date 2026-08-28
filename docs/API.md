@@ -203,7 +203,7 @@ provider.
 
 ```json
 {
-  "counts": { "companies": 1515, "companies_resolved": 1463, "listings": 1987, "articles": 4882 },
+  "counts": { "companies": 1515, "companies_resolved": 1463, "listings": 1987, "articles": 4894 },
   "providers": [{ "name": "finnhub", "configured": true, "rateLimit": { "perMinute": 55, "available": 55, "pausedMs": 0 } }],
   "lastRun": {
     "id": 12, "status": "partial",
@@ -315,7 +315,7 @@ to know before exposing it more widely:
 1. **`POST /v1/fetch` does real outbound work.** It is unauthenticated by
    default, which is appropriate behind a private-network gateway and not
    appropriate on a reachable port — an anonymous caller can start a
-   ~28-minute run and consume the whole provider budget. Set `API_AUTH_TOKEN`
+   26-minute run and consume the whole provider budget. Set `API_AUTH_TOKEN`
    to require a bearer token:
 
    ```bash
