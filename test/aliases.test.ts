@@ -36,3 +36,36 @@ describe("name aliases", () => {
     expect(isKnownAlias("Wabtec", "")).toBe(false);
   });
 });
+
+describe("national legal forms and renames", () => {
+  const matches = (a: string, b: string): boolean => nameSimilarity(a, b) >= NAME_MATCH_THRESHOLD;
+
+  it("treats Abp as a legal form, like plc or ag", () => {
+    // Finnish/Swedish for a public company. Without it, "Konecranes Abp"
+    // scored 0.59 against "KONECRANES OYJ" - one hundredth under threshold.
+    expect(matches("Konecranes Abp", "KONECRANES OYJ")).toBe(true);
+  });
+
+  it("bridges a corporate rename", () => {
+    // Novozymes became Novonesis; no string similarity can derive that.
+    expect(matches("Novozymes AS", "NOVONESIS B")).toBe(true);
+  });
+
+  it("bridges a shortened trade name", () => {
+    expect(matches("Adobe Systems Inc", "ADOBE INC")).toBe(true);
+  });
+
+  it("bridges supplier abbreviations of a long legal name", () => {
+    expect(matches("ACS Actividades Constr y Srvcs",
+                   "ACS ACTIVIDADES DE CONSTRUCCION Y SERVICIOS SA")).toBe(true);
+  });
+
+  it("STILL rejects the collisions these aliases must not reopen", () => {
+    // The whole point of the name check. Loosening matching to fix the cases
+    // above must not let these through.
+    expect(matches("Apple Inc", "Apple Hospitality REIT")).toBe(false);
+    expect(matches("Prudential PLC", "PRUDENTIAL FINANCIAL INC")).toBe(false);
+    expect(matches("Balfour Beatty", "BEST BUY CO INC")).toBe(false);
+    expect(matches("Admiral Group", "ARCHER-DANIELS-MIDLAND CO")).toBe(false);
+  });
+});

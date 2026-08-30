@@ -1,6 +1,7 @@
 import { config } from "../config/index.js";
 import { requestJson } from "../util/http.js";
 import { RateLimiter } from "../util/rateLimiter.js";
+import { HttpError } from "../util/http.js";
 import { logger } from "../util/logger.js";
 
 /** OpenFIGI is the primary identity resolver: it maps a ticker (optionally
@@ -51,6 +52,14 @@ export const OPENFIGI_BATCH_SIZE = hasKey ? 100 : 10;
 // that might be talking to the API, and a 429 here stalls the whole resolve.
 const limiter = new RateLimiter("openfigi", hasKey ? 200 : 24);
 
+// /v3/search is metered far more tightly than /v3/mapping and needs its own
+// budget. Sharing the mapping limiter sent search requests at 200/min, which
+// the endpoint answered with "Too many requests"; `searchByName` caught that
+// and returned an empty list, so a throttled request was indistinguishable
+// from "this company does not exist" - and 40+ companies were written off as
+// unresolvable when the requests had simply been refused.
+const searchLimiter = new RateLimiter("openfigi-search", hasKey ? 15 : 5);
+
 function headers(): Record<string, string> {
   const base: Record<string, string> = { "Content-Type": "application/json" };
   if (hasKey) base["X-OPENFIGI-APIKEY"] = config.OPENFIGI_API_KEY;
@@ -98,20 +107,33 @@ export async function searchByName(
   exchCode?: string,
 ): Promise<FigiRecord[]> {
   try {
-    const body: Record<string, string> = { query: companyName };
+    // Filter to common stock SERVER-side. Search returns at most 100 rows with
+    // no preference for equity, and for a large issuer those 100 are all
+    // futures and dividend futures written on the name - the share itself never
+    // appears. Airbus, Novozymes and LVMH all returned 100 derivatives
+    // unfiltered and their real listings the moment this was added.
+    const body: Record<string, string> = { query: companyName, securityType2: "Common Stock" };
     if (exchCode) body.exchCode = exchCode;
     const response = await requestJson<{ data?: FigiRecord[] }>(SEARCH_URL, {
       method: "POST",
       headers: headers(),
       body: JSON.stringify(body),
-      limiter,
+      limiter: searchLimiter,
       label: "openfigi/search",
       timeoutMs: 30_000,
       maxRetries: 2,
     });
     return response.data ?? [];
   } catch (error) {
-    logger.warn({ err: error, companyName }, "openfigi search failed");
+    // Distinguish "refused" from "not found". An empty list is a real answer;
+    // a rate-limited request is not, and silently returning [] for it marks a
+    // resolvable company unresolvable.
+    const rateLimited =
+      error instanceof HttpError ? error.isRateLimited : /too many requests/i.test(String(error));
+    logger.warn(
+      { err: error, companyName, rateLimited },
+      rateLimited ? "openfigi search was rate limited" : "openfigi search failed",
+    );
     return [];
   }
 }

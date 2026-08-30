@@ -87,6 +87,15 @@ export async function saveResolutions(resolutions: CompanyResolution[]): Promise
             WHERE id = $1`,
           [resolution.companyId, resolution.status, resolution.note],
         );
+        // A supplier-asserted listing exists only because we synthesised it from
+        // an unverified hint. If the company no longer resolves, that
+        // justification is gone, so remove those rows - while leaving genuinely
+        // discovered listings alone, which is what protects against an empty
+        // resolution wiping real data.
+        await client.query(
+          "DELETE FROM listings WHERE company_id = $1 AND source = 'catalogue' AND confidence <= 0.5",
+          [resolution.companyId],
+        );
         continue;
       }
 

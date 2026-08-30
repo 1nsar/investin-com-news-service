@@ -359,3 +359,48 @@ export async function serviceCounts(): Promise<Record<string, number>> {
   `);
   return row ?? {};
 }
+
+export interface ConnectivityRow {
+  state: string;
+  companies: number;
+  tickers: string[];
+}
+
+/** Connectivity, which is a different question from coverage.
+ *
+ *  "No news in the window" is a legitimate answer for a quiet company and must
+ *  not be reported as a fault. "We never got a definitive answer" - the fetch
+ *  was rate limited, errored, or never ran - is a fault, because until it is
+ *  resolved we cannot say whether that company would receive news if news
+ *  existed. Separating the two is the difference between an alert worth waking
+ *  someone for and normal quiet.
+ *
+ *  Tickers are listed for the two faulty states so an operator can act, and
+ *  capped so a widespread outage cannot return a 1,500-element array. */
+export async function connectivity(): Promise<ConnectivityRow[]> {
+  return query<ConnectivityRow>(`
+    WITH latest AS (
+      SELECT DISTINCT ON (company_id) company_id, outcome
+        FROM fetch_run_companies ORDER BY company_id, run_id DESC
+    ), classified AS (
+      SELECT c.ticker_raw,
+             CASE
+               WHEN c.resolution_status <> 'resolved' THEN 'not_connected_unresolved'
+               WHEN EXISTS(SELECT 1 FROM article_companies ac WHERE ac.company_id = c.id)
+                 THEN 'connected_has_news'
+               WHEN l.outcome = 'no_news' THEN 'connected_no_news_in_window'
+               -- 'skipped' is a definitive answer, not an unknown: every
+               -- provider declined and said why. It needs a source for that
+               -- market, which is a different action from a retry.
+               WHEN l.outcome = 'skipped' THEN 'no_provider_covers_this_market'
+               ELSE 'no_definitive_answer'
+             END AS state
+        FROM companies c LEFT JOIN latest l ON l.company_id = c.id
+    )
+    SELECT state,
+           count(*)::int AS companies,
+           CASE WHEN state IN ('not_connected_unresolved','no_definitive_answer','no_provider_covers_this_market')
+                THEN (array_agg(ticker_raw ORDER BY ticker_raw))[1:50]
+                ELSE ARRAY[]::text[] END AS tickers
+      FROM classified GROUP BY state ORDER BY companies DESC`);
+}

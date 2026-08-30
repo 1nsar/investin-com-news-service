@@ -1,12 +1,14 @@
 import { config } from "../config/index.js";
+import { pool } from "../db/pool.js";
 import { getProviders } from "../providers/registry.js";
 import type { FetchableCompany, NewsProvider, ProviderOutcome } from "../providers/types.js";
 import { mapWithConcurrency, withTimeout } from "../util/async.js";
 import { logger } from "../util/logger.js";
-import { canonicalize } from "./canonicalize.js";
+import { canonicalize, contentHash } from "./canonicalize.js";
 import { resolveWrappers } from "./resolveRedirect.js";
 import {
   companiesForFetch,
+  resolvedUrlsByContentHash,
   loadFetchState,
   recordFetchState,
   storeArticles,
@@ -128,12 +130,27 @@ async function ingestCompany(
   const attempts: ProviderAttempt[] = [];
   let lastFailure: { outcome: CompanyOutcome; provider: string; message: string; status?: number } | null = null;
 
-  for (const provider of providers) {
+  for (const [index, provider] of providers.entries()) {
     const capability = provider.supports(company);
     if (!capability.supported) {
       declined.push(`${provider.name}: ${capability.reason ?? "unsupported"}`);
       continue;
     }
+
+    // Is there a LATER provider that can serve this company ticker-natively?
+    //
+    // This decides what an authoritative zero means. Stopping on a confident
+    // zero is right when the only thing left is a name-matched guess - trading
+    // "quiet week" for "something with a similar name" makes the data worse.
+    // It is wrong when the next source is also ticker-native: that is a second
+    // opinion at no cost to attribution, and refusing to ask it left 263
+    // companies reported as silent after a single provider had been tried.
+    const tickerNativeFallbackExists = providers
+      .slice(index + 1)
+      .some((next) => {
+        const nextCapability = next.supports(company);
+        return nextCapability.supported && nextCapability.matchMethod === "ticker";
+      });
 
     const key = `${company.id}:${provider.name}`;
     const companyState = state.get(key);
@@ -171,14 +188,55 @@ async function ingestCompany(
     });
 
     if (result.kind === "ok") {
+      // Cap the FIRST fetch only. A 90-day initial window returns ~130 articles
+      // for an active company, and every one costs a redirect resolution -
+      // which dominates run time. But applying the same cap to incremental runs
+      // loses news permanently: NVDA published 109 stories in a single day, and
+      // because the fetch state advances to now() regardless, anything dropped
+      // is outside the next window forever. Backfill is capped; keeping up is
+      // not.
+      const sorted = [...result.articles].sort(
+        (a, b) => (b.publishedAt?.getTime() ?? 0) - (a.publishedAt?.getTime() ?? 0),
+      );
+      const isBackfill = !companyState?.lastSuccessAt;
+      const capped = isBackfill
+        ? sorted.slice(0, config.INGEST_MAX_ARTICLES_PER_COMPANY)
+        : sorted;
+      const truncated = sorted.length - capped.length;
+      if (truncated > 0) {
+        // Never silent: a dropped article must be visible in the run report.
+        logger.info(
+          { ticker: company.ticker, kept: capped.length, truncated },
+          "backfill truncated to the newest articles",
+        );
+      }
+      result = { ...result, articles: capped };
       // Swap provider redirect wrappers for the publisher's own URL BEFORE
       // canonicalising. Order matters: the dedupe key and the dead-host filter
       // both key off the URL, and neither can see through a wrapper.
       // Bounded by the same per-company timeout as the fetch: resolution is
       // best-effort, and an unresolved wrapper is already a supported
       // degradation, so a slow publisher must not stall the whole run.
+      // Reuse URLs we have already resolved for the same story, and resolve
+      // only the rest. A story that names several companies is offered once per
+      // company, and its wrapper resolves to the same publisher URL every time.
+      const cachedByHash = await resolvedUrlsByContentHash(capped);
+      const cached = new Map<string, string>();
+      const stillToResolve: string[] = [];
+      for (const article of capped) {
+        const url = article.url ?? "";
+        if (!url) continue;
+        const hash =
+          article.headline && article.publishedAt
+            ? contentHash(article.headline, article.publishedAt)
+            : null;
+        const knownUrl = hash ? cachedByHash.get(hash) : undefined;
+        if (knownUrl) cached.set(url, knownUrl);
+        else stillToResolve.push(url);
+      }
+
       const realUrls = await withTimeout(
-        resolveWrappers(result.articles.map((article) => article.url ?? "").filter(Boolean)),
+        resolveWrappers(stillToResolve).then((resolved) => new Map([...cached, ...resolved])),
         config.INGEST_COMPANY_TIMEOUT_MS,
         `resolve links for ${company.ticker}`,
       ).catch(() => new Map<string, string>());
@@ -247,10 +305,22 @@ async function ingestCompany(
       continue;
     }
 
+    if (result.kind === "no_news" && tickerNativeFallbackExists) {
+      // Authoritative, but another ticker-native source can still answer.
+      // Attribution is identical either way, so a second look is free.
+      declined.push(`${provider.name}: zero results; another ticker-native source remains`);
+      await recordFetchState(company.id, provider.name, "no_news", null);
+      logger.debug(
+        { ticker: company.ticker, provider: provider.name },
+        "authoritative zero, but a ticker-native fallback exists; trying it",
+      );
+      continue;
+    }
+
     if (result.kind === "no_news") {
-      // A clean zero from a provider that genuinely covers this listing is a
-      // real answer. Record it and stop: asking a weaker provider afterwards
-      // would trade a confident "quiet week" for a name-matched guess.
+      // A clean zero from a provider that covers this listing, with nothing
+      // ticker-native left to ask. Record it and stop: going on to a
+      // name-matched source would trade a confident "quiet week" for a guess.
       await recordFetchState(company.id, provider.name, "no_news", null);
 
       // But an ACCESS DENIAL from an earlier provider outranks it. Reporting
@@ -429,18 +499,61 @@ export async function runIngest(options: IngestOptions = {}): Promise<IngestResu
   return { runId, durationMs, byProvider, ...totals };
 }
 
-/** Guard against two ingests overlapping in one process. Cross-process safety
- *  comes from the database advisory lock taken by the scheduler. */
+/** Only one ingest at a time, across every process.
+ *
+ *  The in-process flag alone was not enough: `npm run ingest` and the API run
+ *  in different processes, so the API could not see a CLI ingest, started a
+ *  second one, and the two competed for the connection pool until requests
+ *  timed out. Two concurrent ingests also interleave their writes, which is how
+ *  an early run produced 1,192 successes but only 478 companies with articles.
+ *
+ *  A Postgres advisory lock is the shared source of truth. It is held on a
+ *  dedicated connection for the life of the run and released automatically if
+ *  the process dies, so a crash cannot wedge the lock. */
+const INGEST_LOCK_ID = 472_913_005;
+
 let inFlight: Promise<IngestResult> | null = null;
 
+/** True when an ingest is running ANYWHERE - this process or another. */
+export async function ingestInProgress(): Promise<boolean> {
+  if (inFlight) return true;
+  // Observe the lock without taking it. Using pg_try_advisory_lock to "look"
+  // meant an ingest starting in the same instant saw the lock as held by this
+  // check and aborted with "an ingest is already running" when nothing was.
+  const client = await pool.connect();
+  try {
+    const { rows } = await client.query<{ locked: boolean }>(
+      "SELECT EXISTS(SELECT 1 FROM pg_locks WHERE locktype='advisory' AND objid = $1) AS locked",
+      [INGEST_LOCK_ID],
+    );
+    return rows[0]?.locked ?? false;
+  } finally {
+    client.release();
+  }
+}
+
+/** Synchronous, in-process view. Kept for callers that cannot await. */
 export function isIngestRunning(): boolean {
   return inFlight !== null;
 }
 
 export async function runIngestExclusive(options: IngestOptions = {}): Promise<IngestResult> {
   if (inFlight) throw new Error("an ingest is already running");
-  inFlight = runIngest(options).finally(() => {
+
+  const client = await pool.connect();
+  const { rows } = await client.query<{ locked: boolean }>(
+    "SELECT pg_try_advisory_lock($1) AS locked",
+    [INGEST_LOCK_ID],
+  );
+  if (!rows[0]?.locked) {
+    client.release();
+    throw new Error("an ingest is already running");
+  }
+
+  inFlight = runIngest(options).finally(async () => {
     inFlight = null;
+    await client.query("SELECT pg_advisory_unlock($1)", [INGEST_LOCK_ID]).catch(() => undefined);
+    client.release();
   });
   return inFlight;
 }

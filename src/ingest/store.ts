@@ -1,6 +1,6 @@
 import type { PoolClient } from "pg";
 import { query, transaction } from "../db/pool.js";
-import type { CanonicalArticle } from "./canonicalize.js";
+import { contentHash, type CanonicalArticle } from "./canonicalize.js";
 import { RELEVANCE_FLOOR, scoreRelevance, sourceTier } from "./relevance.js";
 import type { FetchableCompany } from "../providers/types.js";
 
@@ -280,3 +280,37 @@ export async function recordFetchState(
   );
 }
 
+/** Already-resolved URLs for these stories, keyed on (headline, day).
+ *
+ *  A cache, not a skip list. An earlier version returned only the set of known
+ *  hashes and the runner skipped resolving those links - but the store's
+ *  content-hash dedupe is scoped PER COMPANY while this lookup is global, so a
+ *  story already stored for company A was skipped for company B and then
+ *  written with the unresolved wrapper URL. 4,775 articles ended up that way.
+ *
+ *  Returning the resolved URL instead is both correct and faster: we already
+ *  know the answer, so the round-trip is genuinely unnecessary rather than
+ *  merely skipped. */
+export async function resolvedUrlsByContentHash(
+  articles: readonly { headline?: string | null; publishedAt?: Date | null }[],
+): Promise<Map<string, string>> {
+  const hashes = articles
+    .map((article) =>
+      article.headline && article.publishedAt
+        ? contentHash(article.headline, article.publishedAt)
+        : null,
+    )
+    .filter((hash): hash is string => hash !== null);
+
+  if (hashes.length === 0) return new Map();
+
+  const rows = await query<{ content_hash: string; url: string }>(
+    `SELECT DISTINCT ON (content_hash) content_hash, url
+       FROM articles
+      WHERE content_hash = ANY($1::text[])
+        AND url NOT LIKE '%finnhub.io%'
+      ORDER BY content_hash, id`,
+    [[...new Set(hashes)]],
+  );
+  return new Map(rows.map((row) => [row.content_hash, row.url]));
+}

@@ -52,6 +52,29 @@ async function main(): Promise<void> {
       LEFT JOIN LATERAL (SELECT count(*) n FROM article_companies x WHERE x.company_id=c.id) a ON TRUE
      WHERE c.is_active`);
   out("companies returning news", `${cov?.with_news} (${cov?.pct}%)`);
+
+  // Connectivity, not coverage. "No news in the window" is a legitimate answer
+  // for a quiet company; "we never got an answer" is not. This separates them,
+  // because only the second is a fault we can act on.
+  const conn = await query<{ state: string; companies: number }>(`
+    WITH latest AS (
+      SELECT DISTINCT ON (company_id) company_id, outcome
+        FROM fetch_run_companies ORDER BY company_id, run_id DESC
+    )
+    SELECT CASE
+        WHEN c.resolution_status <> 'resolved' THEN 'not connected (unresolved)'
+        WHEN EXISTS(SELECT 1 FROM article_companies ac WHERE ac.company_id = c.id)
+          THEN 'connected, has news'
+        WHEN l.outcome = 'no_news' THEN 'connected, no news in window'
+        WHEN l.outcome = 'skipped' THEN 'no provider covers this market'
+        ELSE 'NO DEFINITIVE ANSWER'
+      END AS state,
+      count(*)::int AS companies
+      FROM companies c LEFT JOIN latest l ON l.company_id = c.id
+     GROUP BY 1 ORDER BY 2 DESC`);
+
+  section("Connectivity");
+  for (const row of conn) out(`  ${row.state}`, row.companies);
   out("average articles per covered company", cov?.avg_articles);
 
   section("Articles and attribution");
