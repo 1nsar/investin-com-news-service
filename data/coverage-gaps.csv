@@ -3,11 +3,12 @@ ticker,company_name,country,resolution_status,gap_reason,also_covered_as,note
 000568,Luzhou Lao Jiao Co Ltd,CN,resolved,no_news_no_us_line,,
 0E64,DO & CO AG,GB,resolved,no_news_no_us_line,,resolved by name search to DOQ on GR
 0GQE,Clas Ohlson AB,GB,resolved,no_news_no_us_line,,resolved by name search to OHCB on GR
-0H0G,Sweco AB,GB,resolved,no_news_no_us_line,,resolved by name search to 0GX5 on LN
+0H0G,Sweco AB,GB,resolved,no_news_no_us_line,,resolved by name search to 7W7 on GR
 0M6I,Heijmans NV,GB,resolved,no_news_no_us_line,,"likely renamed: catalogue says ""Heijmans NV"", venue says ""KONINKLIJKE HEIJMANS N.V"""
-0NUG,Magyar Telekom Tavkozlesi Nyrt,GB,resolved,no_news_no_us_line,,"name match 0.60 against ""MAGYAR TELEKOM TELECOMMUNICA"""
+0NUG,Magyar Telekom Tavkozlesi Nyrt,GB,resolved,no_news_no_us_line,,resolved by name search to MGYB on GR
 0QEP,Maire Tecnimont SpA,GB,resolved,no_news_no_us_line,,resolved by name search to MT1USD on X1
 0REQ,Per Aarsleff Holding A/S,GB,resolved,no_news_no_us_line,,resolved by name search to PE9 on SW
+0RKF,Construcciones y Auxiliar de Ferrocarriles SA,GB,resolved,no_news_no_us_line,,resolved by name search to CAF on SM
 1909,Nippon Dry Chemical,CA,resolved,no_news_no_us_line,,
 600004,Guangzhou Baiyun International Airport Co Ltd,US,resolved,no_news_no_us_line,,"name match 0.88 against ""GUANGZHOU BAIYUN INTERNATI-A"""
 600009,Shanghai International Airport Co Ltd,US,resolved,no_news_no_us_line,,"name match 0.94 against ""SHANGHAI INTERNATIONAL AIR-A"""
@@ -64,4 +65,3 @@ BMRM.F,Société Anonyme des Bains de Mer et du Cercle des Étrangers à Monaco,
 CIEZ.F,"Corporación Interamericana de Entretenimiento, S.A.B. de C.V.",US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 NVPT.F,"Navitas Petroleum, Limited Partnership",US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 0Q6M,Unipol Gruppo Finanziario SpA,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
-0RKF,Construcciones y Auxiliar de Ferrocarriles SA,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name

@@ -199,7 +199,18 @@ export function nameSimilarity(left: string, right: string): number {
       // truncated at a fixed width ("CONCENTRA GROUP HOLDINGS PAR"), which
       // clips the final word and nothing else. Allowing prefix credit on any
       // token made "Nova" match "Novartis" and "Cat" match "Caterpillar".
-      token === shorter[shorter.length - 1] &&
+      (token === shorter[shorter.length - 1] ||
+        // ...or the name is abbreviated word-by-word rather than clipped at the
+        // end. Reference data does both: "CONCENTRA GROUP HOLDINGS PAR" is a
+        // fixed-width cut, while "CONSTRUCC Y AUX DE FERROCARR" shortens every
+        // word of "Construcciones y Auxiliar de Ferrocarriles". The same
+        // company, written to fit a field.
+        //
+        // Gated on THREE or more tokens and a four-character stem, because the
+        // coincidences this guards against are all short single-token names -
+        // "Nova" against "Novartis", "Cat" against "Caterpillar". A name with
+        // three aligned words is not a coincidence.
+        (shorter.length >= 3 && token.length >= 4)) &&
       longer.some((other) => other.startsWith(token) || token.startsWith(other))
     ) {
       shared += 0.85;
