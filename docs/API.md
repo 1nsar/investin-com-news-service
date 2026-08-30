@@ -197,6 +197,23 @@ Readiness. Runs `SELECT 1`; `503` when the database is unreachable.
 
 ### `GET /v1/status`
 
+The response includes a **`connectivity`** block — the operational question
+"is every company wired to a source that would deliver news if news existed?"
+
+```json
+"connectivity": {
+  "connected_has_news": 1445,
+  "connected_no_news_in_window": 26,
+  "no_definitive_answer": { "companies": 28, "tickers": ["AUTO", "..."] },
+  "no_provider_covers_this_market": { "companies": 7, "tickers": ["0E64", "..."] },
+  "not_connected_unresolved": { "companies": 9, "tickers": ["0HAC", "..."] }
+}
+```
+
+`connected_no_news_in_window` is healthy: the company was asked correctly and
+genuinely had nothing. The other two faulty states list their tickers (capped at
+50) so an operator can act rather than just see a count.
+
 The one endpoint to look at when something seems wrong: row counts, provider
 configuration and rate-limit budget, and the last run's outcome broken down by
 provider.

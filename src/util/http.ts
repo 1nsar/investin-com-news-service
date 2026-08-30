@@ -72,10 +72,18 @@ export class HttpError extends Error {
   }
 
   get isRateLimited(): boolean {
-    return this.status === 429;
+    // 402 is quota exhaustion, not a coding error: metered APIs return it when
+    // the plan's allowance for the period is spent. Marketaux's free tier does
+    // this after 100 requests a day. Classifying it as a generic `error` would
+    // report a company as failed when the truthful answer is "we ran out of
+    // budget before we got to it", and those alert differently - one is a bug,
+    // the other is a billing decision.
+    return this.status === 429 || this.status === 402;
   }
 
   get isRetryable(): boolean {
+    // 402 is deliberately NOT retryable: the allowance does not come back
+    // within a run, so retrying only burns wall-clock time.
     return this.status === 429 || this.status >= 500;
   }
 }

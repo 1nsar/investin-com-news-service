@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { HttpError } from "../src/util/http.js";
 import { FinnhubProvider } from "../src/providers/finnhub.js";
 import { GoogleNewsRssProvider } from "../src/providers/googleNewsRss.js";
 import type { FetchableCompany, FetchableListing } from "../src/providers/types.js";
@@ -121,5 +122,22 @@ describe("no_news authority", () => {
     );
     expect(result.supported).toBe(true);
     expect(result.symbol).toBe("AMIGY");
+  });
+});
+
+describe("quota exhaustion", () => {
+  it("treats 402 as rate limiting, not a generic error", () => {
+    // Metered APIs return 402 when the plan's allowance is spent. Reporting
+    // that as `error` would say a company failed when the truth is we ran out
+    // of budget - and the two alert differently.
+    expect(new HttpError(402, "https://x", "").isRateLimited).toBe(true);
+    expect(new HttpError(429, "https://x", "").isRateLimited).toBe(true);
+    expect(new HttpError(500, "https://x", "").isRateLimited).toBe(false);
+  });
+
+  it("does not retry a 402 inside a run", () => {
+    // The allowance does not return within a run; retrying only burns time.
+    expect(new HttpError(402, "https://x", "").isRetryable).toBe(false);
+    expect(new HttpError(429, "https://x", "").isRetryable).toBe(true);
   });
 });

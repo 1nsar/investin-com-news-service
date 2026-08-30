@@ -50,6 +50,21 @@ const CONFIDENCE = {
    *  ADRs are discovered - they carry their own share class, so nothing links
    *  them structurally to the home line. */
   nameMatchedUs: 0.75,
+  /** Last resort: no identifier source could confirm the security, but the
+   *  supplier says it is US-listed and gave a US exchange hint, and the news
+   *  provider answers for that symbol.
+   *
+   *  This exists because both identifier sources have real gaps. AvalonBay,
+   *  Equity Residential, Catalyst Pharmaceuticals and Orla Mining are all
+   *  currently traded, all absent from Finnhub's 30,995-row US symbol
+   *  directory, and OpenFIGI returns their BONDS for the same ticker
+   *  (`AVB` maps to a medium-term note, not the share). Refusing to serve them
+   *  would drop four live companies on a technicality, when Finnhub returns
+   *  89, 108, 6 and 12 articles for those exact symbols.
+   *
+   *  Deliberately the lowest confidence in the set, and never used to claim a
+   *  venue beyond "US", so a consumer can filter these out. */
+  supplierAsserted: 0.5,
   /** Ticker matched on the hinted exchange, but the name only partly agrees -
    *  almost always a company that has been renamed since the catalogue was
    *  compiled (Sterling Construction -> Sterling Infrastructure). Accepted at
@@ -57,14 +72,83 @@ const CONFIDENCE = {
   renamed: 0.6,
 } as const;
 
+/** A search for "Adobe Systems" returns the equity AND every option, future and
+ *  dividend future written on it - OpenFIGI indexes them all under the issuer's
+ *  name. Matching on name alone picked `ADBE L 07/27/20 1`, an options
+ *  contract, and called the company resolved to something untradeable. Only
+ *  instruments that are actually shares are eligible. */
+function isEquityLine(record: FigiRecord): boolean {
+  const type2 = (record.securityType2 ?? "").toUpperCase();
+  if (type2) return type2 === "COMMON STOCK" || type2 === "DEPOSITARY RECEIPT";
+  const type = (record.securityType ?? "").toUpperCase();
+  return /COMMON STOCK|ORDINARY|DEPOSITARY|EQUITY|REIT/.test(type)
+    && !/FUTURE|OPTION|WARRANT|SWAP|INDEX/.test(type);
+}
+
+/** How good a LISTING this is, independent of how well the name matches.
+ *
+ *  A global search returns every venue an issuer trades on, and the first row
+ *  with a perfect name is often the worst listing to pick: Skechers matched a
+ *  GBP line in London, Pure Storage a EUR line, and Confluent a bond
+ *  (`TRACE:CFLT 0 01/15/27`) - all scoring 1.0 on the name while being useless
+ *  for fetching that company's news. Rank the listing, then the name. */
+/** May we fall back to the supplier's own ticker as a US listing?
+ *
+ *  Only when BOTH of the supplier's signals agree it is US-listed. The brief
+ *  says to treat an exchange value as "a hint to verify, not ground truth", so
+ *  a hint alone is not enough - and a ticker carrying a venue separator
+ *  (`NVZM.F`, `LVMH_F`) is a Frankfurt symbol that cannot exist on a US venue.
+ *  Synthesising "US" listings for those produced five rows that returned zero
+ *  articles and inflated the reachability figure. */
+function canAssertUsTicker(
+  company: CompanyToResolve,
+  hint: { isUs: boolean } | undefined,
+): boolean {
+  if (!hint?.isUs) return false;
+  if (!company.isUsListedRaw) return false;
+  return /^[A-Z][A-Z0-9]{0,5}$/.test(company.ticker);
+}
+
+function listingQuality(record: FigiRecord): number {
+  const ticker = (record.ticker ?? "").toUpperCase();
+  const exch = (record.exchCode ?? "").toUpperCase();
+
+  // A dated ticker is a bond or a derivative, whatever the metadata claims.
+  if (/\d{1,2}\/\d{1,2}\/\d{2,4}/.test(ticker)) return -1;
+  // TRACE is FINRA's bond reporting facility, never an equity venue.
+  if (exch === "TRACE") return -1;
+
+  let score = 0;
+  // A US venue is what the news providers key on. `isUsExchCode` is the one
+  // authority for this - a hand-rolled list here wrongly counted "MM"
+  // (Bolsa Mexicana de Valores) as American, which made a Mexican SIC quote
+  // the primary listing for Electronic Arts.
+  if (isUsExchCode(exch)) score += 4;
+  // A composite FIGI marks the primary line rather than a venue-local quote.
+  if (record.compositeFIGI && record.compositeFIGI === record.figi) score += 2;
+  // Currency-suffixed tickers (SKXGBP, PSTGEUR) are secondary quotes.
+  if (!/(USD|EUR|GBP|CHF|JPY|SEK|NOK|DKK)$/.test(ticker)) score += 1;
+  return score;
+}
+
 function bestByName(records: FigiRecord[], companyName: string): { record: FigiRecord; score: number } | null {
-  let best: { record: FigiRecord; score: number } | null = null;
-  for (const record of records) {
-    if (!record?.name) continue;
-    const score = nameSimilarity(companyName, record.name ?? "");
-    if (!best || score > best.score) best = { record, score };
-  }
-  return best && best.score >= NAME_MATCH_THRESHOLD ? best : null;
+  const candidates = records
+    .filter((record) => record?.name && isEquityLine(record))
+    .map((record) => ({
+      record,
+      score: nameSimilarity(companyName, record.name ?? ""),
+      quality: listingQuality(record),
+    }))
+    .filter((entry) => entry.score >= NAME_MATCH_THRESHOLD && entry.quality >= 0)
+    // Name first, listing quality second. Ranking quality above the name let a
+    // barely-passing 0.60 match on a US venue beat a 1.00 match on the home
+    // exchange - i.e. pick the wrong company, then attribute its news with full
+    // confidence. Quality only chooses between listings of the SAME issuer,
+    // which is what a near-equal name score means.
+    .sort((a, b) => (Math.abs(b.score - a.score) < 0.05 ? b.quality - a.quality : b.score - a.score));
+
+  const best = candidates[0];
+  return best ? { record: best.record, score: best.score } : null;
 }
 
 function kindFromFigi(record: FigiRecord): ResolvedListing["securityKind"] {
@@ -343,17 +427,58 @@ async function resolvePrimaries(
     // Search is one request per company, so it runs in parallel. The shared
     // rate limiter still caps the outbound rate; serialising here would only
     // add wall-clock time without reducing load on the API.
-    await mapWithConcurrency(stillMissing, 8, async (company) => {
-      const reference = exchangeForHint(company.exchangeHint);
-      const records = await searchByName(company.companyName, reference?.exchCode);
-      const match = bestByName(records, company.companyName);
-      if (match) {
-        outcome.set(company.id, {
-          record: match.record,
-          usRow: null,
-          confidence: CONFIDENCE.nameSearch,
-          note: `resolved by name search to ${match.record.ticker} on ${match.record.exchCode}`,
-        });
+    // Concurrency 2: the search endpoint's budget is small, and bursting it
+    // turns resolvable companies into false negatives.
+    await mapWithConcurrency(stillMissing, 2, async (company) => {
+      // Caught per company on purpose. `mapWithConcurrency` rejects the whole
+      // batch if any worker throws, so one transient failure - a single DNS
+      // blip on api.openfigi.com was enough - aborted resolution for every
+      // remaining company. One company failing must never sink the run; it
+      // stays unresolved and is retried next time.
+      try {
+        const reference = exchangeForHint(company.exchangeHint);
+
+        // Search the hinted venue first, then the whole world.
+        //
+        // A London `0XXX` line is a secondary quote: OpenFIGI indexes
+        // derivatives under `LN` for these issuers but not the share itself,
+        // so an exchange-scoped search returns nothing usable. The company's
+        // actual equity sits on its home exchange - Safran in Paris, Orkla in
+        // Oslo - and an unscoped search finds it. Any listing is enough to make
+        // the company fetchable; it need not be the venue the supplier named.
+        // Try the supplier's name, then its normalised form. The raw name
+        // carries legal suffixes and venue markers that skew a text search:
+        // "Marks and Spencer Group PLC" matched only the company's bonds,
+        // while the normalised "marks spencer" finds the share.
+        const queries = [company.companyName];
+        const normalised = normalizeName(company.companyName);
+        if (normalised && normalised !== company.companyName.toLowerCase()) {
+          queries.push(normalised);
+        }
+
+        let match: ReturnType<typeof bestByName> = null;
+        for (const query of queries) {
+          for (const exch of [reference?.exchCode, undefined]) {
+            const records = await searchByName(query, exch);
+            match = bestByName(records, company.companyName);
+            if (match) break;
+          }
+          if (match) break;
+        }
+
+        if (match) {
+          outcome.set(company.id, {
+            record: match.record,
+            usRow: null,
+            confidence: CONFIDENCE.nameSearch,
+            note: `resolved by name search to ${match.record.ticker} on ${match.record.exchCode}`,
+          });
+        }
+      } catch (error) {
+        logger.warn(
+          { err: error, ticker: company.ticker },
+          "name search failed for one company; leaving it unresolved",
+        );
       }
     });
   }
@@ -460,6 +585,40 @@ async function buildResolution(
   directory: UsDirectory,
 ): Promise<CompanyResolution> {
   if (!primary || (!primary.record && !primary.usRow)) {
+    // Nothing could confirm the security. If the supplier says it is US-listed
+    // and named a US venue, take its word at low confidence rather than
+    // dropping a company the news provider can actually serve.
+    const usHint = exchangeForHint(company.exchangeHint);
+    if (canAssertUsTicker(company, usHint)) {
+      return {
+        companyId: company.id,
+        ticker: company.ticker,
+        status: "resolved",
+        note:
+          "no identifier source could confirm this security; " +
+          "using the supplier's US ticker at reduced confidence",
+        listings: [
+          {
+            exchangeCode: "US",
+            mic: null,
+            symbol: company.ticker,
+            symbolFormat: "us",
+            securityKind: "ordinary",
+            country: company.country ?? "US",
+            currency: "USD",
+            figi: null,
+            compositeFigi: null,
+            shareClassFigi: null,
+            isin: null,
+            isPrimary: true,
+            isUs: true,
+            confidence: CONFIDENCE.supplierAsserted,
+            source: "catalogue",
+          },
+        ],
+      };
+    }
+
     return {
       companyId: company.id,
       ticker: company.ticker,
@@ -469,6 +628,39 @@ async function buildResolution(
     };
   }
   const listings = await expandListings(company, primary, directory);
+
+  // The identifier sources sometimes only surface a foreign quote for a US
+  // company - Skechers resolved to a Swiss line, Pure Storage to a EUR one -
+  // and no free news provider keys on those. When the supplier says the company
+  // is US-listed and gave a plausible US ticker, add that line alongside
+  // whatever was found, at the lowest confidence so it can be filtered.
+  const usHintForAppend = exchangeForHint(company.exchangeHint);
+  if (canAssertUsTicker(company, usHintForAppend) && !listings.some((listing) => listing.isUs)) {
+    listings.push({
+      exchangeCode: "US",
+      mic: null,
+      symbol: company.ticker,
+      symbolFormat: "us",
+      securityKind: "ordinary",
+      country: company.country ?? "US",
+      currency: "USD",
+      figi: null,
+      compositeFigi: null,
+      shareClassFigi: null,
+      isin: null,
+      // Primary: the supplier says this company is US-listed, so a foreign
+      // secondary quote that happened to surface in a name search is not its
+      // primary listing. Electronic Arts otherwise reported a Mexican SIC
+      // quote as primary because OpenFIGI's 100 search rows omit its US line.
+      isPrimary: true,
+      isUs: true,
+      confidence: CONFIDENCE.supplierAsserted,
+      source: "catalogue",
+    });
+    for (const listing of listings) {
+      if (!listing.isUs) listing.isPrimary = false;
+    }
+  }
   return {
     companyId: company.id,
     ticker: company.ticker,

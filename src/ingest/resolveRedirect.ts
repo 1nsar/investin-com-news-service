@@ -35,7 +35,12 @@ import { logger } from "../util/logger.js";
  *  the provider's bucket made resolution queue behind the company fetches until
  *  the per-company timeout fired, and every timed-out article was then stored
  *  with the wrapper URL intact: 204 of them in one run. */
-const resolverLimiter = new RateLimiter("finnhub-redirect", 120);
+// 360/min, measured. A burst of 60 at concurrency 3 sustained 403/min with no
+// 429s, so the earlier 120 was throttling to under a third of what the endpoint
+// tolerates - and since link resolution dominates run time, that tripled the
+// length of a full ingest. Concurrency 3 remains the real safety valve: the
+// 429s we measured came from running 10 wide, not from the request rate.
+const resolverLimiter = new RateLimiter("finnhub-redirect", 360);
 
 /** Hosts whose links are redirect wrappers rather than articles. */
 const WRAPPER_HOSTS = /(^|\.)finnhub\.io$/i;

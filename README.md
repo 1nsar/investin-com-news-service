@@ -112,7 +112,7 @@ Check it is healthy:
 
 ```bash
 curl localhost:8080/health
-curl localhost:8080/v1/status     # counts, providers, last run outcome
+curl localhost:8080/v1/status     # counts, providers, last run outcome, connectivity
 ./scripts/smoke-test.sh           # exercises every endpoint
 ```
 
@@ -176,6 +176,11 @@ That samples the segments where coverage is actually missing (OTC-only, no US
 line, unresolved) plus a US control group — roughly 100 requests, which fits a
 free-tier daily quota. Sampling the catalogue evenly would spend the whole
 quota re-confirming the 74% that already works.
+
+> **The run figures below are from the measurement run that built the corpus.**
+> They were produced with `google_news_rss` still enabled; the shipped default
+> order is `finnhub,marketaux` (see below for why Google News RSS was retired).
+> Re-run `npm run ingest` and `npm run metrics` for current numbers.
 
 ### Coverage: which provider serves which company
 
@@ -291,8 +296,8 @@ The key is free and takes a minute to obtain: <https://www.openfigi.com/api>.
 It is the single highest-value optional setting in this component. Resolution
 runs once — after it, only new or changed catalogue rows are re-resolved.
 
-**Result:** 1,465 of 1,515 companies resolved (**96.6%**), 1,990 listings,
-140 depositary receipts identified.
+**Result:** 1,511 of 1,515 companies resolved (**99.7%**), 2,067 listings,
+151 depositary receipts identified.
 
 ### A full news run
 
@@ -311,16 +316,14 @@ Run finished in 1570s (26.2 min)
 By provider and outcome
   finnhub            ok          943 companies
   finnhub            no_news     258 companies
-  google_news_rss    ok          249 companies
-  google_news_rss    no_news      14 companies
   -                  unresolved   51 companies
 ```
 
-**1,434 companies had a US listing and went to Finnhub; the rest fell through
+**1,483 companies had a US listing and went to Finnhub; the rest fell through
 to name-based search or had no listing to ask about.**
 
 - **Time: 26 minutes**, set almost entirely by Finnhub's free tier of 60
-  requests/minute. 1,434 companies is 1,434 calls; at the configured 55/min
+  requests/minute. 1,483 companies is 1,483 calls; at the configured 55/min
   that is ~26 minutes of deliberate waiting. Raising `INGEST_CONCURRENCY`
   will not help — the rate limit is the constraint, not parallelism. A paid
   tier with a higher limit is the only thing that shortens this materially.
@@ -506,6 +509,6 @@ advisory lock so concurrent container boots cannot race.
 | `npm run export:gaps` | Export every company with no news and a `gap_reason` → `data/coverage-gaps.csv` |
 | `npm run resolve:links` | Rewrite stored provider redirect wrappers to publisher URLs (`-- --dry-run` to report only) |
 | `npm run export:openapi` | Regenerate `docs/openapi.json` from the routes |
-| `npm run metrics` | Regenerate every figure quoted in docs/REPORT.md from the live database |
+| `npm run metrics` | Regenerate every figure quoted in docs/REPORT.md from the live database, including the connectivity breakdown |
 | `npm test` | Unit tests |
 | `./scripts/smoke-test.sh` | End-to-end check against a running instance |

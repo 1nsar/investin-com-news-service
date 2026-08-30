@@ -1,6 +1,6 @@
 import { closePool } from "../src/db/pool.js";
 import { migrate } from "../src/db/migrate.js";
-import { runIngest } from "../src/ingest/runner.js";
+import { runIngestExclusive } from "../src/ingest/runner.js";
 import type { RefreshTier } from "../src/ingest/store.js";
 import { runProviderBreakdown } from "../src/observability/runs.js";
 import { logger } from "../src/util/logger.js";
@@ -38,7 +38,7 @@ async function main(): Promise<void> {
     throw new Error(`--tier must be one of: ${validTiers.join(", ")}`);
   }
 
-  const result = await runIngest({
+  const result = await runIngestExclusive({
     trigger: "manual",
     limit: limitArg ? Number(limitArg) : undefined,
     tickers: tickersArg ? tickersArg.split(",").map((entry) => entry.trim()).filter(Boolean) : undefined,

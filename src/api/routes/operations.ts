@@ -3,7 +3,7 @@ import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { config } from "../../config/index.js";
 import { pool } from "../../db/pool.js";
-import { isIngestRunning, runIngestExclusive } from "../../ingest/runner.js";
+import { ingestInProgress, runIngestExclusive } from "../../ingest/runner.js";
 import { companiesForFetch } from "../../ingest/store.js";
 import { getProviders } from "../../providers/registry.js";
 import {
@@ -14,7 +14,9 @@ import {
   runFallthroughs,
   runProviderBreakdown,
 } from "../../observability/runs.js";
-import { serviceCounts } from "../repository.js";
+import { serviceCounts,
+  connectivity,
+} from "../repository.js";
 
 const FetchBody = z.object({
   tickers: z.array(z.string().trim().min(1)).max(500).optional(),
@@ -72,7 +74,7 @@ export async function operationsRoutes(app: FastifyInstance): Promise<void> {
       tags: ["ops"],
     },
   }, async () => {
-    const [counts, run] = await Promise.all([serviceCounts(), latestRun()]);
+    const [counts, run, wiring] = await Promise.all([serviceCounts(), latestRun(), connectivity()]);
     const breakdown = run ? await runProviderBreakdown(run.id) : [];
     // A provider that failed but was covered by a fallback still produced a
     // clean-looking run. Surfacing it is the whole point.
@@ -94,7 +96,19 @@ export async function operationsRoutes(app: FastifyInstance): Promise<void> {
         rateLimit: provider.limiter.snapshot,
       })),
       providerOrder: config.providerOrder,
-      ingestRunning: isIngestRunning(),
+      // Is every company actually wired to a source that would deliver news if
+      // news existed? "No news in the window" is a normal answer and is
+      // reported as healthy; "no definitive answer" and "unresolved" are the
+      // two states worth acting on, and each lists its tickers.
+      connectivity: Object.fromEntries(
+        wiring.map((row) => [
+          row.state,
+          row.tickers.length ? { companies: row.companies, tickers: row.tickers } : row.companies,
+        ]),
+      ),
+      // Cross-process, not the in-process flag: a CLI or sibling-replica ingest
+      // is exactly the case this field exists to reveal.
+      ingestRunning: await ingestInProgress(),
       lastRun: run
         ? {
             id: run.id,
@@ -151,7 +165,10 @@ export async function operationsRoutes(app: FastifyInstance): Promise<void> {
     if (!parsed.success) {
       return reply.code(400).send({ error: "invalid_body", detail: parsed.error.issues });
     }
-    if (isIngestRunning()) {
+    // Awaited, and cross-process: a CLI `npm run ingest` is invisible to the
+    // in-process flag, so without this the API would start a second ingest and
+    // the two would compete until the request timed out.
+    if (await ingestInProgress()) {
       return reply.code(409).send({ error: "already_running", detail: "an ingest is already in progress" });
     }
 
@@ -205,8 +222,16 @@ export async function operationsRoutes(app: FastifyInstance): Promise<void> {
     const options = { ...parsed.data, trigger: "api" as const };
 
     if (parsed.data.wait) {
-      const result = await runIngestExclusive(options);
-      return { data: result };
+      try {
+        const result = await runIngestExclusive(options);
+        return { data: result };
+      } catch (error) {
+        // Losing the lock race is a 409, not a server fault.
+        if (error instanceof Error && /already running/i.test(error.message)) {
+          return reply.code(409).send({ error: "already_running", detail: error.message });
+        }
+        throw error;
+      }
     }
 
     // Fire and forget: a full-catalogue run outlives any sensible HTTP

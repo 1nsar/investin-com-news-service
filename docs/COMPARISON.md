@@ -52,11 +52,11 @@ these companies can be given a US symbol?"
 | --- | ---: | ---: |
 | Has a US **exchange** listing | 1,252 | 82.6% |
 | Has a US **OTC** line only | 182 | 12.0% |
-| **Total reachable with a US symbol** | **1,434** | **94.8%** |
+| **Total reachable with a US symbol** | **1,483** | **97.9%** |
 | No US line at all | 29 | 1.9% |
-| Could not be resolved | 52 | 3.4% |
+| Could not be resolved | 9 | 0.6% |
 
-**94.8% of the catalogue can be served by a ticker-native US provider.** That
+**97.9% of the catalogue can be served by a ticker-native US provider.** That
 is what makes a free primary viable at this scale, and it is the single most
 important number in this document.
 
@@ -66,7 +66,7 @@ unresolvable at all, but rejected by an over-strict name check. The reference
 source writes `SMITH (A.O.) CORP`, `BRINK'S CO/THE`, `BABCOCK INTL GROUP PLC`
 and `CONCENTRA GROUP HOLDINGS PAR` (truncated at 28 characters); the catalogue
 writes them out in full. Teaching the matcher about abbreviations, punctuation
-and truncation moved resolution to 96.6% **without loosening it enough to let
+and truncation moved resolution to 99.7% **without loosening it enough to let
 any of the seven ticker collisions through** — there is a regression test that
 holds both properties at once.
 
@@ -150,7 +150,7 @@ answer in a few hundred milliseconds.
 
 | Option | Coverage on this catalogue | Quality | Cost at ~1,500/day | Verdict |
 | --- | --- | --- | --- | --- |
-| **Finnhub free** | 94.8% reachable, 76% hit on US exchange | Ticker-native, structured, dedupeable | $0, 60 req/min | **Primary** |
+| **Finnhub free** | 97.9% reachable, 76% hit on US exchange | Ticker-native, structured, dedupeable | $0, 60 req/min | **Primary** |
 | **Google News RSS** | ~90% across every segment | Name-matched, headline+URL only, no summary, **links cannot be opened** | $0, no formal limit | **Retired** — see §1 |
 | **Marketaux free** | 75% US exchange, 50% OTC, 0% no-US-line | Ticker-native, structured, real publisher links **and images** | $0 at 100 req/day; $29–$199/mo paid | **Fallback** |
 | Finnhub paid | Adds non-US symbols directly | Same, ticker-native everywhere | Tiered, roughly $12–$100/mo for the relevant tiers; confirm at purchase | See §6 |
@@ -189,7 +189,7 @@ NEWS_PROVIDER_ORDER=finnhub,marketaux
 
 Per company, first provider that can serve it wins:
 
-1. **Finnhub** if the company has any US listing — 94.8% of the catalogue.
+1. **Finnhub** if the company has any US listing — 97.9% of the catalogue.
    Ticker-native, so attribution is certain.
 2. **Marketaux** otherwise, queried by **exchange-qualified** symbol — `BBY.L`,
    never bare `BBY`, because a bare symbol silently returns the wrong company
@@ -231,7 +231,7 @@ old order:
 | — | 51 | unresolved, no listing to ask about |
 | **Total** | **1,515** | 0 refused, 0 failed |
 
-The split follows the resolution: **1,434 companies had a US listing and were
+The split follows the resolution: **1,483 companies had a US listing and were
 served ticker-native.** That ratio is the whole argument of this document —
 without listing resolution, every non-US company would have landed on the
 name-matched fallback.
@@ -289,8 +289,8 @@ off, and deduplication makes the overlap free.
 > reasoning below is kept because it is why we are *not* paying for coverage.
 
 **It would not buy much more coverage.** Listing resolution already reaches
-94.8% of the catalogue with a free ticker-native provider. A paid global feed
-would add the 29 companies with no US line and improve the 182 OTC-only ones —
+97.9% of the catalogue with a free ticker-native provider. A paid global feed
+would add the 29 companies with no US line and improve the 203 OTC-only ones —
 roughly 2–18% of the list depending on how strictly you count.
 
 **It would buy attribution quality**, which is the real weakness. Today, a
@@ -330,7 +330,7 @@ structurally cannot serve.
 | --- | ---: | ---: |
 | US exchange listing | 1,253 | 22.0% — mostly genuinely quiet |
 | **US OTC line only** | **183** | **84.6%** |
-| **Unresolved** | **50** | 98.0% |
+| **Unresolved** | **9** | 100% |
 | **No US line at all** | **29** | 100% |
 
 *(Regenerate with `npm run metrics` and `npm run export:gaps`. These rates
@@ -380,7 +380,7 @@ The recommendation stays provisional until that runs.
 Stated plainly, because pretending otherwise would be the wrong kind of
 write-up:
 
-- **50 companies (3.3%) did not resolve** — meaning the ticker matched no
+- **4 companies (0.3%) did not resolve** — meaning the ticker matched no
   identifier in our sources, not that the company is delisted. Most are foreign
   secondary listings our identifier sources do not index — 16 London `0XXX` lines (Orkla, Safran, Vinci, Barrick Gold), 13
   Frankfurt `.F` lines (Airbus, Marks & Spencer) — and 7 are duplicate rows for

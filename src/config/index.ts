@@ -30,7 +30,12 @@ const Schema = z.object({
   FINNHUB_RATE_LIMIT_PER_MIN: z.coerce.number().int().positive().default(55),
   GOOGLE_NEWS_RATE_LIMIT_PER_MIN: z.coerce.number().int().positive().default(40),
 
-  INGEST_INITIAL_LOOKBACK_DAYS: z.coerce.number().int().positive().default(7),
+  INGEST_INITIAL_LOOKBACK_DAYS: z.coerce.number().int().positive().default(90),
+  /** Newest-N articles kept per company per run. A 90-day first fetch returns
+   *  ~130 articles for an active company; a feed needs a fraction of that, and
+   *  every extra article costs a link resolution. Coverage is unaffected -
+   *  the cap only ever discards the OLDEST items of an already-populated feed. */
+  INGEST_MAX_ARTICLES_PER_COMPANY: z.coerce.number().int().positive().default(25),
   INGEST_OVERLAP_HOURS: z.coerce.number().int().nonnegative().default(6),
   INGEST_CONCURRENCY: z.coerce.number().int().positive().default(6),
   INGEST_COMPANY_TIMEOUT_MS: z.coerce.number().int().positive().default(120_000),

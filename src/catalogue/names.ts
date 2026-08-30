@@ -17,6 +17,11 @@ const NOISE_WORDS = new Set([
   "ltd", "limited", "plc", "llc", "lp", "llp", "trust", "the", "companies",
   "sa", "sas", "sca", "se", "ag", "kgaa", "nv", "bv", "as", "asa", "ab", "oyj", "oy",
   "spa", "srl", "aps", "a", "s", "gmbh", "pcl", "tbk", "bhd", "pte", "pt",
+  // Nordic and other national legal forms, same role as "plc" or "ag".
+  // Only forms confirmed against this catalogue. "aksigorta" was here by
+  // mistake - it is a Turkish insurer's NAME, and listing it normalised that
+  // company to the empty string.
+  "abp", "hf", "ehf",
   "holding", "holdings", "hldgs", "hldg", "group", "grp", "groupe",
   "adr", "adrs", "ads", "gdr", "gdrs", "spon", "spons", "sponsored",
   "unspon", "unsponsored", "repr", "reptg", "represented",
@@ -73,6 +78,14 @@ const NAME_ALIASES: Array<[string, string]> = [
   // Native-language directory name vs the supplier's English name.
   ["muenchener rueckver", "munich reinsurance"],
   ["muenchener rueckversicherungs", "munich reinsurance"],
+  // Corporate renames. The directory carries the new name, the catalogue the
+  // old one; no amount of string similarity can bridge a rename.
+  ["novozymes", "novonesis"],
+  // Shortened trade name vs the supplier's fuller form.
+  ["adobe systems", "adobe"],
+  // Spanish abbreviations the supplier uses for a very long legal name.
+  ["acs actividades constr y srvcs", "acs actividades de construccion y servicios"],
+  ["construcciones y auxiliar de ferrocarriles", "caf"],
 ];
 
 const ALIAS_INDEX: Map<string, Set<string>> = (() => {
@@ -117,6 +130,17 @@ export function normalizeName(raw: string): string {
     .split(" ")
     .map((token) => ABBREVIATIONS[token] ?? token)
     .filter((token) => token && !NOISE_WORDS.has(token));
+
+  // A trailing single letter is a venue marker, not part of the name. The
+  // supplier writes the London line of Safran as "Safran L", of Orkla as
+  // "Orkla L". Against the directory's "SAFRAN SA" that scored 0.59 - one
+  // hundredth below the 0.60 match threshold - so five large, actively traded
+  // companies were reported unresolved because of a one-character suffix.
+  //
+  // Only dropped when something distinctive remains, so a genuine one-word
+  // name is never emptied.
+  if (tokens.length > 1 && tokens[tokens.length - 1]!.length === 1) tokens.pop();
+
   return tokens.join(" ");
 }
 
