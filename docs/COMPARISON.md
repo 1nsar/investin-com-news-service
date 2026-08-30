@@ -26,7 +26,7 @@ fetching anything.
 | Has a US OTC line only | 170 | 11.2% |
 | **Total reachable with a US symbol** | **1,481** | **97.8%** |
 | No US line at all | 29 | 1.9% |
-| Could not be identified | 5 | 0.3% |
+| Could not be identified | 4 | 0.3% |
 
 **97.8% is the whole argument.** Because the listing work was done first, almost
 everything became reachable with free, ticker-native sources.
@@ -164,7 +164,7 @@ Pricing is quoted per customer via `licensing@benzinga.com`.
 
 ## 8. What is still weak
 
-- **5 companies (0.3%) could not be identified.** Two causes: the identifier
+- **4 companies (0.3%) could not be identified.** Two causes: the identifier
   directory abbreviates names differently ("CONSTRUCC Y AUX" vs
   "Construcciones y Auxiliar"), and for others only currency-variant quotes come
   back — `UNIGBX`, `UNICHF` — never the company's real home listing.

@@ -69,3 +69,26 @@ describe("national legal forms and renames", () => {
     expect(matches("Admiral Group", "ARCHER-DANIELS-MIDLAND CO")).toBe(false);
   });
 });
+
+describe("names abbreviated word-by-word", () => {
+  const matches = (a: string, b: string): boolean => nameSimilarity(a, b) >= NAME_MATCH_THRESHOLD;
+
+  it("matches a name shortened to fit a field", () => {
+    // Reference data truncates to a fixed width. Sometimes that clips the last
+    // word; sometimes it shortens every word. Both are the same company.
+    expect(matches("Construcciones y Auxiliar de Ferrocarriles",
+                   "CONSTRUCC Y AUX DE FERROCARR")).toBe(true);
+    expect(matches("Corporación Interamericana de Entretenimiento",
+                   "CORP INTERAMERICANA DE ENTRE")).toBe(true);
+  });
+
+  it("does NOT let abbreviation matching reopen the collisions", () => {
+    // The guard is three-or-more aligned words. Every collision below turns on
+    // one or two short tokens, so none of them qualify.
+    expect(matches("Apple Inc", "Apple Hospitality REIT")).toBe(false);
+    expect(matches("Prudential PLC", "PRUDENTIAL FINANCIAL INC")).toBe(false);
+    expect(matches("Shanghai Airport", "Shanghai Electric Group")).toBe(false);
+    expect(matches("Nova Ltd", "Novartis AG")).toBe(false);
+    expect(matches("Sea Limited", "Sea World Entertainment")).toBe(false);
+  });
+});

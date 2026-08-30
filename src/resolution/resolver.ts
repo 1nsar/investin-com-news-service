@@ -122,10 +122,13 @@ function listingQuality(record: FigiRecord): number {
 
   let score = 0;
 
-  // An LSE international-board code is never the company's own ticker. Scoped
-  // to London via the shared helper, so a zero-padded Hong Kong ticker such as
-  // "0700" is not caught by the same shape.
-  if (isLondonBoardCode(exch, ticker)) return 0;
+  // An LSE international-board code is never the company's own ticker, so it is
+  // REJECTED (-1), not merely ranked low. Scoring it 0 still let it be chosen
+  // when it was the only candidate - the search would find the London row,
+  // "resolve" the company to 0GX5, and leave it exactly as unfetchable as
+  // before. Scoped to London via the shared helper, so a zero-padded Hong Kong
+  // ticker such as "0700" is not caught by the same shape.
+  if (isLondonBoardCode(exch, ticker)) return -1;
 
   // A venue we can build a provider symbol for beats one we cannot. Without
   // this, a company could "resolve" to an exchange's internal listing code -
@@ -492,8 +495,17 @@ async function resolvePrimaries(
         if (normalised && normalised !== company.companyName.toLowerCase()) {
           queries.push(normalised);
         }
-        const leading = normalised.split(" ").slice(0, 3).join(" ");
-        if (leading && leading !== normalised) queries.push(leading);
+        // Progressively shorter prefixes. OpenFIGI's text search is
+        // unforgiving about extra words: "Magyar Telekom Tavkozlesi Nyrt"
+        // returns nothing usable while "Magyar Telekom" returns the company on
+        // two supported venues. Longest first, so a precise name still wins.
+        const words = normalised.split(" ").filter(Boolean);
+        for (const take of [3, 2]) {
+          const prefix = words.slice(0, take).join(" ");
+          if (prefix && prefix !== normalised && !queries.includes(prefix)) {
+            queries.push(prefix);
+          }
+        }
 
         let match: ReturnType<typeof bestByName> = null;
         for (const query of queries) {
