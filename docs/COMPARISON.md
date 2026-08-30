@@ -22,11 +22,11 @@ fetching anything.
 
 | Segment | Companies | Share |
 | --- | ---: | ---: |
-| Has a US exchange listing | 1,311 | 86.5% |
+| Has a US exchange listing | 1,312 | 86.6% |
 | Has a US OTC line only | 170 | 11.2% |
-| **Total reachable with a US symbol** | **1,481** | **97.8%** |
-| No US line at all | 29 | 1.9% |
-| Could not be identified | 4 | 0.3% |
+| **Total reachable with a US symbol** | **1,482** | **97.8%** |
+| No US line at all | 30 | 2.0% |
+| Could not be identified | 3 | 0.2% |
 
 **97.8% is the whole argument.** Because the listing work was done first, almost
 everything became reachable with free, ticker-native sources.
@@ -164,10 +164,10 @@ Pricing is quoted per customer via `licensing@benzinga.com`.
 
 ## 8. What is still weak
 
-- **4 companies (0.3%) could not be identified.** Two causes: the identifier
-  directory abbreviates names differently ("CONSTRUCC Y AUX" vs
-  "Construcciones y Auxiliar"), and for others only currency-variant quotes come
-  back — `UNIGBX`, `UNICHF` — never the company's real home listing.
+- **3 companies (0.2%) could not be identified.** One cause: only
+  currency-hedged side quotes come back for them — `UNIGBX`, `UNICHF` and the
+  like — never the ordinary home listing that news is written against.
+  Abbreviated directory names, previously the second cause, are now matched.
 - **Name matching is the weakest component.** It is the fallback for exactly the
   companies with the least other coverage. Mitigated by storing `match_method`
   and `confidence` on every link so consumers can filter, not by pretending the

@@ -184,38 +184,37 @@ export function nameSimilarity(left: string, right: string): number {
   const [shorter, longer] = tokensA.length <= tokensB.length ? [tokensA, tokensB] : [tokensB, tokensA];
   const longerSet = new Set(longer);
 
+  // Two shapes of truncation, with different evidence.
+  //
+  //  1. Fixed-width cut: the LAST word is clipped and the rest are intact
+  //     ("CONCENTRA GROUP HOLDINGS PAR"). Position carries the signal, so the
+  //     clipped stem may be short.
+  //  2. Word-by-word abbreviation: every word shortened
+  //     ("CONSTRUCC Y AUX DE FERROCARR"). Position carries nothing, so BOTH
+  //     sides must be substantial words - otherwise every word of a three-word
+  //     name claims credit against a stray initial, which scored "Martin
+  //     Marietta Materials" at 0.78 against "H & M Hennes & Mauritz".
+  const prefixMatch = (token: string, minOther: number): boolean =>
+    longer.some(
+      (other) => other.length >= minOther && (other.startsWith(token) || token.startsWith(other)),
+    );
+
   let shared = 0;
   for (const token of new Set(shorter)) {
-    if (longerSet.has(token)) shared += 1;
-    else if (
-      token.length >= 3 &&
-      // Truncation only has a signature when there is more than one token: a
-      // clipped final word alongside intact earlier ones. A lone token that
-      // happens to prefix another is just a coincidence - it made "Nova"
-      // match "Novartis", "Cat" match "Caterpillar" and "Micro" match
-      // "Microsoft".
-      shorter.length >= 2 &&
-      // Only the last token may match by prefix. Reference descriptions are
-      // truncated at a fixed width ("CONCENTRA GROUP HOLDINGS PAR"), which
-      // clips the final word and nothing else. Allowing prefix credit on any
-      // token made "Nova" match "Novartis" and "Cat" match "Caterpillar".
-      (token === shorter[shorter.length - 1] ||
-        // ...or the name is abbreviated word-by-word rather than clipped at the
-        // end. Reference data does both: "CONCENTRA GROUP HOLDINGS PAR" is a
-        // fixed-width cut, while "CONSTRUCC Y AUX DE FERROCARR" shortens every
-        // word of "Construcciones y Auxiliar de Ferrocarriles". The same
-        // company, written to fit a field.
-        //
-        // Gated on THREE or more tokens and a four-character stem, because the
-        // coincidences this guards against are all short single-token names -
-        // "Nova" against "Novartis", "Cat" against "Caterpillar". A name with
-        // three aligned words is not a coincidence.
-        (shorter.length >= 3 && token.length >= 4)) &&
-      longer.some((other) => other.startsWith(token) || token.startsWith(other))
-    ) {
-      shared += 0.85;
+    if (longerSet.has(token)) {
+      shared += 1;
+      continue;
     }
+    if (token.length < 3 || shorter.length < 2) continue;
+
+    const isLastToken = token === shorter[shorter.length - 1];
+    const credited = isLastToken
+      ? prefixMatch(token, 3)
+      : shorter.length >= 3 && token.length >= 4 && prefixMatch(token, 4);
+
+    if (credited) shared += 0.85;
   }
+
   if (shared === 0) return 0;
 
   const containment = shared / Math.min(setA.size, setB.size);

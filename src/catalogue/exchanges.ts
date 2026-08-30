@@ -56,8 +56,10 @@ const REFERENCES: ExchangeRef[] = [
   // Home venues reachable through the identifier sources we already use, added
   // because a company resolved only to an exchange's internal listing code was
   // unfetchable. DO & CO resolved to the LSE international-board code "0E64",
-  // which no news provider recognises - while OpenFIGI already returned its
-  // Vienna line, "DOC" on AV, for free. The gap was this table, not the data.
+  // which no news provider recognises, while OpenFIGI returned usable venues
+  // for it free of charge. The gap was this table, not the data. (In practice
+  // DO & CO now resolves to Xetra rather than Vienna - the ranking prefers
+  // whichever usable venue the search surfaces first.)
   { hint: "WBAG",   exchCode: "AV", mic: "XWBO", suffix: ".VI", country: "AT", currency: "EUR", isUs: false, label: "Wiener Borse" },
   { hint: "BME",    exchCode: "SM", mic: "XMAD", suffix: ".MC", country: "ES", currency: "EUR", isUs: false, label: "Bolsa de Madrid" },
   { hint: "ENXTAM", exchCode: "NA", mic: "XAMS", suffix: ".AS", country: "NL", currency: "EUR", isUs: false, label: "Euronext Amsterdam" },
