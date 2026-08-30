@@ -53,6 +53,18 @@ const REFERENCES: ExchangeRef[] = [
   { hint: "ENXTPA", exchCode: "FP", mic: "XPAR", suffix: ".PA", country: "FR", currency: "EUR", isUs: false, label: "Euronext Paris" },
   { hint: "ENXTBR", exchCode: "BB", mic: "XBRU", suffix: ".BR", country: "BE", currency: "EUR", isUs: false, label: "Euronext Brussels" },
   { hint: "BIT",    exchCode: "IM", mic: "MTAA", suffix: ".MI", country: "IT", currency: "EUR", isUs: false, label: "Borsa Italiana" },
+  // Home venues reachable through the identifier sources we already use, added
+  // because a company resolved only to an exchange's internal listing code was
+  // unfetchable. DO & CO resolved to the LSE international-board code "0E64",
+  // which no news provider recognises - while OpenFIGI already returned its
+  // Vienna line, "DOC" on AV, for free. The gap was this table, not the data.
+  { hint: "WBAG",   exchCode: "AV", mic: "XWBO", suffix: ".VI", country: "AT", currency: "EUR", isUs: false, label: "Wiener Borse" },
+  { hint: "BME",    exchCode: "SM", mic: "XMAD", suffix: ".MC", country: "ES", currency: "EUR", isUs: false, label: "Bolsa de Madrid" },
+  { hint: "ENXTAM", exchCode: "NA", mic: "XAMS", suffix: ".AS", country: "NL", currency: "EUR", isUs: false, label: "Euronext Amsterdam" },
+  { hint: "ISE",    exchCode: "ID", mic: "XDUB", suffix: ".IR", country: "IE", currency: "EUR", isUs: false, label: "Euronext Dublin" },
+  { hint: "ENXTLS", exchCode: "PL", mic: "XLIS", suffix: ".LS", country: "PT", currency: "EUR", isUs: false, label: "Euronext Lisbon" },
+  { hint: "SHSE",   exchCode: "CH", mic: "XSHG", suffix: ".SS", country: "CN", currency: "CNY", isUs: false, label: "Shanghai Stock Exchange" },
+  { hint: "SZSE",   exchCode: "CS", mic: "XSHE", suffix: ".SZ", country: "CN", currency: "CNY", isUs: false, label: "Shenzhen Stock Exchange" },
   { hint: "OM",     exchCode: "SS", mic: "XSTO", suffix: ".ST", country: "SE", currency: "SEK", isUs: false, label: "Nasdaq Stockholm" },
   { hint: "CPSE",   exchCode: "DC", mic: "XCSE", suffix: ".CO", country: "DK", currency: "DKK", isUs: false, label: "Nasdaq Copenhagen" },
   { hint: "OB",     exchCode: "NO", mic: "XOSL", suffix: ".OL", country: "NO", currency: "NOK", isUs: false, label: "Oslo Bors" },
@@ -118,6 +130,18 @@ export type SymbolFormat = "us" | "suffixed" | "numeric_suffixed" | "unknown";
  *  7203 + JT -> 7203.T. Listings store the venue's own bare symbol, which is
  *  ambiguous across exchanges - "BBY" is Balfour Beatty in London and Best Buy
  *  in New York - so anything querying a GLOBAL provider must qualify it. */
+/** London's international board lists foreign companies under a synthetic
+ *  `0XXX` code - Heijmans is "0M6I", Magyar Telekom "0NUG". It is a valid
+ *  identifier and a useless one: no news provider recognises it, and "0M6I.L"
+ *  matches nothing. Because a suffix COULD be appended, these looked queryable
+ *  and were fetched with a dead symbol, producing a clean zero indistinguishable
+ *  from a quiet week. */
+export function isLondonBoardCode(exchCode: string, symbol: string): boolean {
+  const exch = exchCode.trim().toUpperCase();
+  if (exch !== "LN" && exch !== "LO") return false;
+  return /^0[A-Z0-9]{3}$/.test(symbol.trim().toUpperCase());
+}
+
 export function marketSymbol(exchCode: string, symbol: string): string | null {
   const ref = exchangeForCode(exchCode);
   // No suffix mapping for this venue - the bare symbol is ambiguous to a
@@ -125,7 +149,19 @@ export function marketSymbol(exchCode: string, symbol: string): string | null {
   // different company somewhere else. Affects London International board
   // codes (LO), TRACE, and a handful of others: 97 listings here.
   if (!ref || !ref.suffix) return null;
-  return symbol.includes(".") ? symbol : `${symbol}${ref.suffix}`;
+  // A board code cannot produce a working symbol, so say so here rather than
+  // handing back something that only looks usable.
+  if (isLondonBoardCode(exchCode, symbol)) return null;
+
+  // Bloomberg writes an LSE ticker's trailing dot as a slash - Aviva is "AV/",
+  // BAE "BA/", Rolls-Royce "RR/", QinetiQ "QQ/" - and that is the form the
+  // identifier sources return. Appending a suffix to it produces "QQ/.L",
+  // which matches nothing: the provider holds 201 articles under "QQ.L" and
+  // returned a clean zero for the mangled form. A false "no news" on four
+  // major UK companies, indistinguishable from a genuinely quiet week.
+  const base = symbol.replace(/\//g, "");
+  if (!base) return null;
+  return base.includes(".") ? base : `${base}${ref.suffix}`;
 }
 
 export function symbolFormatFor(exchCode: string, symbol: string): SymbolFormat {

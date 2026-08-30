@@ -195,7 +195,15 @@ export async function companiesForFetch(options: {
       WHERE c.is_active
         AND ($1::text[] IS NULL OR c.ticker_raw = ANY($1::text[]))
         AND ${tierPredicate(options.tier ?? "all")}
-      ORDER BY c.id
+      -- Companies with no stored news go FIRST.
+      --
+      -- Fallback providers are metered - the free Marketaux tier allows 100
+      -- lookups a day - and in catalogue order that budget is spent on
+      -- whichever companies happen to sort first, which are mostly ones that
+      -- already have plenty of news. 36 well-covered companies sat ahead of the
+      -- first company that had none. Serving the empty feeds first means the
+      -- scarce quota goes to the companies it can actually change.
+      ORDER BY EXISTS(SELECT 1 FROM article_companies ac WHERE ac.company_id = c.id), c.id
       ${options.limit ? "LIMIT " + Number(options.limit) : ""}`,
     [options.tickers?.length ? options.tickers : null],
   );

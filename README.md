@@ -296,8 +296,8 @@ The key is free and takes a minute to obtain: <https://www.openfigi.com/api>.
 It is the single highest-value optional setting in this component. Resolution
 runs once — after it, only new or changed catalogue rows are re-resolved.
 
-**Result:** 1,511 of 1,515 companies resolved (**99.7%**), 2,067 listings,
-151 depositary receipts identified.
+**Result:** 1,510 of 1,515 companies resolved (**99.7%**), 2,021 listings,
+152 depositary receipts identified.
 
 ### A full news run
 
@@ -319,7 +319,7 @@ By provider and outcome
   -                  unresolved   51 companies
 ```
 
-**1,483 companies had a US listing and went to Finnhub; the rest fell through
+**1,481 companies had a US listing and went to Finnhub; the rest fell through
 to name-based search or had no listing to ask about.**
 
 - **Time: 26 minutes**, set almost entirely by Finnhub's free tier of 60
