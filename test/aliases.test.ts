@@ -92,3 +92,19 @@ describe("names abbreviated word-by-word", () => {
     expect(matches("Sea Limited", "Sea World Entertainment")).toBe(false);
   });
 });
+
+describe("abbreviation matching must not credit stray initials", () => {
+  const matches = (a: string, b: string): boolean => nameSimilarity(a, b) >= NAME_MATCH_THRESHOLD;
+
+  it("does not match two unrelated companies through a single letter", () => {
+    // "H & M Hennes & Mauritz" normalises to "h m hennes mauritz". Every word
+    // of "Martin Marietta Materials" starts with "m", and crediting that
+    // scored 0.78 - a false match between two real rows in this catalogue.
+    expect(matches("H & M Hennes & Mauritz AB ADR", "Martin Marietta Materials Inc")).toBe(false);
+  });
+
+  it("still matches genuinely abbreviated names", () => {
+    expect(matches("Construcciones y Auxiliar de Ferrocarriles",
+                   "CONSTRUCC Y AUX DE FERROCARR")).toBe(true);
+  });
+});

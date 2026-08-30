@@ -79,7 +79,15 @@ async function main(): Promise<void> {
              END AS outcome
         FROM fetch_run_companies f
         JOIN fetch_runs r ON r.id = f.run_id
-       WHERE r.started_at > now() - interval '14 days'
+       -- Bound to runs since the company's listings were last resolved, not a
+       -- fixed window. A verdict recorded BEFORE a re-resolution describes a
+       -- listing that no longer exists: several companies were still reported
+       -- as "no provider covers this market" from a run minutes before they
+       -- were given a working ticker. A 14-day window was far too coarse to
+       -- catch that.
+       WHERE r.started_at > coalesce(
+               (SELECT max(l.resolved_at) FROM listings l WHERE l.company_id = f.company_id),
+               now() - interval '14 days')
          AND (f.outcome IN ('ok', 'no_news', 'skipped')
               OR EXISTS (SELECT 1 FROM jsonb_to_recordset(f.provider_attempts)
                                 AS y(provider text, outcome text)

@@ -10,10 +10,10 @@ Every figure is reproducible with `npm run metrics`; the gaps with
 
 | | | | |
 | --- | ---: | --- | ---: |
-| Companies in catalogue | **1,515** | **Connected** | **1,501 (99.1%)** |
-| Identified to a real security | **1,511 (99.7%)** | Returning news | **1,449 (95.6%)** |
-| Exchange listings found | **2,022** | Attribution certain | **99.9%** of links |
-| Depositary receipts | **152** | Articles with an image | **83.6%** |
+| Companies in catalogue | **1,515** | **Connected** | **1,502 (99.1%)** |
+| Identified to a real security | **1,512 (99.8%)** | Returning news | **1,450 (95.7%)** |
+| Exchange listings found | **2,023** | Attribution certain | **99.9%** of links |
+| Depositary receipts | **153** | Articles with an image | **83.6%** |
 
 **Recurring cost: $0.** No paid API, and no language model is called anywhere.
 
@@ -34,11 +34,11 @@ US depositary receipt.
 
 | Segment | Companies | |
 | --- | ---: | --- |
-| US exchange listing | 1,311 | Well covered |
+| US exchange listing | 1,312 | Well covered |
 | US OTC line only | 170 | Thinner coverage |
-| **Reachable with a US symbol** | **1,481 (97.8%)** | The two above |
+| **Reachable with a US symbol** | **1,482 (97.8%)** | The two above |
 | No US line at all | 30 | Needs a non-US source |
-| Not identified | 4 | See below |
+| Not identified | 3 | See below |
 
 That resolution step is why no paid API is required.
 
@@ -91,64 +91,74 @@ license a headline, a teaser and a *link*; rendering the full text anyway would
 be republishing copyrighted work. Showing articles in our own interface is a
 licensing decision — see below.
 
-## The 14 companies with no news, and why
+## The 13 companies with no news, and why
 
-Everything else — **1,501 of 1,515** — is working: each company either has news,
+Everything else — **1,502 of 1,515** — is working: each company either has news,
 or was asked properly and simply had nothing in the last 90 days. A quiet week
 is a real answer, so those are not listed here.
 
-### 4 companies: we cannot be sure which company it is
+### 3 companies: we cannot pin down which security it is
 
-To fetch news we have to know exactly which company a code refers to. For these
-we could not be certain, and a wrong guess means showing someone else's news
-under their name.
+We know exactly who these businesses are. What we cannot get is an *address* a
+news provider will accept.
 
-**We find the company, but not a usable listing.** Unipol is the clearest case:
-we identify it correctly. The only versions that come back are the same share
-priced in pounds, francs, dollars and euros on small exchanges. Its ordinary
-Milan listing never appears — and news providers do not cover those exchanges.
+Shares are often quoted in several currencies on small side exchanges — a
+"priced in pounds" version, a "priced in francs" version — which exist for
+hedging and which almost nobody writes news about. For these three, those side
+quotes are the only thing that comes back. **The ordinary home listing, the one
+news is actually written against, never appears.** Four addresses for the same
+building, all of them back doors.
 
-| Ticker | Company | Why |
-| --- | --- | --- |
-| `0Q6M` | Unipol Gruppo Finanziario SpA | Only currency-variant quotes come back — never its Milan listing |
-| `BMRM.F` | Société Anonyme des Bains de M | Only currency-variant quotes come back — never its home listing |
-| `CIEZ.F` | Corporación Interamericana de  | Only currency-variant quotes come back — never its home listing |
-| `NVPT.F` | Navitas Petroleum, Limited Par | Only currency-variant quotes come back — never its home listing |
+| Ticker | Company | What it does | Where | Why no news |
+| --- | --- | --- | --- | --- |
+| `BMRM.F` | Société Anonyme des Bains  | Casinos, hotels and resorts in Monte-Carlo | Monaco | Only currency-hedged side quotes come back — never its Paris listing |
+| `CIEZ.F` | Corporación Interamericana | Live entertainment — concerts, venues, events | Mexico | Only currency-hedged side quotes come back — never its Mexico listing |
+| `NVPT.F` | Navitas Petroleum, Limited | Oil and gas exploration | Israel | Only currency-hedged side quotes come back — never its Tel Aviv listing |
 
 ### 3 companies: no news source covers where they trade
 
-We know who these are. The problem is *where* they are listed.
+Identified, but unreachable — each for a different reason.
 
-London gives foreign companies its own internal code — Heijmans is `0M6I` —
-used nowhere else, and no news provider recognises it. We could send that code
-to a provider anyway; it would come back empty, and that empty result would look
-identical to "this company had a quiet week". **We would rather say we cannot
-reach a company than show a zero we cannot stand behind.**
+| Ticker | Company | What it does | Where | Why no news |
+| --- | --- | --- | --- | --- |
+| `0M6I` | Heijmans NV | Construction — roads, housing, infrastructure | Netherlands | Its shares are Dutch depositary receipts; the search index does not return its Amsterdam line |
+| `0QEP` | Maire Tecnimont SpA | Engineering — builds chemical and energy plants | Italy | Only a US-dollar side quote turns up, on a venue no provider covers |
+| `MIA` | Malta International Airpor | Operates the country’s airport | Malta | Malta’s exchange is tiny; no provider we use carries it |
 
-Zhejiang Jasan is a different case: it trades only in Shanghai, and no free
-provider carries Chinese A-share news in English.
+Heijmans is the near miss. Its shares are Dutch **depositary receipts**
+(*certificaten van aandelen*) rather than ordinary stock. Searching for those
+now works — that fix connected Unipol — but the search index still does not
+return Heijmans' Amsterdam line, only side quotes. The lookup-by-ticker endpoint
+*does* have it; using that would mean guessing the ticker, and a wrong guess
+attributes another company's news.
 
-| Ticker | Company | Why |
-| --- | --- | --- |
-| `0M6I` | Heijmans NV | The directory files it as "Koninklijke Heijmans", so the name search cannot find it |
-| `0QEP` | Maire Tecnimont SpA | Only a US-dollar quote on a venue no provider covers |
-| `MIA` | Malta International Airport PL | Malta exchange; no provider covers it |
+### 7 companies: a usable ticker was found, news not yet requested
 
-### 7 companies: connected, waiting on the next run
+Six were stuck behind a London code no provider recognises. Matching the company
+**name** to a listing we can query fixed that — Sweco's `0H0G` became `7W7` on
+Xetra, CAF became `CAF` in Madrid. The seventh, Zhejiang Jasan, already had a
+usable Shanghai symbol.
 
-These were reached by matching the company name to its real ticker — Sweco's
-London code `0H0G` became `7W7` on Xetra — and now have a venue a provider
-recognises. They simply have not been fetched since.
+**A caveat worth stating.** Only CAF landed on its home exchange. The others
+resolved to German or Swiss **secondary quotes** — the same kind of side listing
+criticised two sections above. They are queryable, which the London codes were
+not, but they may well come back empty, and that would move them into the group
+above rather than into coverage.
 
-| Ticker | Company | Why |
-| --- | --- | --- |
-| `0E64` | DO & CO AG | Now resolved to GR:DOQ — awaiting the next scheduled fetch |
-| `0GQE` | Clas Ohlson AB | Now resolved to GR:OHCB — awaiting the next scheduled fetch |
-| `0H0G` | Sweco AB | Now resolved to GR:7W7 — awaiting the next scheduled fetch |
-| `0NUG` | Magyar Telekom Tavkozlesi Nyrt | Now resolved to GR:MGYB — awaiting the next scheduled fetch |
-| `0REQ` | Per Aarsleff Holding A/S | Now resolved to SW:PE9 — awaiting the next scheduled fetch |
-| `0RKF` | Construcciones y Auxiliar de F | Now resolved to SM:CAF — awaiting the next scheduled fetch |
-| `603558` | Zhejiang Jasan Holding Group C | Now resolved to CH:603558 — awaiting the next scheduled fetch |
+The news request itself has not run. The fallback provider's free plan allows
+100 lookups a day, and that budget was spent when these were fixed. The next
+scheduled run answers it. **They are counted as *not connected* above** — until
+a provider has actually answered, saying they work would be a guess.
+
+| Ticker | Company | What it does | Where | Why no news |
+| --- | --- | --- | --- | --- |
+| `0E64` | DO & CO AG | Airline and event catering | Austria | Ticker found (`DOQ`); not yet asked |
+| `0GQE` | Clas Ohlson AB | Hardware and home-goods retail | Sweden | Ticker found (`OHCB`); not yet asked |
+| `0H0G` | Sweco AB | Engineering and architecture consultancy | Sweden | Ticker found (`7W7`); not yet asked |
+| `0NUG` | Magyar Telekom Tavkozlesi  | Telecoms operator | Hungary | Ticker found (`MGYB`); not yet asked |
+| `0REQ` | Per Aarsleff Holding A/S | Civil engineering and construction | Denmark | Ticker found (`PE9`); not yet asked |
+| `0RKF` | Construcciones y Auxiliar  | Builds trains and rail rolling stock | Spain | Ticker found (`CAF`); not yet asked |
+| `603558` | Zhejiang Jasan Holding Gro | Textile manufacturing — socks and knitwear | China | Trades only in Shanghai; no free provider carries Chinese A-share news in English |
 
 ## The component in use
 
@@ -196,7 +206,7 @@ link, i.e. the constraint we want to escape. Limitation, stated plainly:
 
 ## Known limits
 
-- **4 companies (0.3%) unidentified** — explained above.
+- **3 companies (0.2%) unidentified** — explained above.
 - **Name matching is the weakest component.** "Adobe Systems" vs "Adobe" is
   indistinguishable in form from "Prudential" vs "Prudential Financial" — the
   first is one company, the second is two. Known equivalences are a small,

@@ -102,6 +102,14 @@ export async function mapIdentifiers(jobs: MappingJob[]): Promise<FigiRecord[][]
  *  exchange we have no code for, or a symbol the supplier wrote differently
  *  from the venue. Returns fewer guarantees than mapping, so callers must
  *  still confirm the name. */
+/** Instrument kinds that are a company's actual shares.
+ *
+ *  "Common Stock" alone is not enough. Dutch companies routinely issue
+ *  depositary receipts instead of ordinary shares - Heijmans trades in
+ *  Amsterdam as a CVA (certificaat van aandelen) - and filtering to common
+ *  stock hid the company's only real listing behind an empty result. */
+const EQUITY_KINDS = ["Common Stock", "Depositary Receipt"] as const;
+
 export async function searchByName(
   companyName: string,
   exchCode?: string,
@@ -112,18 +120,35 @@ export async function searchByName(
     // futures and dividend futures written on the name - the share itself never
     // appears. Airbus, Novozymes and LVMH all returned 100 derivatives
     // unfiltered and their real listings the moment this was added.
-    const body: Record<string, string> = { query: companyName, securityType2: "Common Stock" };
-    if (exchCode) body.exchCode = exchCode;
-    const response = await requestJson<{ data?: FigiRecord[] }>(SEARCH_URL, {
-      method: "POST",
-      headers: headers(),
-      body: JSON.stringify(body),
-      limiter: searchLimiter,
-      label: "openfigi/search",
-      timeoutMs: 30_000,
-      maxRetries: 2,
-    });
-    return response.data ?? [];
+    // One request per instrument kind: the filter takes a single value, and an
+    // unfiltered search returns 100 rows of futures for any large issuer.
+    const found: FigiRecord[] = [];
+    // Each kind is caught separately: a refusal on the second request must not
+    // throw away rows the first already returned. Losing them would recreate
+    // the exact confusion this function was changed to avoid - a throttled
+    // request looking identical to "this company does not exist".
+    for (const kind of EQUITY_KINDS) {
+      try {
+      const body: Record<string, string> = { query: companyName, securityType2: kind };
+      if (exchCode) body.exchCode = exchCode;
+      const response = await requestJson<{ data?: FigiRecord[] }>(SEARCH_URL, {
+        method: "POST",
+        headers: headers(),
+        body: JSON.stringify(body),
+        limiter: searchLimiter,
+        label: `openfigi/search:${kind}`,
+        timeoutMs: 30_000,
+        maxRetries: 2,
+      });
+        found.push(...(response.data ?? []));
+      } catch (error) {
+        const rateLimited =
+          error instanceof HttpError ? error.isRateLimited : /too many requests/i.test(String(error));
+        logger.warn({ err: error, companyName, kind, rateLimited }, "openfigi search failed for one kind");
+        if (found.length === 0 && kind === EQUITY_KINDS[EQUITY_KINDS.length - 1]) throw error;
+      }
+    }
+    return found;
   } catch (error) {
     // Distinguish "refused" from "not found". An empty list is a real answer;
     // a rate-limited request is not, and silently returning [] for it marks a
