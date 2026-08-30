@@ -1,13 +1,13 @@
 ticker,company_name,country,resolution_status,gap_reason,also_covered_as,note
 000089,Shenzhen Airport Co Ltd,CN,resolved,no_news_no_us_line,,
 000568,Luzhou Lao Jiao Co Ltd,CN,resolved,no_news_no_us_line,,
-0E64,DO & CO AG,GB,resolved,no_news_no_us_line,,resolved without an exchange filter to LO
-0GQE,Clas Ohlson AB,GB,resolved,no_news_no_us_line,,resolved without an exchange filter to LO
-0H0G,Sweco AB,GB,resolved,no_news_no_us_line,,resolved without an exchange filter to LO
+0E64,DO & CO AG,GB,resolved,no_news_no_us_line,,resolved by name search to DOQ on GR
+0GQE,Clas Ohlson AB,GB,resolved,no_news_no_us_line,,resolved by name search to OHCB on GR
+0H0G,Sweco AB,GB,resolved,no_news_no_us_line,,resolved by name search to 0GX5 on LN
 0M6I,Heijmans NV,GB,resolved,no_news_no_us_line,,"likely renamed: catalogue says ""Heijmans NV"", venue says ""KONINKLIJKE HEIJMANS N.V"""
 0NUG,Magyar Telekom Tavkozlesi Nyrt,GB,resolved,no_news_no_us_line,,"name match 0.60 against ""MAGYAR TELEKOM TELECOMMUNICA"""
 0QEP,Maire Tecnimont SpA,GB,resolved,no_news_no_us_line,,resolved by name search to MT1USD on X1
-0REQ,Per Aarsleff Holding A/S,GB,resolved,no_news_no_us_line,,resolved without an exchange filter to LO
+0REQ,Per Aarsleff Holding A/S,GB,resolved,no_news_no_us_line,,resolved by name search to PE9 on SW
 1909,Nippon Dry Chemical,CA,resolved,no_news_no_us_line,,
 600004,Guangzhou Baiyun International Airport Co Ltd,US,resolved,no_news_no_us_line,,"name match 0.88 against ""GUANGZHOU BAIYUN INTERNATI-A"""
 600009,Shanghai International Airport Co Ltd,US,resolved,no_news_no_us_line,,"name match 0.94 against ""SHANGHAI INTERNATIONAL AIR-A"""
@@ -22,19 +22,17 @@ KID,Kid ASA,NO,resolved,no_news_no_us_line,,
 KRI,Kri-Kri Milk,US,resolved,no_news_no_us_line,,"name match 0.92 against ""KRI-KRI MILK INDUSTRY SA"""
 LICI,Life Insurance Corporation Of India,US,resolved,no_news_no_us_line,,"name match 0.92 against ""LIFE INSURANCE CORPORATION"""
 MGNS,Morgan Sindall Group PLC,GB,resolved,no_news_no_us_line,,
-MIA,Malta International Airport PLC,US,resolved,no_news_no_us_line,,
+MIA,Malta International Airport PLC,US,resolved,no_news_no_us_line,,resolved by name search to MIA on EO
 SAFARI,Safari Industries,US,resolved,no_news_no_us_line,,resolved by name search to SII on IS
 SCT,Softcat PLC,GB,resolved,no_news_no_us_line,,
 SKX,Skechers USA Inc,US,resolved,no_news_no_us_line,,resolved by name search to SKAA on SW
 SUPA,Super Bank Indonesia Tbk Pt,US,resolved,no_news_no_us_line,,
 SYNSAM,Synsam AB,US,resolved,no_news_no_us_line,,
 000333,Midea Group Co Ltd,CN,resolved,no_news_otc_only,,
-0A0L,Sectra AB,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
-0EKE,Lisi SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0EKE,Lisi SA,GB,resolved,no_news_otc_only,,resolved by name search to LI3 on GR
 0EYJ,Københavns Lufthavne A/S,GB,resolved,no_news_otc_only,,"likely renamed: catalogue says ""Københavns Lufthavne A/S"", venue says ""KOBENHAVNS LUFTHAVNE"""
-0NJP,SOL SpA,GB,resolved,no_news_otc_only,,
-0ON7,D’Ieteren SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
-0QI7,Addtech AB,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
+0NJP,SOL SpA,GB,resolved,no_news_otc_only,,resolved by name search to 0NJP on LN
+0ON7,D’Ieteren SA,GB,resolved,no_news_otc_only,,resolved by name search to DIE on SW
 0QWA,Compania de Distribucion Integral Logista Holdings SA,GB,resolved,no_news_otc_only,,resolved without an exchange filter to LO
 1585,Yadea Group Holdings Ltd,HK,resolved,no_news_otc_only,,
 2628,China Life Insurance Co Ltd,HK,resolved,no_news_otc_only,,
@@ -52,20 +50,18 @@ PAF,Pan African Resources PLC,GB,resolved,no_news_otc_only,,
 QQ.,Qinetiq Group PLC,GB,resolved,no_news_otc_only,,resolved by name search to QQ/ on LN
 SATS,Satsuma Technology PLC,US,resolved,no_news_otc_only,,
 YPSN,Ypsomed Holding AG,CH,resolved,no_news_otc_only,,
+0QI7,Addtech AB,GB,resolved,no_news_us_exchange,,resolved by name search to ADDTF on US
 ATZA.F,Aritzia Inc,US,resolved,no_news_us_exchange,,resolved by name search to ATZIY on US
 ELFI.F,E-L Financial Corporation Ltd,US,resolved,no_news_us_exchange,,resolved by name search to ELFIF on US
 EXMR.F,Exmar NV,US,resolved,no_news_us_exchange,,resolved by name search to EXMRF on US
 FTRO.F,First Resources Limited,US,resolved,no_news_us_exchange,,resolved by name search to FTROF on US
 IBAD.F,"Inaba Denki Sangyo Co.,Ltd.",US,resolved,no_news_us_exchange,,resolved by name search to IBADF on US
 IPOA.F,Industrias Penoles SAB de CV,US,resolved,no_news_us_exchange,,resolved by name search to IPOAF on US
+LBGU.F,L E Lundbergföretagen AB (publ),US,resolved,no_news_us_exchange,,resolved by name search to LBGUF on US
 MLHK.F,H&K AG,US,resolved,no_news_us_exchange,,resolved by name search to MLHKF on US
 NTTM.F,"Nittetsu Mining Co., Ltd.",US,resolved,no_news_us_exchange,,resolved by name search to NTTMF on US
 BMRM.F,Société Anonyme des Bains de Mer et du Cercle des Étrangers à Monaco,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 CIEZ.F,"Corporación Interamericana de Entretenimiento, S.A.B. de C.V.",US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
-LBGU.F,L E Lundbergföretagen AB (publ),US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
-LVMH_F,"LVMH Moët Hennessy - Louis Vuitton, Société Européenne",,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
 NVPT.F,"Navitas Petroleum, Limited Partnership",US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
-NVZM.F,Novozymes AS,US,unresolved,unresolved_frankfurt_line,,no identifier matched this ticker and name
-0HAC,ACS Actividades Constr y Srvcs,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
 0Q6M,Unipol Gruppo Finanziario SpA,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name
 0RKF,Construcciones y Auxiliar de Ferrocarriles SA,GB,unresolved,unresolved_london_secondary_line,,no identifier matched this ticker and name

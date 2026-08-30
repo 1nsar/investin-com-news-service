@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { HttpError } from "../src/util/http.js";
+import { marketSymbol } from "../src/catalogue/exchanges.js";
 import { FinnhubProvider } from "../src/providers/finnhub.js";
 import { GoogleNewsRssProvider } from "../src/providers/googleNewsRss.js";
 import type { FetchableCompany, FetchableListing } from "../src/providers/types.js";
@@ -139,5 +140,57 @@ describe("quota exhaustion", () => {
     // The allowance does not return within a run; retrying only burns time.
     expect(new HttpError(402, "https://x", "").isRetryable).toBe(false);
     expect(new HttpError(429, "https://x", "").isRetryable).toBe(true);
+  });
+});
+
+describe("LSE symbols in Bloomberg form", () => {
+  it("converts a trailing slash into the venue suffix", () => {
+    // Identifier sources return Aviva as "AV/", not "AV." - appending ".L"
+    // naively gives "AV/.L", which matches nothing at a global provider.
+    expect(marketSymbol("LN", "QQ/")).toBe("QQ.L");
+    expect(marketSymbol("LN", "AV/")).toBe("AV.L");
+    expect(marketSymbol("LN", "BA/")).toBe("BA.L");
+    expect(marketSymbol("LN", "RR/")).toBe("RR.L");
+  });
+
+  it("leaves ordinary symbols alone", () => {
+    expect(marketSymbol("LN", "VOD")).toBe("VOD.L");
+    expect(marketSymbol("LN", "SCT")).toBe("SCT.L");
+  });
+
+  it("still refuses a venue with no suffix mapping", () => {
+    expect(marketSymbol("LO", "0E64")).toBeNull();
+  });
+});
+
+describe("home venues added for previously unfetchable companies", () => {
+  it("qualifies symbols on the venues that were missing", () => {
+    // Each of these was a company resolvable by OpenFIGI but unfetchable,
+    // because the venue had no suffix mapping here.
+    expect(marketSymbol("AV", "DOC")).toBe("DOC.VI");   // DO & CO, Vienna
+    expect(marketSymbol("SM", "ACS")).toBe("ACS.MC");   // Madrid
+    expect(marketSymbol("NA", "HEIA")).toBe("HEIA.AS"); // Amsterdam
+    expect(marketSymbol("CH", "603558")).toBe("603558.SS");
+    expect(marketSymbol("CS", "000333")).toBe("000333.SZ");
+  });
+});
+
+describe("London international-board codes", () => {
+  it("refuses to build a symbol from a board code", () => {
+    // "0M6I.L" looks like a symbol and matches nothing. Returning it made
+    // Heijmans and Magyar Telekom report a clean zero they never earned.
+    expect(marketSymbol("LN", "0M6I")).toBeNull();  // Heijmans
+    expect(marketSymbol("LN", "0NUG")).toBeNull();  // Magyar Telekom
+    expect(marketSymbol("LO", "0E64")).toBeNull();
+  });
+
+  it("does not mistake a zero-padded Hong Kong ticker for a board code", () => {
+    expect(marketSymbol("HK", "0700")).toBe("0700.HK");
+  });
+
+  it("strips a slash anywhere, not just at the end", () => {
+    expect(marketSymbol("LN", "QQ/")).toBe("QQ.L");
+    expect(marketSymbol("LN", "BT/A")).toBe("BTA.L");
+    expect(marketSymbol("LN", "/")).toBeNull();
   });
 });

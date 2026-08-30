@@ -83,8 +83,17 @@ const NAME_ALIASES: Array<[string, string]> = [
   ["novozymes", "novonesis"],
   // Shortened trade name vs the supplier's fuller form.
   ["adobe systems", "adobe"],
-  // Spanish abbreviations the supplier uses for a very long legal name.
+  // Spanish abbreviations the supplier uses for a very long legal name. The
+  // directory abbreviates differently again ("cons y serv"), so both forms are
+  // linked rather than trying to expand abbreviations generically.
   ["acs actividades constr y srvcs", "acs actividades de construccion y servicios"],
+  ["acs actividades constr y srvcs", "acs actividades cons y services"],
+  ["acs actividades constr y srvcs", "acs actividades cons y serv"],
+  // A rename where the directory keeps BOTH names: "NOVONESIS (NOVOZYMES) B".
+  ["novozymes", "novonesis novozymes"],
+  // Holding company written under its short trading name.
+  ["l e lundbergforetagen publ", "lundbergs"],
+  ["l e lundbergforetagen", "lundbergs"],
   ["construcciones y auxiliar de ferrocarriles", "caf"],
 ];
 

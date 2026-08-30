@@ -58,8 +58,33 @@ async function main(): Promise<void> {
   // because only the second is a fault we can act on.
   const conn = await query<{ state: string; companies: number }>(`
     WITH latest AS (
-      SELECT DISTINCT ON (company_id) company_id, outcome
-        FROM fetch_run_companies ORDER BY company_id, run_id DESC
+      -- The most recent DEFINITIVE answer, from the most recent run that
+      -- actually reached this company.
+      --
+      -- Two things this must get right. First, a definitive answer is looked
+      -- for in provider_attempts, not the run-level outcome: a run recorded as
+      -- rate_limited can still contain a provider that returned a clean zero,
+      -- and reporting that company as "never answered" is wrong. Second, the
+      -- answer is bounded to recent runs - without a bound, an outcome from any
+      -- point in history outranks every later attempt, so a company whose
+      -- listing was re-resolved yesterday keeps reporting the verdict from
+      -- before the fix.
+      SELECT DISTINCT ON (f.company_id) f.company_id,
+             CASE WHEN f.outcome IN ('ok', 'no_news', 'skipped') THEN f.outcome
+                  ELSE (SELECT x.outcome
+                          FROM jsonb_to_recordset(f.provider_attempts)
+                               AS x(provider text, outcome text)
+                         WHERE x.outcome IN ('ok', 'no_news')
+                         LIMIT 1)
+             END AS outcome
+        FROM fetch_run_companies f
+        JOIN fetch_runs r ON r.id = f.run_id
+       WHERE r.started_at > now() - interval '14 days'
+         AND (f.outcome IN ('ok', 'no_news', 'skipped')
+              OR EXISTS (SELECT 1 FROM jsonb_to_recordset(f.provider_attempts)
+                                AS y(provider text, outcome text)
+                          WHERE y.outcome IN ('ok', 'no_news')))
+       ORDER BY f.company_id, f.run_id DESC
     )
     SELECT CASE
         WHEN c.resolution_status <> 'resolved' THEN 'not connected (unresolved)'

@@ -2,7 +2,9 @@ import {
   candidateExchCodes,
   exchangeForCode,
   exchangeForHint,
+  isLondonBoardCode,
   isUsExchCode,
+  marketSymbol,
   symbolFormatFor,
 } from "../catalogue/exchanges.js";
 import { NAME_MATCH_THRESHOLD, nameSimilarity, normalizeName, sharedTokenCount, tickerVariants } from "../catalogue/names.js";
@@ -119,6 +121,19 @@ function listingQuality(record: FigiRecord): number {
   if (exch === "TRACE") return -1;
 
   let score = 0;
+
+  // An LSE international-board code is never the company's own ticker. Scoped
+  // to London via the shared helper, so a zero-padded Hong Kong ticker such as
+  // "0700" is not caught by the same shape.
+  if (isLondonBoardCode(exch, ticker)) return 0;
+
+  // A venue we can build a provider symbol for beats one we cannot. Without
+  // this, a company could "resolve" to an exchange's internal listing code -
+  // DO & CO to the LSE board code 0E64 - which is a valid identifier and a
+  // useless one, because no news provider recognises it. A listing we cannot
+  // query is not a better answer than one we can.
+  if (marketSymbol(exch, record.ticker ?? "") !== null) score += 3;
+
   // A US venue is what the news providers key on. `isUsExchCode` is the one
   // authority for this - a hand-rolled list here wrongly counted "MM"
   // (Bolsa Mexicana de Valores) as American, which made a Mexican SIC quote
@@ -419,7 +434,19 @@ async function resolvePrimaries(
   // remainder - typically a few dozen rows out of the catalogue.
   const stillMissing = companies.filter((company) => {
     const current = outcome.get(company.id);
-    return !current?.record && !current?.usRow;
+    if (!current?.record && !current?.usRow) return true;
+
+    // Also retry when what we found cannot be QUERIED. A ticker can map
+    // cleanly to an exchange's internal listing code - DO & CO's "0E64" on the
+    // LSE international board - which is a perfectly valid identifier that no
+    // news provider recognises. Resolution succeeded and the company was still
+    // unreachable, so the search runs anyway to look for a venue we can build
+    // a symbol for. A usable listing already found is never discarded: the
+    // search result only replaces it if it scores better.
+    if (current.usRow) return false;
+    const record = current.record;
+    if (!record) return false;
+    return marketSymbol(record.exchCode ?? "", record.ticker ?? "") === null;
   });
 
   if (stillMissing.length > 0) {
@@ -446,15 +473,27 @@ async function resolvePrimaries(
         // actual equity sits on its home exchange - Safran in Paris, Orkla in
         // Oslo - and an unscoped search finds it. Any listing is enough to make
         // the company fetchable; it need not be the venue the supplier named.
+        // A match here replaces the earlier result outright and drops the
+        // confidence to nameSearch - it is only reached when the earlier result
+        // was unusable, so there is nothing better to keep.
         // Try the supplier's name, then its normalised form. The raw name
         // carries legal suffixes and venue markers that skew a text search:
         // "Marks and Spencer Group PLC" matched only the company's bonds,
         // while the normalised "marks spencer" finds the share.
+        // Raw name, normalised name, then just the distinctive leading words.
+        //
+        // OpenFIGI's search is a text match, and a long legal name matches
+        // nothing: "LVMH Moet Hennessy - Louis Vuitton, Societe Europeenne"
+        // returns no usable row while "LVMH Moet Hennessy" returns the company
+        // on five queryable venues. Shortening is tried last so a precise name
+        // still wins when it works.
         const queries = [company.companyName];
         const normalised = normalizeName(company.companyName);
         if (normalised && normalised !== company.companyName.toLowerCase()) {
           queries.push(normalised);
         }
+        const leading = normalised.split(" ").slice(0, 3).join(" ");
+        if (leading && leading !== normalised) queries.push(leading);
 
         let match: ReturnType<typeof bestByName> = null;
         for (const query of queries) {
