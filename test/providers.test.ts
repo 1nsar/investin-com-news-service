@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { HttpError } from "../src/util/http.js";
 import { marketSymbol } from "../src/catalogue/exchanges.js";
+import { homeCountryFromName } from "../src/catalogue/names.js";
 import { FinnhubProvider } from "../src/providers/finnhub.js";
 import { GoogleNewsRssProvider } from "../src/providers/googleNewsRss.js";
 import type { FetchableCompany, FetchableListing } from "../src/providers/types.js";
@@ -192,5 +193,37 @@ describe("London international-board codes", () => {
     expect(marketSymbol("LN", "QQ/")).toBe("QQ.L");
     expect(marketSymbol("LN", "BT/A")).toBe("BTA.L");
     expect(marketSymbol("LN", "/")).toBeNull();
+  });
+});
+
+describe("home country inferred from the legal form", () => {
+  it("reads the suffix, not the catalogue's listing country", () => {
+    // Every London line in the catalogue says "GB" regardless of the issuer,
+    // so the legal form is the more honest signal for a home venue.
+    expect(homeCountryFromName("Sweco AB")).toBe("SE");
+    expect(homeCountryFromName("Per Aarsleff Holding A/S")).toBe("DK");
+    expect(homeCountryFromName("Clas Ohlson AB")).toBe("SE");
+    expect(homeCountryFromName("Maire Tecnimont SpA")).toBe("IT");
+    expect(homeCountryFromName("Heijmans NV")).toBe("NL");
+    expect(homeCountryFromName("DO & CO AG")).toBe("DE");
+  });
+
+  it("returns null when the name carries no legal form", () => {
+    expect(homeCountryFromName("Apple")).toBeNull();
+  });
+});
+
+describe("Nordic share-class symbols", () => {
+  it("hyphenates a trailing share class on Nordic venues", () => {
+    // Identifier sources return "CLASB"; the provider knows it as "CLAS-B".
+    // Measured on the same company: CLAS-B.ST → 5 articles, CLASB.ST → 0.
+    expect(marketSymbol("SS", "CLASB")).toBe("CLAS-B.ST");
+    expect(marketSymbol("SS", "SWECB")).toBe("SWEC-B.ST");
+    expect(marketSymbol("DC", "PAALB")).toBe("PAAL-B.CO");
+  });
+
+  it("leaves ordinary tickers alone", () => {
+    expect(marketSymbol("SS", "VOLV")).toBe("VOLV.ST");
+    expect(marketSymbol("LN", "VODB")).toBe("VODB.L");  // not a Nordic venue
   });
 });

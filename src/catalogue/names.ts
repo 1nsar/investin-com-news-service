@@ -315,3 +315,32 @@ export function tickerVariants(raw: string): string[] {
   if (ticker.includes(".")) variants.push(ticker.replace(/\./g, "_"));
   return [...new Set(variants.filter(Boolean))];
 }
+
+/** The country a company's legal form implies.
+ *
+ *  A European company's home exchange is where its news is written, but the
+ *  catalogue's country column describes the LISTING we were given - every
+ *  London line says "GB" regardless of the issuer. The legal suffix is a more
+ *  honest signal: "Sweco AB" is Swedish, "Per Aarsleff Holding A/S" Danish,
+ *  whatever venue the row happens to name.
+ *
+ *  Used only to PREFER a venue, never to reject one, so a wrong guess costs
+ *  nothing beyond ordering. */
+const LEGAL_FORM_COUNTRY: Array<[RegExp, string]> = [
+  [/\bab\b|\bpubl\b/i, "SE"],
+  [/\ba\/s\b|\baps\b/i, "DK"],
+  [/\basa\b/i, "NO"],
+  [/\boyj\b|\babp\b/i, "FI"],
+  [/\bspa\b|\bs\.p\.a\b|\bsrl\b/i, "IT"],
+  [/\bnv\b|\bn\.v\b|\bbv\b/i, "NL"],
+  [/\bag\b|\bgmbh\b|\bkgaa\b/i, "DE"],
+  [/\bplc\b/i, "GB"],
+  [/\bnyrt\b|\brt\b/i, "HU"],
+];
+
+export function homeCountryFromName(companyName: string): string | null {
+  for (const [pattern, country] of LEGAL_FORM_COUNTRY) {
+    if (pattern.test(companyName)) return country;
+  }
+  return null;
+}

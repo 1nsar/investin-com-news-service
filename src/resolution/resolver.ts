@@ -7,7 +7,7 @@ import {
   marketSymbol,
   symbolFormatFor,
 } from "../catalogue/exchanges.js";
-import { NAME_MATCH_THRESHOLD, nameSimilarity, normalizeName, sharedTokenCount, tickerVariants } from "../catalogue/names.js";
+import { NAME_MATCH_THRESHOLD, nameSimilarity, normalizeName, sharedTokenCount, tickerVariants, homeCountryFromName } from "../catalogue/names.js";
 import { mapWithConcurrency } from "../util/async.js";
 import { logger } from "../util/logger.js";
 import {
@@ -111,7 +111,7 @@ function canAssertUsTicker(
   return /^[A-Z][A-Z0-9]{0,5}$/.test(company.ticker);
 }
 
-function listingQuality(record: FigiRecord): number {
+function listingQuality(record: FigiRecord, homeCountry?: string | null): number {
   const ticker = (record.ticker ?? "").toUpperCase();
   const exch = (record.exchCode ?? "").toUpperCase();
 
@@ -129,6 +129,11 @@ function listingQuality(record: FigiRecord): number {
   // before. Scoped to London via the shared helper, so a zero-padded Hong Kong
   // ticker such as "0700" is not caught by the same shape.
   if (isLondonBoardCode(exch, ticker)) return -1;
+
+  // The company's own home exchange, where its news is actually written.
+  // Sweco resolved to a Frankfurt quote that carries no news, while its
+  // Stockholm line has plenty - both queryable, only one useful.
+  if (homeCountry && exchangeForCode(exch)?.country === homeCountry) score += 6;
 
   // A venue we can build a provider symbol for beats one we cannot. Without
   // this, a company could "resolve" to an exchange's internal listing code -
@@ -155,7 +160,7 @@ function bestByName(records: FigiRecord[], companyName: string): { record: FigiR
     .map((record) => ({
       record,
       score: nameSimilarity(companyName, record.name ?? ""),
-      quality: listingQuality(record),
+      quality: listingQuality(record, homeCountryFromName(companyName)),
     }))
     .filter((entry) => entry.score >= NAME_MATCH_THRESHOLD && entry.quality >= 0)
     // Name first, listing quality second. Ranking quality above the name let a
