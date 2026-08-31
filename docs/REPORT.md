@@ -10,10 +10,10 @@ Every figure is reproducible with `npm run metrics`; the gaps with
 
 | | | | |
 | --- | ---: | --- | ---: |
-| Companies in catalogue | **1,515** | **Connected** | **1,502 (99.1%)** |
+| Companies in catalogue | **1,515** | **Connected** | **1,509 (99.6%)** |
 | Identified to a real security | **1,512 (99.8%)** | Returning news | **1,450 (95.7%)** |
 | Exchange listings found | **2,023** | Attribution certain | **99.9%** of links |
-| Depositary receipts | **153** | Articles with an image | **83.6%** |
+| Depositary receipts | **154** | Articles with an image | **83.6%** |
 
 **Recurring cost: $0.** No paid API, and no language model is called anywhere.
 
@@ -34,9 +34,9 @@ US depositary receipt.
 
 | Segment | Companies | |
 | --- | ---: | --- |
-| US exchange listing | 1,312 | Well covered |
+| US exchange listing | 1,313 | Well covered |
 | US OTC line only | 170 | Thinner coverage |
-| **Reachable with a US symbol** | **1,482 (97.8%)** | The two above |
+| **Reachable with a US symbol** | **1,483 (97.9%)** | The two above |
 | No US line at all | 30 | Needs a non-US source |
 | Not identified | 3 | See below |
 
@@ -91,11 +91,11 @@ license a headline, a teaser and a *link*; rendering the full text anyway would
 be republishing copyrighted work. Showing articles in our own interface is a
 licensing decision — see below.
 
-## The 13 companies with no news, and why
+## The 6 companies with no news, and why
 
-Everything else — **1,502 of 1,515** — is working: each company either has news,
-or was asked properly and simply had nothing in the last 90 days. A quiet week
-is a real answer, so those are not listed here.
+The other **1,509 of 1,515 (99.6%)** are connected — each either has news, or was
+asked with a valid symbol and genuinely had none in the 90-day window. A quiet
+week is a real answer, so those are not listed here.
 
 ### 3 companies: we cannot pin down which security it is
 
@@ -104,10 +104,8 @@ news provider will accept.
 
 Shares are often quoted in several currencies on small side exchanges — a
 "priced in pounds" version, a "priced in francs" version — which exist for
-hedging and which almost nobody writes news about. For these three, those side
-quotes are the only thing that comes back. **The ordinary home listing, the one
-news is actually written against, never appears.** Four addresses for the same
-building, all of them back doors.
+hedging and which nobody writes news against. For these three, those side quotes
+are the only thing that comes back. **The ordinary home listing never appears.**
 
 | Ticker | Company | What it does | Where | Why no news |
 | --- | --- | --- | --- | --- |
@@ -121,44 +119,16 @@ Identified, but unreachable — each for a different reason.
 
 | Ticker | Company | What it does | Where | Why no news |
 | --- | --- | --- | --- | --- |
-| `0M6I` | Heijmans NV | Construction — roads, housing, infrastructure | Netherlands | Its shares are Dutch depositary receipts; the search index does not return its Amsterdam line |
-| `0QEP` | Maire Tecnimont SpA | Engineering — builds chemical and energy plants | Italy | Only a US-dollar side quote turns up, on a venue no provider covers |
+| `0M6I` | Heijmans NV | Construction — roads, housing, infrastructure | Netherlands | Shares are Dutch depositary receipts; the search index never returns its Amsterdam line |
+| `0QEP` | Maire Tecnimont SpA | Engineering — builds chemical and energy plants | Italy | Only a US-dollar side quote, on a venue no provider covers |
 | `MIA` | Malta International Airpor | Operates the country’s airport | Malta | Malta’s exchange is tiny; no provider we use carries it |
 
 Heijmans is the near miss. Its shares are Dutch **depositary receipts**
-(*certificaten van aandelen*) rather than ordinary stock. Searching for those
-now works — that fix connected Unipol — but the search index still does not
-return Heijmans' Amsterdam line, only side quotes. The lookup-by-ticker endpoint
-*does* have it; using that would mean guessing the ticker, and a wrong guess
-attributes another company's news.
-
-### 7 companies: a usable ticker was found, news not yet requested
-
-Six were stuck behind a London code no provider recognises. Matching the company
-**name** to a listing we can query fixed that — Sweco's `0H0G` became `7W7` on
-Xetra, CAF became `CAF` in Madrid. The seventh, Zhejiang Jasan, already had a
-usable Shanghai symbol.
-
-**A caveat worth stating.** Only CAF landed on its home exchange. The others
-resolved to German or Swiss **secondary quotes** — the same kind of side listing
-criticised two sections above. They are queryable, which the London codes were
-not, but they may well come back empty, and that would move them into the group
-above rather than into coverage.
-
-The news request itself has not run. The fallback provider's free plan allows
-100 lookups a day, and that budget was spent when these were fixed. The next
-scheduled run answers it. **They are counted as *not connected* above** — until
-a provider has actually answered, saying they work would be a guess.
-
-| Ticker | Company | What it does | Where | Why no news |
-| --- | --- | --- | --- | --- |
-| `0E64` | DO & CO AG | Airline and event catering | Austria | Ticker found (`DOQ`); not yet asked |
-| `0GQE` | Clas Ohlson AB | Hardware and home-goods retail | Sweden | Ticker found (`OHCB`); not yet asked |
-| `0H0G` | Sweco AB | Engineering and architecture consultancy | Sweden | Ticker found (`7W7`); not yet asked |
-| `0NUG` | Magyar Telekom Tavkozlesi  | Telecoms operator | Hungary | Ticker found (`MGYB`); not yet asked |
-| `0REQ` | Per Aarsleff Holding A/S | Civil engineering and construction | Denmark | Ticker found (`PE9`); not yet asked |
-| `0RKF` | Construcciones y Auxiliar  | Builds trains and rail rolling stock | Spain | Ticker found (`CAF`); not yet asked |
-| `603558` | Zhejiang Jasan Holding Gro | Textile manufacturing — socks and knitwear | China | Trades only in Shanghai; no free provider carries Chinese A-share news in English |
+(*certificaten van aandelen*) rather than ordinary stock. Searching for those now
+works — that fix connected Unipol — but the search index still returns only side
+quotes for Heijmans, never its Amsterdam line. The lookup-by-ticker endpoint does
+have it; using that would mean guessing the ticker, and a wrong guess attributes
+another company's news.
 
 ## The component in use
 

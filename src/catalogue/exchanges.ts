@@ -161,8 +161,19 @@ export function marketSymbol(exchCode: string, symbol: string): string | null {
   // which matches nothing: the provider holds 201 articles under "QQ.L" and
   // returned a clean zero for the mangled form. A false "no news" on four
   // major UK companies, indistinguishable from a genuinely quiet week.
-  const base = symbol.replace(/\//g, "");
+  let base = symbol.replace(/\//g, "");
   if (!base) return null;
+
+  // Nordic markets write a share class with a hyphen - Clas Ohlson's B share is
+  // "CLAS-B", Per Aarsleff's "PAAL-B" - while the identifier sources return
+  // them joined ("CLASB", "PAALB"). The joined form matches nothing: measured
+  // on the same company, "CLAS-B.ST" returned 5 articles and "CLASB.ST" zero.
+  // Only a trailing A/B/C after a stem of three or more letters, so an ordinary
+  // ticker ending in one of those letters is untouched.
+  if (["SS", "DC", "NO", "FH"].includes(ref.exchCode) && /^[A-Z]{3,}[ABC]$/.test(base)) {
+    base = `${base.slice(0, -1)}-${base.slice(-1)}`;
+  }
+
   return base.includes(".") ? base : `${base}${ref.suffix}`;
 }
 

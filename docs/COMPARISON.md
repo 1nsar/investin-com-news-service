@@ -22,13 +22,13 @@ fetching anything.
 
 | Segment | Companies | Share |
 | --- | ---: | ---: |
-| Has a US exchange listing | 1,312 | 86.6% |
+| Has a US exchange listing | 1,313 | 86.7% |
 | Has a US OTC line only | 170 | 11.2% |
-| **Total reachable with a US symbol** | **1,482** | **97.8%** |
-| No US line at all | 30 | 2.0% |
+| **Total reachable with a US symbol** | **1,483** | **97.9%** |
+| No US line at all | 29 | 1.9% |
 | Could not be identified | 3 | 0.2% |
 
-**97.8% is the whole argument.** Because the listing work was done first, almost
+**97.9% is the whole argument.** Because the listing work was done first, almost
 everything became reachable with free, ticker-native sources.
 
 ---
