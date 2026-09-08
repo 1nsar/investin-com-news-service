@@ -14,8 +14,10 @@
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
-SRC="docs/REPORT.md"
-OUT="docs/News-Service-Report.pdf"
+# Defaults to the project report; pass a markdown path to render any other doc.
+SRC="${1:-docs/REPORT.md}"
+OUT="${2:-${SRC%.md}.pdf}"
+[ "$SRC" = "docs/REPORT.md" ] && [ -z "${2:-}" ] && OUT="docs/News-Service-Report.pdf"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 command -v pandoc >/dev/null || { echo "pandoc is required"; exit 1; }
