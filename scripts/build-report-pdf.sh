@@ -45,15 +45,26 @@ th,td { text-align:left; padding:3.5px 7px; border-bottom:1px solid #dde2e8; ver
 th { background:#f4f6f8; font-weight:600; }
 code { font-family:ui-monospace,Menlo,monospace; font-size:7.9pt; background:#f0f2f5;
        padding:0 3px; border-radius:3px; }
-ul,ol { margin:0 0 7px; padding-left:16px; } li { margin-bottom:3.5px; }
+ul,ol { margin:0 0 7px; padding-left:24px; } li { margin-bottom:3.5px; }
 ol li { margin-bottom:4.5px; }
 strong { font-weight:650; } em { font-style:italic; }
 a { color:#14181f; text-decoration:none; }
 img { max-width:100%; height:auto; display:block; margin:7px 0 3px;
       border:1px solid #dde2e8; border-radius:3px; page-break-inside:avoid; }
 img + em, p > em:only-child { font-size:7.9pt; color:#5a6472; display:block; margin-bottom:9px; }
+p:has(> img) { break-after:avoid; }
+p:has(> img) + p:has(> em:only-child) { break-before:avoid; }
 </style>
 CSS
+
+# When the document supplies its own complete numbered source list, use that
+# list as the PDF endnotes. Word keeps native footnotes; this avoids a duplicate
+# automatic endnote list in the PDF. Call with --source-list-notes as argument 3.
+if [ "${3:-}" = "--source-list-notes" ]; then
+  cat >> "$BUILD/style.html" <<'CSS'
+<style>section.footnotes, section[role="doc-endnotes"] { display:none; }</style>
+CSS
+fi
 
 # Images are referenced relatively from docs/REPORT.md, and the render happens
 # in $BUILD, so they have to travel with the HTML or they silently vanish.

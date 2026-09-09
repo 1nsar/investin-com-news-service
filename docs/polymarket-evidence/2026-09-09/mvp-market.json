@@ -1,0 +1,1430 @@
+{
+  "market": {
+    "id": "313138",
+    "slug": "rdc-usfed-fomc-2026-09-16-nochng",
+    "title": "No Change",
+    "question": "Fed Decision in September",
+    "description": "This market will settle to Yes if the Federal Reserve does not change the upper bound of the target federal funds rate at the September 2026 Federal Open Market Committee (FOMC) meeting, currently scheduled for September 15-16. Outcome sourced from the Federal Reserve.\n\nIf the change in the specified rate does not precisely match the displayed options, changes smaller than the smallest option of the same direction (increase/decrease) will be rounded to that smallest option, and changes greater than the smallest option of the same direction will be rounded to the nearest displayed option, with values exactly halfway between options being rounded away from zero.",
+    "status": "MARKET_STATUS_OPEN",
+    "active": true,
+    "closed": false,
+    "endDate": "2026-09-30T23:00:00Z",
+    "yesLabel": "Yes",
+    "noLabel": "No",
+    "yesPrice": 0.48,
+    "noPrice": 0.53,
+    "bestBid": 0.47,
+    "bestAsk": 0.48,
+    "image": null,
+    "icon": null,
+    "sourceUrl": "https://gateway.polymarket.us/v1/market/slug/rdc-usfed-fomc-2026-09-16-nochng",
+    "url": "https://gateway.polymarket.us/v1/market/slug/rdc-usfed-fomc-2026-09-16-nochng"
+  },
+  "quote": {
+    "bestBid": 0.47,
+    "bestAsk": 0.48,
+    "yesPrice": 0.48,
+    "noPrice": 0.53,
+    "lastTrade": 0.48,
+    "currentPrice": 0.47,
+    "sharesTraded": 43251.45,
+    "openInterest": 462629.96,
+    "bidDepth": 12,
+    "askDepth": 7,
+    "upstreamTime": null,
+    "lastTradeTime": null,
+    "fetchedAt": "2026-09-09T02:26:45.750Z",
+    "stale": false,
+    "raw": {
+      "bestBid": "0.4700",
+      "bestAsk": "0.4800",
+      "yesPrice": "0.4800",
+      "noPrice": "0.53",
+      "lastTrade": "0.4800",
+      "currentPrice": "0.4700",
+      "sharesTraded": "43251.4500",
+      "openInterest": "462629.9600"
+    }
+  },
+  "book": {
+    "bids": [
+      {
+        "price": 0.47,
+        "quantity": 951.84,
+        "priceRaw": "0.4700",
+        "quantityRaw": "951.8400"
+      },
+      {
+        "price": 0.46,
+        "quantity": 51,
+        "priceRaw": "0.4600",
+        "quantityRaw": "51.0000"
+      },
+      {
+        "price": 0.45,
+        "quantity": 194,
+        "priceRaw": "0.4500",
+        "quantityRaw": "194.0000"
+      },
+      {
+        "price": 0.42,
+        "quantity": 15000,
+        "priceRaw": "0.4200",
+        "quantityRaw": "15000.0000"
+      },
+      {
+        "price": 0.41,
+        "quantity": 5000,
+        "priceRaw": "0.4100",
+        "quantityRaw": "5000.0000"
+      },
+      {
+        "price": 0.4,
+        "quantity": 5000,
+        "priceRaw": "0.4000",
+        "quantityRaw": "5000.0000"
+      },
+      {
+        "price": 0.39,
+        "quantity": 50,
+        "priceRaw": "0.3900",
+        "quantityRaw": "50.0000"
+      },
+      {
+        "price": 0.38,
+        "quantity": 10,
+        "priceRaw": "0.3800",
+        "quantityRaw": "10.0000"
+      },
+      {
+        "price": 0.27,
+        "quantity": 15000,
+        "priceRaw": "0.2700",
+        "quantityRaw": "15000.0000"
+      },
+      {
+        "price": 0.26,
+        "quantity": 100,
+        "priceRaw": "0.2600",
+        "quantityRaw": "100.0000"
+      },
+      {
+        "price": 0.02,
+        "quantity": 15000,
+        "priceRaw": "0.0200",
+        "quantityRaw": "15000.0000"
+      },
+      {
+        "price": 0.01,
+        "quantity": 27600,
+        "priceRaw": "0.0100",
+        "quantityRaw": "27600.0000"
+      }
+    ],
+    "offers": [
+      {
+        "price": 0.48,
+        "quantity": 5836.23,
+        "priceRaw": "0.4800",
+        "quantityRaw": "5836.2300"
+      },
+      {
+        "price": 0.49,
+        "quantity": 7360.31,
+        "priceRaw": "0.4900",
+        "quantityRaw": "7360.3100"
+      },
+      {
+        "price": 0.5,
+        "quantity": 5119.79,
+        "priceRaw": "0.5000",
+        "quantityRaw": "5119.7900"
+      },
+      {
+        "price": 0.51,
+        "quantity": 5000,
+        "priceRaw": "0.5100",
+        "quantityRaw": "5000.0000"
+      },
+      {
+        "price": 0.58,
+        "quantity": 8813.05,
+        "priceRaw": "0.5800",
+        "quantityRaw": "8813.0500"
+      },
+      {
+        "price": 0.59,
+        "quantity": 100,
+        "priceRaw": "0.5900",
+        "quantityRaw": "100.0000"
+      },
+      {
+        "price": 0.99,
+        "quantity": 29999,
+        "priceRaw": "0.9900",
+        "quantityRaw": "29999.0000"
+      }
+    ],
+    "state": "MARKET_STATE_OPEN",
+    "upstreamTime": "2026-09-09T02:25:03.723082845Z",
+    "lastTradeTime": "2026-09-09T02:22:51.176667716Z",
+    "fetchedAt": "2026-09-09T02:26:45.552Z",
+    "stale": false
+  },
+  "history": {
+    "points": [
+      {
+        "timestamp": 1788834300000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788834600000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788834900000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788835200000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788835500000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788835800000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788836100000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788836400000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788836700000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788837000000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788837300000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788837600000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788837900000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788838200000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788838500000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788838800000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788839100000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788839400000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788839700000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788840000000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788840300000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788840600000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788840900000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788841200000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788841500000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788841800000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788842100000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788842400000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788842700000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788843000000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788843300000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788843600000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788843900000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788844200000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788844500000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788844800000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788845100000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788845400000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788845700000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788846000000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788846300000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788846600000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788846900000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788847200000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788847500000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788847800000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788848100000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788848400000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788848700000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788850200000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788861300000,
+        "yes": 0.6,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788861600000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788861900000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788862200000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788862500000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788862800000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788863100000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788863400000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788863700000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788864000000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788864300000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788864600000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788864900000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788865200000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788865500000,
+        "yes": 0.45,
+        "no": 0.58
+      },
+      {
+        "timestamp": 1788865800000,
+        "yes": 0.45,
+        "no": 0.57
+      },
+      {
+        "timestamp": 1788866100000,
+        "yes": 0.45,
+        "no": 0.57
+      },
+      {
+        "timestamp": 1788866400000,
+        "yes": 0.44,
+        "no": 0.57
+      },
+      {
+        "timestamp": 1788866700000,
+        "yes": 0.44,
+        "no": 0.57
+      },
+      {
+        "timestamp": 1788867000000,
+        "yes": 0.44,
+        "no": 0.57
+      },
+      {
+        "timestamp": 1788867300000,
+        "yes": 0.44,
+        "no": 0.57
+      },
+      {
+        "timestamp": 1788867600000,
+        "yes": 0.44,
+        "no": 0.57
+      },
+      {
+        "timestamp": 1788867900000,
+        "yes": 0.44,
+        "no": 0.7
+      },
+      {
+        "timestamp": 1788868200000,
+        "yes": 0.45,
+        "no": 0.56
+      },
+      {
+        "timestamp": 1788868500000,
+        "yes": 0.45,
+        "no": 0.56
+      },
+      {
+        "timestamp": 1788868800000,
+        "yes": 0.45,
+        "no": 0.56
+      },
+      {
+        "timestamp": 1788869100000,
+        "yes": 0.46,
+        "no": 0.56
+      },
+      {
+        "timestamp": 1788869400000,
+        "yes": 0.46,
+        "no": 0.55
+      },
+      {
+        "timestamp": 1788869700000,
+        "yes": 0.46,
+        "no": 0.55
+      },
+      {
+        "timestamp": 1788870000000,
+        "yes": 0.46,
+        "no": 0.55
+      },
+      {
+        "timestamp": 1788870300000,
+        "yes": 0.46,
+        "no": 0.55
+      },
+      {
+        "timestamp": 1788870600000,
+        "yes": 0.46,
+        "no": 0.55
+      },
+      {
+        "timestamp": 1788870900000,
+        "yes": 0.46,
+        "no": 0.55
+      },
+      {
+        "timestamp": 1788871200000,
+        "yes": 0.46,
+        "no": 0.55
+      },
+      {
+        "timestamp": 1788871500000,
+        "yes": 0.46,
+        "no": 0.55
+      },
+      {
+        "timestamp": 1788871800000,
+        "yes": 0.46,
+        "no": 0.55
+      },
+      {
+        "timestamp": 1788872100000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788872400000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788872700000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788873000000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788873300000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788873600000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788873900000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788874200000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788874500000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788874800000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788875100000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788875400000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788875700000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788876000000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788876300000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788876600000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788876900000,
+        "yes": 0.47,
+        "no": 0.54
+      },
+      {
+        "timestamp": 1788877200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788877500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788877800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788878100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788878400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788878700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788879000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788879300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788879600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788879900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788880200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788880500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788880800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788881100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788881400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788881700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788882000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788882300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788882600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788882900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788883200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788883500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788883800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788884100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788884400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788884700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788885000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788885300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788885600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788885900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788886200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788886500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788886800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788887100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788887400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788887700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788888000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788888300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788888600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788888900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788889200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788889500000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788889800000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788890100000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788890400000,
+        "yes": 0.49,
+        "no": 0.52
+      },
+      {
+        "timestamp": 1788890700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788891000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788891300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788891600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788891900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788892200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788892500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788892800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788893100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788893400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788893700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788894000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788894300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788894600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788894900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788895200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788895500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788895800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788896100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788896400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788896700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788897000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788897300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788897600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788897900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788898200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788898500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788898800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788899100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788899400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788899700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788900000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788900300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788900600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788900900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788901200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788901500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788901800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788902100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788902400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788902700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788903000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788903300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788903600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788905400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788905700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788906000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788906300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788906600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788906900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788907200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788907500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788907800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788908100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788908400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788909000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788909300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788909600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788909900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788910200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788910500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788910800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788911100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788911400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788911700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788912000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788912300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788912600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788912900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788913200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788913500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788913800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788914100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788914400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788914700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788915000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788915300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788915600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788915900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788916200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788916500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788916800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788917100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788917400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788917700000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788918000000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788918300000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788918600000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788918900000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788919200000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788919500000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788919800000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788920100000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788920400000,
+        "yes": 0.48,
+        "no": 0.53
+      },
+      {
+        "timestamp": 1788920700000,
+        "yes": 0.48,
+        "no": 0.53
+      }
+    ],
+    "interval": "1d",
+    "expectedIntervalMs": 300000,
+    "gaps": [
+      {
+        "from": 1788848700000,
+        "to": 1788850200000
+      },
+      {
+        "from": 1788850200000,
+        "to": 1788861300000
+      },
+      {
+        "from": 1788903600000,
+        "to": 1788905400000
+      },
+      {
+        "from": 1788908400000,
+        "to": 1788909000000
+      }
+    ],
+    "fetchedAt": "2026-09-09T02:26:21.673Z",
+    "stale": false
+  },
+  "errors": {},
+  "meta": {
+    "source": "polymarket_us",
+    "transport": "rest-polling",
+    "cacheSeconds": 5,
+    "fetchedAt": "2026-09-09T02:26:45.750Z",
+    "upstreamUrls": [
+      "https://gateway.polymarket.us/v1/market/slug/rdc-usfed-fomc-2026-09-16-nochng",
+      "https://gateway.polymarket.us/v1/markets/rdc-usfed-fomc-2026-09-16-nochng/bbo",
+      "https://gateway.polymarket.us/v1/markets/rdc-usfed-fomc-2026-09-16-nochng/book",
+      "https://gateway.polymarket.us/v1/price-history?symbol=rdc-usfed-fomc-2026-09-16-nochng&fixedInterval=INTERVAL_1D&fidelity=5"
+    ],
+    "warnings": [],
+    "streamAvailable": false
+  }
+}

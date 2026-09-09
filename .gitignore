@@ -19,3 +19,6 @@ logs/
 
 .DS_Store
 coverage/
+
+# Temporary office-editor locks are not report content.
+~$*

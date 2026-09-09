@@ -1,0 +1,42 @@
+[
+  {
+    "file": "screenshots/polymarket-us-public-api-docs.png",
+    "kind": "Actual focused browser screenshot of official public API heading, base URL and access statement",
+    "url": "https://docs.polymarket.us/api-reference/introduction#public-api",
+    "captured_at_utc": "2026-09-08T19:11:16.306321+00:00"
+  },
+  {
+    "file": "screenshots/polymarket-us-fed-event.png",
+    "kind": "Actual browser screenshot of public event page; separate observation from API samples",
+    "url": "https://polymarket.us/event/usfed-fomc-2026-09-16",
+    "captured_at_utc": "2026-09-08T19:04:10.892124+00:00"
+  },
+  {
+    "file": "screenshots/polymarket-mvp-desktop.png",
+    "kind": "Actual local MVP browser screenshot; public Polymarket US REST, no synthetic data",
+    "url": "http://127.0.0.1:3000/polymarket",
+    "captured_at_utc": "2026-09-09T02:26:51.323448+00:00",
+    "sha256": "10122f89a658f9dcd29a24dfe743d0136adea83bbf5e81e851b1e53e16e14673"
+  },
+  {
+    "file": "screenshots/polymarket-mvp-news.png",
+    "kind": "Actual local MVP related news from configured providers, not Polymarket journalism",
+    "url": "http://127.0.0.1:3000/polymarket",
+    "captured_at_utc": "2026-09-09T02:26:51.853924+00:00",
+    "sha256": "bb56586b7196781251ea658c62bdf855ece78e9c76eb8e0dde5a3fbd860b2962"
+  },
+  {
+    "file": "screenshots/polymarket-mvp-mobile.png",
+    "kind": "Actual local MVP at 390px mobile viewport; public REST",
+    "url": "http://127.0.0.1:3000/polymarket",
+    "captured_at_utc": "2026-09-09T02:27:03.201671+00:00",
+    "sha256": "203c1c6ee74762b9e27463f939ebdec1badb9a4e38c759ffca725254b26d7596"
+  },
+  {
+    "file": "screenshots/polymarket-mvp-dark.png",
+    "kind": "Actual local MVP dark theme; public REST",
+    "url": "http://127.0.0.1:3000/polymarket",
+    "captured_at_utc": "2026-09-09T02:27:04.221493+00:00",
+    "sha256": "8db3e77731ff31f85ecf789ee5b4ae3674eb4f7c39e1c7d34e244101c3d27726"
+  }
+]
