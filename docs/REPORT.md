@@ -1,5 +1,7 @@
 # Company news component — project report
 
+> **9 September 2026 update:** this is the preserved V1 report. The current architecture audit, official-source/news-provider rights review and implemented Global News 2 are in [NEWS-ARCHITECTURE-V2.md](NEWS-ARCHITECTURE-V2.md), with a [Russian version](NEWS-ARCHITECTURE-V2.ru.md). Stored V1 coverage does not establish present freshness or commercial display permission.
+
 A standalone backend that keeps a news feed for every company in a
 **1,515-company catalogue**. Its own process, its own database, no UI.
 

@@ -57,13 +57,15 @@ export class HttpError extends Error {
   constructor(
     readonly status: number,
     url: string,
-    readonly body: string,
+    body: string,
   ) {
     const safeUrl = redactUrl(url);
     super(`HTTP ${status} for ${safeUrl}`);
     this.url = safeUrl;
+    this.body = redactUrl(body);
     this.name = "HttpError";
   }
+  readonly body: string;
 
   /** 401/403 mean "this key may not have this data" - a permanent answer that
    *  must be reported differently from "nothing happened today". */
@@ -89,6 +91,7 @@ export class HttpError extends Error {
 }
 
 export interface RequestOptions {
+  signal?: AbortSignal;
   method?: string;
   headers?: Record<string, string>;
   body?: string;
@@ -100,7 +103,7 @@ export interface RequestOptions {
 }
 
 const USER_AGENT =
-  "company-news-component/1.0 (+backend news aggregation; contact: ops@example.com)";
+  "company-news-component/1.0 (+https://github.com/1nsar/investin-com-news-service)";
 
 /** One outbound call, with the rate limiter, timeout, retry and backoff all in
  *  one place so no provider adapter has to reimplement them. */
@@ -118,9 +121,13 @@ export async function request(url: string, options: RequestOptions = {}): Promis
   let lastError: unknown;
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    if (limiter) await limiter.acquire();
+    options.signal?.throwIfAborted();
+    if (limiter) await limiter.acquire(options.signal);
 
     const controller = new AbortController();
+    const parentAbort = () => controller.abort();
+    options.signal?.addEventListener("abort", parentAbort, { once: true });
+    if (options.signal?.aborted) controller.abort();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
       const response = await fetch(url, {
@@ -147,16 +154,18 @@ export async function request(url: string, options: RequestOptions = {}): Promis
         return await response.text();
       }
     } catch (error) {
+      if (options.signal?.aborted) throw error;
       if (error instanceof HttpError && !error.isRetryable) throw error;
       lastError = error;
       if (attempt === maxRetries) break;
     } finally {
       clearTimeout(timer);
+      options.signal?.removeEventListener("abort", parentAbort);
     }
 
     const delay = backoffDelayMs(attempt);
     logger.debug({ label: redactUrl(label), attempt: attempt + 1, delay }, "retrying request");
-    await sleep(delay);
+    await sleep(delay, options.signal);
   }
 
   throw lastError instanceof Error
@@ -173,7 +182,7 @@ export async function requestJson<T>(url: string, options: RequestOptions = {}):
     return JSON.parse(text) as T;
   } catch {
     throw new Error(
-      `Expected JSON from ${redactUrl(options.label ?? url)}, got: ${text.slice(0, 160)}`,
+      `Expected JSON from ${redactUrl(options.label ?? url)}`,
     );
   }
 }

@@ -1,0 +1,139 @@
+{
+  "checkedAtUtc": "2026-09-09T04:09:43.941749+00:00",
+  "url": "http://127.0.0.1:3000/global-v2?scope=portfolio&source=archive",
+  "readOnly": true,
+  "browserProfile": "Fresh signed-out headless Chrome profile",
+  "fixtureInterception": false,
+  "holdingsCount": 3,
+  "matchedCount": 3,
+  "unmatchedCount": 0,
+  "matchedCompanies": [
+    {
+      "inputTicker": "GOOGL",
+      "companyId": "434",
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc"
+    },
+    {
+      "inputTicker": "ASML",
+      "companyId": "91",
+      "ticker": "ASML",
+      "name": "ASML Holding NV"
+    },
+    {
+      "inputTicker": "AAPL",
+      "companyId": "5",
+      "ticker": "AAPL",
+      "name": "Apple Inc"
+    }
+  ],
+  "archiveArticlesShown": 18,
+  "everyArticleLinkedToMatchedHolding": true,
+  "archiveLabelVisible": true,
+  "bodyRightsEnforced": true,
+  "archiveTopicFilterDisabled": true,
+  "newestPublicationUtc": "2026-08-31T13:18:15.000Z",
+  "newestAgeHours": 206.86,
+  "olderThan48Hours": true,
+  "staleAvailabilityNoticeVisible": true,
+  "visiblePublicationDates": [
+    {
+      "publishedAt": "2026-08-31T13:18:15.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 13:18 UTC"
+    },
+    {
+      "publishedAt": "2026-08-31T12:19:23.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 12:19 UTC"
+    },
+    {
+      "publishedAt": "2026-08-31T11:30:40.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 11:30 UTC"
+    },
+    {
+      "publishedAt": "2026-08-31T09:28:41.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 09:28 UTC"
+    },
+    {
+      "publishedAt": "2026-08-31T09:15:39.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 09:15 UTC"
+    },
+    {
+      "publishedAt": "2026-08-31T06:51:25.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 06:51 UTC"
+    },
+    {
+      "publishedAt": "2026-08-31T06:48:20.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 06:48 UTC"
+    },
+    {
+      "publishedAt": "2026-08-31T06:47:14.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 06:47 UTC"
+    },
+    {
+      "publishedAt": "2026-08-31T03:12:25.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 03:12 UTC"
+    },
+    {
+      "publishedAt": "2026-08-31T00:36:44.000Z",
+      "text": "31 Aug",
+      "title": "31 Aug 2026, 00:36 UTC"
+    },
+    {
+      "publishedAt": "2026-08-30T10:07:00.000Z",
+      "text": "30 Aug",
+      "title": "30 Aug 2026, 10:07 UTC"
+    },
+    {
+      "publishedAt": "2026-08-30T05:58:38.000Z",
+      "text": "30 Aug",
+      "title": "30 Aug 2026, 05:58 UTC"
+    },
+    {
+      "publishedAt": "2026-08-29T08:26:16.000Z",
+      "text": "29 Aug",
+      "title": "29 Aug 2026, 08:26 UTC"
+    },
+    {
+      "publishedAt": "2026-08-29T08:08:30.000Z",
+      "text": "29 Aug",
+      "title": "29 Aug 2026, 08:08 UTC"
+    },
+    {
+      "publishedAt": "2026-08-29T01:24:45.000Z",
+      "text": "29 Aug",
+      "title": "29 Aug 2026, 01:24 UTC"
+    },
+    {
+      "publishedAt": "2026-08-29T01:18:23.000Z",
+      "text": "29 Aug",
+      "title": "29 Aug 2026, 01:18 UTC"
+    },
+    {
+      "publishedAt": "2026-08-29T01:12:49.000Z",
+      "text": "29 Aug",
+      "title": "29 Aug 2026, 01:12 UTC"
+    },
+    {
+      "publishedAt": "2026-08-28T16:35:56.000Z",
+      "text": "28 Aug",
+      "title": "28 Aug 2026, 16:35 UTC"
+    }
+  ],
+  "pageErrors": [],
+  "providerMutations": [],
+  "screenshot": {
+    "file": "screenshots/news-v2-portfolio.png",
+    "capturedAtUtc": "2026-09-09T04:09:43.941761+00:00",
+    "sha256": "f771ab9b099f7d4fa7c8f753ad57f45fb9c54cadfe238a8b1cf27c4aaa952657",
+    "kind": "Actual local portfolio archive view; real stored news and verified company matches, no fixtures"
+  }
+}
