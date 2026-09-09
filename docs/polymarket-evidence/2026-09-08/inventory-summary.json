@@ -1,0 +1,21 @@
+{
+  "captured_from_utc": "2026-09-08T19:02:54.036912+00:00",
+  "captured_to_utc": "2026-09-08T19:03:47.157780+00:00",
+  "request_count": 13,
+  "http_200": 12,
+  "http_404": 1,
+  "contracts": 5,
+  "book_levels": 19,
+  "daily_samples": 249,
+  "weekly_samples": 57,
+  "field_examples": 96,
+  "all_observed_fields": 399,
+  "observed_terminal_values": 1958,
+  "inventory_categories": 23,
+  "reference_fields": 44,
+  "mvp_features": 10,
+  "mvp_browser_captures": 4,
+  "mvp_history_samples": 243,
+  "mvp_response_sha256": "614ec8b01b55f57e9b46fd26d7e9e4833788ecffa4d5f8c48dd84df4de694e82",
+  "mvp_validation_recorded": true
+}
