@@ -37,6 +37,7 @@ html, body { max-width: none !important; margin:0 !important; padding:0 !importa
 h1 { font-size:18pt; margin:0 0 4px; letter-spacing:-.5px; font-weight:700; }
 h2 { font-size:10.6pt; margin:13px 0 5px; padding-bottom:3px;
      border-bottom:1.5px solid #14181f; page-break-after:avoid; font-weight:700; }
+h2#sources, h2#источники { break-before:page; }
 p { margin:0 0 6px; }
 hr { display:none; }
 table { width:100% !important; border-collapse:collapse; margin:6px 0 9px;

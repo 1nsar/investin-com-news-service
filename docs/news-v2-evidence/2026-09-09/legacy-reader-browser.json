@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-09-09T04:04:38.272997+00:00",
+  "checks": [
+    "Stored SQLite headline opens in-platform and accurately declares text unavailable",
+    "Original Global News click remains in platform and loads stable archive reader",
+    "Original catalogue exposes the full V2 company directory"
+  ],
+  "runtimeErrors": []
+}

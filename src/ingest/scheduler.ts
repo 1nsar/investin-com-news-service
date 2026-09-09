@@ -1,5 +1,4 @@
 import { config } from "../config/index.js";
-import { pool } from "../db/pool.js";
 import { logger } from "../util/logger.js";
 import { runIngestExclusive } from "./runner.js";
 
@@ -15,7 +14,6 @@ import { runIngestExclusive } from "./runner.js";
  *  fetching the same catalogue at the same time - the in-process guard alone
  *  cannot see other containers. */
 
-const SCHEDULER_LOCK_ID = 472_913_005;
 let timer: NodeJS.Timeout | undefined;
 
 /** Minimal 5-field cron matcher: "0 6 * * *", plus lists, ranges and steps. */
@@ -54,38 +52,13 @@ async function tick(): Promise<void> {
   const now = new Date();
   if (!cronMatches(config.SCHEDULER_CRON, now)) return;
 
-  // Advisory locks are SESSION-scoped, so the lock, the work and the unlock
-  // must all happen on ONE dedicated connection.
-  //
-  // Using `pool.query` for this is a subtle and serious bug: each call takes
-  // whichever pooled client is free, so the unlock lands on a different
-  // backend, fails, and is swallowed. The locking session then keeps the lock
-  // forever and every later tick logs "another instance holds the lock" - the
-  // scheduled ingest stops running, silently. Worse, an idle-timeout on the
-  // locking client mid-run would release the lock and let a second replica
-  // start a concurrent full-catalogue fetch.
-  const client = await pool.connect();
+  // runIngestExclusive owns the shared advisory lock on its dedicated client.
+  // Taking the same lock here on another session prevents every scheduled run.
   try {
-    const { rows } = await client.query<{ locked: boolean }>(
-      "SELECT pg_try_advisory_lock($1) AS locked",
-      [SCHEDULER_LOCK_ID],
-    );
-    if (!rows[0]?.locked) {
-      logger.info("scheduled ingest skipped: another instance holds the lock");
-      return;
-    }
-
-    try {
-      logger.info({ cron: config.SCHEDULER_CRON }, "scheduled ingest starting");
-      await runIngestExclusive({ trigger: "schedule" });
-    } catch (error) {
-      logger.error({ err: error }, "scheduled ingest failed");
-    } finally {
-      await client.query("SELECT pg_advisory_unlock($1)", [SCHEDULER_LOCK_ID]).catch(() => undefined);
-    }
-  } finally {
-    // Releasing the client also drops any lock it still holds.
-    client.release();
+    await runIngestExclusive({ trigger: "schedule" });
+  } catch (error) {
+    if (error instanceof Error && /already running/.test(error.message)) logger.info("scheduled ingest skipped: another run owns the lock");
+    else logger.error({ err: error }, "scheduled ingest failed");
   }
 }
 

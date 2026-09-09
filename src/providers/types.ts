@@ -66,7 +66,7 @@ export interface FetchRequest {
  *  "0 articles" is how a provider quietly dropping a whole exchange goes
  *  unnoticed for a month. */
 export type ProviderOutcome =
-  | { kind: "ok"; articles: RawArticle[]; symbolUsed: string; matchMethod: "ticker" | "name_match"; listingId?: number }
+  | { kind: "ok"; articles: RawArticle[]; symbolUsed: string; matchMethod: "ticker" | "name_match"; listingId?: number; complete?: boolean }
   /** `authoritative` says whether this zero-result is EVIDENCE OF QUIET or
    *  merely evidence this provider does not cover the symbol well.
    *

@@ -22,8 +22,26 @@ export async function mapWithConcurrency<T, R>(
   return results;
 }
 
-export const sleep = (ms: number): Promise<void> =>
-  new Promise((resolve) => setTimeout(resolve, ms));
+export const sleep = (ms: number, signal?: AbortSignal): Promise<void> =>
+  new Promise((resolve, reject) => {
+    const abort = () => { clearTimeout(timer); signal?.removeEventListener("abort", abort); reject(new Error("Operation cancelled.")); };
+    const timer = setTimeout(() => { signal?.removeEventListener("abort", abort); resolve(); }, ms);
+    signal?.addEventListener("abort", abort, { once: true });
+    if (signal?.aborted) abort();
+  });
+
+/** Process-wide concurrency gate; waiting callers can be cancelled. */
+export class Semaphore {
+  private active = 0;
+  constructor(private readonly maximum: number) {}
+  async acquire(signal?: AbortSignal): Promise<() => void> {
+    while (this.active >= this.maximum) { signal?.throwIfAborted(); await sleep(20, signal); }
+    signal?.throwIfAborted();
+    this.active++;
+    let released = false;
+    return () => { if (!released) { released = true; this.active--; } };
+  }
+}
 
 /** Reject if `promise` has not settled within `ms`. The underlying work is not
  *  cancelled unless the caller also wires up the AbortSignal. */
@@ -31,13 +49,14 @@ export async function withTimeout<T>(
   promise: Promise<T>,
   ms: number,
   label: string,
+  onTimeout?: () => void,
 ): Promise<T> {
   let timer: NodeJS.Timeout | undefined;
   try {
     return await Promise.race([
       promise,
       new Promise<never>((_, reject) => {
-        timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+        timer = setTimeout(() => { onTimeout?.(); reject(new Error(`${label} timed out after ${ms}ms`)); }, ms);
       }),
     ]);
   } finally {

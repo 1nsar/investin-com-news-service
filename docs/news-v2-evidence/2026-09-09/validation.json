@@ -1,0 +1,357 @@
+{
+  "checkedAt": "2026-09-09T04:08:22.361Z",
+  "checks": [
+    "V2 service rejects anonymous data access",
+    "Dedicated V2 instance does not expose the legacy V1 routes",
+    "MVP rejects cross-site workspace access",
+    "Unrecognised actions and invalid company identifiers are rejected",
+    "Empty company scope never leaks global news",
+    "Company cursor pagination has no repeated rows",
+    "Original catalogue Apple resolves to the verified global listing",
+    "Default feed contains real official records with provenance, dates and image-rights gates",
+    "List responses omit full bodies; reader requests are separate",
+    "Official reader receives actual plain-text release content",
+    "Legacy Global News opens a stable in-app brief without inventing full-text rights",
+    "Company archive results retain the requested company association",
+    "Provider DTOs contain no credentials and paid sources remain opt-in",
+    "Source request budget is visible in the current UTC day"
+  ],
+  "status": {
+    "version": "2",
+    "workerEnabled": true,
+    "adminConfigured": true,
+    "encryptionConfigured": true,
+    "coverage": {
+      "activeCompanies": 1515,
+      "companiesWithV2News": 0,
+      "lastReceivedAt": "2026-09-09T03:58:37.064Z",
+      "oldestProviderSuccessAt": "2026-09-09T03:58:37.064Z",
+      "note": "Stored coverage does not guarantee current news for every company. Official macro feeds are not company-wide coverage; consult each provider's success time and quota."
+    },
+    "providers": [
+      {
+        "id": "fed",
+        "name": "Federal Reserve Board",
+        "kind": "official",
+        "free": true,
+        "description": "Official policy and regulatory releases, with reusable Board text and attribution. Current feed snapshot; not company-news coverage.",
+        "documentationUrl": "https://www.federalreserve.gov/feeds/feeds.htm",
+        "credentialFields": [],
+        "supportsFullText": true,
+        "requestsPerMinute": 30,
+        "enabled": true,
+        "configured": true,
+        "credentialFieldsSet": [],
+        "fullTextEnabled": false,
+        "displayLicensed": true,
+        "lastSuccessAt": "2026-09-09T03:58:37.064Z",
+        "lastAttemptAt": "2026-09-09T03:58:18.756Z",
+        "lastError": null,
+        "articleCount": 20,
+        "budget": {
+          "requestsToday": 42,
+          "dailyLimit": 600,
+          "exhausted": false,
+          "nextRequestAt": "2026-09-09T03:58:38.799Z"
+        }
+      },
+      {
+        "id": "ecb",
+        "name": "European Central Bank",
+        "kind": "official",
+        "free": true,
+        "description": "Selected institutional press releases. Accurate attribution required; information is free on the ECB website. Authored speeches, research papers and logos excluded.",
+        "documentationUrl": "https://www.ecb.europa.eu/services/using-our-site/disclaimer/html/index.en.html",
+        "credentialFields": [],
+        "supportsFullText": true,
+        "requestsPerMinute": 30,
+        "enabled": true,
+        "configured": true,
+        "credentialFieldsSet": [],
+        "fullTextEnabled": false,
+        "displayLicensed": true,
+        "lastSuccessAt": "2026-09-09T03:58:51.339Z",
+        "lastAttemptAt": "2026-09-09T03:58:38.758Z",
+        "lastError": null,
+        "articleCount": 6,
+        "budget": {
+          "requestsToday": 14,
+          "dailyLimit": 600,
+          "exhausted": false,
+          "nextRequestAt": "2026-09-09T03:58:53.074Z"
+        }
+      },
+      {
+        "id": "sec",
+        "name": "SEC EDGAR disclosures",
+        "kind": "official",
+        "free": true,
+        "description": "Latest supported SEC filings, or ten latest disclosures for up to ten selected CIKs. No key; current network access returned HTTP403. Not comprehensive global journalism.",
+        "documentationUrl": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+        "credentialFields": [
+          {
+            "key": "ciks",
+            "label": "Optional SEC CIKs (comma-separated, maximum 10)",
+            "secret": false,
+            "required": false
+          }
+        ],
+        "supportsFullText": true,
+        "requestsPerMinute": 30,
+        "enabled": true,
+        "configured": true,
+        "credentialFieldsSet": [],
+        "fullTextEnabled": false,
+        "displayLicensed": true,
+        "lastSuccessAt": null,
+        "lastAttemptAt": "2026-09-09T03:58:53.768Z",
+        "lastError": "[auth] Source returned HTTP 403; access was not bypassed; automatic retries paused until settings are saved or Fetch latest is requested.",
+        "articleCount": 0,
+        "budget": {
+          "requestsToday": 2,
+          "dailyLimit": 600,
+          "exhausted": false,
+          "nextRequestAt": "2026-09-09T03:58:55.769Z"
+        }
+      },
+      {
+        "id": "benzinga",
+        "name": "Benzinga",
+        "kind": "wire",
+        "free": false,
+        "description": "Incremental licensed headlines, optional full article bodies and removal events. API subscription and applicable display permission required; consumer login is insufficient.",
+        "documentationUrl": "https://docs.benzinga.com/api-reference/news-api/get-news-items",
+        "credentialFields": [
+          {
+            "key": "apiKey",
+            "label": "Provider API key",
+            "secret": true,
+            "required": true
+          }
+        ],
+        "supportsFullText": true,
+        "requestsPerMinute": 20,
+        "enabled": false,
+        "configured": false,
+        "credentialFieldsSet": [],
+        "fullTextEnabled": false,
+        "displayLicensed": false,
+        "lastSuccessAt": null,
+        "lastAttemptAt": null,
+        "lastError": null,
+        "articleCount": 0,
+        "budget": {
+          "requestsToday": 0,
+          "dailyLimit": 100,
+          "exhausted": false,
+          "nextRequestAt": null
+        }
+      },
+      {
+        "id": "marketaux",
+        "name": "Marketaux",
+        "kind": "aggregator",
+        "free": false,
+        "description": "Global entity-tagged news snippets and original links. Full articles are unavailable, including on paid plans; business-display scope must be confirmed.",
+        "documentationUrl": "https://www.marketaux.com/documentation",
+        "credentialFields": [
+          {
+            "key": "apiKey",
+            "label": "Provider API key",
+            "secret": true,
+            "required": true
+          }
+        ],
+        "supportsFullText": false,
+        "requestsPerMinute": 10,
+        "enabled": false,
+        "configured": false,
+        "credentialFieldsSet": [],
+        "fullTextEnabled": false,
+        "displayLicensed": false,
+        "lastSuccessAt": null,
+        "lastAttemptAt": null,
+        "lastError": null,
+        "articleCount": 0,
+        "budget": {
+          "requestsToday": 0,
+          "dailyLimit": 100,
+          "exhausted": false,
+          "nextRequestAt": null
+        }
+      },
+      {
+        "id": "finnhub",
+        "name": "Finnhub",
+        "kind": "aggregator",
+        "free": false,
+        "description": "General-market summaries or up to five explicitly selected North American company symbols. Personal plans do not permit business use without written approval.",
+        "documentationUrl": "https://finnhub.io/terms-of-service",
+        "credentialFields": [
+          {
+            "key": "apiKey",
+            "label": "Provider API key",
+            "secret": true,
+            "required": true
+          },
+          {
+            "key": "symbols",
+            "label": "Optional company symbols (comma-separated, maximum 5)",
+            "secret": false,
+            "required": false
+          }
+        ],
+        "supportsFullText": false,
+        "requestsPerMinute": 10,
+        "enabled": false,
+        "configured": false,
+        "credentialFieldsSet": [],
+        "fullTextEnabled": false,
+        "displayLicensed": false,
+        "lastSuccessAt": null,
+        "lastAttemptAt": null,
+        "lastError": null,
+        "articleCount": 0,
+        "budget": {
+          "requestsToday": 0,
+          "dailyLimit": 100,
+          "exhausted": false,
+          "nextRequestAt": null
+        }
+      }
+    ],
+    "jobs": [
+      {
+        "id": "8dc9175f-84fc-4d56-a6d3-7e0e94a25f57",
+        "providerId": "sec",
+        "status": "failed",
+        "createdAt": "2026-09-09T03:57:54.664Z",
+        "startedAt": "2026-09-09T03:58:53.766Z",
+        "finishedAt": "2026-09-09T03:58:54.100Z",
+        "pages": 0,
+        "articlesSeen": 0,
+        "articlesStored": 0,
+        "error": "[auth] Source returned HTTP 403; access was not bypassed; automatic retries paused until settings are saved or Fetch latest is requested."
+      },
+      {
+        "id": "05548456-c6d8-4dda-be18-5005d044b25a",
+        "providerId": "ecb",
+        "status": "succeeded",
+        "createdAt": "2026-09-09T03:57:54.663Z",
+        "startedAt": "2026-09-09T03:58:38.756Z",
+        "finishedAt": "2026-09-09T03:58:51.339Z",
+        "pages": 1,
+        "articlesSeen": 6,
+        "articlesStored": 0,
+        "error": "9 feed entries excluded by the institutional-release URL/date policy; authored speeches, papers and PDFs are not imported. Coverage is the current bounded official feed snapshot, not an exhaustive archive. New or changed feed entries fetch bodies at the feed-check cadence; unchanged bodies are rechecked once per 24 hours, subject to quota and availability. Corrections to releases no longer in the feed are not monitored."
+      },
+      {
+        "id": "82db3918-ccd7-49c7-b444-3ef481c65f01",
+        "providerId": "fed",
+        "status": "succeeded",
+        "createdAt": "2026-09-09T03:57:54.662Z",
+        "startedAt": "2026-09-09T03:57:54.667Z",
+        "finishedAt": "2026-09-09T03:58:37.064Z",
+        "pages": 2,
+        "articlesSeen": 20,
+        "articlesStored": 20,
+        "error": "Coverage is the current bounded official feed snapshot, not an exhaustive archive. New or changed feed entries fetch bodies at the feed-check cadence; unchanged bodies are rechecked once per 24 hours, subject to quota and availability. Corrections to releases no longer in the feed are not monitored."
+      },
+      {
+        "id": "2618e2dc-f5c1-4c6a-8b67-5027d14ff738",
+        "providerId": "sec",
+        "status": "failed",
+        "createdAt": "2026-09-09T03:50:59.784Z",
+        "startedAt": "2026-09-09T03:51:59.800Z",
+        "finishedAt": "2026-09-09T03:52:00.656Z",
+        "pages": 0,
+        "articlesSeen": 0,
+        "articlesStored": 0,
+        "error": "Provider fetch failed; check credentials, permissions and upstream availability."
+      },
+      {
+        "id": "b4d059c3-ecca-4dbd-a829-e18286b4b8bd",
+        "providerId": "ecb",
+        "status": "succeeded",
+        "createdAt": "2026-09-09T03:50:59.783Z",
+        "startedAt": "2026-09-09T03:51:44.799Z",
+        "finishedAt": "2026-09-09T03:51:57.213Z",
+        "pages": 1,
+        "articlesSeen": 6,
+        "articlesStored": 6,
+        "error": "9 feed entries excluded by the institutional-release URL/date policy; authored speeches, papers and PDFs are not imported. Coverage is the current bounded official feed snapshot, not an exhaustive archive. Existing release URLs are refreshed to detect changed text."
+      },
+      {
+        "id": "85f0b992-fb51-4c47-a83c-944d4edf9981",
+        "providerId": "fed",
+        "status": "succeeded",
+        "createdAt": "2026-09-09T03:50:59.781Z",
+        "startedAt": "2026-09-09T03:50:59.784Z",
+        "finishedAt": "2026-09-09T03:51:43.098Z",
+        "pages": 2,
+        "articlesSeen": 20,
+        "articlesStored": 20,
+        "error": "Coverage is the current bounded official feed snapshot, not an exhaustive archive. Existing release URLs are refreshed to detect changed text."
+      }
+    ],
+    "limitations": [
+      "Official feeds do not provide comprehensive company coverage.",
+      "A configured API key is not proof of a data licence.",
+      "Per-source jobs are bounded and resume incomplete windows; quotas can delay freshness.",
+      "This preview uses PostgreSQL jobs and basic text filtering; 50,000-company readiness requires workload benchmarks and contracted source coverage."
+    ]
+  },
+  "portfolio": {
+    "holdingsCount": 3,
+    "matchedCount": 3,
+    "unresolved": [],
+    "mappings": [
+      {
+        "ticker": "GOOGL",
+        "status": "matched",
+        "companyId": "434",
+        "evidence": {
+          "method": "audited_alias",
+          "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/R1.htm",
+          "checkedAt": "2026-09-09",
+          "validUntil": "2027-09-09",
+          "note": "Alphabet issuer filing for quarter ended 2026-06-30 identifies GOOGL as Class A Common Stock on NASDAQ. Class C GOOG is a different security and is not covered by this alias."
+        }
+      },
+      {
+        "ticker": "ASML",
+        "status": "matched",
+        "companyId": "91",
+        "evidence": {
+          "method": "audited_alias",
+          "sourceUrl": "https://www.asml.com/en/investors/shares",
+          "checkedAt": "2026-09-09",
+          "validUntil": "2027-09-09",
+          "note": "Issuer share-listings table confirms NASDAQ ticker ASML. This V2 override supplies a venue missing from the legacy catalogue; issuer country remains Netherlands."
+        }
+      },
+      {
+        "ticker": "AAPL",
+        "status": "matched",
+        "companyId": "5",
+        "evidence": null
+      }
+    ],
+    "mappingEvidenceCheckedAt": "2026-09-09T04:09:41.871Z"
+  },
+  "example": {
+    "id": "312a7544-0327-413b-aaf0-64b1a1b5c6a3",
+    "headline": "Federal Reserve Board announces termination of enforcement actions with United Texas Bank, Quontic Bank Acquisition Corp., and Quontic Bank Holdings Corp.",
+    "source": {
+      "id": "fed",
+      "name": "Federal Reserve Board",
+      "url": "https://www.federalreserve.gov/",
+      "kind": "official"
+    },
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260904a.htm",
+    "publishedAt": "2026-09-04T15:00:00.000Z",
+    "receivedAt": "2026-09-09T03:58:14.978Z",
+    "bodyCharacters": 529,
+    "contentMode": "full_text"
+  }
+}
