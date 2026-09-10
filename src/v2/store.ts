@@ -3,6 +3,7 @@ import { EventEmitter } from "node:events";
 import type { PoolClient } from "pg";
 import { query, queryOne, transaction } from "../db/pool.js";
 import { listProviderDefinitions } from "./providers/index.js";
+import { paidProvidersAllowed } from "../config/production.js";
 import { decryptCredentials, encryptCredentials, safePublicUrl } from "./security.js";
 import type { ArticleRights, CompanyDirectoryEntry, CompanyHint, CompanyResolution, CoverageSummary, ProviderArticle, ProviderCredentials, ProviderDefinition, ProviderId, ProviderStatus, SyncJob, UpdateProviderRequest } from "./types.js";
 
@@ -26,7 +27,7 @@ export async function providerConfig(id: ProviderId, client?: PoolClient): Promi
   const row = await queryOne<ConfigRow>("SELECT * FROM news_v2_provider_configs WHERE provider_id=$1", [id], client);
   const credentials = decryptCredentials(row?.credentials_encrypted ?? null);
   const displayLicensed = definition.free || (row?.display_licensed ?? false);
-  return { definition, credentials, enabled: row?.enabled ?? definition.free,
+  return { definition, credentials, enabled: (definition.free || paidProvidersAllowed()) && (row?.enabled ?? definition.free),
     configured: definition.credentialFields.every((field) => !field.required || Boolean(credentials[field.key]?.trim())),
     fullTextEnabled: row?.full_text_enabled ?? false, displayLicensed };
 }
@@ -39,6 +40,7 @@ export async function updateProvider(id: ProviderId, input: UpdateProviderReques
   const credentials = { ...existing.credentials, ...input.credentials };
   for (const key of Object.keys(credentials)) if (!credentials[key]?.trim()) delete credentials[key];
   const enabled = input.enabled ?? existing.enabled;
+  if (enabled && !existing.definition.free && !paidProvidersAllowed()) throw new V2Error("Paid providers are disabled on this deployment.", 403);
   const licensed = existing.definition.free || (input.displayLicensed ?? existing.displayLicensed);
   const fullText = input.fullTextEnabled ?? existing.fullTextEnabled;
   if (enabled && !licensed) throw new V2Error("Confirm that your provider agreement permits workspace display before enabling this paid source.");
