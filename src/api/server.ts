@@ -10,6 +10,7 @@ import { isMainModule } from "../util/main.js";
 import { startScheduler, stopScheduler } from "../ingest/scheduler.js";
 import { companyRoutes } from "./routes/companies.js";
 import { newsRoutes } from "./routes/news.js";
+import { healthRoutes } from "./routes/health.js";
 import { operationsRoutes } from "./routes/operations.js";
 import { v2Routes } from "../v2/routes.js";
 import { startV2Worker, stopV2Worker } from "../v2/worker.js";
@@ -44,6 +45,7 @@ export async function buildServer() {
   });
   await app.register(swaggerUi, { routePrefix: "/docs" });
 
+  await app.register(healthRoutes);
   if (process.env.NEWS_V2_ONLY !== "true") {
     await app.register(companyRoutes);
     await app.register(newsRoutes);
