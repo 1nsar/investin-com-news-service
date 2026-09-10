@@ -48,26 +48,6 @@ function tokenMatches(provided: string, expected: string): boolean {
 }
 
 export async function operationsRoutes(app: FastifyInstance): Promise<void> {
-  // Liveness: is the process up? Deliberately free of database access so a
-  // database blip does not cause an orchestrator to kill a healthy container.
-  app.get("/health", { schema: { description: "Liveness probe.", tags: ["ops"] } }, async () => ({
-    status: "ok",
-    uptimeSeconds: Math.round(process.uptime()),
-  }));
-
-  // Readiness: can it actually serve? This one does touch the database.
-  app.get("/ready", { schema: { description: "Readiness probe.", tags: ["ops"] } }, async (_request, reply) => {
-    try {
-      await pool.query("SELECT 1");
-      return { status: "ready" };
-    } catch (error) {
-      return reply.code(503).send({
-        status: "not_ready",
-        detail: error instanceof Error ? error.message : String(error),
-      });
-    }
-  });
-
   app.get("/v1/status", {
     schema: {
       description: "Service state: counts, provider health, and the last run's outcome.",
