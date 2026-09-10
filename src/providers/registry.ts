@@ -1,4 +1,5 @@
 import { config } from "../config/index.js";
+import { paidProvidersAllowed } from "../config/production.js";
 import { logger } from "../util/logger.js";
 import { FinnhubProvider } from "./finnhub.js";
 import { GoogleNewsRssProvider } from "./googleNewsRss.js";
@@ -32,6 +33,7 @@ let cached: NewsProvider[] | undefined;
 
 /** Providers in configured preference order, unconfigured ones dropped. */
 export function getProviders(): NewsProvider[] {
+  if (!paidProvidersAllowed()) return [];
   if (cached) return cached;
 
   const providers: NewsProvider[] = [];
@@ -83,4 +85,3 @@ export function getProviders(): NewsProvider[] {
   cached = providers;
   return providers;
 }
-

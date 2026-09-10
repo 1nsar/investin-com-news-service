@@ -2,6 +2,7 @@ import "@fastify/swagger";
 import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { config } from "../../config/index.js";
+import { paidProvidersAllowed } from "../../config/production.js";
 import { pool } from "../../db/pool.js";
 import { ingestInProgress, runIngestExclusive } from "../../ingest/runner.js";
 import { companiesForFetch } from "../../ingest/store.js";
@@ -133,12 +134,16 @@ export async function operationsRoutes(app: FastifyInstance): Promise<void> {
     // worth protecting. Unset by default: the component is designed to sit
     // behind a gateway, and requiring a token out of the box would break the
     // documented one-command start.
-    if (config.API_AUTH_TOKEN) {
+    if (process.env.NODE_ENV !== "production" && config.API_AUTH_TOKEN) {
       const header = request.headers.authorization ?? "";
       const provided = header.startsWith("Bearer ") ? header.slice(7) : "";
       if (!tokenMatches(provided, config.API_AUTH_TOKEN)) {
         return reply.code(401).send({ error: "unauthorized", detail: "valid bearer token required" });
       }
+    }
+
+    if (!paidProvidersAllowed()) {
+      return reply.code(403).send({ error: "collection_disabled", detail: "Legacy provider collection is disabled on this deployment." });
     }
 
     const parsed = FetchBody.safeParse(request.body ?? {});

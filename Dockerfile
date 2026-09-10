@@ -17,6 +17,7 @@ COPY package.json package-lock.json* ./
 RUN npm ci --omit=dev && npm cache clean --force
 COPY --from=build /app/dist ./dist
 COPY data/catalogue ./data/catalogue
+COPY data/listings-mapping.json ./data/listings-mapping.json
 
 # The service caches the ~7MB Finnhub US symbol directory under data/catalogue
 # on first run. COPY leaves that directory owned by root, so the non-root user

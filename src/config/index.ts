@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { z } from "zod";
+import { assertProductionConfig } from "./production.js";
 
 /** Every knob the component has. Parsed once, at startup, so a bad value is a
  *  loud failure at boot rather than a strange one at 06:00 three weeks later. */
@@ -55,6 +56,7 @@ export type Config = z.infer<typeof Schema> & {
 };
 
 function load(): Config {
+  assertProductionConfig();
   const parsed = Schema.safeParse(process.env);
   if (!parsed.success) {
     const detail = parsed.error.issues

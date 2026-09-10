@@ -1,6 +1,7 @@
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 import { config } from "../config/index.js";
+import { paidProvidersAllowed } from "../config/production.js";
 import { request } from "../util/http.js";
 import { logger } from "../util/logger.js";
 import { normalizeName } from "../catalogue/names.js";
@@ -51,6 +52,7 @@ export interface UsDirectory {
 }
 
 async function download(): Promise<UsSymbol[]> {
+  if (!paidProvidersAllowed()) throw new Error("Provider directory download is disabled on this deployment; use the offline listing snapshot or explicitly enable provider access.");
   if (!config.FINNHUB_API_KEY) {
     throw new Error(
       "FINNHUB_API_KEY is required to download the US symbol directory. See .env.example.",
