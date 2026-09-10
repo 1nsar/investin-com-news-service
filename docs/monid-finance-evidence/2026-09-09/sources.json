@@ -1,0 +1,246 @@
+{
+  "catalogue": [
+    "Monid finance directory and paginated public catalogue",
+    "https://monid.ai/tools?c=finance"
+  ],
+  "public": [
+    "Monid public finance endpoint metadata",
+    "https://api.monid.ai/public/v1/endpoints?category=finance&limit=24"
+  ],
+  "inspect": [
+    "Monid endpoint inspection documentation",
+    "https://monid.ai/docs/api/inspect"
+  ],
+  "run": [
+    "Monid execution documentation",
+    "https://monid.ai/docs/api/run"
+  ],
+  "integrations": [
+    "Monid server integration documentation",
+    "https://monid.ai/docs/integrations/overview"
+  ],
+  "nls": [
+    "Nasdaq Last Sale: official product and named direct users",
+    "https://www.nasdaq.com/products/data/equities/nasdaq-last-sale"
+  ],
+  "nasdaqquote": [
+    "Nasdaq Apple quote page: website refresh and index delay",
+    "https://www.nasdaq.com/market-activity/stocks/aapl"
+  ],
+  "nasdaqcalendar": [
+    "Nasdaq market activity: earnings-calendar methodology",
+    "https://www.nasdaq.com/market-activity"
+  ],
+  "nasdaqfin": [
+    "Nasdaq Apple financials: displayed units",
+    "https://www.nasdaq.com/market-activity/stocks/aapl/financials"
+  ],
+  "short": [
+    "Nasdaq Trader short-interest reporting and dissemination",
+    "https://nasdaqtrader.com/trader.aspx?id=ShortInterest"
+  ],
+  "retail": [
+    "Nasdaq Retail Trading Activity Tracker: separate direct dataset",
+    "https://data.nasdaq.com/databases/RTAT/documentation?anchor=sample-data"
+  ],
+  "nasdaqterms": [
+    "Nasdaq website legal terms, updated 11 May 2026",
+    "https://www.nasdaq.com/legal"
+  ],
+  "nasdaqhold": [
+    "Nasdaq institutional-holdings methodology",
+    "https://www.nasdaq.com/market-activity/stocks/aapl/institutional-holdings"
+  ],
+  "yahoo": [
+    "Yahoo Finance exchange delays, providers and redistribution notice",
+    "https://help.yahoo.com/kb/finance/SLN2310.html"
+  ],
+  "yahooterms": [
+    "Yahoo Finance additional terms",
+    "https://legal.yahoo.com/us/en/yahoo/terms/product-atos/finance/index.html"
+  ],
+  "finvizfaq": [
+    "Finviz FAQ: exchanges, quote delays and fundamental refresh",
+    "https://finviz.com/help/faq"
+  ],
+  "finvizcount": [
+    "Finviz stock-only screener: observed listing-row count",
+    "https://finviz.com/screener?f=ind_stocksonly&v=111"
+  ],
+  "finvizall": [
+    "Finviz unrestricted screener: stocks and funds",
+    "https://finviz.com/screener?v=111"
+  ],
+  "finvizapi": [
+    "Finviz direct API usage limits and personal-use restrictions",
+    "https://finviz.com/knowledge-base/market-data-research/api/usage-limits"
+  ],
+  "finvizplans": [
+    "Finviz Elite: direct subscription, audience and features",
+    "https://finviz.com/elite"
+  ],
+  "mbabout": [
+    "MarketBeat company coverage, audience and data suppliers",
+    "https://www.marketbeat.com/about/"
+  ],
+  "mbeditorial": [
+    "MarketBeat editorial standards and corrections",
+    "https://www.marketbeat.com/editorial-guidelines/"
+  ],
+  "mbfaq": [
+    "MarketBeat FAQ: analytical scores and AI-assisted content",
+    "https://www.marketbeat.com/faq/"
+  ],
+  "mbterms": [
+    "MarketBeat terms: site/XML licences and commercial use",
+    "https://www.marketbeat.com/terms/"
+  ],
+  "mbinsider": [
+    "MarketBeat insider screener: SEC-derived transactions",
+    "https://www.marketbeat.com/all-access/insider-trades-screener/"
+  ],
+  "sacoverage": [
+    "StockAnalysis data coverage: tradable symbols, updated 31 July 2026",
+    "https://stockanalysis.com/help/data-and-downloads/about-our-data/"
+  ],
+  "sasources": [
+    "StockAnalysis sources and financial update timings",
+    "https://stockanalysis.com/data-sources/"
+  ],
+  "saprice": [
+    "StockAnalysis price refresh and exchange-dependent delays",
+    "https://stockanalysis.com/help/faq/stock-price-data/"
+  ],
+  "saapi": [
+    "StockAnalysis: no API/MCP or programmatic redistribution rights, 8 July 2026",
+    "https://stockanalysis.com/help/faq/api-access/"
+  ],
+  "saterms": [
+    "StockAnalysis terms of use",
+    "https://stockanalysis.com/terms-of-use/"
+  ],
+  "saabout": [
+    "StockAnalysis intended audience",
+    "https://stockanalysis.com/about/"
+  ],
+  "llamadocs": [
+    "DefiLlama official API documentation and direct Pro pricing",
+    "https://api-docs.defillama.com/"
+  ],
+  "llamaschema": [
+    "DefiLlama official Pro endpoint documentation",
+    "https://github.com/DefiLlama/api-docs/blob/main/llms-pro.txt"
+  ],
+  "llamaequities": [
+    "DefiLlama equities beta and source attribution",
+    "https://defillama.com/equities"
+  ],
+  "llamaterms": [
+    "DefiLlama terms covering APIs and commercial republication",
+    "https://defillama.com/terms/"
+  ],
+  "twelve": [
+    "Twelve Data terms: external display and redistribution entitlements",
+    "https://twelvedata.com/terms"
+  ],
+  "sfhome": [
+    "SECForm4.com service description",
+    "https://www.secform4.com/"
+  ],
+  "sfbuys": [
+    "SECForm4 public buys: six-month delay notice",
+    "https://www.secform4.com/all-buys"
+  ],
+  "sfsales": [
+    "SECForm4 public sales: six-month delay notice",
+    "https://www.secform4.com/insider-sales"
+  ],
+  "sfsignificant": [
+    "SECForm4 significant buys: delay and selection thresholds",
+    "https://www.secform4.com/significant-buys"
+  ],
+  "sfoptions": [
+    "SECForm4 public insider options: six-month delay notice",
+    "https://www.secform4.com/stock-options"
+  ],
+  "sfratios": [
+    "SECForm4 public buy/sell ratios: six-month delay notice",
+    "https://www.secform4.com/insider-buy-sell-ratios"
+  ],
+  "sfcompany": [
+    "SECForm4 Apple history: reported dates and split-adjustment warning",
+    "https://www.secform4.com/insider-trading/320193.htm"
+  ],
+  "sfplans": [
+    "SECForm4 direct website subscription plans",
+    "https://www.secform4.com/account/sign-up"
+  ],
+  "sfmonid": [
+    "Monid vendor-reported Form 4 examples, 7 September 2026",
+    "https://monid.ai/blog/guides/insider-trading-api-form-4-data"
+  ],
+  "secapi": [
+    "SEC EDGAR APIs: access, update timing and bulk data",
+    "https://www.sec.gov/search-filings/edgar-application-programming-interfaces"
+  ],
+  "secpolicy": [
+    "SEC public information reuse and automated access policy",
+    "https://www.sec.gov/about/privacy-information"
+  ],
+  "secdata": [
+    "SEC insider transaction datasets and as-filed limitations",
+    "https://www.sec.gov/data-research/sec-markets-data/insider-transactions-data-sets"
+  ],
+  "secform4": [
+    "SEC investor bulletin on insider reporting",
+    "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-69"
+  ],
+  "seccodes": [
+    "SEC ownership transaction codes",
+    "https://www.sec.gov/edgar/searchedgar/ownershipformcodes.html"
+  ],
+  "sec13f": [
+    "SEC Form 13F FAQ: threshold, holdings and reporting deadlines",
+    "https://www.sec.gov/rules-regulations/staff-guidance/division-investment-management-frequently-asked-questions/frequently-asked-questions-about-form-13f"
+  ],
+  "sec13dg": [
+    "SEC beneficial ownership reporting interpretations",
+    "https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/exchange-act-sections-13d-13g-regulation-13d-g-beneficial-ownership-reporting"
+  ],
+  "secfpi": [
+    "SEC 2026 foreign-insider reporting final rules",
+    "https://www.sec.gov/newsroom/press-releases/2026-23-sec-adopts-final-rules-holding-foreign-insiders-accountable-act"
+  ],
+  "secfpiex": [
+    "SEC foreign-insider exemption order",
+    "https://www.sec.gov/rules-regulations/2026/03/34-104931"
+  ],
+  "secfpijune": [
+    "SEC June 2026 foreign-insider exemption extension",
+    "https://www.sec.gov/files/rules/exorders/2026/34-105517.pdf"
+  ],
+  "parse-nasdaq": [
+    "Parse own documentation: independent Nasdaq wrapper",
+    "https://parse.bot/marketplace/8357401b-21c5-4fa5-8701-fff62d9a9922/nasdaq-com-api"
+  ],
+  "parse-yahoo": [
+    "Parse own documentation: independent Yahoo wrapper",
+    "https://parse.bot/marketplace/417d966a-b180-44b0-80e5-477772dfc4e2/yahoofinance-com-api"
+  ],
+  "parse-finviz": [
+    "Parse own documentation: independent Finviz wrapper",
+    "https://parse.bot/marketplace/09c62661-67ab-42f3-bdbe-e4f90fbd888d/finviz-com-api"
+  ],
+  "parse-marketbeat": [
+    "Parse own documentation: independent MarketBeat wrapper",
+    "https://parse.bot/marketplace/7efa2b5b-c2ed-4d9d-99d4-0f3e152f73f3/marketbeat-com-api"
+  ],
+  "parse-stockanalysis": [
+    "Parse own documentation: independent StockAnalysis wrapper",
+    "https://parse.bot/marketplace/c9e8ac45-0663-4195-91fb-b986563bdfe8/stockanalysis-com-api"
+  ],
+  "parse-secform4": [
+    "Parse own documentation: independent SECForm4 wrapper",
+    "https://parse.bot/marketplace/a56dfc20-a7a3-48db-9766-5437ed41cefb/secform4-com-api"
+  ]
+}

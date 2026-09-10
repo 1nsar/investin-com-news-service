@@ -1,0 +1,80 @@
+[
+  {
+    "articleUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260807~58eb5109ce.en.html",
+    "imageUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260807/ecb.pr260807.en_img0.png?a64c0aa2880652cf4481b4f129a362f6",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 63649,
+    "sha256": "0ebec359d5082bccbc089f7bf3f7f717b77135c7fd5f396914bcaeee2cd8e4a5",
+    "file": "ecb.pr260807.en_img0.png",
+    "dimensions": [
+      1200,
+      600
+    ]
+  },
+  {
+    "articleUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260807~58eb5109ce.en.html",
+    "imageUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260807/ecb.pr260807.en_img1.png?8e5139ec998e5a43597be97897976064",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 79256,
+    "sha256": "82aa921c2433cd798106a3f5aecde09b13b7f08cecc230e83b6561cc5552d88b",
+    "file": "ecb.pr260807.en_img1.png",
+    "dimensions": [
+      1200,
+      600
+    ]
+  },
+  {
+    "articleUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260807~58eb5109ce.en.html",
+    "imageUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260807/ecb.pr260807.en_img2.png?ad9b7153c8d0226fb3e7589f4ea5d291",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 109330,
+    "sha256": "e22fb840db006806ce9464eb3ed33854c52d8172dc7875d5a7e722f2481cb5ed",
+    "file": "ecb.pr260807.en_img2.png",
+    "dimensions": [
+      1200,
+      980
+    ]
+  },
+  {
+    "articleUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260807~58eb5109ce.en.html",
+    "imageUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260807/ecb.pr260807.en_img3.png?4b375084353e930f3b869b7a63e55192",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 111730,
+    "sha256": "c2302c87bc0649356245555b0a40e92c8b63bcdb638f5572cd4a45a60ec062ec",
+    "file": "ecb.pr260807.en_img3.png",
+    "dimensions": [
+      1200,
+      980
+    ]
+  },
+  {
+    "articleUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260729~4ad7508d8a.en.html",
+    "imageUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260729/ecb.pr260729.en_img0.png?e6f83ebff8ca33be6db7c4cdfa92a017",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 25810,
+    "sha256": "a07f184a70caab90d68f93a3fd3d31bbd0e9fb15874d13e6572dbdc40f45b68b",
+    "file": "ecb.pr260729.en_img0.png",
+    "dimensions": [
+      424,
+      414
+    ]
+  },
+  {
+    "articleUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260729~4ad7508d8a.en.html",
+    "imageUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260729/ecb.pr260729.en_img1.png?5387f57406ce32217f9562622d095a99",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 13566,
+    "sha256": "1b1e0a8f929f4bc2aae1844d7605398de919e6e1654dc14657aa091ad4cd10ee",
+    "file": "ecb.pr260729.en_img1.png",
+    "dimensions": [
+      432,
+      413
+    ]
+  }
+]

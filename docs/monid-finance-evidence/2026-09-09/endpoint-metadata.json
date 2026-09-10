@@ -1,0 +1,1900 @@
+{
+  "nasdaq/get_stock_earnings": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_earnings",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_earnings",
+      "displayName": "Get earnings results",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_screener": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_screener",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_screener",
+      "displayName": "Run stock screener",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_earnings_calendar": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_earnings_calendar",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_earnings_calendar",
+      "displayName": "Get earnings calendar",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_sec_filings": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_sec_filings",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_sec_filings",
+      "displayName": "Get SEC filings",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_mutual_fund_quote": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_mutual_fund_quote",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_mutual_fund_quote",
+      "displayName": "Get mutual fund quote",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_dividend_history": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_dividend_history",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_dividend_history",
+      "displayName": "Get dividend history",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_quote": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_quote",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_quote",
+      "displayName": "Get stock quote",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/search_symbols": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/search_symbols",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/search_symbols",
+      "displayName": "Search ticker symbols",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_market_indices": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_market_indices",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_market_indices",
+      "displayName": "Get market indices",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_historical_quotes": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_historical_quotes",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_historical_quotes",
+      "displayName": "Get historical quotes",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_institutional_holdings": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_institutional_holdings",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_institutional_holdings",
+      "displayName": "Get institutional holdings",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_market_movers": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_market_movers",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_market_movers",
+      "displayName": "Get market movers",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_etf_quote": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_etf_quote",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_etf_quote",
+      "displayName": "Get ETF quote",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_cryptocurrency_quote": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_cryptocurrency_quote",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_cryptocurrency_quote",
+      "displayName": "Get cryptocurrency quote",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_news": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_news",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_news",
+      "displayName": "Get stock news",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_financials": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_financials",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_financials",
+      "displayName": "Get company financials",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_index_detail": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_index_detail",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_index_detail",
+      "displayName": "Get index detail",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_short_interest": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_short_interest",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_short_interest",
+      "displayName": "Get short interest",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_stock_option_chain": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_stock_option_chain",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_stock_option_chain",
+      "displayName": "Get option chain",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "nasdaq/get_retail_trading_activity": {
+    "url": "https://api.monid.ai/public/v1/providers/nasdaq/endpoints/get_retail_trading_activity",
+    "status": 200,
+    "data": {
+      "provider": "nasdaq",
+      "providerDisplayName": "Nasdaq",
+      "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+      "endpoint": "/get_retail_trading_activity",
+      "displayName": "Get retail trading activity",
+      "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "nasdaq"
+      ],
+      "method": "GET"
+    }
+  },
+  "yahoo-finance/get_historical_data": {
+    "url": "https://api.monid.ai/public/v1/providers/yahoo-finance/endpoints/get_historical_data",
+    "status": 200,
+    "data": {
+      "provider": "yahoo-finance",
+      "providerDisplayName": "Yahoo Finance",
+      "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+      "endpoint": "/get_historical_data",
+      "displayName": "Get historical prices",
+      "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.05,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "yahoo-finance"
+      ],
+      "method": "GET"
+    }
+  },
+  "yahoo-finance/get_company_profile": {
+    "url": "https://api.monid.ai/public/v1/providers/yahoo-finance/endpoints/get_company_profile",
+    "status": 200,
+    "data": {
+      "provider": "yahoo-finance",
+      "providerDisplayName": "Yahoo Finance",
+      "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+      "endpoint": "/get_company_profile",
+      "displayName": "Get company profile",
+      "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.05,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "yahoo-finance"
+      ],
+      "method": "GET"
+    }
+  },
+  "yahoo-finance/get_stock_news": {
+    "url": "https://api.monid.ai/public/v1/providers/yahoo-finance/endpoints/get_stock_news",
+    "status": 200,
+    "data": {
+      "provider": "yahoo-finance",
+      "providerDisplayName": "Yahoo Finance",
+      "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+      "endpoint": "/get_stock_news",
+      "displayName": "Get market news",
+      "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.05,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "yahoo-finance"
+      ],
+      "method": "GET"
+    }
+  },
+  "yahoo-finance/get_quote": {
+    "url": "https://api.monid.ai/public/v1/providers/yahoo-finance/endpoints/get_quote",
+    "status": 200,
+    "data": {
+      "provider": "yahoo-finance",
+      "providerDisplayName": "Yahoo Finance",
+      "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+      "endpoint": "/get_quote",
+      "displayName": "Get quote",
+      "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.05,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "yahoo-finance"
+      ],
+      "method": "GET"
+    }
+  },
+  "yahoo-finance/search_tickers": {
+    "url": "https://api.monid.ai/public/v1/providers/yahoo-finance/endpoints/search_tickers",
+    "status": 200,
+    "data": {
+      "provider": "yahoo-finance",
+      "providerDisplayName": "Yahoo Finance",
+      "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+      "endpoint": "/search_tickers",
+      "displayName": "Search tickers",
+      "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.05,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "yahoo-finance"
+      ],
+      "method": "GET"
+    }
+  },
+  "finviz/get_screener_results": {
+    "url": "https://api.monid.ai/public/v1/providers/finviz/endpoints/get_screener_results",
+    "status": 200,
+    "data": {
+      "provider": "finviz",
+      "providerDisplayName": "Finviz",
+      "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+      "endpoint": "/get_screener_results",
+      "displayName": "Run screener",
+      "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "finviz",
+        "insider-trading"
+      ],
+      "method": "GET"
+    }
+  },
+  "finviz/get_insider_trading": {
+    "url": "https://api.monid.ai/public/v1/providers/finviz/endpoints/get_insider_trading",
+    "status": 200,
+    "data": {
+      "provider": "finviz",
+      "providerDisplayName": "Finviz",
+      "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+      "endpoint": "/get_insider_trading",
+      "displayName": "Get insider trading",
+      "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "finviz",
+        "insider-trading"
+      ],
+      "method": "GET"
+    }
+  },
+  "finviz/get_ticker_sectors_with_performance": {
+    "url": "https://api.monid.ai/public/v1/providers/finviz/endpoints/get_ticker_sectors_with_performance",
+    "status": 200,
+    "data": {
+      "provider": "finviz",
+      "providerDisplayName": "Finviz",
+      "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+      "endpoint": "/get_ticker_sectors_with_performance",
+      "displayName": "get_ticker_sectors_with_performance",
+      "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "finviz",
+        "insider-trading"
+      ],
+      "method": "GET"
+    }
+  },
+  "finviz/get_stock_news_sentiment": {
+    "url": "https://api.monid.ai/public/v1/providers/finviz/endpoints/get_stock_news_sentiment",
+    "status": 200,
+    "data": {
+      "provider": "finviz",
+      "providerDisplayName": "Finviz",
+      "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+      "endpoint": "/get_stock_news_sentiment",
+      "displayName": "Get news sentiment",
+      "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "finviz",
+        "insider-trading"
+      ],
+      "method": "GET"
+    }
+  },
+  "finviz/get_market_movers": {
+    "url": "https://api.monid.ai/public/v1/providers/finviz/endpoints/get_market_movers",
+    "status": 200,
+    "data": {
+      "provider": "finviz",
+      "providerDisplayName": "Finviz",
+      "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+      "endpoint": "/get_market_movers",
+      "displayName": "Get market movers",
+      "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "finviz",
+        "insider-trading"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_financial_statements": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_financial_statements",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_financial_statements",
+      "displayName": "Get financial statements",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.02,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_institutional_ownership": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_institutional_ownership",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_institutional_ownership",
+      "displayName": "Get institutional ownership",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_analyst_ratings": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_analyst_ratings",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_analyst_ratings",
+      "displayName": "Get analyst ratings",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.02,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_insider_trades": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_insider_trades",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_insider_trades",
+      "displayName": "Get insider trades",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/search_stocks": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/search_stocks",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/search_stocks",
+      "displayName": "Search stocks",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_options_chain": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_options_chain",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_options_chain",
+      "displayName": "Get options chain",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_stock_overview": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_stock_overview",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_stock_overview",
+      "displayName": "Get stock overview",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_earnings": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_earnings",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_earnings",
+      "displayName": "Get earnings",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_competitors": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_competitors",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_competitors",
+      "displayName": "Get competitors",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_marketrank": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_marketrank",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_marketrank",
+      "displayName": "Get MarketRank score",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_stock_headlines": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_stock_headlines",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_stock_headlines",
+      "displayName": "Get stock headlines",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_short_interest": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_short_interest",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_short_interest",
+      "displayName": "Get short interest",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_profitability_metrics": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_profitability_metrics",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_profitability_metrics",
+      "displayName": "Get profitability metrics",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "marketbeat/get_stock_forecast": {
+    "url": "https://api.monid.ai/public/v1/providers/marketbeat/endpoints/get_stock_forecast",
+    "status": 200,
+    "data": {
+      "provider": "marketbeat",
+      "providerDisplayName": "MarketBeat",
+      "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+      "endpoint": "/get_stock_forecast",
+      "displayName": "Get price forecast",
+      "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "marketbeat"
+      ],
+      "method": "GET"
+    }
+  },
+  "stockanalysis/get_stock_list": {
+    "url": "https://api.monid.ai/public/v1/providers/stockanalysis/endpoints/get_stock_list",
+    "status": 200,
+    "data": {
+      "provider": "stockanalysis",
+      "providerDisplayName": "StockAnalysis",
+      "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+      "endpoint": "/get_stock_list",
+      "displayName": "List stocks",
+      "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "stockanalysis"
+      ],
+      "method": "GET"
+    }
+  },
+  "stockanalysis/search_stocks": {
+    "url": "https://api.monid.ai/public/v1/providers/stockanalysis/endpoints/search_stocks",
+    "status": 200,
+    "data": {
+      "provider": "stockanalysis",
+      "providerDisplayName": "StockAnalysis",
+      "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+      "endpoint": "/search_stocks",
+      "displayName": "Search stocks",
+      "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "stockanalysis"
+      ],
+      "method": "GET"
+    }
+  },
+  "stockanalysis/get_stock_financials_income": {
+    "url": "https://api.monid.ai/public/v1/providers/stockanalysis/endpoints/get_stock_financials_income",
+    "status": 200,
+    "data": {
+      "provider": "stockanalysis",
+      "providerDisplayName": "StockAnalysis",
+      "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+      "endpoint": "/get_stock_financials_income",
+      "displayName": "Get income statement",
+      "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "stockanalysis"
+      ],
+      "method": "GET"
+    }
+  },
+  "stockanalysis/get_market_movers_premarket": {
+    "url": "https://api.monid.ai/public/v1/providers/stockanalysis/endpoints/get_market_movers_premarket",
+    "status": 200,
+    "data": {
+      "provider": "stockanalysis",
+      "providerDisplayName": "StockAnalysis",
+      "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+      "endpoint": "/get_market_movers_premarket",
+      "displayName": "Get pre-market movers",
+      "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "stockanalysis"
+      ],
+      "method": "GET"
+    }
+  },
+  "stockanalysis/get_stock_statistics": {
+    "url": "https://api.monid.ai/public/v1/providers/stockanalysis/endpoints/get_stock_statistics",
+    "status": 200,
+    "data": {
+      "provider": "stockanalysis",
+      "providerDisplayName": "StockAnalysis",
+      "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+      "endpoint": "/get_stock_statistics",
+      "displayName": "Get stock statistics",
+      "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "stockanalysis"
+      ],
+      "method": "GET"
+    }
+  },
+  "stockanalysis/get_ipo_calendar": {
+    "url": "https://api.monid.ai/public/v1/providers/stockanalysis/endpoints/get_ipo_calendar",
+    "status": 200,
+    "data": {
+      "provider": "stockanalysis",
+      "providerDisplayName": "StockAnalysis",
+      "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+      "endpoint": "/get_ipo_calendar",
+      "displayName": "Get IPO calendar",
+      "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "stockanalysis"
+      ],
+      "method": "GET"
+    }
+  },
+  "stockanalysis/get_stock_overview": {
+    "url": "https://api.monid.ai/public/v1/providers/stockanalysis/endpoints/get_stock_overview",
+    "status": 200,
+    "data": {
+      "provider": "stockanalysis",
+      "providerDisplayName": "StockAnalysis",
+      "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+      "endpoint": "/get_stock_overview",
+      "displayName": "Get stock overview",
+      "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "equities",
+        "stockanalysis"
+      ],
+      "method": "GET"
+    }
+  },
+  "defillama/equities/v1/statements": {
+    "url": "https://api.monid.ai/public/v1/providers/defillama/endpoints/equities/v1/statements",
+    "status": 200,
+    "data": {
+      "provider": "defillama",
+      "providerDisplayName": "DefiLlama",
+      "providerDisplayDescription": "DeFi and crypto analytics — TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+      "endpoint": "/equities/v1/statements",
+      "displayName": "/equities/v1/statements",
+      "displayDescription": "Get financial statements for a company",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "defillama",
+        "equities"
+      ],
+      "summary": "Returns income statement, balance sheet, and cash flow statement for the given ticker, broken down by quarterly and annual periods.",
+      "method": "GET"
+    }
+  },
+  "defillama/equities/v1/filings": {
+    "url": "https://api.monid.ai/public/v1/providers/defillama/endpoints/equities/v1/filings",
+    "status": 200,
+    "data": {
+      "provider": "defillama",
+      "providerDisplayName": "DefiLlama",
+      "providerDisplayDescription": "DeFi and crypto analytics — TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+      "endpoint": "/equities/v1/filings",
+      "displayName": "/equities/v1/filings",
+      "displayDescription": "Get filings for a company",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "defillama",
+        "equities"
+      ],
+      "summary": "Returns a list of company filings (such as annual reports, quarterly reports, and other important filings) for the given ticker, sorted by filing date descending (newest first).",
+      "method": "GET"
+    }
+  },
+  "defillama/equities/v1/summary": {
+    "url": "https://api.monid.ai/public/v1/providers/defillama/endpoints/equities/v1/summary",
+    "status": 200,
+    "data": {
+      "provider": "defillama",
+      "providerDisplayName": "DefiLlama",
+      "providerDisplayDescription": "DeFi and crypto analytics — TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+      "endpoint": "/equities/v1/summary",
+      "displayName": "/equities/v1/summary",
+      "displayDescription": "Get live market summary for a company",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "defillama",
+        "equities"
+      ],
+      "summary": "Returns current market data for a single ticker. This is a compact snapshot (no `ticker` / `name` fields); use `GET /equities/v1/companies-list` for the list of tracked companies with their identity details.",
+      "method": "GET"
+    }
+  },
+  "defillama/equities/v1/price-history": {
+    "url": "https://api.monid.ai/public/v1/providers/defillama/endpoints/equities/v1/price-history",
+    "status": 200,
+    "data": {
+      "provider": "defillama",
+      "providerDisplayName": "DefiLlama",
+      "providerDisplayDescription": "DeFi and crypto analytics — TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+      "endpoint": "/equities/v1/price-history",
+      "displayName": "/equities/v1/price-history",
+      "displayDescription": "Get historical price data for a company",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "defillama",
+        "equities"
+      ],
+      "summary": "Returns closing prices as two-element arrays: ISO 8601 date-time string, then numeric price. Sorted by date descending (newest first). Resolution follows `timeframe`: `1D`, `7D` and `1W` are 5-minute intraday bars whose date-time carries a real time of day, while `1M` and longer are daily closes stamped `T00:00:00Z`.",
+      "method": "GET"
+    }
+  },
+  "defillama/equities/v1/companies-list": {
+    "url": "https://api.monid.ai/public/v1/providers/defillama/endpoints/equities/v1/companies-list",
+    "status": 200,
+    "data": {
+      "provider": "defillama",
+      "providerDisplayName": "DefiLlama",
+      "providerDisplayDescription": "DeFi and crypto analytics — TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+      "endpoint": "/equities/v1/companies-list",
+      "displayName": "/equities/v1/companies-list",
+      "displayDescription": "Get list of all tracked public companies",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "defillama",
+        "equities"
+      ],
+      "summary": "Returns a list of all publicly traded companies tracked by DefiLlama, with company identity and country.",
+      "method": "GET"
+    }
+  },
+  "defillama/equities/v1/ohlcv": {
+    "url": "https://api.monid.ai/public/v1/providers/defillama/endpoints/equities/v1/ohlcv",
+    "status": 200,
+    "data": {
+      "provider": "defillama",
+      "providerDisplayName": "DefiLlama",
+      "providerDisplayDescription": "DeFi and crypto analytics — TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+      "endpoint": "/equities/v1/ohlcv",
+      "displayName": "/equities/v1/ohlcv",
+      "displayDescription": "Get OHLCV candle data for a company",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "defillama",
+        "equities"
+      ],
+      "summary": "Returns OHLCV bars as six-number arrays: Unix timestamp in seconds (UTC), open, high, low, close, volume. Sorted by time descending (newest first). Optional `timeframe` controls both how far back data goes and the bar resolution: `1D`, `7D` and `1W` return 5-minute bars, `1M` and longer return daily bars. Omit or empty for full history (`MAX`).",
+      "method": "GET"
+    }
+  },
+  "defillama/equities/v1/onchain": {
+    "url": "https://api.monid.ai/public/v1/providers/defillama/endpoints/equities/v1/onchain",
+    "status": 200,
+    "data": {
+      "provider": "defillama",
+      "providerDisplayName": "DefiLlama",
+      "providerDisplayDescription": "DeFi and crypto analytics — TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+      "endpoint": "/equities/v1/onchain",
+      "displayName": "/equities/v1/onchain",
+      "displayDescription": "Get on-chain tradeable markets for a company",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "defillama",
+        "equities"
+      ],
+      "summary": "Returns where the stock can be traded on-chain: `perps` are perpetual futures markets across exchanges, and `tokens` are tokenised-equity issuers. This is a live snapshot refreshed hourly and no history is kept. On-chain data is only collected for US-listed tickers, so a ticker in another market comes back with empty `perps` and `tokens` arrays rather than an error.",
+      "method": "GET"
+    }
+  },
+  "defillama/equities/v1/dimensions": {
+    "url": "https://api.monid.ai/public/v1/providers/defillama/endpoints/equities/v1/dimensions",
+    "status": 200,
+    "data": {
+      "provider": "defillama",
+      "providerDisplayName": "DefiLlama",
+      "providerDisplayDescription": "DeFi and crypto analytics — TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+      "endpoint": "/equities/v1/dimensions",
+      "displayName": "/equities/v1/dimensions",
+      "displayDescription": "Get financial dimensions for a company",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "defillama",
+        "equities"
+      ],
+      "summary": "Returns time-series financial dimension metrics (revenue, holders revenue, earnings, and basic shares outstanding) for the given ticker, each broken down into annual and quarterly series. Every data point is a two-element array: ISO 8601 period-ending date, then the numeric value. Series are sorted by date descending (newest first).",
+      "method": "GET"
+    }
+  },
+  "secform4/search": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/search",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/search",
+      "displayName": "Search filings",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_13d_filings": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_13d_filings",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_13d_filings",
+      "displayName": "Get 13D filings",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_insider_sales": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_insider_sales",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_insider_sales",
+      "displayName": "Get insider sales",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_significant_insider_buys": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_significant_insider_buys",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_significant_insider_buys",
+      "displayName": "Get significant insider buys",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_institution_holders": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_institution_holders",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_institution_holders",
+      "displayName": "Get institutional holders",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_insider_buy_sell_ratios": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_insider_buy_sell_ratios",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_insider_buy_sell_ratios",
+      "displayName": "Get insider buy/sell ratios",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_stock_options": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_stock_options",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_stock_options",
+      "displayName": "Get insider stock options",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_insider_buys": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_insider_buys",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_insider_buys",
+      "displayName": "Get insider buys",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_company_insider_trading": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_company_insider_trading",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_company_insider_trading",
+      "displayName": "Get company insider trading",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_hedge_fund_portfolio": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_hedge_fund_portfolio",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_hedge_fund_portfolio",
+      "displayName": "Get hedge fund portfolio",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  },
+  "secform4/get_13g_filings": {
+    "url": "https://api.monid.ai/public/v1/providers/secform4/endpoints/get_13g_filings",
+    "status": 200,
+    "data": {
+      "provider": "secform4",
+      "providerDisplayName": "SECForm4",
+      "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+      "endpoint": "/get_13g_filings",
+      "displayName": "Get 13G filings",
+      "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.01,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "insider-trading",
+        "secform4"
+      ],
+      "method": "GET"
+    }
+  }
+}

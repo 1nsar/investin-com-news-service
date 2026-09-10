@@ -76,6 +76,27 @@ describe.skipIf(process.env.NEWS_V2_TEST_DB!=="1")("V2 PostgreSQL integration (r
     expect((await providerStatuses()).find(p=>p.id==="benzinga")?.budget.requestsToday).toBe(17);
     expect((await readNews({scope:"portfolio",source:"all",companyIds:[],limit:10})).data).toEqual([]);
   });
+  it("paginates only readable live articles and exposes body excerpts only while full-text access is enabled",async()=>{
+    const client=state.client!,definition=definitionFor("benzinga");
+    await updateProvider("benzinga",{enabled:true,displayLicensed:true,fullTextEnabled:true,credentials:{apiKey:"synthetic-only-key"}});
+    const originalSummary="Publisher-provided summary stays unchanged.";
+    const full={...fixture(),summary:originalSummary,body:"Actual source paragraph with its reported details. ".repeat(35),publishedAt:"2026-08-01T10:00:00Z"};
+    const summary={...fixture(),body:null,summary:"The issuer announced its quarterly results, confirmed its guidance and explained the changes in operating costs during the reporting period.",publishedAt:"2026-08-02T10:00:00Z",rights:{...full.rights,bodyAllowed:false}};
+    const unavailable={...fixture(),body:null,headline:"Official release about monetary policy and economic developments around the world today",summary:"Official release about monetary policy and economic developments around the world today",publishedAt:"2026-08-03T10:00:00Z",rights:{...full.rights,bodyAllowed:false}};
+    await persistArticles(client,definition,[full,summary,unavailable],true);
+    const options={scope:"all" as const,source:"benzinga" as const,companyIds:[],limit:1};
+    const first=await readNews(options);expect(first.data[0]?.summary).toBe(summary.summary);expect(first.pagination.hasMore).toBe(true);
+    const second=await readNews({...options,cursor:first.pagination.nextCursor!});
+    expect(second.pagination.hasMore).toBe(false);expect(second.data[0]?.summary).toBe(originalSummary);
+    expect(second.data[0]?.previewText).toMatch(/^Actual source paragraph/);expect(second.data[0]?.previewText?.length).toBeLessThanOrEqual(700);
+    expect(second.data[0]?.readingMinutes).toBe(2);expect(second.data[0]?.body).toBeNull();
+    expect((await readArticle(second.data[0]!.id))?.body).toBe(full.body);
+    await updateProvider("benzinga",{fullTextEnabled:false});
+    const revoked=await readNews({...options,limit:10});expect(revoked.data).toHaveLength(1);expect(revoked.data[0]?.previewText).toBe(summary.summary);
+    expect(revoked.data[0]?.readingMinutes).toBeNull();
+    // Unavailable records remain stored for later recovery; they were hidden, not deleted.
+    expect((await client.query("SELECT count(*)::int AS n FROM news_v2_articles WHERE provider_id='benzinga'")).rows[0].n).toBe(3);
+  });
   it("clears old job cursors and licensed cached content when replacing an API account",async()=>{
     const client=state.client!;
     await updateProvider("benzinga",{enabled:true,displayLicensed:true,fullTextEnabled:true,credentials:{apiKey:"synthetic-old-account"}});

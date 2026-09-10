@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import type { ProviderArticle, ProviderBatch, ProviderFetchRequest } from "../types.js";
 import { allowedUrl, batchLimit, checkpoint, iso, ProviderFetchError, readCheckpoint, record, sourceText, string } from "./http.js";
 import { officialBody, plainText } from "./text.js";
+import { officialImage } from "./official-image.js";
 
 export const OFFICIAL_POLICIES = {
   fed: {
@@ -34,7 +35,7 @@ export const array = (value: unknown): unknown[] => value == null ? [] : Array.i
 export const xmlText = (value: unknown): string => typeof value === "string" ? value : string(record(value)["#text"]);
 
 interface FeedEntry { id: string; title: string; url: string; summary: string; publishedAt: string; category: string }
-interface SeenEntry { fingerprint: string; bodyImported: boolean }
+interface SeenEntry { fingerprint: string; bodyImported: boolean; bodyFailures?: number; bodyBlocked?: boolean; imageChecked?: boolean }
 const DAY_MS = 24 * 60 * 60 * 1000;
 const fingerprint = (entry: FeedEntry): string => createHash("sha256").update(JSON.stringify(entry)).digest("hex");
 
@@ -45,7 +46,9 @@ function readSeen(value: unknown): Record<string, SeenEntry> {
   for (const [id, value] of entries) {
     const item = record(value);
     if (!/^[a-f0-9]{64}$/.test(string(item.fingerprint)) || typeof item.bodyImported !== "boolean") throw new ProviderFetchError("invalid_response", "Invalid feed fingerprint cursor");
-    result[id] = { fingerprint: string(item.fingerprint), bodyImported: item.bodyImported };
+    if (item.bodyFailures !== undefined && (!Number.isInteger(item.bodyFailures) || Number(item.bodyFailures) < 0 || Number(item.bodyFailures) > 1000)) throw new ProviderFetchError("invalid_response", "Invalid feed body retry cursor");
+    if (item.bodyBlocked !== undefined && typeof item.bodyBlocked !== "boolean") throw new ProviderFetchError("invalid_response", "Invalid feed access cursor");
+    result[id] = { fingerprint: string(item.fingerprint), bodyImported: item.bodyImported, bodyFailures: Number(item.bodyFailures) || 0, bodyBlocked: item.bodyBlocked === true, imageChecked: item.imageChecked === true };
   }
   return result;
 }
@@ -93,33 +96,52 @@ export async function fetchOfficialFeed(request: ProviderFetchRequest): Promise<
     seen = Object.fromEntries(eligible.filter((entry) => seen[entry.id]).map((entry) => [entry.id, seen[entry.id]!])) as Record<string, SeenEntry>;
     const fullScanDue = !previousFullScanAt || Date.parse(now) - Date.parse(previousFullScanAt) >= DAY_MS;
     if (fullScanDue) fullScanAt = now;
-    pending = eligible.filter((entry) => fullScanDue || seen[entry.id]?.fingerprint !== fingerprint(entry));
+    pending = eligible.filter((entry) => {
+      const previous = seen[entry.id];
+      // An access denial is not a transient failure. Do not automatically
+      // request that body again; an operator can reset the source checkpoint.
+      if (previous?.bodyBlocked) return false;
+      const retryDue = (previous?.bodyFailures ?? 0) > 0 && (previous?.bodyFailures ?? 0) <= 3;
+      // Existing text-only checkpoints need one visual check, without resetting
+      // source state or repeatedly fetching image-less releases on every poll.
+      const imageCheckDue = previous?.bodyImported && !previous.imageChecked && !previous.bodyFailures;
+      return fullScanDue || retryDue || imageCheckDue || previous?.fingerprint !== fingerprint(entry);
+    });
     if (pending.length === 0) notices.push("The current feed is unchanged; no article-body requests were made.");
   }
   const selected = pending.slice(0, Math.min(batchLimit(request.limit), 10));
   const items: ProviderArticle[] = [];
   for (const entry of selected) {
     let body: string | null = null;
+    let image: ReturnType<typeof officialImage> = null;
+    let bodyBlocked = false;
     const previous = seen[entry.id];
-    try { body = officialBody(provider, await sourceText(provider, entry.url, request.signal, { purpose: "body" })); }
+    try {
+      const html = await sourceText(provider, entry.url, request.signal, { purpose: "body" });
+      body = officialBody(provider, html);
+      image = officialImage(provider, html, entry.url);
+    }
     catch (error) {
       if (!(error instanceof ProviderFetchError) || error.code === "aborted" || error.code === "rate_limited") throw error;
-      notices.push(`Release body unavailable (${error.code}); retained its official headline and link. No full text inferred.`);
+      bodyBlocked = error.code === "auth";
+      notices.push(`Release body unavailable (${error.code}); no full text inferred.${bodyBlocked ? " Automatic body retries paused after access denial." : " Up to three retries occur on subsequent feed checks, then at the daily correction check."}`);
     }
     // A temporary body-fetch failure must not erase a previously imported
     // article during the unchanged-feed daily correction check.
-    if (body === null && previous?.bodyImported && previous.fingerprint === fingerprint(entry)) {
+    seen[entry.id] = { fingerprint: fingerprint(entry), bodyImported: body !== null || previous?.bodyImported === true,
+      bodyFailures: body === null ? Math.min((previous?.bodyFailures ?? 0) + 1, 1000) : 0, bodyBlocked,
+      imageChecked: body !== null || previous?.imageChecked === true };
+    if (body === null && previous?.bodyImported) {
       notices.push("The previous full article was preserved after an unsuccessful correction check.");
       continue;
     }
-    seen[entry.id] = { fingerprint: fingerprint(entry), bodyImported: body !== null };
     const topics = /monetary|fomc|discount|interest rate/i.test(entry.category + entry.title + entry.url) ? ["monetary-policy"]
       : /inflation|consumer expectations/i.test(entry.title) ? ["inflation"] : ["regulation"];
     items.push({ sourceId: entry.id, action: "upsert", headline: entry.title,
       summary: entry.summary || null, body, url: entry.url, publisher: policy.source, publisherUrl: policy.origin,
       publishedAt: entry.publishedAt, updatedAt: null, receivedAt: new Date().toISOString(),
-      language: "en", topics, genre: "official-policy", companies: [], imageUrl: null,
-      rights: { bodyAllowed: body !== null, imageAllowed: false, attribution: `${policy.attribution} ${policy.policy}`, licenseStatus: "public_source" },
+      language: "en", topics, genre: "official-policy", companies: [], imageUrl: image?.url ?? null,
+      rights: { bodyAllowed: body !== null, imageAllowed: image !== null, ...(image ? { imageAttribution: image.attribution } : {}), attribution: `${policy.attribution} ${policy.policy}`, licenseStatus: "public_source" },
     });
   }
   const remaining = pending.slice(selected.length);
@@ -127,5 +149,5 @@ export async function fetchOfficialFeed(request: ProviderFetchRequest): Promise<
   return { items, complete, nextCheckpoint: checkpoint(provider, complete
     ? { kind: "rss_complete", checkedAt: now, seen, lastFullScanAt: fullScanAt ?? previousFullScanAt }
     : { kind: "rss_pending", pending: remaining, seen, lastFullScanAt: previousFullScanAt, fullScanAt }),
-    notices: [...notices, "Coverage is the current bounded official feed snapshot, not an exhaustive archive. New or changed feed entries fetch bodies at the feed-check cadence; unchanged bodies are rechecked once per 24 hours, subject to quota and availability. Corrections to releases no longer in the feed are not monitored."] };
+    notices: [...notices, "Coverage is every eligible entry in the current bounded official RSS snapshot, continued across batches; not an exhaustive archive. New, changed and transiently unavailable bodies are checked at the feed cadence within retry/request budgets. Unchanged bodies are rechecked daily; access-denied bodies are not automatically retried. Releases no longer in RSS are not monitored."] };
 }

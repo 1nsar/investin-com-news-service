@@ -166,6 +166,7 @@ export function normalizeProviderArticle(input: ProviderArticle, definition: Pro
   if (!supplied || typeof supplied.bodyAllowed!=="boolean" || typeof supplied.imageAllowed!=="boolean" || typeof supplied.attribution!=="string" || !["public_source","licensed","summary_only","unknown"].includes(supplied.licenseStatus)) throw new V2Error("Missing article usage metadata.");
   const bodyAllowed=supplied.bodyAllowed && (definition.free || (definition.supportsFullText && fullTextEnabled)) && !(typeof input.body==="string"&&input.body.length>500_000);
   const rights:ArticleRights={bodyAllowed,imageAllowed:supplied.imageAllowed,attribution:supplied.attribution.slice(0,1000),licenseStatus:supplied.licenseStatus};
+  if (rights.imageAllowed && typeof supplied.imageAttribution === "string") rights.imageAttribution = supplied.imageAttribution.slice(0,2000);
   return {...input,sourceId:input.sourceId.trim(),url,headline:input.headline.trim().slice(0,2000),summary:input.summary?.slice(0,20_000) ?? null,
     body:bodyAllowed && typeof input.body==="string" ? input.body.slice(0,500_000):null,publisher:input.publisher?.trim().slice(0,300) || definition.name,publisherUrl:safePublicUrl(input.publisherUrl),
     publishedAt:published,updatedAt:updated,receivedAt:new Date().toISOString(),imageUrl:rights.imageAllowed?safePublicUrl(input.imageUrl):null,

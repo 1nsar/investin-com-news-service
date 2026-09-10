@@ -1,0 +1,75 @@
+{
+  "verifiedAt": "2026-09-09T09:07:00.060551+00:00",
+  "all_api_traffic_intercepted": true,
+  "results": [
+    {
+      "scenario": "delayed_pagination_after_disable",
+      "passed": true,
+      "fixture_only": true,
+      "state": {
+        "disabled": true,
+        "updated": false,
+        "feed_first": 4,
+        "feed_older": 1,
+        "status": 2,
+        "mutations": 1
+      },
+      "article_headings": [],
+      "page_errors": [],
+      "unexpected_intercepted_api": []
+    },
+    {
+      "scenario": "cross_tab_disable",
+      "passed": true,
+      "fixture_only": true,
+      "state": {
+        "disabled": true,
+        "updated": false,
+        "feed_first": 4,
+        "feed_older": 1,
+        "status": 4,
+        "mutations": 0
+      },
+      "article_headings": [],
+      "page_errors": [],
+      "unexpected_intercepted_api": []
+    },
+    {
+      "scenario": "loaded_second_page_correction_withdrawal",
+      "passed": true,
+      "fixture_only": true,
+      "state": {
+        "disabled": false,
+        "updated": true,
+        "feed_first": 3,
+        "feed_older": 2,
+        "status": 3,
+        "mutations": 0
+      },
+      "article_headings": [
+        "FIXTURE LICENSED STORY 1",
+        "FIXTURE CORRECTED STORY 2"
+      ],
+      "page_errors": [],
+      "unexpected_intercepted_api": []
+    },
+    {
+      "scenario": "later_page_failure",
+      "passed": true,
+      "fixture_only": true,
+      "state": {
+        "disabled": false,
+        "updated": true,
+        "feed_first": 3,
+        "feed_older": 2,
+        "status": 3,
+        "mutations": 0
+      },
+      "article_headings": [
+        "FIXTURE CORRECTED STORY 1"
+      ],
+      "page_errors": [],
+      "unexpected_intercepted_api": []
+    }
+  ]
+}

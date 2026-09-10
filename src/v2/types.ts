@@ -8,6 +8,8 @@ export type SourceKind = "official" | "wire" | "aggregator" | "archive";
 export interface ArticleRights {
   bodyAllowed: boolean;
   imageAllowed: boolean;
+  /** Article-specific visual caption/credit, recorded only with image permission. */
+  imageAttribution?: string;
   attribution: string;
   licenseStatus: "public_source" | "licensed" | "summary_only" | "unknown";
 }
@@ -16,6 +18,10 @@ export interface NewsArticle {
   id: string;
   headline: string;
   summary: string | null;
+  /** Literal excerpt from permitted source text; never an inferred summary. */
+  previewText?: string | null;
+  /** Estimated from the complete, permitted stored body, when available. */
+  readingMinutes?: number | null;
   body: string | null;
   bodyFormat: "text" | null;
   contentMode: ContentMode;

@@ -1,0 +1,573 @@
+{
+  "items": [
+    {
+      "provider": "apify",
+      "providerDisplayName": "Apify",
+      "providerDisplayDescription": "Web scraping and automation platform.",
+      "endpoint": "/data_xplorer/google-news-scraper-fast",
+      "displayName": "Search Google News",
+      "displayDescription": "Scrape real-time Google News articles by keyword, topic, or section across 50+ markets.",
+      "price": {
+        "type": "PER_RESULT",
+        "amount": {
+          "value": 0.006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "apify",
+        "news-search"
+      ]
+    },
+    {
+      "provider": "akta",
+      "providerDisplayName": "Akta",
+      "providerDisplayDescription": "Akta by Wokelo \u2014 private-markets company intelligence for agents: enriched, entity-resolved news with topic and industry monitoring; 75+ field company enrichment (firmographics, assessment, funding, business model, and more); industry-code resolution; and employee & product reviews across 20M+ companies globally.",
+      "endpoint": "/v1/industry/search",
+      "displayName": "Akta Industry Search",
+      "displayDescription": "Resolve a free-text industry topic into industry codes.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "akta",
+        "company-enrichment"
+      ]
+    },
+    {
+      "provider": "context.dev",
+      "providerDisplayName": "Context.dev",
+      "providerDisplayDescription": "The unified web context API for agents \u2014 scrape any URL to clean Markdown or rendered HTML, crawl a whole site for RAG, search the web with inline page content, extract schema-shaped JSON, enumerate sitemaps and page images, capture screenshots, search company news, enrich people from identity clues, and resolve brand, industry (NAICS/SIC), product, and design-system intelligence for any company \u2014 one key, no crawlers, browsers, or proxies to run.",
+      "endpoint": "/news/search",
+      "displayName": "Search Company News",
+      "displayDescription": "Search live and historical company news by name, domain, ticker, or ISIN.",
+      "price": {
+        "type": "PER_RESULT",
+        "amount": {
+          "value": 9e-05,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "company-news",
+        "context-dev"
+      ]
+    },
+    {
+      "provider": "surf",
+      "providerDisplayName": "Surf",
+      "providerDisplayDescription": "Crypto intelligence for agents \u2014 token and exchange market data, derivatives and liquidations, on-chain and wallet analytics, project and VC fund research, crypto news, prediction markets across Polymarket and Kalshi, Hyperliquid trading analytics, and project signal scores.",
+      "endpoint": "/project/ai-news",
+      "displayName": "Project AI News",
+      "displayDescription": "AI-generated news and signal analysis for a project.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.012,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "company-news",
+        "surf"
+      ]
+    },
+    {
+      "provider": "tinyfish",
+      "providerDisplayName": "TinyFish",
+      "providerDisplayDescription": "Zero-cost access to the live web \u2014 browser-rendered, never-cached web, news, and research-paper search, plus clean Markdown, HTML, or JSON extraction for up to 10 URLs per call with CSS-scoped selection and conditional 304 re-fetch.",
+      "endpoint": "/search",
+      "displayName": "TinyFish Web Search",
+      "displayDescription": "Search the live web, news, or research papers and get ranked results.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "news-search",
+        "tinyfish",
+        "web-search"
+      ]
+    },
+    {
+      "provider": "surf",
+      "providerDisplayName": "Surf",
+      "providerDisplayDescription": "Crypto intelligence for agents \u2014 token and exchange market data, derivatives and liquidations, on-chain and wallet analytics, project and VC fund research, crypto news, prediction markets across Polymarket and Kalshi, Hyperliquid trading analytics, and project signal scores.",
+      "endpoint": "/search/news",
+      "displayName": "News Article Search",
+      "displayDescription": "Searches crypto news articles by keyword.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "news-search",
+        "surf"
+      ]
+    },
+    {
+      "provider": "akta",
+      "providerDisplayName": "Akta",
+      "providerDisplayDescription": "Akta by Wokelo \u2014 private-markets company intelligence for agents: enriched, entity-resolved news with topic and industry monitoring; 75+ field company enrichment (firmographics, assessment, funding, business model, and more); industry-code resolution; and employee & product reviews across 20M+ companies globally.",
+      "endpoint": "/v1/company/enrichment",
+      "displayName": "Akta Company Enrichment",
+      "displayDescription": "Enrich a company with firmographics, business model, headcount, website traffic, funding, financials, founders, acquisitions, and investment data.",
+      "price": {
+        "type": "PER_RESULT",
+        "amount": {
+          "value": 0.125,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "akta",
+        "company-enrichment",
+        "funding-data"
+      ]
+    },
+    {
+      "provider": "surf",
+      "providerDisplayName": "Surf",
+      "providerDisplayDescription": "Crypto intelligence for agents \u2014 token and exchange market data, derivatives and liquidations, on-chain and wallet analytics, project and VC fund research, crypto news, prediction markets across Polymarket and Kalshi, Hyperliquid trading analytics, and project signal scores.",
+      "endpoint": "/news/feed",
+      "displayName": "Crypto News Feed",
+      "displayDescription": "Returns crypto news from major sources.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "news-search",
+        "surf"
+      ]
+    },
+    {
+      "provider": "akta",
+      "providerDisplayName": "Akta",
+      "providerDisplayDescription": "Akta by Wokelo \u2014 private-markets company intelligence for agents: enriched, entity-resolved news with topic and industry monitoring; 75+ field company enrichment (firmographics, assessment, funding, business model, and more); industry-code resolution; and employee & product reviews across 20M+ companies globally.",
+      "endpoint": "/v1/news",
+      "displayName": "Akta News",
+      "displayDescription": "Fetch enriched news articles for a company, open-ended topic, or industry \u2014 funding rounds, M&A, leadership changes, and more.",
+      "price": {
+        "type": "PER_RESULT",
+        "amount": {
+          "value": 0.0005,
+          "currency": "USD"
+        },
+        "flatFee": {
+          "value": 0.005,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "akta",
+        "company-enrichment",
+        "company-news",
+        "funding-data"
+      ]
+    },
+    {
+      "provider": "apollo",
+      "providerDisplayName": "Apollo",
+      "providerDisplayDescription": "Apollo.io \u2014 B2B sales intelligence for agents: search 230M+ people and 30M+ companies, enrich people and organizations (individually or in bulk) with verified emails, firmographics, employment history, funding, and technographics, and surface hiring and news signals.",
+      "endpoint": "/news_articles/search",
+      "displayName": "Apollo News Articles Search",
+      "displayDescription": "Search news articles about companies by organization, category, and date.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.05,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "apollo",
+        "company-enrichment",
+        "company-news"
+      ]
+    },
+    {
+      "provider": "akta",
+      "providerDisplayName": "Akta",
+      "providerDisplayDescription": "Akta by Wokelo \u2014 private-markets company intelligence for agents: enriched, entity-resolved news with topic and industry monitoring; 75+ field company enrichment (firmographics, assessment, funding, business model, and more); industry-code resolution; and employee & product reviews across 20M+ companies globally.",
+      "endpoint": "/v1/company/search",
+      "displayName": "Akta Company Search",
+      "displayDescription": "Locate a company by name or website to get its uuid/website.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "akta",
+        "company-enrichment"
+      ]
+    },
+    {
+      "provider": "akta",
+      "providerDisplayName": "Akta",
+      "providerDisplayDescription": "Akta by Wokelo \u2014 private-markets company intelligence for agents: enriched, entity-resolved news with topic and industry monitoring; 75+ field company enrichment (firmographics, assessment, funding, business model, and more); industry-code resolution; and employee & product reviews across 20M+ companies globally.",
+      "endpoint": "/v1/company/employee-reviews",
+      "displayName": "Akta Employee Reviews",
+      "displayDescription": "Fetch a company's employee review signals and reviews.",
+      "price": {
+        "type": "PER_UNIT",
+        "amount": {
+          "value": 0.075,
+          "currency": "USD"
+        },
+        "per": 50,
+        "unit": "result"
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "akta",
+        "company-reviews"
+      ]
+    },
+    {
+      "provider": "surf",
+      "providerDisplayName": "Surf",
+      "providerDisplayDescription": "Crypto intelligence for agents \u2014 token and exchange market data, derivatives and liquidations, on-chain and wallet analytics, project and VC fund research, crypto news, prediction markets across Polymarket and Kalshi, Hyperliquid trading analytics, and project signal scores.",
+      "endpoint": "/news/detail",
+      "displayName": "News Article Detail",
+      "displayDescription": "Returns the full content of a single news article by its ID (returned as id in feed and search results).",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.006,
+          "currency": "USD"
+        }
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "news-search",
+        "surf"
+      ]
+    },
+    {
+      "provider": "akta",
+      "providerDisplayName": "Akta",
+      "providerDisplayDescription": "Akta by Wokelo \u2014 private-markets company intelligence for agents: enriched, entity-resolved news with topic and industry monitoring; 75+ field company enrichment (firmographics, assessment, funding, business model, and more); industry-code resolution; and employee & product reviews across 20M+ companies globally.",
+      "endpoint": "/v1/company/product-reviews",
+      "displayName": "Akta Product Reviews",
+      "displayDescription": "Fetch a company's product catalog and per-product reviews.",
+      "price": {
+        "type": "PER_UNIT",
+        "amount": {
+          "value": 0.075,
+          "currency": "USD"
+        },
+        "per": 50,
+        "unit": "result"
+      },
+      "tags": [
+        "verified"
+      ],
+      "categories": [
+        "akta",
+        "company-reviews"
+      ]
+    },
+    {
+      "provider": "tikhub",
+      "providerDisplayName": "TikHub",
+      "providerDisplayDescription": "Multi-social-media data via TikHub's unified REST API \u2014 TikTok, Douyin, Weibo, WeChat (Official Accounts + Channels), Xiaohongshu, Instagram, YouTube, Reddit, and more.",
+      "endpoint": "/api/v1/toutiao/app/get_user_info",
+      "displayName": "/api/v1/toutiao/app/get_user_info",
+      "displayDescription": "Get information of specified user",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0015,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "news-search",
+        "tikhub",
+        "toutiao"
+      ]
+    },
+    {
+      "provider": "api.itsgloria.ai",
+      "providerDisplayName": "Gloria",
+      "providerDisplayDescription": "Gloria AI monitors markets and news in real time, filtering noise from substance.",
+      "endpoint": "/news-ticker-summary",
+      "displayName": "News Ticker Summary",
+      "displayDescription": "Get a 24-hour news summary for a specific token/ticker, combining internal news data with web search results. Returns decision-grade bullet points for fund managers and trading agents.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0341,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "gloria",
+        "news-search"
+      ]
+    },
+    {
+      "provider": "tikhub",
+      "providerDisplayName": "TikHub",
+      "providerDisplayDescription": "Multi-social-media data via TikHub's unified REST API \u2014 TikTok, Douyin, Weibo, WeChat (Official Accounts + Channels), Xiaohongshu, Instagram, YouTube, Reddit, and more.",
+      "endpoint": "/api/v1/toutiao/app/get_user_id",
+      "displayName": "/api/v1/toutiao/app/get_user_id",
+      "displayDescription": "Get user_id from user profile",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0015,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "news-search",
+        "tikhub",
+        "toutiao"
+      ]
+    },
+    {
+      "provider": "api.itsgloria.ai",
+      "providerDisplayName": "Gloria",
+      "providerDisplayDescription": "Gloria AI monitors markets and news in real time, filtering noise from substance.",
+      "endpoint": "/pm-scorings",
+      "displayName": "Pm Scorings",
+      "displayDescription": "Latest direction+magnitude scorings for Polymarket events. Each row scores one (headline, market) pair with a direction (up/down/none), confidence (0-1), signed magnitude in points, composite tier (SKIP/WATCH/TRADE), and current market price.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.11,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "gloria",
+        "news-search"
+      ]
+    },
+    {
+      "provider": "tikhub",
+      "providerDisplayName": "TikHub",
+      "providerDisplayDescription": "Multi-social-media data via TikHub's unified REST API \u2014 TikTok, Douyin, Weibo, WeChat (Official Accounts + Channels), Xiaohongshu, Instagram, YouTube, Reddit, and more.",
+      "endpoint": "/api/v1/toutiao/web/get_article_info",
+      "displayName": "/api/v1/toutiao/web/get_article_info",
+      "displayDescription": "Get information of specified article",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0015,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "news-search",
+        "tikhub",
+        "toutiao"
+      ]
+    },
+    {
+      "provider": "tikhub",
+      "providerDisplayName": "TikHub",
+      "providerDisplayDescription": "Multi-social-media data via TikHub's unified REST API \u2014 TikTok, Douyin, Weibo, WeChat (Official Accounts + Channels), Xiaohongshu, Instagram, YouTube, Reddit, and more.",
+      "endpoint": "/api/v1/toutiao/web/get_video_info",
+      "displayName": "/api/v1/toutiao/web/get_video_info",
+      "displayDescription": "Get information of specified video",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0015,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "news-search",
+        "tikhub",
+        "toutiao"
+      ]
+    },
+    {
+      "provider": "api.itsgloria.ai",
+      "providerDisplayName": "Gloria",
+      "providerDisplayDescription": "Gloria AI monitors markets and news in real time, filtering noise from substance.",
+      "endpoint": "/news",
+      "displayName": "News",
+      "displayDescription": "Get the latest news about a covered news topic, delivering the most recent 10 headlines.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.033,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "gloria",
+        "news-search"
+      ]
+    },
+    {
+      "provider": "tikhub",
+      "providerDisplayName": "TikHub",
+      "providerDisplayDescription": "Multi-social-media data via TikHub's unified REST API \u2014 TikTok, Douyin, Weibo, WeChat (Official Accounts + Channels), Xiaohongshu, Instagram, YouTube, Reddit, and more.",
+      "endpoint": "/api/v1/toutiao/app/get_comments",
+      "displayName": "/api/v1/toutiao/app/get_comments",
+      "displayDescription": "Get comments of specified post",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0015,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "news-search",
+        "tikhub",
+        "toutiao"
+      ]
+    },
+    {
+      "provider": "api.itsgloria.ai",
+      "providerDisplayName": "Gloria",
+      "providerDisplayDescription": "Gloria AI monitors markets and news in real time, filtering noise from substance.",
+      "endpoint": "/recaps",
+      "displayName": "Recaps",
+      "displayDescription": "Get a recap of the news or summary of a covered news topic over the past 12-24 hours.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.11,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "gloria",
+        "news-search"
+      ]
+    },
+    {
+      "provider": "tikhub",
+      "providerDisplayName": "TikHub",
+      "providerDisplayDescription": "Multi-social-media data via TikHub's unified REST API \u2014 TikTok, Douyin, Weibo, WeChat (Official Accounts + Channels), Xiaohongshu, Instagram, YouTube, Reddit, and more.",
+      "endpoint": "/api/v1/toutiao/app/get_video_info",
+      "displayName": "/api/v1/toutiao/app/get_video_info",
+      "displayDescription": "Get information of specified video",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0015,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "news-search",
+        "tikhub",
+        "toutiao"
+      ]
+    },
+    {
+      "provider": "api.itsgloria.ai",
+      "providerDisplayName": "Gloria",
+      "providerDisplayDescription": "Gloria AI monitors markets and news in real time, filtering noise from substance.",
+      "endpoint": "/news-by-keyword",
+      "displayName": "News By Keyword",
+      "displayDescription": "Get the news about a topic by keyword, delivering the most recent 20 headlines.",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.055,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "gloria",
+        "news-search"
+      ]
+    },
+    {
+      "provider": "tikhub",
+      "providerDisplayName": "TikHub",
+      "providerDisplayDescription": "Multi-social-media data via TikHub's unified REST API \u2014 TikTok, Douyin, Weibo, WeChat (Official Accounts + Channels), Xiaohongshu, Instagram, YouTube, Reddit, and more.",
+      "endpoint": "/api/v1/toutiao/app/get_article_info",
+      "displayName": "/api/v1/toutiao/app/get_article_info",
+      "displayDescription": "Get information of specified article",
+      "price": {
+        "type": "PER_CALL",
+        "amount": {
+          "value": 0.0015,
+          "currency": "USD"
+        }
+      },
+      "tags": [],
+      "categories": [
+        "news-search",
+        "tikhub",
+        "toutiao"
+      ]
+    }
+  ],
+  "total": 26
+}

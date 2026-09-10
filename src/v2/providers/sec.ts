@@ -94,8 +94,12 @@ export async function fetchSec(request: ProviderFetchRequest): Promise<ProviderB
       }
       body = officialBody("sec", await sourceText("sec", filing.url, request.signal, { purpose: "body" }));
     } catch (error) {
-      if (!(error instanceof ProviderFetchError) || error.code === "aborted" || error.code === "rate_limited") throw error;
-      notices.push(`SEC document unavailable (${error.code}); stored only the observed filing metadata. No access block bypassed.`);
+      if (!(error instanceof ProviderFetchError) || error.code === "aborted" || error.code === "rate_limited" || error.code === "auth") throw error;
+      // Failed retrieval is not a source revision. In particular, emitting a
+      // null body would overwrite a previously imported readable disclosure.
+      // The next bounded SEC snapshot can retry transient failures normally.
+      notices.push(`SEC document unavailable (${error.code}); no article update emitted, preserving any previously imported text. No access block bypassed.`);
+      continue;
     }
     items.push({ sourceId: `${filing.cik}:${filing.accession}`, action: "upsert", headline: filing.title, url: filing.url,
       summary: `Issuer disclosure filed as ${filing.form}; accession ${filing.accession}.`, body,
