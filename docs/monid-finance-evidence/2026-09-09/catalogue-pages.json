@@ -1,0 +1,1571 @@
+[
+  {
+    "url": "https://api.monid.ai/public/v1/endpoints?category=finance&limit=24",
+    "status": 200,
+    "data": {
+      "items": [
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_earnings",
+          "displayName": "Get earnings results",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "yahoo-finance",
+          "providerDisplayName": "Yahoo Finance",
+          "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+          "endpoint": "/get_historical_data",
+          "displayName": "Get historical prices",
+          "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.05,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "yahoo-finance"
+          ]
+        },
+        {
+          "provider": "yahoo-finance",
+          "providerDisplayName": "Yahoo Finance",
+          "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+          "endpoint": "/get_company_profile",
+          "displayName": "Get company profile",
+          "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.05,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "yahoo-finance"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_screener",
+          "displayName": "Run stock screener",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "defillama",
+          "providerDisplayName": "DefiLlama",
+          "providerDisplayDescription": "DeFi and crypto analytics \u2014 TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+          "endpoint": "/equities/v1/statements",
+          "displayName": "/equities/v1/statements",
+          "displayDescription": "Get financial statements for a company",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.0006,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "defillama",
+            "equities"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_financial_statements",
+          "displayName": "Get financial statements",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.02,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_earnings_calendar",
+          "displayName": "Get earnings calendar",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_sec_filings",
+          "displayName": "Get SEC filings",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_institutional_ownership",
+          "displayName": "Get institutional ownership",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_mutual_fund_quote",
+          "displayName": "Get mutual fund quote",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "finviz",
+          "providerDisplayName": "Finviz",
+          "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+          "endpoint": "/get_screener_results",
+          "displayName": "Run screener",
+          "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "finviz",
+            "insider-trading"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_dividend_history",
+          "displayName": "Get dividend history",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "defillama",
+          "providerDisplayName": "DefiLlama",
+          "providerDisplayDescription": "DeFi and crypto analytics \u2014 TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+          "endpoint": "/equities/v1/filings",
+          "displayName": "/equities/v1/filings",
+          "displayDescription": "Get filings for a company",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.0006,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "defillama",
+            "equities"
+          ]
+        },
+        {
+          "provider": "finviz",
+          "providerDisplayName": "Finviz",
+          "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+          "endpoint": "/get_insider_trading",
+          "displayName": "Get insider trading",
+          "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "finviz",
+            "insider-trading"
+          ]
+        },
+        {
+          "provider": "finviz",
+          "providerDisplayName": "Finviz",
+          "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+          "endpoint": "/get_ticker_sectors_with_performance",
+          "displayName": "get_ticker_sectors_with_performance",
+          "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "finviz",
+            "insider-trading"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_quote",
+          "displayName": "Get stock quote",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/search",
+          "displayName": "Search filings",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_analyst_ratings",
+          "displayName": "Get analyst ratings",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.02,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_insider_trades",
+          "displayName": "Get insider trades",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/search_symbols",
+          "displayName": "Search ticker symbols",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/search_stocks",
+          "displayName": "Search stocks",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_13d_filings",
+          "displayName": "Get 13D filings",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "stockanalysis",
+          "providerDisplayName": "StockAnalysis",
+          "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+          "endpoint": "/get_stock_list",
+          "displayName": "List stocks",
+          "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "stockanalysis"
+          ]
+        },
+        {
+          "provider": "yahoo-finance",
+          "providerDisplayName": "Yahoo Finance",
+          "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+          "endpoint": "/get_stock_news",
+          "displayName": "Get market news",
+          "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.05,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "yahoo-finance"
+          ]
+        }
+      ],
+      "cursor": "WzAsIjU0ZmZmMDIwYzljYTUzZDlmODVkMTUyYTRmZDJhZmU3Il0=",
+      "total": 71
+    }
+  },
+  {
+    "url": "https://api.monid.ai/public/v1/endpoints?category=finance&limit=24&cursor=WzAsIjU0ZmZmMDIwYzljYTUzZDlmODVkMTUyYTRmZDJhZmU3Il0%3D",
+    "status": 200,
+    "data": {
+      "items": [
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_market_indices",
+          "displayName": "Get market indices",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_options_chain",
+          "displayName": "Get options chain",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_historical_quotes",
+          "displayName": "Get historical quotes",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "stockanalysis",
+          "providerDisplayName": "StockAnalysis",
+          "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+          "endpoint": "/search_stocks",
+          "displayName": "Search stocks",
+          "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "stockanalysis"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_insider_sales",
+          "displayName": "Get insider sales",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_stock_overview",
+          "displayName": "Get stock overview",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "stockanalysis",
+          "providerDisplayName": "StockAnalysis",
+          "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+          "endpoint": "/get_stock_financials_income",
+          "displayName": "Get income statement",
+          "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "stockanalysis"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_earnings",
+          "displayName": "Get earnings",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "defillama",
+          "providerDisplayName": "DefiLlama",
+          "providerDisplayDescription": "DeFi and crypto analytics \u2014 TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+          "endpoint": "/equities/v1/summary",
+          "displayName": "/equities/v1/summary",
+          "displayDescription": "Get live market summary for a company",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.0006,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "defillama",
+            "equities"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_competitors",
+          "displayName": "Get competitors",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_institutional_holdings",
+          "displayName": "Get institutional holdings",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_marketrank",
+          "displayName": "Get MarketRank score",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "stockanalysis",
+          "providerDisplayName": "StockAnalysis",
+          "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+          "endpoint": "/get_market_movers_premarket",
+          "displayName": "Get pre-market movers",
+          "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "stockanalysis"
+          ]
+        },
+        {
+          "provider": "defillama",
+          "providerDisplayName": "DefiLlama",
+          "providerDisplayDescription": "DeFi and crypto analytics \u2014 TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+          "endpoint": "/equities/v1/price-history",
+          "displayName": "/equities/v1/price-history",
+          "displayDescription": "Get historical price data for a company",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.0006,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "defillama",
+            "equities"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_stock_headlines",
+          "displayName": "Get stock headlines",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_significant_insider_buys",
+          "displayName": "Get significant insider buys",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_market_movers",
+          "displayName": "Get market movers",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_etf_quote",
+          "displayName": "Get ETF quote",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_cryptocurrency_quote",
+          "displayName": "Get cryptocurrency quote",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "finviz",
+          "providerDisplayName": "Finviz",
+          "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+          "endpoint": "/get_stock_news_sentiment",
+          "displayName": "Get news sentiment",
+          "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "finviz",
+            "insider-trading"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_news",
+          "displayName": "Get stock news",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "stockanalysis",
+          "providerDisplayName": "StockAnalysis",
+          "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+          "endpoint": "/get_stock_statistics",
+          "displayName": "Get stock statistics",
+          "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "stockanalysis"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_institution_holders",
+          "displayName": "Get institutional holders",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "stockanalysis",
+          "providerDisplayName": "StockAnalysis",
+          "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+          "endpoint": "/get_ipo_calendar",
+          "displayName": "Get IPO calendar",
+          "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "stockanalysis"
+          ]
+        }
+      ],
+      "cursor": "WzAsImFkNzNkMjg3Y2Y3MDRjNjM1OGMxOThhZjBiYzkzMjYxIl0=",
+      "total": 71
+    }
+  },
+  {
+    "url": "https://api.monid.ai/public/v1/endpoints?category=finance&limit=24&cursor=WzAsImFkNzNkMjg3Y2Y3MDRjNjM1OGMxOThhZjBiYzkzMjYxIl0%3D",
+    "status": 200,
+    "data": {
+      "items": [
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_insider_buy_sell_ratios",
+          "displayName": "Get insider buy/sell ratios",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_financials",
+          "displayName": "Get company financials",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "defillama",
+          "providerDisplayName": "DefiLlama",
+          "providerDisplayDescription": "DeFi and crypto analytics \u2014 TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+          "endpoint": "/equities/v1/companies-list",
+          "displayName": "/equities/v1/companies-list",
+          "displayDescription": "Get list of all tracked public companies",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.0006,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "defillama",
+            "equities"
+          ]
+        },
+        {
+          "provider": "defillama",
+          "providerDisplayName": "DefiLlama",
+          "providerDisplayDescription": "DeFi and crypto analytics \u2014 TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+          "endpoint": "/equities/v1/ohlcv",
+          "displayName": "/equities/v1/ohlcv",
+          "displayDescription": "Get OHLCV candle data for a company",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.0006,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "defillama",
+            "equities"
+          ]
+        },
+        {
+          "provider": "finviz",
+          "providerDisplayName": "Finviz",
+          "providerDisplayDescription": "Insider trading, custom stock screening, news sentiment and market movers from Finviz.",
+          "endpoint": "/get_market_movers",
+          "displayName": "Get market movers",
+          "displayDescription": "Monitor insider trading activity, screen stocks based on custom criteria, and analyze market sentiment from financial news to make informed investment decisions. Access real-time data on market movers, tabular financial information, and comprehensive market intelligence all in one place.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "finviz",
+            "insider-trading"
+          ]
+        },
+        {
+          "provider": "stockanalysis",
+          "providerDisplayName": "StockAnalysis",
+          "providerDisplayDescription": "Stock overviews, statistics, IPO calendar and pre-market movers from StockAnalysis.",
+          "endpoint": "/get_stock_overview",
+          "displayName": "Get stock overview",
+          "displayDescription": "Access comprehensive stock market data including real-time financials, income statements, statistics, and IPO calendars to research individual stocks and identify market movers. Search stocks, view detailed overviews, and monitor premarket activity all in structured, easy-to-use format.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "stockanalysis"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_stock_options",
+          "displayName": "Get insider stock options",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_short_interest",
+          "displayName": "Get short interest",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_index_detail",
+          "displayName": "Get index detail",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_short_interest",
+          "displayName": "Get short interest",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_stock_option_chain",
+          "displayName": "Get option chain",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "yahoo-finance",
+          "providerDisplayName": "Yahoo Finance",
+          "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+          "endpoint": "/get_quote",
+          "displayName": "Get quote",
+          "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.05,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "yahoo-finance"
+          ]
+        },
+        {
+          "provider": "nasdaq",
+          "providerDisplayName": "Nasdaq",
+          "providerDisplayDescription": "Stock, ETF and fund quotes, company financials, earnings, options chains, screeners and market movers from Nasdaq.",
+          "endpoint": "/get_retail_trading_activity",
+          "displayName": "Get retail trading activity",
+          "displayDescription": "Track real-time and historical stock prices, ETF and mutual fund quotes, cryptocurrency data, and comprehensive company financials including earnings, dividends, and SEC filings all from one source. Research market trends with institutional holdings, short interest data, retail trading activity, and market movers to make informed investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "nasdaq"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_insider_buys",
+          "displayName": "Get insider buys",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_company_insider_trading",
+          "displayName": "Get company insider trading",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_hedge_fund_portfolio",
+          "displayName": "Get hedge fund portfolio",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "yahoo-finance",
+          "providerDisplayName": "Yahoo Finance",
+          "providerDisplayDescription": "Live quotes, OHLCV history, company profiles and market news from Yahoo Finance.",
+          "endpoint": "/search_tickers",
+          "displayName": "Search tickers",
+          "displayDescription": "Access live stock quotes, historical price data, company profiles, and financial news for any ticker symbol. Supports real-time market data, OHLCV history across configurable intervals, detailed company fundamentals, and news aggregation across global exchanges.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.05,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "yahoo-finance"
+          ]
+        },
+        {
+          "provider": "defillama",
+          "providerDisplayName": "DefiLlama",
+          "providerDisplayDescription": "DeFi and crypto analytics \u2014 TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+          "endpoint": "/equities/v1/onchain",
+          "displayName": "/equities/v1/onchain",
+          "displayDescription": "Get on-chain tradeable markets for a company",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.0006,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "defillama",
+            "equities"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_profitability_metrics",
+          "displayName": "Get profitability metrics",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "secform4",
+          "providerDisplayName": "SECForm4",
+          "providerDisplayDescription": "Insider buys and sales, 13D/13G filings, institutional holders and hedge-fund portfolios parsed from SEC filings.",
+          "endpoint": "/get_13g_filings",
+          "displayName": "Get 13G filings",
+          "displayDescription": "Track insider buying and selling activity, monitor institutional holdings, and analyze SEC filings to identify significant trades and market sentiment. Search company insider transactions, review 13D/13G filings, and access hedge fund portfolios to inform your investment decisions.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "insider-trading",
+            "secform4"
+          ]
+        },
+        {
+          "provider": "marketbeat",
+          "providerDisplayName": "MarketBeat",
+          "providerDisplayDescription": "Analyst ratings, price forecasts, earnings, insider trades and institutional ownership from MarketBeat.",
+          "endpoint": "/get_stock_forecast",
+          "displayName": "Get price forecast",
+          "displayDescription": "Track comprehensive stock market data including real-time overviews, analyst ratings, earnings reports, insider trades, and institutional ownership across thousands of companies. Search stocks, analyze financial statements and profitability metrics, monitor short interest, explore options chains, and stay updated with market headlines and competitor analysis.",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.01,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "equities",
+            "marketbeat"
+          ]
+        },
+        {
+          "provider": "defillama",
+          "providerDisplayName": "DefiLlama",
+          "providerDisplayDescription": "DeFi and crypto analytics \u2014 TVL by protocol and chain, token prices, stablecoins, yields, fees/revenue, DEX and perp volumes, token unlocks, raises, hacks, treasuries, bridges, RWA, ETFs, and equities across the DefiLlama Pro API.",
+          "endpoint": "/equities/v1/dimensions",
+          "displayName": "/equities/v1/dimensions",
+          "displayDescription": "Get financial dimensions for a company",
+          "price": {
+            "type": "PER_CALL",
+            "amount": {
+              "value": 0.0006,
+              "currency": "USD"
+            }
+          },
+          "tags": [
+            "verified"
+          ],
+          "categories": [
+            "defillama",
+            "equities"
+          ]
+        }
+      ],
+      "total": 71
+    }
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "checked": "2026-09-09",
+  "currentArticles": 26,
+  "embeddedArticlePhotos": 0,
+  "embeddedArticleCharts": 2,
+  "verifiedEventPhotos": 1,
+  "textOnlyArticles": 23,
+  "originalCause": "Per-publisher archive-building fallback plus imageUrl always null in official adapters",
+  "fixed": [
+    "Removed generic source-photo fallback",
+    "Imported matching ECB figures with explicit source credits",
+    "Backfilled existing source checkpoints once",
+    "Added exactly matched20August concert photo with dated caption",
+    "Collapsed missing or failed image panels",
+    "Preserved full image frame and white chart background"
+  ],
+  "verification": {
+    "providerAndImageTests": 57,
+    "serviceTypecheck": "pass",
+    "frontendTypecheck": "pass",
+    "changedFrontendLint": "pass",
+    "browserDesktopMobileDarkReader": "pass",
+    "imageFailureSimulation": "pass"
+  },
+  "noNewProviderConnections": true
+}

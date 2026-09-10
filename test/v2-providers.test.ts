@@ -62,6 +62,24 @@ describe("V2 source boundaries", () => {
 });
 
 describe("V2 official content", () => {
+  it("upgrades existing text-only checkpoints once and retains a matching visual with source attribution", async () => {
+    const figure = '<div class="figure"><p class="title">Total assets</p><img src="pr260821/ecb.pr260821.en_img0.png"><figcaption><p>Source: ECB.</p></figcaption></div>';
+    const withImage = ecbBody.replace('</div></main>', `${figure}</div></main>`);
+    const xml = feed([{ url: ecbUrl }]);
+    const fetch = vi.fn().mockResolvedValueOnce(response(xml)).mockResolvedValueOnce(response(ecbBody))
+      .mockResolvedValueOnce(response(xml)).mockResolvedValueOnce(response(withImage)).mockResolvedValueOnce(response(xml));
+    vi.stubGlobal("fetch", fetch);
+    const first = await fetchProviderBatch(request("ecb"));
+    const old = JSON.parse(first.nextCheckpoint!);
+    delete old.seen[ecbUrl].imageChecked;
+    const upgraded = await fetchProviderBatch(request("ecb", { checkpoint: JSON.stringify(old) }));
+    expect(upgraded.items[0]?.imageUrl).toBe('https://www.ecb.europa.eu/press/pr/date/2026/html/pr260821/ecb.pr260821.en_img0.png');
+    expect(upgraded.items[0]?.rights).toMatchObject({ imageAllowed: true, imageAttribution: 'Total assets — Source: ECB.' });
+    expect(upgraded.items[0]?.body).toContain(body);
+    const unchanged = await fetchProviderBatch(request("ecb", { checkpoint: upgraded.nextCheckpoint }));
+    expect(unchanged.items).toHaveLength(0);
+    expect(fetch).toHaveBeenCalledTimes(5);
+  });
   it("returns actual body text with source dates and resumes a fixed pending feed without refetching it", async () => {
     const fetch = vi.fn().mockResolvedValueOnce(response(feed([{ url: fedUrl }, { url: fedUrl.replace("01a", "02a") }])))
       .mockResolvedValueOnce(response(fedBody)).mockResolvedValueOnce(response(fedBody));
@@ -111,6 +129,39 @@ describe("V2 official content", () => {
     expect(rescan.complete).toBe(true); expect(rescan.items).toHaveLength(0);
     expect(rescan.notices?.join(" ")).toContain("previous full article was preserved");
   });
+  it("retries a transient body failure on the next feed check and preserves stored text even when metadata changed", async () => {
+    const xml = feed([{ url: fedUrl }]);
+    const changed = feed([{ url: fedUrl, title: "Updated official release" }]);
+    const fetch = vi.fn().mockResolvedValueOnce(response(xml)).mockResolvedValueOnce(response(fedBody))
+      .mockResolvedValueOnce(response(changed)).mockResolvedValueOnce(response("Unavailable", 503))
+      .mockResolvedValueOnce(response(changed)).mockResolvedValueOnce(response(fedBody));
+    vi.stubGlobal("fetch", fetch);
+    const first = await fetchProviderBatch(request("fed"));
+    const failed = await fetchProviderBatch(request("fed", { checkpoint: first.nextCheckpoint }));
+    expect(failed.items).toEqual([]);
+    const recovered = await fetchProviderBatch(request("fed", { checkpoint: failed.nextCheckpoint }));
+    expect(recovered.items[0]?.headline).toBe("Updated official release");
+    expect(recovered.items[0]?.body).toBe(`${body}\n\nSecond source paragraph.`);
+    expect(fetch).toHaveBeenCalledTimes(6);
+  });
+  it("bounds transient body retries to three subsequent checks before the daily rescan", async () => {
+    const xml = feed([{ url: fedUrl }]);
+    const fetch = vi.fn().mockImplementation(async (url: URL) => response(url.pathname.startsWith("/feeds/") ? xml : "Unavailable", url.pathname.startsWith("/feeds/") ? 200 : 503));
+    vi.stubGlobal("fetch", fetch);
+    let cursor: string | null = null;
+    for (let index = 0; index < 5; index++) cursor = (await fetchProviderBatch(request("fed", { checkpoint: cursor }))).nextCheckpoint;
+    expect(fetch).toHaveBeenCalledTimes(9); // Five feed checks; initial body attempt and three retries.
+  });
+  it("does not automatically retry an access-denied release body, including on the daily rescan", async () => {
+    const xml = feed([{ url: fedUrl }]);
+    const fetch = vi.fn().mockResolvedValueOnce(response(xml)).mockResolvedValueOnce(response("Denied", 403))
+      .mockResolvedValueOnce(response(xml));
+    vi.stubGlobal("fetch", fetch);
+    const first = await fetchProviderBatch(request("fed"));
+    const old = JSON.parse(first.nextCheckpoint!); old.lastFullScanAt = "2020-01-01T00:00:00.000Z";
+    const daily = await fetchProviderBatch(request("fed", { checkpoint: JSON.stringify(old) }));
+    expect(daily.items).toEqual([]); expect(fetch).toHaveBeenCalledTimes(3);
+  });
   it("does not represent a blocked release body as full text", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValueOnce(response(feed([{ url: fedUrl }]))).mockResolvedValueOnce(response("Denied", 403)));
     const result = await fetchProviderBatch(request("fed"));
@@ -134,6 +185,21 @@ describe("V2 official content", () => {
     expect(result.items[0]?.companies?.[0]).toMatchObject({ ticker: "EXM", exchange: "Nasdaq", externalId: "cik:0000320193" });
     expect(result.items[0]?.body).toBe(body);
     expect(String(fetch.mock.calls[1]?.[0])).toBe("https://www.sec.gov/Archives/edgar/data/320193/000032019326000001/release.htm");
+  });
+  it("never emits a null-body SEC revision after a temporary document failure", async () => {
+    const data = { name: "Example Issuer", tickers: ["EXM"], exchanges: ["Nasdaq"], filings: { recent: {
+      accessionNumber: ["0000320193-26-000001"], form: ["8-K"], acceptanceDateTime: ["2026-09-01T12:00:00Z"], primaryDocument: ["release.htm"],
+    } } };
+    const fetch = vi.fn().mockResolvedValueOnce(response(data)).mockResolvedValueOnce(response(`<body><p>${body}</p></body>`))
+      .mockResolvedValueOnce(response(data)).mockResolvedValueOnce(response("Unavailable", 503))
+      .mockResolvedValueOnce(response(data)).mockResolvedValueOnce(response(`<body><p>${body}</p></body>`));
+    vi.stubGlobal("fetch", fetch);
+    const first = await fetchProviderBatch(request("sec", { credentials: { ciks: "320193" } }));
+    const failed = await fetchProviderBatch(request("sec", { credentials: { ciks: "320193" }, checkpoint: first.nextCheckpoint }));
+    expect(first.items[0]?.body).toBe(body); expect(failed.items).toEqual([]);
+    expect(failed.notices?.join(" ")).toContain("preserving any previously imported text");
+    const recovered = await fetchProviderBatch(request("sec", { credentials: { ciks: "320193" }, checkpoint: failed.nextCheckpoint }));
+    expect(recovered.items[0]?.sourceId).toBe(first.items[0]?.sourceId); expect(recovered.items[0]?.body).toBe(body);
   });
 });
 

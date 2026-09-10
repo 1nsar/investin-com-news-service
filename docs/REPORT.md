@@ -1,6 +1,6 @@
 # Company news component — project report
 
-> **9 September 2026 update:** this is the preserved V1 report. The current architecture audit, official-source/news-provider rights review and implemented Global News 2 are in [NEWS-ARCHITECTURE-V2.md](NEWS-ARCHITECTURE-V2.md), with a [Russian version](NEWS-ARCHITECTURE-V2.ru.md). Stored V1 coverage does not establish present freshness or commercial display permission.
+> **9 September 2026 working-tree update:** the body below is the preserved V1 report. The current architecture audit, source rights and Global News 2 implementation are in [NEWS-ARCHITECTURE-V2.md](NEWS-ARCHITECTURE-V2.md), with a [Russian version](NEWS-ARCHITECTURE-V2.ru.md). The original agent review identified nine findings; **seven remain open (two P1, five P2), and R2/R7 are now fixed and verified**. R2 passed four intercepted browser fixtures; R7 passed the SEC temporary-failure/recovery fixture. Later uncommitted changes add literal source-text previews and reading-time fields, hide unreadable live-feed items without deleting records, preserve stored official text during transient failures, and bound body retries. A read-only check confirms 26 available Fed/ECB releases, all with permitted full text. The original review evidence is preserved separately from resolution notes. Stored V1 coverage does not establish present freshness or commercial display permission.
 
 A standalone backend that keeps a news feed for every company in a
 **1,515-company catalogue**. Its own process, its own database, no UI.

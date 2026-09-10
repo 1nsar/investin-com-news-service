@@ -1,0 +1,38 @@
+{
+  "checked": "2026-09-09",
+  "pdf_pages": 10,
+  "unique_inventory_endpoints": 96,
+  "sources": 52,
+  "word_images": 1,
+  "checks": [
+    "All references resolved",
+    "PDF expected content and currency formatting",
+    "CSV96 unique endpoint identities",
+    "Workbook70 finance plus26 news rows",
+    "Workbook costs arithmetically verified during build",
+    "Word native footnotes and image present, no unintended math",
+    "PDF build privacy gate passed"
+  ],
+  "artifacts": {
+    "MONID-INTEGRATION-ASSESSMENT.md": {
+      "bytes": 44293,
+      "sha256": "3bc6a92f99878e49f0189cea3347431979f260ebc9e46fb0353648964ccaf655"
+    },
+    "Monid-Integration-Assessment.pdf": {
+      "bytes": 485611,
+      "sha256": "5e73e9956daf9338830e51fa8fc12d9a75645e5647ae38f6f02e4c7489e132be"
+    },
+    "Monid-Integration-Assessment.docx": {
+      "bytes": 224253,
+      "sha256": "5090c5135f800603f1214c31165cdd2275db48dff8c5aba0b10bd7199c553062"
+    },
+    "Monid-Integration-Assessment.xlsx": {
+      "bytes": 30261,
+      "sha256": "29faf893518553bf3a71e474ec8bca6a688518328ef14f2757871467b126adf5"
+    },
+    "monid-endpoint-inventory.csv": {
+      "bytes": 29386,
+      "sha256": "396b8a741db7abaa8e571ae0e89cdb78e6f9312ffd352d05753062a3509f7180"
+    }
+  }
+}
