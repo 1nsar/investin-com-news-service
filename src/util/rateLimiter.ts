@@ -35,11 +35,12 @@ export class RateLimiter {
     this.lastRefill = now;
   }
 
-  async acquire(): Promise<void> {
+  async acquire(signal?: AbortSignal): Promise<void> {
     for (;;) {
+      signal?.throwIfAborted();
       const now = Date.now();
       if (this.pausedUntil > now) {
-        await sleep(Math.min(this.pausedUntil - now, 5_000));
+        await sleep(Math.min(this.pausedUntil - now, 5_000), signal);
         continue;
       }
       this.refill();
@@ -48,7 +49,7 @@ export class RateLimiter {
         return;
       }
       // Wait exactly as long as one token needs, plus a little slack.
-      await sleep(Math.ceil((1 - this.tokens) * (60_000 / this.perMinute)) + 25);
+      await sleep(Math.ceil((1 - this.tokens) * (60_000 / this.perMinute)) + 25, signal);
     }
   }
 

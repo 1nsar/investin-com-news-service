@@ -110,6 +110,7 @@ export class FinnhubProvider implements NewsProvider {
 
     try {
       const payload = await requestJson<FinnhubArticle[]>(url, {
+        signal: request.signal,
         limiter: this.limiter,
         label: `finnhub/company-news/${symbol}`,
         timeoutMs: 15_000,

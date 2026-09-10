@@ -53,9 +53,10 @@ export function canonicalizeUrl(rawUrl: string): string {
 export function normalizeHeadline(headline: string): string {
   return headline
     .normalize("NFKD")
+    .replace(/\p{M}+/gu, "")
     .toLowerCase()
     .replace(/[‘’“”]/g, "'")
-    .replace(/[^a-z0-9']+/g, " ")
+    .replace(/[^\p{L}\p{N}']+/gu, " ")
     .trim()
     .replace(/\s+/g, " ");
 }

@@ -1,0 +1,147 @@
+{
+  "nasdaq": {
+    "code": "P1",
+    "name": "Nasdaq",
+    "count": 20,
+    "coverage": "No exact Monid company count verified. Related official feeds cover US exchange-listed securities; each news, fund, options and filing tool can cover a different subset.",
+    "coverageShort": "Unknown Monid count; US exchange-listed source scope, tool dependent.",
+    "source": "Nasdaq is an official exchange operator. Its website also republishes third-party company data and journalism. These Monid listings are not verified as licensed Nasdaq feeds.",
+    "timing": "Website quote bar: three-second refresh; indices at least one minute delayed. Short interest is twice-monthly. Neither establishes Monid delivery latency. The separate official Retail Trading Activity Tracker is daily with a one-day reporting lag.",
+    "quality": "Strong potential traceability for exchange data and original filings; mixed confidence for estimates, third-party news and derived fields. No measured connector accuracy.",
+    "rights": "Nasdaq website terms restrict automated capture and commercial copying, storage and derivative products without consent. A separate licensed feed/distributor agreement is the relevant route; no Monid pass-through grant established.",
+    "audience": "Retail investors and analysts are the apparent audience. Trading 212 and Microsoft Excel are named users of the separate direct Nasdaq Last Sale product, not these Monid tools.",
+    "decision": "Conditional research candidate; use an authorised Nasdaq route for critical prices.",
+    "refs": [
+      "nls",
+      "nasdaqquote",
+      "nasdaqcalendar",
+      "nasdaqfin",
+      "short",
+      "retail",
+      "nasdaqterms",
+      "nasdaqhold"
+    ]
+  },
+  "yahoo-finance": {
+    "code": "P2",
+    "name": "Yahoo Finance",
+    "count": 5,
+    "coverage": "Global exchanges are listed in Yahoo help, but no exact company or news count was verified for Monid. Quote, profile and headline coverage are different questions.",
+    "coverageShort": "Unknown Monid count; global exchange support at source.",
+    "source": "Publisher and secondary financial-data aggregator. Not the original issuer of every article or price record; Monid distribution authority unverified.",
+    "timing": "Exchange dependent: the official table includes real-time Nasdaq, 15-minute OPRA/OTC, 20-minute ASX and 30-minute Shanghai/Shenzhen. Monid adds unmeasured collection/cache lag.",
+    "quality": "Useful international research scope, but adjustments, stale profiles, article duplicates and ticker matching need measurement. No accuracy percentage established.",
+    "rights": "Yahoo Finance help prohibits redistribution of its displayed/provided information. No separate Monid grant was verified. Article and photo rights require their own entitlement.",
+    "audience": "Suitable for individual investors and analysts (product assessment); no named production customer verified for these Monid endpoints.",
+    "decision": "On-demand alternative only after rights resolution; comparatively costly for frequent polling.",
+    "refs": [
+      "yahoo",
+      "yahooterms"
+    ]
+  },
+  "finviz": {
+    "code": "P3",
+    "name": "Finviz",
+    "count": 5,
+    "coverage": "The stock-only website screener showed 5,613 ticker rows; the unrestricted version 11,614 including funds. These dynamic observations are not unique companies, insider/news coverage or Monid-supported totals. Source FAQ lists Nasdaq, NYSE and AMEX.",
+    "coverageShort": "Website: 5,613 stock ticker rows observed; exact Monid/per-tool count unknown.",
+    "source": "Secondary screener/aggregator. Direct Elite API/export access exists, but the Monid connector is not verified as that authorised product.",
+    "timing": "Free website stock quotes are one minute delayed; Elite quotes can be real time; fundamentals refresh hourly. News/insider latency and Monid refresh remain unknown.",
+    "quality": "Useful screening context, subject to universe/result caps. Sentiment is an interpretation, with no validated model or factual-accuracy score established.",
+    "rights": "Direct API policy is personal-use and prohibits third-party redistribution/resale. Its one-request-per-five-seconds limit is not a verified Monid limit. A personal Elite subscription is not a licence for our app users.",
+    "audience": "Finviz addresses beginners and professional traders. No named production customer verified for these Monid tools.",
+    "decision": "Potential screener feature, secondary priority; resolve licence and pagination first.",
+    "refs": [
+      "finvizfaq",
+      "finvizcount",
+      "finvizall",
+      "finvizapi",
+      "finvizplans"
+    ]
+  },
+  "marketbeat": {
+    "code": "P4",
+    "name": "MarketBeat",
+    "count": 14,
+    "coverage": "Website advertises 20,000 public-company profiles, with US, Canadian and UK sections. No exact Monid count or assurance that all 14 tools cover all these companies was verified.",
+    "coverageShort": "Website claim: 20,000 company profiles; Monid/per-tool count unknown.",
+    "source": "Private publisher and aggregator; discloses market-data suppliers and editorial policies. SEC-derived insider tables remain secondary.",
+    "timing": "Source fair-market-value estimates update each minute; other Barchart market data is at least ten minutes delayed. Model scores, earnings and holdings have different cadences; Monid latency unmeasured.",
+    "quality": "Editorial source checks and corrections are positive signals, not a measured endpoint error rate. Some summaries use AI; ratings/forecasts and MarketRank are opinions or models.",
+    "rights": "Terms distinguish personal access, site/XML licences and commercial licensing, and restrict bulk redistribution. No Monid downstream customer-display/storage grant established.",
+    "audience": "Retail-investor publisher with a large claimed newsletter readership. This is audience evidence, not named Monid API-customer evidence.",
+    "decision": "One of the more relevant headline/research candidates, conditional on a valid commercial licence.",
+    "refs": [
+      "mbabout",
+      "mbeditorial",
+      "mbfaq",
+      "mbterms",
+      "mbinsider"
+    ]
+  },
+  "stockanalysis": {
+    "code": "P5",
+    "name": "StockAnalysis",
+    "count": 7,
+    "coverage": "Website advertises 130,000+ tradable symbols worldwide, including ETFs and multiple listings. This is not a unique-company number or proven Monid coverage. Seven listings were retrievable although eight were advertised.",
+    "coverageShort": "Website claim: 130,000+ tradable symbols, not companies; Monid count unknown.",
+    "source": "Secondary research publisher using providers including S&P Global and Fiscal.ai. It explicitly says it has no programmatic API/MCP and lacks programmatic resale rights.",
+    "timing": "US website stock pages refresh every five seconds for free users and stream for paid users; source screeners are roughly minute-based; other markets can be delayed or end-of-day. This is not Monid streaming evidence.",
+    "quality": "Documented upstream vendors and review practices support manual research. No independent Monid accuracy or completeness benchmark; derived ratios and financial periods need reconciliation.",
+    "rights": "Published no-programmatic-access position is a concrete blocker for assuming these are official licensed APIs. A valid, separately evidenced upstream rights chain would be needed before production use.",
+    "audience": "Regular/individual investors are its stated audience. No named Monid endpoint customers verified.",
+    "decision": "Hold production integration pending an explanation and proof of lawful programmatic supply.",
+    "refs": [
+      "sacoverage",
+      "sasources",
+      "saprice",
+      "saapi",
+      "saterms",
+      "saabout"
+    ]
+  },
+  "defillama": {
+    "code": "P6",
+    "name": "DefiLlama equities",
+    "count": 8,
+    "coverage": "Exact supported company count unverified. Official companies-list returns ticker/country identities to enumerate and match; upstream Twelve Data breadth is not proof of this beta subset.",
+    "coverageShort": "Unknown exact count; supported ticker/country directory exists.",
+    "source": "All eight paths are documented in the vendor’s official Pro API. Equities market/fundamental data is secondary Twelve Data; filing links can lead to primary SEC documents. Monid resale authority remains unverified.",
+    "timing": "Beta snapshot/chart service, not a demonstrated tick stream. Short-window charts may use five-minute bars with daily fallback; on-chain venue mappings are hourly. End-to-end lag unmeasured.",
+    "quality": "Clearer documented schemas than the web-style wrappers, but beta stability, per-field coverage and source reconciliation need validation.",
+    "rights": "DefiLlama API terms and underlying Twelve Data display/redistribution entitlements apply. No confirmed pass-through customer-display grant through Monid. Direct Pro API pricing is a separate purchase route.",
+    "audience": "Potential audience: equity and crypto researchers. No named adopter of these exact beta equities/Monid endpoints verified.",
+    "decision": "Best low-cost documented API candidate for a limited fundamentals/chart evaluation, after rights and coverage checks.",
+    "refs": [
+      "llamadocs",
+      "llamaschema",
+      "llamaequities",
+      "llamaterms",
+      "twelve"
+    ]
+  },
+  "secform4": {
+    "code": "P7",
+    "name": "SECForm4.com",
+    "count": 11,
+    "coverage": "No exact company, issuer-CIK or manager count verified for Monid. SEC filing coverage is not a worldwide 50,000-company universe; owner, security and transaction counts are different.",
+    "coverageShort": "Unknown company/CIK count; SEC-derived issuer/owner universe.",
+    "source": "Private SEC-data aggregator, not the SEC. Original accession numbers/documents are needed to establish each record’s provenance.",
+    "timing": "Five public modules disclose a six-month delay: buys, sales, significant buys, insider options and ratios. Company history can be newer. Monid subscription tier and delivered freshness are unverified.",
+    "quality": "Potentially highly auditable with originals, but no tested error rate. Amendments, joint reporting, rounded totals and non-split-adjusted shares need handling.",
+    "rights": "Website subscriptions do not establish a redistribution/API licence. No public grant for Monid customer display, history storage or exports was established.",
+    "audience": "Investors studying executives and institutions are the intended audience. No named production customer verified for these Monid endpoints.",
+    "decision": "Do not promise timely insider alerts until tier/lag/rights are proven; prefer official SEC ingestion as the foundation.",
+    "refs": [
+      "sfhome",
+      "sfbuys",
+      "sfsales",
+      "sfsignificant",
+      "sfoptions",
+      "sfratios",
+      "sfcompany",
+      "sfplans",
+      "sfmonid"
+    ]
+  }
+}

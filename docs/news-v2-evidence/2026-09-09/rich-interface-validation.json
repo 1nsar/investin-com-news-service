@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-09-09T09:09:02.221930+00:00",
+  "firstPageCards": 18,
+  "allAvailableCards": 26,
+  "cardsWithSourcePhotographs": 26,
+  "previewCharacterRange": [
+    282,
+    700
+  ],
+  "readerCharacters": 11172,
+  "readerSourceUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260729~4ad7508d8a.en.html",
+  "renderedBodyMatchesSourceDTO": true,
+  "connectorLogosLoaded": 4,
+  "emptyUnavailableSourcesHidden": true,
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "screenshots": [
+    {
+      "path": "screenshots/news-v2-rich-desktop.png",
+      "sha256": "06ff26386f0b5552f748bbf1a7c3c711985a45226e5ac916985c0363ba2eb1d7",
+      "kind": "Actual local UI and stored source content; no mocked requests"
+    },
+    {
+      "path": "screenshots/news-v2-rich-reader.png",
+      "sha256": "068b71a0269f7a257e62b3a40f1dcb60098ad477249d0fee500257ae114aa99e",
+      "kind": "Actual local UI and stored source content; no mocked requests"
+    },
+    {
+      "path": "screenshots/news-v2-rich-providers.png",
+      "sha256": "e7d7664a26442038c2dfd6a1e35b52875fee8e9562ece28d4ff73f86988f72e8",
+      "kind": "Actual local UI and stored source content; no mocked requests"
+    },
+    {
+      "path": "screenshots/news-v2-rich-mobile.png",
+      "sha256": "1742d43a89a629105210b479abdc2fa4b509fdb6cc25c73734cc94b2f7c627a1",
+      "kind": "Actual local UI and stored source content; no mocked requests"
+    },
+    {
+      "path": "screenshots/news-v2-rich-providers-mobile.png",
+      "sha256": "2daf3b6734cd8a967c7c909a734b220568da0b0786e21319fa52b285a498c0d0",
+      "kind": "Actual local UI and stored source content; no mocked requests"
+    },
+    {
+      "path": "screenshots/news-v2-rich-dark.png",
+      "sha256": "9a2fc825907123e74963eca124775a66562d688effa0ad85e2891b13623fdd5e",
+      "kind": "Actual local UI and stored source content; no mocked requests"
+    }
+  ],
+  "noBrowserApiMutations": true
+}

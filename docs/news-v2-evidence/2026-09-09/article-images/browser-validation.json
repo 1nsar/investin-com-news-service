@@ -1,0 +1,62 @@
+{
+  "articleCount": 26,
+  "storedArticleVisuals": [
+    {
+      "id": "56f25898-fa88-455e-a121-04554ffc8e53",
+      "headline": "ECB publishes consolidated banking data for end-March 2026",
+      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260807~58eb5109ce.en.html",
+      "imageUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260807/ecb.pr260807.en_img0.png?a64c0aa2880652cf4481b4f129a362f6",
+      "rights": {
+        "bodyAllowed": true,
+        "imageAllowed": true,
+        "imageAttribution": "Total assets of credit institutions headquartered in the EU \u2014 Source: ECB",
+        "attribution": "Source: European Central Bank. This information is available free of charge on the ECB website. Text formatting has been simplified. Reproduction must be accurate; named-author papers, third-party content and logos are excluded. https://www.ecb.europa.eu/services/using-our-site/disclaimer/html/index.en.html",
+        "licenseStatus": "public_source"
+      }
+    },
+    {
+      "id": "cf0947d8-a353-4cd1-832d-b4fed6e84679",
+      "headline": "ECB wage tracker at 2.7% in Q1 2027, indicating stable negotiated wage pressures",
+      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260729~4ad7508d8a.en.html",
+      "imageUrl": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260729/ecb.pr260729.en_img0.png?e6f83ebff8ca33be6db7c4cdfa92a017",
+      "rights": {
+        "bodyAllowed": true,
+        "imageAllowed": true,
+        "imageAttribution": "ECB wage tracker: forward-looking signals for negotiated wages and revisions to the previous data release \u2014 Sources: ECB calculations based on data provided by the Nationale Bank van Belgi\u00eb/Banque nationale de Belgique, the Belgian Federal Public Service Employment, Labour and Social Dialogue, the Belgian National Social Security Office, the Deutsche Bundesbank, the Bank of Greece, the Banco de Espa\u00f1a, the Banque de France, the Banca d\u2019Italia, the Dutch employers\u2019 association AWVN, the Oesterreichische Nationalbank, Suomen Pankki \u2013 Finlands Bank, the Confederation of Finnish Industries, Statistics Finland and Eurostat. The indicator of negotiated wage growth is calculated using data from the Belgian Federal Public Service Employment, Labour and Social Dialogue, the Deutsche Bundesbank, the Spanish Ministry of Labour and Social Economy, the Banque de France, the Italian National Institute of Statistics (ISTAT), Statistics Netherlands, Statistics Austria, Statistics Finland, Haver Analytics and Eurostat.",
+        "attribution": "Source: European Central Bank. This information is available free of charge on the ECB website. Text formatting has been simplified. Reproduction must be accurate; named-author papers, third-party content and logos are excluded. https://www.ecb.europa.eu/services/using-our-site/disclaimer/html/index.en.html",
+        "licenseStatus": "public_source"
+      }
+    }
+  ],
+  "desktop": [
+    {
+      "kind": "event-photo",
+      "src": "http://127.0.0.1:3000/news-sources/ecb-europa-open-air-2026.jpg",
+      "loaded": true,
+      "fit": "contain",
+      "background": "rgb(255, 255, 255)",
+      "caption": "Photo of this event\nEuropa Open Air, Frankfurt, 20 August 2026. Photo: Bernd Roselieb / ECB. Event photograph added after this announcement."
+    },
+    {
+      "kind": "source-visual",
+      "src": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260807/ecb.pr260807.en_img0.png?a64c0aa2880652cf4481b4f129a362f6",
+      "loaded": true,
+      "fit": "contain",
+      "background": "rgb(255, 255, 255)",
+      "caption": "From the original release \u00b7 European Central Bank\nTotal assets of credit institutions headquartered in the EU \u2014 Source: ECB"
+    },
+    {
+      "kind": "source-visual",
+      "src": "https://www.ecb.europa.eu/press/pr/date/2026/html/pr260729/ecb.pr260729.en_img0.png?e6f83ebff8ca33be6db7c4cdfa92a017",
+      "loaded": true,
+      "fit": "contain",
+      "background": "rgb(255, 255, 255)",
+      "caption": "From the original release \u00b7 European Central Bank\nECB wage tracker: forward-looking signals for negotiated wages and revisions to the previous data release \u2014 Sources: ECB calculations based on data provided by the Nationale Bank van Belgi\u00eb/Banque nationale de Belgique, the Belgian Federal Public Service Employment, Labour and Social Dialogue, the Belgian National Social Security Office, the Deutsche Bundesbank, the Bank of Greece, the Banco de Espa\u00f1a, the Banque de France, the Banca d\u2019Italia, the Dutch employers\u2019 association AWVN, the Oesterreichische Nationalbank, Suomen Pankki \u2013 Finlands Bank, the Confederation of Finnish Industries, Statistics Finland and Eurostat. The indicator of negotiated wage growth is calculated using data from the Belgian Federal Public Service Employment, Labour and Social Dialogue, the Deutsche Bundesbank, the Spanish Ministry of Labour and Social Economy, the Banque de France, the Italian National Institute of Statistics (ISTAT), Statistics Netherlands, Statistics Austria, Statistics Finland, Haver Analytics and Eurostat."
+    }
+  ],
+  "mobileNoOverflow": true,
+  "darkChartBackground": "white",
+  "readerCredit": true,
+  "brokenImageCollapsesWithoutFallback": true,
+  "pageErrors": []
+}

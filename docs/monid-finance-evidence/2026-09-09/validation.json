@@ -1,0 +1,31 @@
+{
+  "toolCount": 70,
+  "blockCounts": [
+    55,
+    15
+  ],
+  "sourceCount": 61,
+  "priceReconciliation": "All 70 match captured catalogue",
+  "workbookCostCellsChecked": 560,
+  "excelErrorCells": [],
+  "nativeDocxFootnotes": 99,
+  "projectListingRows": 1515,
+  "projectDistinctNameStrings": 1441,
+  "toolCards": "70 unique, complete",
+  "reviewCorrections": [
+    "Premarket has a separate 5.5-hour monitoring profile",
+    "StockAnalysis quote uses comparable five-minute polling",
+    "MarketBeat daily overview is explicitly a daily snapshot",
+    "Yahoo permission citation points to Finance help",
+    "Retail dataset one-day lag retained separately from Monid freshness",
+    "Parse-derived limitations carry conditional attribution"
+  ],
+  "pdfPages": 23,
+  "pdfExactMetadataLinks": 70,
+  "pdfLocalPathLeakGate": "passed",
+  "pdfCitationMode": "Stable source index 1\u201361; native repeat-number footnotes retained separately in Word",
+  "wordFootnoteReferencesResolved": true,
+  "pdfToolCoverage": "70 IDs present",
+  "wordBytes": 52443,
+  "pdfBytes": 865010
+}

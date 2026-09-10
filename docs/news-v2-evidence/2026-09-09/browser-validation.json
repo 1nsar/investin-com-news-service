@@ -1,0 +1,71 @@
+{
+  "checkedAt": "2026-09-09T04:04:48.376392+00:00",
+  "officialFeedItems": 18,
+  "catalogueRecords": 1515,
+  "readerArticleId": "312a7544-0327-413b-aaf0-64b1a1b5c6a3",
+  "readerSource": "Federal Reserve Board",
+  "readerSourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260904a.htm",
+  "readerBodyChars": 529,
+  "renderedBodyMatchesDetailDTO": true,
+  "portfolio": {
+    "holdingsCount": 3,
+    "matchedCount": 1,
+    "unmatchedCount": 2
+  },
+  "providerCounts": {
+    "fed": 20,
+    "ecb": 6,
+    "sec": 0,
+    "benzinga": 0,
+    "marketaux": 0,
+    "finnhub": 0
+  },
+  "newestPublication": "2026-09-04T15:00:00.000Z",
+  "readOnly": true,
+  "pageErrors": [],
+  "screenshots": [
+    {
+      "file": "screenshots/news-v2-desktop.png",
+      "capturedAt": "2026-09-09T04:04:42.859878+00:00",
+      "sha256": "6306069dcb0247063877c26e7861d22880a7e821d08ef136b3f39610155cab04",
+      "url": "http://127.0.0.1:3000/global-v2",
+      "kind": "Actual local Global News 2 UI and stored server data; no fixtures or interceptions"
+    },
+    {
+      "file": "screenshots/news-v2-reader.png",
+      "capturedAt": "2026-09-09T04:04:43.869739+00:00",
+      "sha256": "1369cf1701c968935d9396e5de9860b7e8394bf443b6ccd172dff7feb6fe4692",
+      "url": "http://127.0.0.1:3000/global-v2?article=312a7544-0327-413b-aaf0-64b1a1b5c6a3",
+      "kind": "Actual local Global News 2 UI and stored server data; no fixtures or interceptions"
+    },
+    {
+      "file": "screenshots/news-v2-providers.png",
+      "capturedAt": "2026-09-09T04:07:22.880372+00:00",
+      "sha256": "72bd85fecb04873756ef869b9b2aba795918a30eed71fd94d138a9a755d4665f",
+      "url": "http://127.0.0.1:3000/global-v2",
+      "kind": "Actual local Global News 2 UI and stored server data; no fixtures or interceptions"
+    },
+    {
+      "file": "screenshots/news-v2-directory.png",
+      "capturedAt": "2026-09-09T04:04:45.741863+00:00",
+      "sha256": "97c0c8b717128bfaff9b209506761c5bfbd0bc3b7da45277c40fc8637beecb27",
+      "url": "http://127.0.0.1:3000/global-v2",
+      "kind": "Actual local Global News 2 UI and stored server data; no fixtures or interceptions"
+    },
+    {
+      "file": "screenshots/news-v2-mobile.png",
+      "capturedAt": "2026-09-09T04:04:47.347228+00:00",
+      "sha256": "a4dda9af7b0815d9ffcd641c6b207416c8610d9d04f889a9a4372fc1b94289b5",
+      "url": "http://127.0.0.1:3000/global-v2?scope=all&source=free",
+      "kind": "Actual local Global News 2 UI and stored server data; no fixtures or interceptions"
+    },
+    {
+      "file": "screenshots/news-v2-dark.png",
+      "capturedAt": "2026-09-09T04:04:48.376042+00:00",
+      "sha256": "d226b679a7f5dae98195aaebd8ba2ec9302d820de393df7b60123522e6582b1e",
+      "url": "http://127.0.0.1:3000/global-v2?scope=all&source=free",
+      "kind": "Actual local Global News 2 UI and stored server data; no fixtures or interceptions"
+    }
+  ],
+  "publicProviderFullTextLabelChecked": true
+}
