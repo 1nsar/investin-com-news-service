@@ -1,0 +1,31 @@
+{
+  "reviewed": "2026-09-09",
+  "mode": "independent read-only agent review",
+  "implemented": false,
+  "reviewers": [
+    "directory inventory",
+    "financial features and terms",
+    "news data and rights"
+  ],
+  "corrections_applied": [
+    "MarketBeat no unsupported dividend-calendar claim",
+    "TinyFish free fetch noted separately",
+    "Fiscal IR latest period described as best effort",
+    "Quartr AI exception includes no retention and no training",
+    "DefiLlama filings described as metadata and source links",
+    "Context recurring free testing credits included",
+    "Context evaluation must improve matching or coverage",
+    "Gloria source identified as Twitter/X and endpoint latency untested"
+  ],
+  "counts": {
+    "finance_advertised": 71,
+    "finance_retrievable": 70,
+    "news_retrievable": 26
+  },
+  "scope_limits": [
+    "No authenticated endpoint execution",
+    "No vendor contact or account creation",
+    "No platform integration",
+    "Monid downstream legal grant not located"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-09",
+  "purpose": "Document exports after richer-news UI and R2/R7 fixes. Original review observations retained.",
+  "findings": {
+    "originalTotal": 9,
+    "open": 7,
+    "fixed": [
+      "R2",
+      "R7"
+    ]
+  },
+  "localLinksVerified": true,
+  "wordAbsoluteFileLinksAbsent": true,
+  "pdfRendererLeakChecksPassed": true,
+  "artifacts": [
+    {
+      "path": "News-Architecture-V2.pdf",
+      "sha256": "c718ed84b12b240326e1f158789586deca83dbc13f258bdb8cc4de5e4522850e",
+      "pages": 19,
+      "embeddedImages": 10,
+      "allNineOriginalFindingsAndTwoResolutionsPresent": true
+    },
+    {
+      "path": "News-Architecture-V2.docx",
+      "sha256": "d29a7e563208bd9561b9f3589ebf7efcfa3cd75faa96c8dd91203632829c6cf7",
+      "pages": null,
+      "embeddedImages": 10,
+      "allNineOriginalFindingsAndTwoResolutionsPresent": true
+    },
+    {
+      "path": "News-Architecture-V2-RU.pdf",
+      "sha256": "c4f517ab2268d919c837967b86efeace30ac62938b960567301b61125dc76a00",
+      "pages": 17,
+      "embeddedImages": 9,
+      "allNineOriginalFindingsAndTwoResolutionsPresent": true
+    },
+    {
+      "path": "News-Architecture-V2-RU.docx",
+      "sha256": "2cc3229ad10fa22b5f39fa3e2bdca1e6f414518f0ba9eb4b07d7dc9b8d94c809",
+      "pages": null,
+      "embeddedImages": 9,
+      "allNineOriginalFindingsAndTwoResolutionsPresent": true
+    }
+  ]
+}

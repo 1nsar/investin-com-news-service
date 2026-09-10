@@ -1,4 +1,4 @@
-import { backoffDelayMs, mapWithConcurrency, sleep, withTimeout } from "../util/async.js";
+import { backoffDelayMs, mapWithConcurrency, Semaphore, sleep, withTimeout } from "../util/async.js";
 import { RateLimiter } from "../util/rateLimiter.js";
 import { logger } from "../util/logger.js";
 
@@ -41,6 +41,7 @@ import { logger } from "../util/logger.js";
 // length of a full ingest. Concurrency 3 remains the real safety valve: the
 // 429s we measured came from running 10 wide, not from the request rate.
 const resolverLimiter = new RateLimiter("finnhub-redirect", 360);
+const resolverConcurrency = new Semaphore(3);
 
 /** Hosts whose links are redirect wrappers rather than articles. */
 const WRAPPER_HOSTS = /(^|\.)finnhub\.io$/i;
@@ -68,14 +69,18 @@ export async function resolveOneHop(
   timeoutMs = 8_000,
   maxRetries = 3,
   limiter?: RateLimiter,
+  signal?: AbortSignal,
 ): Promise<string | null> {
   for (let attempt = 0; ; attempt += 1) {
-    // The wrapper lives on the SAME host, and counts against the SAME key
-    // quota, as the provider call that produced it. Resolving outside the
-    // provider's budget would let link resolution starve the fetches - and the
-    // provider's limiter would back off while this path kept hammering.
-    if (limiter) await limiter.acquire();
+    // Use the caller's shared redirect budget and the process-wide concurrency
+    // gate; a separate company worker must not multiply the outbound limit.
+    signal?.throwIfAborted();
+    if (limiter) await limiter.acquire(signal);
+    const release = await resolverConcurrency.acquire(signal);
     const controller = new AbortController();
+    const parentAbort = () => controller.abort();
+    signal?.addEventListener("abort", parentAbort, { once: true });
+    if (signal?.aborted) controller.abort();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
       const response = await withTimeout(
@@ -103,6 +108,7 @@ export async function resolveOneHop(
           Number.isFinite(retryAfter) && retryAfter > 0
             ? Math.min(retryAfter * 1000, 15_000)
             : backoffDelayMs(attempt, 400, 8_000),
+          signal,
         );
         continue;
       }
@@ -117,10 +123,13 @@ export async function resolveOneHop(
       if (isWrapperUrl(target.toString())) return null;
       return target.toString();
     } catch {
+      if (signal?.aborted) return null;
       if (attempt >= maxRetries) return null;
-      await sleep(backoffDelayMs(attempt, 400, 8_000));
+      await sleep(backoffDelayMs(attempt, 400, 8_000), signal);
     } finally {
       clearTimeout(timer);
+      signal?.removeEventListener("abort", parentAbort);
+      release();
     }
   }
 }
@@ -131,13 +140,14 @@ export async function resolveWrappers(
   urls: readonly string[],
   concurrency = 3,
   limiter: RateLimiter = resolverLimiter,
+  signal?: AbortSignal,
 ): Promise<Map<string, string>> {
   const unique = [...new Set(urls.filter(isWrapperUrl))];
   const resolved = new Map<string, string>();
   if (unique.length === 0) return resolved;
 
   const results = await mapWithConcurrency(unique, concurrency, (url) =>
-    resolveOneHop(url, 8_000, 3, limiter),
+    resolveOneHop(url, 8_000, 3, limiter, signal),
   );
   unique.forEach((url, index) => {
     const target = results[index];

@@ -3,8 +3,9 @@
 We reviewed **Bloomberg** for news, and **Polymarket**, **Kalshi** and
 **ForecastEx** for event probabilities. The expanded Polymarket review now
 separates the US and international services. **Polymarket US works technically
-for a read-only integration; company usage rights and employee access controls
-remain to be resolved.** ForecastEx remains another candidate to evaluate.
+for a read-only integration; a local MVP is implemented and tested. Company usage
+rights and employee production access controls remain to be resolved.**
+ForecastEx remains another candidate to evaluate.
 Other provider sections retain the earlier review.
 
 ## Bloomberg — no
@@ -26,13 +27,14 @@ subscription.
 
 ## Polymarket — US integration is feasible; company usage rights remain unresolved
 
-**Review updated: 8 September 2026.** The proposed use is an employee-only
+**Review updated: 9 September 2026; saved API evidence is from 8 September.**
+The proposed production use is an employee-only
 analytics panel beside our news feed, with no trading. **Polymarket US and
 international Polymarket are separate products:** their APIs, accounts, markets
 and legal routes must be assessed separately. A US account does not provide the
-international Gamma/CLOB catalogue. This review tested public US endpoints and
-examined our source code; it did not implement an integration, inspect private
-account credentials or test authenticated streaming.
+international Gamma/CLOB catalogue. Public US endpoints and the local preview
+have been tested. Private account credentials and authenticated upstream
+streaming have not been inspected or tested.
 
 ### 1. What we verified on Polymarket US
 
@@ -57,16 +59,23 @@ results; that alone does not prove the entire catalogue lacks inflation markets.
 [market listings](https://docs.polymarket.us/api-reference/markets/get-markets),
 [search](https://docs.polymarket.us/api-reference/search/search).
 
+A later saved Fed sample included five contracts, event artwork and 249 daily
+history points / 57 weekly points, with visible gaps. The dedicated inventory
+records exact request times, response fields and screenshots; those observations
+must not be substituted for current quotes.
+[Data inventory and local MVP record](POLYMARKET-DATA-INVENTORY.md).
+
 ### 2. Connection options and freshness
 
 | Route | Data and access | Fit for our platform |
 | --- | --- | --- |
-| Public REST: `gateway.polymarket.us` | Markets/events, search, quotes, books, settlement and history; no key | Simplest first pilot if our corporate use is confirmed |
-| Retail market WebSocket: `wss://api.polymarket.us/v1/ws/markets` | API-key authentication; real-time books, prices and trades | Later option if polling is too slow and this account route is approved for us |
+| Public REST: `gateway.polymarket.us` | Markets/events, search, images, quotes, books, settlement and history; no key | Local preview route; confirm company scope before recurring production use |
+| Retail market WebSocket: `wss://api.polymarket.us/v1/ws/markets` | API-key authentication; real-time books, prices and trades | Optional connection implemented; credentials and upstream streaming not tested |
 | Direct Exchange data access | Read-only REST/gRPC for reference data, BBO, depth and statistics; provisioned credentials | Explicitly documented route for research teams and analytics platforms |
 
 The public API documents **20 requests/second/IP**. REST gives a snapshot per
-request; polling every 30 seconds does not capture every intervening change.
+request; the local MVP's **10-second polling** does not capture every intervening
+change. History requests have their own cache and sampling intervals.
 The retail WebSocket supports up to 100 markets per subscription and optional
 batching. Neither a successful request nor the phrase real time establishes a
 latency guarantee. We have not measured the authenticated stream.
@@ -107,6 +116,7 @@ item requires a separate paid product:
 | Access documented public endpoints without a key | Officially supported technically; bounded reads worked |
 | Recurring collection and employee dashboard display | Obtain confirmation that the public route covers our company, or agree another route |
 | Store snapshots, raw responses, backups and charts | Specify retention, historical use and deletion obligations; no project entitlement established |
+| Display event images or copy article content | Confirm applicable content/image rights; a URL or public article is not an unrestricted reuse licence |
 | Compute changes, sentiment or cross-source scores | Confirm derived-data and combination rights |
 | Send data to Anthropic or another processor | Separate unresolved use; employee-only display does not establish this permission |
 | Public pages, customer API, downloadable exports | Outside the current scope; require separate rights assessment |
@@ -119,6 +129,16 @@ reviewed, so retention, permitted recipients, AI processing, price and terminati
 terms remain unknown. This is one route to resolve rights; **we have not established
 that every public API request requires it, or that payment is always required**.
 [Data onboarding](https://docs.polymarket.us/data-guide/onboarding).
+
+**Public REST connects without contacting Polymarket; mandatory payment has not
+been established for our use.** Neither an interactive local preview nor an API
+key establishes company entitlement.
+No blanket local-research or pilot exemption was found. The July 2026 Institutional
+Research announcement offers commercial data sales for both US and international
+markets; it supplies no public price for our project. Published US trading fees
+are not data-licence prices.
+[Institutional announcement](https://news.polymarket.com/p/introducing-polymarket-institutional),
+[Trading fees](https://docs.polymarket.us/fees).
 
 The institutional guides recommend local history storage, reference-data caching
 and custom candle aggregation. These are intended capabilities of that route,
@@ -135,11 +155,44 @@ automatically to an anonymous public-data reader.
 [ISV route](https://docs.polymarket.us/partners/partner-types/isvs),
 [participant agreement](https://www.polymarketexchange.com/files/legal/latest/participant-agreement-corporate).
 
-### 4. Proposed integration with our existing platform
+### 4. Local MVP and the production architecture
 
-**Proposed flow:** Polymarket US API → one backend collector → dedicated
+**Implemented local preview:** Next.js **`/polymarket`** page → server-side adapter
+→ public Polymarket US REST. It combines search/topics, event images, YES/NO
+prices, a time-based history chart with shaded gaps, book context, statistics,
+rules and separately sourced article cards. Selected quotes/book refresh every
+**10 seconds**; history is cached for 30 seconds, event data refreshes every
+60 seconds and news every five minutes. Hidden tabs and the pause control suspend
+polling. The product AI panel is hidden and prices do not enter its AI pipeline.
+Optional server-side WebSocket support forwards status, quote and book updates
+through SSE. No keys are configured locally and no authenticated stream has been
+verified. Eleven browser checks completed on **9 September at 02:27:04 UTC**,
+including actual data, refresh, pause/resume, selection, chart interaction,
+labelled failure handling, mobile and dark layouts. Nineteen unit tests,
+TypeScript, targeted ESLint and the production build passed. Real local
+screenshots, the separate **243-point/four-gap** chart capture and exact times are in the
+[inventory](POLYMARKET-DATA-INVENTORY.md#9-local-mvp-implementation-and-capture-record).
+
+**News comes from a separate source.** Polymarket's API descriptions are contract
+rules, not article bodies. Polymarket does publish journalism in **The Oracle**,
+and its international Journalism Tools offer news alongside market timelines;
+no supported news/article endpoint was found in the US API index. The MVP uses
+our existing news sources for **Related news**, preserving publisher attribution
+and links. Topic relevance does not demonstrate that an article caused a price
+move. Event image URLs are available from US responses; their content rights
+must be included in the production scope.
+[The Oracle](https://news.polymarket.com/about),
+[Journalism Tools](https://news.polymarket.com/p/new-polymarket-tools-for-journalists),
+[US API index](https://docs.polymarket.us/llms.txt).
+
+The tested news request returned nine results with eight image URLs and six
+visible cards. Its newest article was dated **30 August 2026**; working provider
+access does not establish real-time news delivery.
+
+**Future production flow:** Polymarket US API → one backend collector → dedicated
 prediction tables in Postgres → authenticated internal API → employee panel
-beside macro news. These components are not implemented yet.
+beside macro news. The local preview does not implement this persistent,
+employee production deployment.
 
 Our standalone `news-service` already uses TypeScript, Fastify and Postgres, with
 ingestion jobs and an optional scheduler disabled by default. Its provider
@@ -148,7 +201,7 @@ listings; prediction contracts need a separate module rather than an entry in
 `NEWS_PROVIDER_ORDER`. The Next.js application already consumes this service over
 HTTP through `src/lib/newsService.ts`.
 
-| Component | Proposed change |
+| Production component | Proposed change after the preview |
 | --- | --- |
 | Collector | Add a dedicated job and lock; begin with 20 selected macro contracts, metadata every 15 minutes and BBO every 30–60 seconds |
 | Storage | Add market definitions, outcome identities, snapshots and ingestion status; retain source product, upstream IDs, slugs, rules and both upstream/collection timestamps |
@@ -156,13 +209,14 @@ HTTP through `src/lib/newsService.ts`.
 | Interface | Add an optional Event markets panel to `GlobalNewsPage`, with source link, exact question/outcome, quote basis, age, status and spread |
 | Operations | Track errors, 429s, missing/stale quotes and last successful collection; a failed prediction panel must not break news |
 
-Twenty contract requests every 30 seconds average **0.67 requests/second** before
+For that separate production design, twenty contract requests every 30 seconds
+average **0.67 requests/second** before
 metadata, history and book calls. This is a proposed capacity estimate, not a
 licence or freshness promise. Stagger requests and share the budget across all
 workers using the same public IP. Start with selected books on demand; streaming
 is not needed simply to put market context next to news.
 
-**Changes required by the current code:**
+**Requirements before employee production deployment:**
 
 - **Enforce employee access.** The root app describes itself as single-user with
   no authentication. The backend token currently protects fetch operations, not
@@ -199,8 +253,9 @@ The price-history endpoint provides **book-derived YES/NO display prices**, not
 executed-trade history. YES normally follows the best ask and NO the complement
 of the best bid, so their sum can exceed one. Fixed windows use different sampling
 intervals; cache identical history requests for at least 30 seconds. Label provider
-history separately from snapshots collected by our own job. Our empty/sparse
-history result means we cannot promise a complete backfill.
+history separately from any snapshots collected by our own job. The initial sports
+sample was empty/sparse; a later Fed sample had 249 daily and 57 weekly points with
+gaps. Neither establishes a complete backfill for every contract.
 [History reference](https://docs.polymarket.us/api-reference/price-history/get-price-history).
 
 One actual listing returned deprecated `outcomes`/`outcomePrices` arrays whose
@@ -230,7 +285,7 @@ for each selected contract before treating the feed as a useful signal.
 Verification should cover outcome mapping, decimal units, sparse history,
 closed/resolved markets, retries and 429s, duplicate collection, stale labels,
 unauthenticated access rejection and keeping data out of AI/export paths. If
-streaming is introduced, validate actual message shapes and recovery after a gap;
+the optional stream is enabled, validate actual message shapes and recovery after a gap;
 overview and detailed examples currently differ. Do not promise lossless replay
 without testing the protocol.
 [WebSocket overview](https://docs.polymarket.us/api-reference/websocket/overview),
@@ -238,13 +293,15 @@ without testing the protocol.
 
 ### 6. What we can do now and what needs a decision
 
-1. **Prepare now:** design the adapter, schema, internal API and panel with
-   synthetic fixtures; define watchlist and quality criteria. Our limited public
-   checks are already complete. Keep recurring production ingestion disabled.
+1. **Use the validated local preview:** selection, prices, images, charts,
+   10-second REST refresh and separately sourced news have been checked; actual
+   captures and failure handling are recorded. Synthetic fixtures remain useful for edge cases;
+   a working preview does not establish production rights. Keep unattended
+   production collection disabled.
 2. **Resolve the exact use:** ask whether our company may use the public gateway
    for recurring internal analytics, or needs a Market Data Agreement. Specify
    legal entity and country, employee/hosting locations, audience, fields,
-   retention, backups, derived metrics and any external processors. Request
+   retention, backups, images, derived metrics and any external processors. Request
    permitted route, fees/trial terms and deletion obligations. No request has
    been sent and no agreement or paid access has been accepted.
 3. **Run an approved REST pilot:** proposed duration one week, 20 relevant
@@ -317,9 +374,9 @@ panel. The verified US API and live macro catalogue change the earlier basis for
 prioritizing ForecastEx alone. Keep the news pipeline intact and use a separate
 prediction-data module.
 
-Prepare the US implementation on synthetic fixtures while confirming its exact
-corporate usage scope. Then run a small approved REST pilot and measure data
+Use the validated local US preview while confirming its exact corporate usage scope.
+Then run a small approved employee REST pilot and measure data
 quality. ForecastEx still needs usage-rights and liquidity checks; publication
 of data alone is not a blanket reuse licence. International Polymarket requires
-its own access/licensing assessment. No live integration or licensing outreach
-was performed as part of this report update.
+its own access/licensing assessment. The local preview is not a production
+deployment; no licensing outreach was performed.

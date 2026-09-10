@@ -170,10 +170,16 @@ export class MarketauxProvider implements NewsProvider {
       limit: String(config.MARKETAUX_PAGE_SIZE),
     });
 
-    const url = `${BASE_URL}?${params.toString()}`;
-
     try {
+      const rows: MarketauxArticle[] = [];
+      let complete = false;
+      // V1 remains a bounded per-company collector. An unexhausted window
+      // must not advance its success watermark; V2 has durable resume cursors.
+      for (let page = 1; page <= 3; page++) {
+      params.set("page", String(page));
+      const url = `${BASE_URL}?${params.toString()}`;
       const payload = await requestJson<MarketauxResponse>(url, {
+        signal: request.signal,
         limiter: this.limiter,
         label: `marketaux/news/${primarySymbol}`,
         timeoutMs: 20_000,
@@ -193,8 +199,15 @@ export class MarketauxProvider implements NewsProvider {
         return { kind: "refused", httpStatus: 200, message, symbolUsed: primarySymbol };
       }
 
-      const rows = payload.data ?? [];
-      if (rows.length === 0) {
+      const pageRows = payload.data ?? [];
+      rows.push(...pageRows);
+      const effectiveLimit = Number(payload.meta?.limit) > 0 ? Number(payload.meta?.limit) : config.MARKETAUX_PAGE_SIZE;
+      const found = payload.meta?.found;
+      complete = pageRows.length === 0 || (typeof found === "number" && Number.isFinite(found) && rows.length >= found)
+        || (found === undefined && pageRows.length < effectiveLimit);
+      if (complete) break;
+      }
+      if (rows.length === 0 && complete) {
         // Marketaux draws on thousands of sources across 80+ markets, so a
         // zero here is meaningful for any listing we can name.
         return { kind: "no_news", symbolUsed: primarySymbol, listingId: capability.listingId, authoritative: true };
@@ -245,7 +258,7 @@ export class MarketauxProvider implements NewsProvider {
         });
       }
 
-      if (articles.length === 0) {
+      if (articles.length === 0 && complete) {
         return { kind: "no_news", symbolUsed: primarySymbol, listingId: capability.listingId, authoritative: true };
       }
 
@@ -255,6 +268,7 @@ export class MarketauxProvider implements NewsProvider {
         symbolUsed: primarySymbol,
         matchMethod: "ticker",
         listingId: capability.listingId,
+        complete,
       };
     } catch (error) {
       if (error instanceof HttpError) {

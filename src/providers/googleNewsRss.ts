@@ -92,9 +92,10 @@ export class GoogleNewsRssProvider implements NewsProvider {
     return `${BASE_URL}?${params.toString()}`;
   }
 
-  private async search(url: string): Promise<RawArticle[]> {
+  private async search(url: string, signal?: AbortSignal): Promise<RawArticle[]> {
     const xml = await request(url, {
       limiter: this.limiter,
+      signal,
       label: "google-news-rss",
       timeoutMs: 15_000,
       maxRetries: 2,
@@ -153,7 +154,7 @@ export class GoogleNewsRssProvider implements NewsProvider {
     let best: RawArticle[] = [];
     try {
       for (const url of attempts) {
-        const articles = await this.search(url);
+        const articles = await this.search(url, req.signal);
         if (articles.length > best.length) best = articles;
         if (best.length >= ENOUGH_ITEMS) break;
       }

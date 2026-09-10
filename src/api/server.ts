@@ -11,6 +11,8 @@ import { startScheduler, stopScheduler } from "../ingest/scheduler.js";
 import { companyRoutes } from "./routes/companies.js";
 import { newsRoutes } from "./routes/news.js";
 import { operationsRoutes } from "./routes/operations.js";
+import { v2Routes } from "../v2/routes.js";
+import { startV2Worker, stopV2Worker } from "../v2/worker.js";
 
 export async function buildServer() {
   const app = Fastify({
@@ -42,9 +44,12 @@ export async function buildServer() {
   });
   await app.register(swaggerUi, { routePrefix: "/docs" });
 
-  await app.register(companyRoutes);
-  await app.register(newsRoutes);
-  await app.register(operationsRoutes);
+  if (process.env.NEWS_V2_ONLY !== "true") {
+    await app.register(companyRoutes);
+    await app.register(newsRoutes);
+    await app.register(operationsRoutes);
+  }
+  await app.register(v2Routes);
 
   app.setNotFoundHandler((request, reply) => {
     reply.code(404).send({
@@ -83,10 +88,12 @@ export async function start(): Promise<void> {
   );
 
   if (config.SCHEDULER_ENABLED) startScheduler();
+  startV2Worker();
 
   const shutdown = async (signal: string): Promise<void> => {
     logger.info({ signal }, "shutting down");
     stopScheduler();
+    await stopV2Worker();
     // Stop accepting connections, let in-flight requests finish, then release
     // the pool. An ingest triggered over HTTP is not waited for: it is
     // re-runnable by design.

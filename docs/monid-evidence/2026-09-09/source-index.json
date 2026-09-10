@@ -1,0 +1,366 @@
+[
+  {
+    "number": 1,
+    "key": "monid-integration",
+    "title": "Monid, Integrations Overview",
+    "url": "https://monid.ai/docs/integrations/overview",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 2,
+    "key": "monid-how",
+    "title": "Monid, How It Works",
+    "url": "https://monid.ai/docs/guide/how-it-works",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 3,
+    "key": "monid-home",
+    "title": "Monid, public homepage and pricing FAQ",
+    "url": "https://monid.ai/",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 4,
+    "key": "monid-catalogue",
+    "title": "Monid, finance catalogue and public listing metadata",
+    "url": "https://monid.ai/tools?c=finance",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 5,
+    "key": "monid-news",
+    "title": "Monid, news catalogue and public listing metadata",
+    "url": "https://monid.ai/tools?c=news",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 6,
+    "key": "monid-inspect",
+    "title": "Monid, Inspect API reference",
+    "url": "https://monid.ai/docs/api/inspect",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 7,
+    "key": "context-api",
+    "title": "Context.dev, Search Company News API",
+    "url": "https://docs.context.dev/api-reference/news/search",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 8,
+    "key": "context-price",
+    "title": "Context.dev, current pricing and credit schedule",
+    "url": "https://www.context.dev/pricing",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 9,
+    "key": "context-use",
+    "title": "Context.dev, responsible use and content rights",
+    "url": "https://docs.context.dev/optimization/fair-use",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 10,
+    "key": "context-terms",
+    "title": "Context.dev, Terms of Service",
+    "url": "https://www.context.dev/term",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 11,
+    "key": "akta-api",
+    "title": "Akta, News Signals API reference",
+    "url": "https://docs.akta.pro/api-reference/news-signals",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 12,
+    "key": "akta-overview",
+    "title": "Akta, News Signals API overview",
+    "url": "https://docs.akta.pro/docs/news-signals/overview",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 13,
+    "key": "akta-product",
+    "title": "Akta, company data and signals product",
+    "url": "https://akta.pro/",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 14,
+    "key": "akta-signals",
+    "title": "Akta, News and Signals product and public examples",
+    "url": "https://akta.pro/news-signals",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 15,
+    "key": "akta-price",
+    "title": "Akta, API pricing",
+    "url": "https://docs.akta.pro/getting-started/pricing",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 16,
+    "key": "akta-rates",
+    "title": "Akta, API rate limits",
+    "url": "https://docs.akta.pro/getting-started/rate-limits",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 17,
+    "key": "akta-terms",
+    "title": "Akta by Wokelo, Terms and Conditions, 11 May 2026; browser-rendered page",
+    "url": "https://akta.pro/legal?tab=terms",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 18,
+    "key": "llama-api",
+    "title": "DefiLlama, official Pro API reference: equities beta and Twelve Data attribution",
+    "url": "https://github.com/DefiLlama/api-docs/blob/main/llms-pro.txt",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 19,
+    "key": "llama-price",
+    "title": "DefiLlama, Pro API plans and quotas",
+    "url": "https://docs.llama.fi/pro-api",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 20,
+    "key": "llama-terms",
+    "title": "DefiLlama, Terms of Use, effective 24 June 2025",
+    "url": "https://defillama.com/terms",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 21,
+    "key": "finviz-elite",
+    "title": "Finviz, Elite plans and single-user licence",
+    "url": "https://elite.finviz.com/elite",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 22,
+    "key": "finviz-api",
+    "title": "Finviz, API usage limits; official indexed material, browser verification blocked",
+    "url": "https://finviz.com/knowledge-base/market-data-research/api/usage-limits",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 23,
+    "key": "finviz-faq",
+    "title": "Finviz, FAQ and data timing",
+    "url": "https://elite.finviz.com/help/faq",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 24,
+    "key": "yahoo",
+    "title": "Yahoo Finance, exchanges, data providers and redistribution notice; browser verified",
+    "url": "https://help.yahoo.com/kb/SLN2310.html",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 25,
+    "key": "gloria-code",
+    "title": "CryptoBriefing Labs, official Gloria MCP server source",
+    "url": "https://github.com/cryptobriefing-labs/gloria-mcp/blob/main/src/gloria_mcp/server.py",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 26,
+    "key": "gloria-terms",
+    "title": "Gloria, Terms of Use",
+    "url": "https://www.itsgloria.ai/terms-of-use",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 27,
+    "key": "gloria-terminal",
+    "title": "Gloria terminal; conditional delay notice observed in its public frontend code",
+    "url": "https://www.itsgloria.ai/",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 28,
+    "key": "tinyfish-listing",
+    "title": "Monid, TinyFish public endpoint listings",
+    "url": "https://monid.ai/tools/tinyfish",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 29,
+    "key": "quartr-product",
+    "title": "Quartr, API product and coverage",
+    "url": "https://quartr.com/products/quartr-api",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 30,
+    "key": "quartr-companies",
+    "title": "Quartr, company identifiers",
+    "url": "https://quartr.com/docs/datasets/companies",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 31,
+    "key": "quartr-live",
+    "title": "Quartr, live earnings-call transcript delivery and revisions",
+    "url": "https://quartr.com/docs/datasets/live-earnings-call-transcripts",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 32,
+    "key": "quartr-data",
+    "title": "Quartr, data overview and delivery timing",
+    "url": "https://quartr.com/docs/data-overview",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 33,
+    "key": "quartr-terms",
+    "title": "Quartr, international API redistribution subscription terms, version 2026:1",
+    "url": "https://a.storyblok.com/f/182663/x/0317ec337d/quartr-api-standard-subscription-terms-international-redistribution-2026.pdf",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 34,
+    "key": "fiscal-product",
+    "title": "Fiscal.ai, current API product and company coverage; browser verified",
+    "url": "https://fiscal.ai/products/api/",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 35,
+    "key": "fiscal-docs",
+    "title": "Fiscal.ai, API introduction, dataset coverage and history",
+    "url": "https://docs.fiscal.ai/docs/introduction",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 36,
+    "key": "fiscal-reference",
+    "title": "Fiscal.ai, API reference including company/top news and IR resources",
+    "url": "https://docs.fiscal.ai/docs/api-reference",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 37,
+    "key": "fiscal-trial",
+    "title": "Fiscal.ai, free API trial limits",
+    "url": "https://docs.fiscal.ai/docs/guides/free-trial",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 38,
+    "key": "fiscal-webhooks",
+    "title": "Fiscal.ai, webhook guide",
+    "url": "https://docs.fiscal.ai/docs/guides/webhooks",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 39,
+    "key": "fiscal-terms",
+    "title": "Fiscal.ai, current API Terms, version 2026:8, 17 August 2026; browser verified",
+    "url": "https://fiscal.ai/api-terms/",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 40,
+    "key": "newscatcher-price",
+    "title": "NewsCatcher, News API pricing; distinguish CatchAll Web Search",
+    "url": "https://www.newscatcherapi.com/pricing?tab=news-api",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 41,
+    "key": "newscatcher-terms",
+    "title": "NewsCatcher, API Terms of Conditions",
+    "url": "https://www.newscatcherapi.com/company/legal/terms-of-conditions",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 42,
+    "key": "newsapiai-plans",
+    "title": "NewsAPI.ai / Event Registry, plans and token rules",
+    "url": "https://newsapi.ai/plans",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 43,
+    "key": "newsapiai-terms",
+    "title": "NewsAPI.ai / Event Registry, terms",
+    "url": "https://newsapi.ai/terms",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 44,
+    "key": "feedly-price",
+    "title": "Feedly, Market Intelligence pricing",
+    "url": "https://feedly.com/market-intelligence/pricing",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 45,
+    "key": "feedly-terms",
+    "title": "Feedly, Enterprise Subscription Agreement, July 2026",
+    "url": "https://feedly.com/legal/esa",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 46,
+    "key": "fmp-price",
+    "title": "Financial Modeling Prep, commercial pricing and display licensing",
+    "url": "https://site.financialmodelingprep.com/developer/docs/pricing?planType=commercial",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 47,
+    "key": "fmp-terms",
+    "title": "Financial Modeling Prep, Terms of Service",
+    "url": "https://site.financialmodelingprep.com/terms-of-service",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 48,
+    "key": "sec-api",
+    "title": "SEC, EDGAR reading APIs, timing and bulk archives",
+    "url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 49,
+    "key": "sec-dev",
+    "title": "SEC, developer resources and fair-access rules",
+    "url": "https://www.sec.gov/about/developer-resources",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 50,
+    "key": "monid-direct",
+    "title": "Monid, curated direct server-side integration",
+    "url": "https://monid.ai/docs/integrations/direct/setup",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 51,
+    "key": "monid-proxy",
+    "title": "Monid, proxy integration, billing and endpoint restrictions",
+    "url": "https://monid.ai/docs/integrations/proxy",
+    "checked": "2026-09-09"
+  },
+  {
+    "number": 52,
+    "key": "monid-run",
+    "title": "Monid, Run API states, provider errors and billing",
+    "url": "https://monid.ai/docs/api/run",
+    "checked": "2026-09-09"
+  }
+]

@@ -163,6 +163,7 @@ async function ingestCompany(
 
     const attemptStartedAt = Date.now();
     let result: ProviderOutcome;
+    const fetchController = new AbortController();
     try {
       // Generous on purpose. This is the guard against a provider that never
       // returns; it is NOT the per-request timeout (that lives in the HTTP
@@ -170,12 +171,15 @@ async function ingestCompany(
       // rate-limiter token, so a tight value here makes a healthy provider
       // look like it failed and quietly downgrades the company to a fallback.
       result = await withTimeout(
-        provider.fetch({ company, from, to }),
+        provider.fetch({ company, from, to, signal: fetchController.signal }),
         config.INGEST_COMPANY_TIMEOUT_MS,
         `${provider.name}/${company.ticker}`,
+        () => fetchController.abort(),
       );
     } catch (error) {
       result = { kind: "error", message: error instanceof Error ? error.message : String(error) };
+    } finally {
+      fetchController.abort();
     }
 
     const outcome = outcomeOf(result);
@@ -235,11 +239,13 @@ async function ingestCompany(
         else stillToResolve.push(url);
       }
 
+      const resolveController = new AbortController();
       const realUrls = await withTimeout(
-        resolveWrappers(stillToResolve).then((resolved) => new Map([...cached, ...resolved])),
+        resolveWrappers(stillToResolve, 3, undefined, resolveController.signal).then((resolved) => new Map([...cached, ...resolved])),
         config.INGEST_COMPANY_TIMEOUT_MS,
         `resolve links for ${company.ticker}`,
-      ).catch(() => new Map<string, string>());
+        () => resolveController.abort(),
+      ).catch(() => new Map(cached)).finally(() => resolveController.abort());
 
       const canonical = result.articles
         .map((article) => {
@@ -268,13 +274,16 @@ async function ingestCompany(
         (latest, article) => (!latest || article.publishedAt > latest ? article.publishedAt : latest),
         null,
       );
-      await recordFetchState(company.id, provider.name, "ok", newest);
+      const outcome = result.complete === false ? "error" : "ok";
+      const incompleteError = result.complete === false ? "Provider window exceeds the V1 page cap; stored partial results and kept the previous success watermark. Use V2 resumable ingestion to exhaust it." : undefined;
+      await recordFetchState(company.id, provider.name, outcome, newest);
       await recordCompanyOutcome({
         runId,
         companyId: company.id,
         provider: provider.name,
         symbolUsed: result.symbolUsed,
-        outcome: "ok",
+        outcome,
+        error: incompleteError,
         articlesSeen: stored.seen,
         articlesNew: stored.inserted,
         articlesRejected: stored.rejected,
@@ -282,7 +291,7 @@ async function ingestCompany(
         providerAttempts: attempts,
       });
       return {
-        outcome: "ok",
+        outcome,
         provider: provider.name,
         articlesSeen: stored.seen,
         articlesNew: stored.inserted,
