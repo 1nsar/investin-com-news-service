@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Render docs/REPORT.md to docs/News-Service-Report.pdf.
+# Render docs/global-news/report.md to docs/global-news/reports/News-Service-Report.pdf.
 #
 # Two things this handles that a naive pandoc|chrome pipeline gets wrong:
 #
@@ -15,9 +15,9 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 # Defaults to the project report; pass a markdown path to render any other doc.
-SRC="${1:-docs/REPORT.md}"
+SRC="${1:-docs/global-news/report.md}"
 OUT="${2:-${SRC%.md}.pdf}"
-[ "$SRC" = "docs/REPORT.md" ] && [ -z "${2:-}" ] && OUT="docs/News-Service-Report.pdf"
+[ "$SRC" = "docs/global-news/report.md" ] && [ -z "${2:-}" ] && OUT="docs/global-news/reports/News-Service-Report.pdf"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 command -v pandoc >/dev/null || { echo "pandoc is required"; exit 1; }
@@ -67,9 +67,10 @@ if [ "${3:-}" = "--source-list-notes" ]; then
 CSS
 fi
 
-# Images are referenced relatively from docs/REPORT.md, and the render happens
+# Images are referenced relatively from each topic's document, and rendering happens
 # in $BUILD, so they have to travel with the HTML or they silently vanish.
-[ -d docs/screenshots ] && cp -R docs/screenshots "$BUILD/screenshots"
+SCREENSHOTS="$(dirname "$SRC")/screenshots"
+[ -d "$SCREENSHOTS" ] && cp -R "$SCREENSHOTS" "$BUILD/screenshots"
 
 pandoc "$SRC" -f gfm -t html5 -s -H "$BUILD/style.html" -o "$BUILD/report.html"
 

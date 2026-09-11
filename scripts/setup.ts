@@ -1,8 +1,8 @@
 import { closePool } from "../src/db/pool.js";
 import { migrate } from "../src/db/migrate.js";
 import { loadCatalogue } from "../src/catalogue/loader.js";
-import { resolveCompanies } from "../src/resolution/resolver.js";
-import { companiesNeedingResolution, saveResolutions } from "../src/resolution/store.js";
+import { resolveCompanies } from "../src/features/global-news/resolution/resolver.js";
+import { companiesNeedingResolution, saveResolutions } from "../src/features/global-news/resolution/store.js";
 import { logger } from "../src/util/logger.js";
 
 /** One-shot bootstrap: migrate, load the catalogue, resolve listings.

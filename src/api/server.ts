@@ -8,14 +8,14 @@ import { closePool, waitForDatabase } from "../db/pool.js";
 import { migrate } from "../db/migrate.js";
 import { logger } from "../util/logger.js";
 import { isMainModule } from "../util/main.js";
-import { startScheduler, stopScheduler } from "../ingest/scheduler.js";
-import { companyRoutes } from "./routes/companies.js";
-import { newsRoutes } from "./routes/news.js";
+import { startScheduler, stopScheduler } from "../features/global-news/ingest/scheduler.js";
+import { companyRoutes } from "../features/global-news/api/routes/companies.js";
+import { newsRoutes } from "../features/global-news/api/routes/news.js";
 import { healthRoutes } from "./routes/health.js";
-import { operationsRoutes } from "./routes/operations.js";
-import { v2Routes } from "../v2/routes.js";
-import { startV2Worker, stopV2Worker } from "../v2/worker.js";
-import { adminAuthorized } from "../v2/security.js";
+import { operationsRoutes } from "../features/global-news/api/routes/operations.js";
+import { v2Routes } from "../features/global-news-v2/routes.js";
+import { startV2Worker, stopV2Worker } from "../features/global-news-v2/worker.js";
+import { adminAuthorized } from "../features/global-news-v2/security.js";
 
 // The Vercel entrypoint imports and supplies Fastify for framework detection.
 export async function buildServer(createServer: typeof Fastify = Fastify) {

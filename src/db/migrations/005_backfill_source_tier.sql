@@ -10,7 +10,7 @@
 -- order, to any deployment - the same guarantee as every other migration.
 --
 -- NOTE: this is a one-off backfill, not a second classifier. New rows are
--- tiered by `sourceTier()` in src/ingest/relevance.ts, which is the single
+-- tiered by `sourceTier()` in src/features/global-news/ingest/relevance.ts, which is the single
 -- source of truth. The patterns below are intentionally a subset - they only
 -- need to catch what was already stored when this migration ran. Do not
 -- extend them; change relevance.ts and re-run the ingest instead.
