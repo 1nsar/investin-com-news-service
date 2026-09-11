@@ -17,9 +17,10 @@ import { v2Routes } from "../v2/routes.js";
 import { startV2Worker, stopV2Worker } from "../v2/worker.js";
 import { adminAuthorized } from "../v2/security.js";
 
-export async function buildServer() {
+// The Vercel entrypoint imports and supplies Fastify for framework detection.
+export async function buildServer(createServer: typeof Fastify = Fastify) {
   assertProductionConfig();
-  const app = Fastify({
+  const app = createServer({
     loggerInstance: logger,
     trustProxy: true,
     // Reject absurd bodies outright; nothing here needs a large payload.

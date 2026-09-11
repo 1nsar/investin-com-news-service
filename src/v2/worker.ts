@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import { isVercelRuntime } from "../config/runtime.js";
 import { query, queryOne, transaction } from "../db/pool.js";
 import { logger } from "../util/logger.js";
 import { fetchProviderBatch } from "./providers/index.js";
@@ -6,7 +7,7 @@ import { ProviderFetchError } from "./providers/http.js";
 import { dailyLimit, jobFromRow, persistArticles, positiveEnv, providerConfig, providerSettingsChanged, providerStatuses, sameCredentials, V2Error } from "./store.js";
 import type { ProviderDefinition, ProviderId, SyncJob } from "./types.js";
 
-export function workerEnabled():boolean{return process.env.NEWS_V2_WORKER_ENABLED==="true";}
+export function workerEnabled():boolean{return !isVercelRuntime()&&process.env.NEWS_V2_WORKER_ENABLED==="true";}
 const owner=randomUUID();
 let timer:ReturnType<typeof setInterval>|undefined;
 let active:Promise<void>|null=null;
