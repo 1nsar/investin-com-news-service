@@ -19,6 +19,7 @@ logs/
 
 .DS_Store
 coverage/
+.vercel/
 
 # Temporary office-editor locks are not report content.
 ~$*

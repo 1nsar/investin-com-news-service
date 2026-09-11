@@ -3,6 +3,7 @@ import swagger from "@fastify/swagger";
 import swaggerUi from "@fastify/swagger-ui";
 import Fastify from "fastify";
 import { config } from "../config/index.js";
+import { assertProductionConfig } from "../config/production.js";
 import { closePool, waitForDatabase } from "../db/pool.js";
 import { migrate } from "../db/migrate.js";
 import { logger } from "../util/logger.js";
@@ -10,16 +11,44 @@ import { isMainModule } from "../util/main.js";
 import { startScheduler, stopScheduler } from "../ingest/scheduler.js";
 import { companyRoutes } from "./routes/companies.js";
 import { newsRoutes } from "./routes/news.js";
+import { healthRoutes } from "./routes/health.js";
 import { operationsRoutes } from "./routes/operations.js";
 import { v2Routes } from "../v2/routes.js";
 import { startV2Worker, stopV2Worker } from "../v2/worker.js";
+import { adminAuthorized } from "../v2/security.js";
 
-export async function buildServer() {
-  const app = Fastify({
+// The Vercel entrypoint imports and supplies Fastify for framework detection.
+export async function buildServer(createServer: typeof Fastify = Fastify) {
+  assertProductionConfig();
+  const app = createServer({
     loggerInstance: logger,
     trustProxy: true,
     // Reject absurd bodies outright; nothing here needs a large payload.
     bodyLimit: 1_048_576,
+  });
+
+  // Register before child plugins so legacy routes inherit the safe handler.
+  app.setErrorHandler((error: unknown, request, reply) => {
+    request.log.error({ err: error }, "request failed");
+    const status =
+      typeof error === "object" && error !== null && "statusCode" in error
+        ? Number((error as { statusCode?: unknown }).statusCode)
+        : NaN;
+    reply.code(Number.isFinite(status) && status >= 400 ? status : 500).send({
+      error: "internal_error",
+      detail: process.env.NODE_ENV === "production" ? "The news service is temporarily unavailable." : error instanceof Error ? error.message : String(error),
+    });
+  });
+
+  // One server-only bearer protects the entire hosted backend, including docs
+  // and any future route. Health probes are the only public exceptions.
+  app.addHook("onRequest", async (request, reply) => {
+    if (process.env.NODE_ENV !== "production") return;
+    reply.header("Cache-Control", "private, no-store");
+    const probe = ["/health", "/ready"].includes(request.routeOptions.url ?? "") && ["GET", "HEAD"].includes(request.method);
+    if (!probe && !adminAuthorized(request.headers.authorization)) {
+      return reply.code(401).send({ error: "Authorized workspace access is required." });
+    }
   });
 
   await app.register(cors, {
@@ -44,6 +73,7 @@ export async function buildServer() {
   });
   await app.register(swaggerUi, { routePrefix: "/docs" });
 
+  await app.register(healthRoutes);
   if (process.env.NEWS_V2_ONLY !== "true") {
     await app.register(companyRoutes);
     await app.register(newsRoutes);
@@ -59,22 +89,11 @@ export async function buildServer() {
     });
   });
 
-  app.setErrorHandler((error: unknown, request, reply) => {
-    request.log.error({ err: error }, "request failed");
-    const status =
-      typeof error === "object" && error !== null && "statusCode" in error
-        ? Number((error as { statusCode?: unknown }).statusCode)
-        : NaN;
-    reply.code(Number.isFinite(status) && status >= 400 ? status : 500).send({
-      error: "internal_error",
-      detail: error instanceof Error ? error.message : String(error),
-    });
-  });
-
   return app;
 }
 
 export async function start(): Promise<void> {
+  assertProductionConfig();
   await waitForDatabase();
   // The API owns schema convergence so a fresh deployment needs no extra step.
   // Concurrent replicas are safe: the migration runner takes an advisory lock.

@@ -2,6 +2,8 @@ import "@fastify/swagger";
 import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { config } from "../../config/index.js";
+import { paidProvidersAllowed } from "../../config/production.js";
+import { isVercelRuntime } from "../../config/runtime.js";
 import { pool } from "../../db/pool.js";
 import { ingestInProgress, runIngestExclusive } from "../../ingest/runner.js";
 import { companiesForFetch } from "../../ingest/store.js";
@@ -48,26 +50,6 @@ function tokenMatches(provided: string, expected: string): boolean {
 }
 
 export async function operationsRoutes(app: FastifyInstance): Promise<void> {
-  // Liveness: is the process up? Deliberately free of database access so a
-  // database blip does not cause an orchestrator to kill a healthy container.
-  app.get("/health", { schema: { description: "Liveness probe.", tags: ["ops"] } }, async () => ({
-    status: "ok",
-    uptimeSeconds: Math.round(process.uptime()),
-  }));
-
-  // Readiness: can it actually serve? This one does touch the database.
-  app.get("/ready", { schema: { description: "Readiness probe.", tags: ["ops"] } }, async (_request, reply) => {
-    try {
-      await pool.query("SELECT 1");
-      return { status: "ready" };
-    } catch (error) {
-      return reply.code(503).send({
-        status: "not_ready",
-        detail: error instanceof Error ? error.message : String(error),
-      });
-    }
-  });
-
   app.get("/v1/status", {
     schema: {
       description: "Service state: counts, provider health, and the last run's outcome.",
@@ -153,12 +135,20 @@ export async function operationsRoutes(app: FastifyInstance): Promise<void> {
     // worth protecting. Unset by default: the component is designed to sit
     // behind a gateway, and requiring a token out of the box would break the
     // documented one-command start.
-    if (config.API_AUTH_TOKEN) {
+    if (process.env.NODE_ENV !== "production" && config.API_AUTH_TOKEN) {
       const header = request.headers.authorization ?? "";
       const provided = header.startsWith("Bearer ") ? header.slice(7) : "";
       if (!tokenMatches(provided, config.API_AUTH_TOKEN)) {
         return reply.code(401).send({ error: "unauthorized", detail: "valid bearer token required" });
       }
+    }
+
+    if (isVercelRuntime()) {
+      return reply.code(503).send({ error: "worker_required", detail: "Legacy collection requires a persistent worker. Use the worker host or ingestion CLI." });
+    }
+
+    if (!paidProvidersAllowed()) {
+      return reply.code(403).send({ error: "collection_disabled", detail: "Legacy provider collection is disabled on this deployment." });
     }
 
     const parsed = FetchBody.safeParse(request.body ?? {});

@@ -1,4 +1,5 @@
 import { config } from "../config/index.js";
+import { paidProvidersAllowed } from "../config/production.js";
 import { HttpError, requestJson } from "../util/http.js";
 import { RateLimiter } from "../util/rateLimiter.js";
 import type { RawArticle } from "./types.js";
@@ -49,7 +50,7 @@ export class MarketNewsSource {
   readonly limiter = new RateLimiter("finnhub_market", config.FINNHUB_RATE_LIMIT_PER_MIN);
 
   isConfigured(): boolean {
-    return Boolean(config.FINNHUB_API_KEY);
+    return paidProvidersAllowed() && Boolean(config.FINNHUB_API_KEY);
   }
 
   async fetchCategory(category: MarketCategory): Promise<MarketArticle[]> {

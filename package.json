@@ -17,6 +17,7 @@
     "resolve": "tsx scripts/resolve-listings.ts",
     "ingest": "tsx scripts/run-ingest.ts",
     "setup": "tsx scripts/setup.ts",
+    "bootstrap:production": "NODE_ENV=production node dist/scripts/bootstrap-production.js",
     "coverage:probe": "tsx scripts/coverage-probe.ts",
     "export:listings": "tsx scripts/export-listings.ts",
     "test": "vitest run",

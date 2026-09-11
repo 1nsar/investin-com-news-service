@@ -5,6 +5,7 @@ import { logger } from "../util/logger.js";
 import { parseCsvRecords } from "../util/csv.js";
 import { normalizeName } from "./names.js";
 import { exchangeForHint } from "./exchanges.js";
+import { seedIdentityAliases } from "./identity-aliases.js";
 
 export interface CatalogueRow {
   ticker: string;
@@ -193,6 +194,7 @@ export async function loadCatalogue(
       [rows.map((row) => row.ticker)],
     );
 
+    await seedIdentityAliases(client);
     return { inserted, updated, deactivated: deactivated.rowCount ?? 0 };
   });
 

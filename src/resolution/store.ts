@@ -1,4 +1,5 @@
 import { transaction, query } from "../db/pool.js";
+import { seedIdentityAliases } from "../catalogue/identity-aliases.js";
 import type { CompanyResolution, CompanyToResolve } from "./types.js";
 
 /** Companies still needing resolution. `pending` covers first load and any row
@@ -178,6 +179,7 @@ export async function saveResolutions(resolutions: CompanyResolution[]): Promise
         [resolution.companyId, resolution.status, resolution.note],
       );
     }
+    await seedIdentityAliases(client);
   });
 
   return written;

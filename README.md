@@ -18,6 +18,8 @@ entirely by environment variables.
 
 | Document | What's in it |
 | --- | --- |
+| **[docs/VERCEL.md](docs/VERCEL.md)** | Deploy the API on Vercel, fix the missing `public` error, and connect a separate ingestion worker |
+| **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)** | Persistent production service, database bootstrap, required settings and recovery |
 | **[docs/COMPARISON.md](docs/COMPARISON.md)** | News provider options priced and **measured against this catalogue**, and the primary + fallback recommendation |
 | **[docs/API.md](docs/API.md)** | Full API reference. Machine-readable spec: [docs/openapi.json](docs/openapi.json), also live at `/docs` |
 | **[docs/OPERATIONS.md](docs/OPERATIONS.md)** | Where this breaks first when it runs unattended for months, and what I deliberately did not build |
