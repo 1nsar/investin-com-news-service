@@ -1,5 +1,7 @@
 # Persistent news-service deployment
 
+For the optional API deployment on Vercel, see [VERCEL.md](VERCEL.md). That entrypoint serves requests and queues jobs; the persistent service described here still runs ingestion against the same PostgreSQL database.
+
 This service runs as a persistent Node process with PostgreSQL and an in-process, bounded V2 worker. Run it behind the authenticated MVP server or a private network. The browser must never receive the backend bearer, encryption key or provider credentials. This deployment is one shared team workspace, not tenant isolation for separate customers.
 
 ## Required production environment

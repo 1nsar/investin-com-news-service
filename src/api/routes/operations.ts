@@ -3,6 +3,7 @@ import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { config } from "../../config/index.js";
 import { paidProvidersAllowed } from "../../config/production.js";
+import { isVercelRuntime } from "../../config/runtime.js";
 import { pool } from "../../db/pool.js";
 import { ingestInProgress, runIngestExclusive } from "../../ingest/runner.js";
 import { companiesForFetch } from "../../ingest/store.js";
@@ -140,6 +141,10 @@ export async function operationsRoutes(app: FastifyInstance): Promise<void> {
       if (!tokenMatches(provided, config.API_AUTH_TOKEN)) {
         return reply.code(401).send({ error: "unauthorized", detail: "valid bearer token required" });
       }
+    }
+
+    if (isVercelRuntime()) {
+      return reply.code(503).send({ error: "worker_required", detail: "Legacy collection requires a persistent worker. Use the worker host or ingestion CLI." });
     }
 
     if (!paidProvidersAllowed()) {
