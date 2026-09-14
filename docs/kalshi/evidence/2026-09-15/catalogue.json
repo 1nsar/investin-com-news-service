@@ -1,0 +1,39 @@
+{
+  "observedAt": "2026-09-15",
+  "source": "GET https://api.elections.kalshi.com/trade-api/v2/events?status=open&limit=200 (cursor-paged)",
+  "crawl": {
+    "withoutMarkets": { "pages": 61, "events": 12160, "megabytes": 6.8, "seconds": 18.2 },
+    "withNestedMarkets": { "pages": 61, "events": 12160, "markets": 111517, "megabytes": 242.9, "largestPageMegabytes": 11.2, "seconds": 29.8 }
+  },
+  "openEventsByCategoryFirst8000": {
+    "note": "Counted over the first 40 pages (8,000 events); firstPage is where the category first appears.",
+    "Elections": { "events": 3334, "firstPage": 1 },
+    "Sports": { "events": 1956, "firstPage": 1 },
+    "Entertainment": { "events": 627, "firstPage": 1 },
+    "Financials": { "events": 566, "firstPage": 1 },
+    "Politics": { "events": 562, "firstPage": 1 },
+    "Economics": { "events": 505, "firstPage": 1 },
+    "Science and Technology": { "events": 130, "firstPage": 1 },
+    "Climate and Weather": { "events": 104, "firstPage": 1 },
+    "Companies": { "events": 79, "firstPage": 1 },
+    "Crypto": { "events": 48, "firstPage": 12 },
+    "Mentions": { "events": 45, "firstPage": 14 },
+    "Commodities": { "events": 16, "firstPage": 28 },
+    "Social": { "events": 9, "firstPage": 1 },
+    "World": { "events": 6, "firstPage": 1 },
+    "Health": { "events": 6, "firstPage": 1 },
+    "AI": { "events": 4, "firstPage": 3 },
+    "Transportation": { "events": 1, "firstPage": 2 },
+    "Business": { "events": 1, "firstPage": 2 }
+  },
+  "sampleMarket": {
+    "ticker": "KXBTCY-27JAN0100-B77500",
+    "event": "Bitcoin price at the end of 2026",
+    "contract": "75,000 to 79,999.99",
+    "yesBid": 0.142,
+    "yesAsk": 0.143,
+    "orderBookLevels": { "yesBids": 69, "noBids": 87 },
+    "oneWeekHistoryPoints": 167
+  },
+  "responseFields": "Markets returned *_dollars price strings and *_fp counts; legacy integer-cent fields were absent."
+}
