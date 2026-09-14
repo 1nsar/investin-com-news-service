@@ -1,15 +1,28 @@
 # News service documentation
 
-Choose a task; each folder has a short guide before its detailed reports.
+Each folder starts with a short README, followed by detailed reports, screenshots and dated evidence.
+
+## News (built in this service)
 
 | Task | Start here | Contents |
 | --- | --- | --- |
 | Original Global News | [global-news](global-news/README.md) | API, provider comparison, source analysis and service report |
 | Global News 2 | [global-news-v2](global-news-v2/README.md) | Architecture, providers, screenshots and verification evidence |
-| Polymarket | [polymarket](polymarket/README.md) | Public-data inventory, dashboard evidence and export reports |
-| Monid | [monid](monid/README.md) | Integration assessment, finance tools, costs and inventories |
-| Deployment | [deployment](deployment/README.md) | Persistent hosting, Vercel API, secrets and bootstrap |
 
-The [original assignment](reference/assignment.md) and [OpenAPI snapshot](api/openapi.json) are references. Dated research reports describe observations at the stated dates; current source and deployment guides may include later fixes.
+## Market data (built in the MVP website)
 
-Use the named snapshot tags to find historical checkpoints. Commit hashes recorded in dated reports predate repository maintenance.
+| Task | Start here | Status | Contents |
+| --- | --- | --- | --- |
+| Polymarket | [polymarket](polymarket/README.md) | Prices verified; streaming blocked by Polymarket keys | Verification, data inventory, exports, screenshots, evidence |
+| Kalshi | [kalshi](kalshi/README.md) | Verified live | Verification and catalogue evidence |
+| Monid | [monid](monid/README.md) | Verified live | Verification, integration assessment, cost model, inventories, exports |
+
+## Operations and reference
+
+| Topic | Start here |
+| --- | --- |
+| Deployment | [deployment](deployment/README.md): persistent hosting, Vercel API, secrets and bootstrap |
+| API contract | [OpenAPI snapshot](api/openapi.json) |
+| Original assignment | [reference/assignment.md](reference/assignment.md) |
+
+Dated research reports describe observations at the stated dates; current source and deployment guides may include later fixes. Commit hashes recorded in dated reports predate repository maintenance.

@@ -4,16 +4,17 @@ The backend for the [Investment Research MVP](https://github.com/1nsar/investing
 
 ## Find a task
 
-| Task | Implementation | Reports and evidence |
-| --- | --- | --- |
-| Global News (original) | [src/features/global-news](src/features/global-news) | [Global News](docs/global-news/README.md) |
-| Global News 2 | [src/features/global-news-v2](src/features/global-news-v2) | [Global News 2](docs/global-news-v2/README.md) |
-| Polymarket | Dashboard is in the MVP repository | [Polymarket](docs/polymarket/README.md) |
-| Monid evaluation | Research only; no runtime integration | [Monid](docs/monid/README.md) |
-| Hosting and database setup | [src/deployment](src/deployment) | [Deployment](docs/deployment/README.md) |
-| API contract | [src/api](src/api), feature routes | [V1 API reference](docs/global-news/api.md), [OpenAPI snapshot](docs/api/openapi.json) |
+| Area | Task | Implementation | Reports and evidence |
+| --- | --- | --- | --- |
+| News | Global News (original) | [src/features/global-news](src/features/global-news) | [Global News](docs/global-news/README.md) |
+| News | Global News 2 | [src/features/global-news-v2](src/features/global-news-v2) | [Global News 2](docs/global-news-v2/README.md) |
+| Market data | Polymarket | [MVP `/polymarket`](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket) | [Polymarket](docs/polymarket/README.md) |
+| Market data | Kalshi | [MVP `/kalshi`](https://github.com/1nsar/investing-com/tree/main/src/features/kalshi) | [Kalshi](docs/kalshi/README.md) |
+| Market data | Monid | [MVP `/monid`](https://github.com/1nsar/investing-com/tree/main/src/features/monid) | [Monid](docs/monid/README.md) |
+| Operations | Hosting and database setup | [src/deployment](src/deployment) | [Deployment](docs/deployment/README.md) |
+| Operations | API contract | [src/api](src/api), feature routes | [V1 API reference](docs/global-news/api.md), [OpenAPI snapshot](docs/api/openapi.json) |
 
-Each task folder starts with a short README. Detailed documents, downloadable reports, screenshots and dated evidence are kept with that task.
+Each task folder starts with a short README. Detailed documents, downloadable reports, screenshots and dated evidence are kept with that task. Polymarket, Kalshi and Monid run in the MVP website; this repository keeps their research and verification records.
 
 ## Local development
 
@@ -48,7 +49,8 @@ scripts/global-news/         Collection and analysis commands
 scripts/monid/               Monid report generation
 scripts/polymarket/           Polymarket report generation
 test/                        Tests grouped by feature
-docs/                        Guides, research, reports and evidence
+docs/                        Guides, research, reports and evidence by task
+                             (global-news, global-news-v2, polymarket, kalshi, monid, deployment)
 data/                        Tracked catalogue and listing snapshots
 ```
 
