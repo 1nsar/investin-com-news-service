@@ -2,13 +2,17 @@
 
 **Status: implemented and verified with live data (15 September 2026).**
 
-The page is built in the [MVP's Kalshi feature](https://github.com/1nsar/investing-com/tree/main/src/features/kalshi) at `/kalshi`. This folder holds the verification record and evidence.
+The page is built in the [MVP's Kalshi feature](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket-kalshi-monid-bloomberg/kalshi) at `/kalshi`. This folder holds the verification record and evidence.
 
 ## What it does
 
 - Lists open Kalshi events by topic (economy, politics, crypto, sports) and by search.
 - Shows each contract's YES/NO prices, best bid and ask, order book, and one-day or one-week price history, refreshed every 10 seconds.
 - Uses Kalshi's public Trade API v2 (`api.elections.kalshi.com`). Market data needs no key; no trading is performed.
+
+## Usage rights
+
+The earlier [data-sources review](../data-sources.md#kalshi--no) found that Kalshi's developer agreement limits the API to *"facilitating a member's own trading"* and forbids *"collecting, caching, aggregating, or storing data."* The integration works technically, but it caches and displays that data. Treat it as an internal preview (disabled in production by default) until Kalshi grants permission for this use.
 
 ## How discovery works
 

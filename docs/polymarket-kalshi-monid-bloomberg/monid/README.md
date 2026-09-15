@@ -2,7 +2,7 @@
 
 **Status: integrated and verified with live data (15 September 2026).**
 
-The integration is built in the [MVP's Monid feature](https://github.com/1nsar/investing-com/tree/main/src/features/monid): the `/monid` page and the **Signals** tab on each company page. This folder holds the original provider evaluation and the verification record.
+The integration is built in the [MVP's Monid feature](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket-kalshi-monid-bloomberg/monid): the `/monid` page and the **Signals** tab on each company page. This folder holds the original provider evaluation and the verification record.
 
 ## What it does
 
@@ -25,4 +25,4 @@ Before integrating, the evaluation inspected 70 finance tools and 26 news listin
 - [Word, PDF and workbook exports](reports)
 - [Catalogue and review evidence](evidence)
 - [Screenshot](screenshots)
-- [Report-generation scripts](../../scripts/monid)
+- [Report-generation scripts](../../../scripts/polymarket-kalshi-monid-bloomberg/monid)

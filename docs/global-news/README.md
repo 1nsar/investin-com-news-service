@@ -6,7 +6,7 @@ This feature resolves catalogue listings, collects company/general news, filters
 
 - [API reference](api.md)
 - [Provider comparison](provider-comparison.md)
-- [Data sources](data-sources.md) / [Russian version](data-sources.ru.md)
+- [Data sources](../polymarket-kalshi-monid-bloomberg/data-sources.md) / [Russian version](../polymarket-kalshi-monid-bloomberg/data-sources.ru.md)
 - [Service report](report.md) and [operations](operations.md)
 - [Downloadable reports](reports)
 - [Screenshots](screenshots)

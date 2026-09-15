@@ -8,9 +8,10 @@ The backend for the [Investment Research MVP](https://github.com/1nsar/investing
 | --- | --- | --- | --- |
 | News | Global News (original) | [src/features/global-news](src/features/global-news) | [Global News](docs/global-news/README.md) |
 | News | Global News 2 | [src/features/global-news-v2](src/features/global-news-v2) | [Global News 2](docs/global-news-v2/README.md) |
-| Market data | Polymarket | [MVP `/polymarket`](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket) | [Polymarket](docs/polymarket/README.md) |
-| Market data | Kalshi | [MVP `/kalshi`](https://github.com/1nsar/investing-com/tree/main/src/features/kalshi) | [Kalshi](docs/kalshi/README.md) |
-| Market data | Monid | [MVP `/monid`](https://github.com/1nsar/investing-com/tree/main/src/features/monid) | [Monid](docs/monid/README.md) |
+| Market data | Polymarket | [MVP `/polymarket`](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket-kalshi-monid-bloomberg/polymarket) | [Polymarket](docs/polymarket-kalshi-monid-bloomberg/polymarket/README.md) |
+| Market data | Kalshi | [MVP `/kalshi`](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket-kalshi-monid-bloomberg/kalshi) | [Kalshi](docs/polymarket-kalshi-monid-bloomberg/kalshi/README.md) |
+| Market data | Monid | [MVP `/monid`](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket-kalshi-monid-bloomberg/monid) | [Monid](docs/polymarket-kalshi-monid-bloomberg/monid/README.md) |
+| Market data | Bloomberg | Not integrated (licence) | [Bloomberg](docs/polymarket-kalshi-monid-bloomberg/bloomberg/README.md) |
 | Operations | Hosting and database setup | [src/deployment](src/deployment) | [Deployment](docs/deployment/README.md) |
 | Operations | API contract | [src/api](src/api), feature routes | [V1 API reference](docs/global-news/api.md), [OpenAPI snapshot](docs/api/openapi.json) |
 
@@ -46,11 +47,11 @@ src/db/                      PostgreSQL access and SQL migrations
 src/config/                  Environment and runtime settings
 src/deployment/              Offline production bootstrap
 scripts/global-news/         Collection and analysis commands
-scripts/monid/               Monid report generation
-scripts/polymarket/           Polymarket report generation
+scripts/polymarket-kalshi-monid-bloomberg/
+                             Polymarket and Monid report generation
 test/                        Tests grouped by feature
 docs/                        Guides, research, reports and evidence by task
-                             (global-news, global-news-v2, polymarket, kalshi, monid, deployment)
+                             (global-news, global-news-v2, polymarket-kalshi-monid-bloomberg, deployment)
 data/                        Tracked catalogue and listing snapshots
 ```
 

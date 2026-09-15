@@ -2,7 +2,7 @@
 
 **Status: dashboard implemented; public prices verified; live streaming blocked by Polymarket (15 September 2026).**
 
-The page is built in the [MVP's Polymarket feature](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket) at `/polymarket`. This folder holds the research, verification and evidence.
+The page is built in the [MVP's Polymarket feature](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket-kalshi-monid-bloomberg/polymarket) at `/polymarket`. This folder holds the research, verification and evidence.
 
 ## What it does
 
@@ -19,6 +19,6 @@ Commercial use and customer display of the data are not established; see the dat
 - [Word, PDF and workbook exports](reports)
 - [Screenshots](screenshots)
 - [Dated API and browser evidence](evidence)
-- [Report-generation script](../../scripts/polymarket/build-polymarket-inventory.py)
+- [Report-generation script](../../../scripts/polymarket-kalshi-monid-bloomberg/polymarket/build-polymarket-inventory.py)
 
 Evidence timestamps identify observations, not current market prices.

@@ -11,8 +11,8 @@ from collections import Counter
 from pathlib import Path
 import xlsxwriter
 
-ROOT = Path(__file__).resolve().parents[2]
-DOCS = ROOT / 'docs/monid'
+ROOT = Path(__file__).resolve().parents[3]
+DOCS = ROOT / 'docs/polymarket-kalshi-monid-bloomberg/monid'
 EVIDENCE = DOCS / 'evidence/finance/2026-09-09'
 ROWS = json.loads((EVIDENCE / 'tools.json').read_text())
 PROVIDERS = json.loads((EVIDENCE / 'providers.json').read_text())
