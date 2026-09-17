@@ -15,13 +15,13 @@ This is the public-evidence snapshot for the separate finance-tools report, cove
 From the `news-service` directory, regenerate the Markdown, CSV and formula-based Excel workbook with:
 
 ```sh
-python scripts/monid/build-monid-finance-report.py
+python scripts/polymarket-kalshi-monid-bloomberg/monid/build-monid-finance-report.py
 ```
 
 Export Word and PDF with:
 
 ```sh
-python scripts/monid/export-monid-finance-report.py
+python scripts/polymarket-kalshi-monid-bloomberg/monid/export-monid-finance-report.py
 ```
 
 The build requires `xlsxwriter`. Export requires `pandoc`, `python-docx` and local Chrome through the existing PDF renderer. Word uses native footnotes; its repeated references can receive new note numbers. The PDF exporter uses the stable unique source index in the Sources section, avoiding mismatches from suppressing repeated automatic notes.

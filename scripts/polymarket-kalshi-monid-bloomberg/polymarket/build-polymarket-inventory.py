@@ -11,8 +11,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
-ROOT = Path(__file__).resolve().parents[2]
-DOCS = ROOT / 'docs/polymarket'
+ROOT = Path(__file__).resolve().parents[3]
+DOCS = ROOT / 'docs/polymarket-kalshi-monid-bloomberg/polymarket'
 EVIDENCE = DOCS / 'evidence' / '2026-09-08'
 MVP_EVIDENCE = DOCS / 'evidence' / '2026-09-09'
 SCREENSHOTS = DOCS / 'screenshots'
@@ -363,4 +363,4 @@ workbook.close()
 summary_out={'captured_from_utc':start,'captured_to_utc':end,'request_count':len(manifest),'http_200':sum(m['http_status']==200 for m in manifest),'http_404':sum(m['http_status']==404 for m in manifest),'contracts':len(market_rows),'book_levels':len(book_rows),'daily_samples':len(history),'weekly_samples':len(weekly),'field_examples':len(field_rows),'all_observed_fields':len(observed_field_rows),'observed_terminal_values':observed_leaf_count,'inventory_categories':len(inventory),'reference_fields':len(reference),'mvp_features':len(mvp_integration),'mvp_browser_captures':len(mvp_captures),'mvp_history_samples':len(mvp_points) if mvp_response is not None else None,'mvp_response_sha256':mvp_response_sha256,'mvp_validation_recorded':mvp_validation is not None}
 (EVIDENCE/'inventory-summary.json').write_text(json.dumps(summary_out,indent=2)+'\n')
 print(json.dumps(summary_out,indent=2))
-print('Built docs/polymarket/reports/Polymarket-Data-Inventory.xlsx and chart; no network requests.')
+print('Built docs/polymarket-kalshi-monid-bloomberg/polymarket/reports/Polymarket-Data-Inventory.xlsx and chart; no network requests.')

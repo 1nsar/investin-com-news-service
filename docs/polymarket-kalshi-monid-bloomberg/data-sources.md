@@ -63,7 +63,7 @@ A later saved Fed sample included five contracts, event artwork and 249 daily
 history points / 57 weekly points, with visible gaps. The dedicated inventory
 records exact request times, response fields and screenshots; those observations
 must not be substituted for current quotes.
-[Data inventory and local MVP record](../polymarket/data-inventory.md).
+[Data inventory and local MVP record](polymarket/data-inventory.md).
 
 ### 2. Connection options and freshness
 
@@ -171,7 +171,7 @@ including actual data, refresh, pause/resume, selection, chart interaction,
 labelled failure handling, mobile and dark layouts. Nineteen unit tests,
 TypeScript, targeted ESLint and the production build passed. Real local
 screenshots, the separate **243-point/four-gap** chart capture and exact times are in the
-[inventory](../polymarket/data-inventory.md#9-local-mvp-implementation-and-capture-record).
+[inventory](polymarket/data-inventory.md#9-local-mvp-implementation-and-capture-record).
 
 **News comes from a separate source.** Polymarket's API descriptions are contract
 rules, not article bodies. Polymarket does publish journalism in **The Oracle**,

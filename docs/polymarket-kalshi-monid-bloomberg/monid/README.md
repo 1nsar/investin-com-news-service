@@ -2,7 +2,7 @@
 
 **Status: integrated and verified with live data (15 September 2026).**
 
-The integration is built in the [MVP's Monid feature](https://github.com/1nsar/investing-com/tree/main/src/features/monid): the `/monid` page and the **Signals** tab on each company page. This folder holds the original provider evaluation and the verification record.
+The integration is built in the [MVP's Monid feature](https://github.com/1nsar/investing-com/tree/main/src/features/polymarket-kalshi-monid-bloomberg/monid): the `/monid` page and the **Signals** tab on each company page. This folder holds the original provider evaluation and the verification record.
 
 ## What it does
 
@@ -19,10 +19,11 @@ Each call costs about $0.01. Data loads only when requested, is cached for 6 hou
 
 Before integrating, the evaluation inspected 70 finance tools and 26 news listings, reconciled catalogue prices, and modelled costs for 10 and 100 users. The shortlist included Context.dev, Akta and DefiLlama, with Quartr and Fiscal.ai as direct alternatives. Coverage beyond the verified tickers and customer-display rights still need confirmation.
 
+- [Full tool review](tool-review.md): every one of the 70 finance tools run once against Apple on 17 September 2026, with a verdict on each
 - [Integration assessment and shortlist](integration-assessment.md)
 - [Finance-tool coverage and cost model](finance-tools.md)
 - [CSV inventories](inventories)
 - [Word, PDF and workbook exports](reports)
 - [Catalogue and review evidence](evidence)
 - [Screenshot](screenshots)
-- [Report-generation scripts](../../scripts/monid)
+- [Report-generation scripts](../../../scripts/polymarket-kalshi-monid-bloomberg/monid)

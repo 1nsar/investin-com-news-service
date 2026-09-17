@@ -14,9 +14,9 @@ from docx.shared import Inches, Pt, RGBColor
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 
-ROOT=Path(__file__).resolve().parents[2]
-src=ROOT/'docs/monid/finance-tools.md'
-docx=ROOT/'docs/monid/reports/Monid-Finance-Tools-Report.docx'
+ROOT=Path(__file__).resolve().parents[3]
+src=ROOT/'docs/polymarket-kalshi-monid-bloomberg/monid/finance-tools.md'
+docx=ROOT/'docs/polymarket-kalshi-monid-bloomberg/monid/reports/Monid-Finance-Tools-Report.docx'
 subprocess.run(['pandoc',str(src),'-f','gfm','-t','docx','-o',str(docx)],check=True)
 doc=Document(docx)
 for section in doc.sections:
@@ -55,5 +55,5 @@ assert '[^s' not in text
 with tempfile.TemporaryDirectory(prefix='monid-finance-export-') as tmp:
     pdfsrc=Path(tmp)/'report.md';pdfsrc.write_text(text)
     subprocess.run(['bash',str(ROOT/'scripts/build-report-pdf.sh'),str(pdfsrc),
-                    'docs/monid/reports/Monid-Finance-Tools-Report.pdf','--source-list-notes'],cwd=ROOT,check=True)
+                    'docs/polymarket-kalshi-monid-bloomberg/monid/reports/Monid-Finance-Tools-Report.pdf','--source-list-notes'],cwd=ROOT,check=True)
 print('Exported Word with native footnotes and PDF with the stable Sources index.')
