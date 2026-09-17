@@ -14,8 +14,8 @@
 | Avoid | 1 |
 | Fair | 1 |
 
-- **Speed:** median 4.4s, slowest 11.3s. Every run completed on the first attempt.
-- **Price:** $0.01 per call for 65 tools; Yahoo Finance's five cost $0.05.
+- **Speed:** median 4.4s, slowest 11.3s. No run needed a retry, and the three failures came back immediately.
+- **Price:** 55 tools cost $0.01 a call. MarketBeat's financial statements and analyst ratings cost $0.02. Yahoo Finance's five cost $0.05. DefiLlama's eight cost **$0.0006**, by far the cheapest in the catalogue.
 - **Shape:** 54 tools returned a list of records; 13 returned a single record (quotes, overviews, ratio sets), which the page shows as field/value pairs.
 - **Accuracy spot-checks:** Apple's price agreed across MarketBeat, StockAnalysis and DefiLlama ($332.41). MarketBeat and SECForm4 independently reported the same Apple insider sale (Jennifer Newstead, SVP and General Counsel, 8 September).
 
@@ -35,7 +35,7 @@ Ranked for this product: a company research workspace with company pages, a cata
 | `nasdaq/get_stock_sec_filings` | 10-K, 10-Q and 8-K filings with links. Already wired in | 14 rows |
 | `marketbeat/get_profitability_metrics` | EPS, P/E, margins, return on equity in one record | 1 record |
 
-A company page showing all seven costs about **$0.07** uncached, and nothing for six hours after.
+All eight together cost about **$0.09** uncached (analyst ratings is $0.02), and nothing for the next six hours.
 
 ### Use now — market-wide pages (catalogue, news, dashboard)
 
@@ -43,7 +43,6 @@ These take no ticker: fetch once, cache, and filter locally for every company on
 
 | Tool | Why | Returned |
 | --- | --- | --- |
-| `finviz/get_stock_news_sentiment` | Headlines with sentiment, across the market | 103 rows |
 | `finviz/get_insider_trading` | Market-wide insider activity, newest first | 200 rows |
 | `finviz/get_market_movers` / `get_screener_results` | Gainers, losers and screened lists | 20 rows each |
 | `nasdaq/get_earnings_calendar` | Who reports when, with estimates and surprises | 15 rows |
@@ -51,18 +50,19 @@ These take no ticker: fetch once, cache, and filter locally for every company on
 | `stockanalysis/get_ipo_calendar` | Upcoming and recent listings | 4 rows |
 | `secform4/get_insider_sales` / `get_insider_buys` | Market-wide Form 4 activity | 100 and 46 rows |
 
-One refresh of all seven costs about **$0.07**, regardless of how many companies are displayed.
+One refresh of all eight costs about **$0.08**, regardless of how many companies are displayed.
 
 ### Use when the feature needs it
 
 | Tool | Use for | Returned |
 | --- | --- | --- |
 | `yahoo-finance/get_historical_data` | The best daily price history here; $0.05 a call | 251 rows |
-| `defillama/equities/v1/filings` | Deep filing history with document links | 400 rows |
+| `defillama/equities/v1/filings` | Deep filing history with document links, at $0.0006 a call | 400 rows |
 | `nasdaq/get_stock_option_chain` | Option strikes, bids and volume | 60 rows |
 | `marketbeat/get_financial_statements` | Quarterly statements as reported | 144 rows |
 | `marketbeat/get_competitors` | Side-by-side peer comparison | 22 rows |
 | `secform4/get_company_insider_trading` | Insider trades by SEC CIK, to cross-check MarketBeat | 15 rows |
+| `finviz/get_stock_news_sentiment` | Headlines with sentiment for one company; needs a ticker despite the market-wide feel | 103 rows |
 | `nasdaq/search_symbols`, `marketbeat/search_stocks`, `stockanalysis/search_stocks` | Ticker lookup and autocomplete | 11, 9, 50 rows |
 
 ### Skip
@@ -71,6 +71,7 @@ One refresh of all seven costs about **$0.07**, regardless of how many companies
 - `nasdaq/get_stock_financials` and `stockanalysis/get_stock_financials_income` — labels without figures. Use MarketBeat's statements instead.
 - `nasdaq/get_stock_screener` — returns its own filter options. Use Finviz's screener.
 - `defillama/equities/v1/statements` — unlabelled number arrays.
+- `defillama/equities/v1/dimensions` — date and value pairs with no label saying what is measured.
 - `defillama` price-history, ohlcv, companies-list — hand back a download link, so they need a second fetch.
 - `secform4/search`, `secform4/get_hedge_fund_portfolio`, `stockanalysis/get_stock_list` — returned nothing for our inputs.
 - Fund, ETF and crypto quote tools — untested here; only worth it if we add those asset types.
