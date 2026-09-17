@@ -19,9 +19,69 @@
 - **Shape:** 54 tools returned a list of records; 13 returned a single record (quotes, overviews, ratio sets), which the page shows as field/value pairs.
 - **Accuracy spot-checks:** Apple's price agreed across MarketBeat, StockAnalysis and DefiLlama ($332.41). MarketBeat and SECForm4 independently reported the same Apple insider sale (Jennifer Newstead, SVP and General Counsel, 8 September).
 
-Read the [verdict guide](#verdicts) below the table.
+## Which tools we should actually use
+
+Ranked for this product: a company research workspace with company pages, a catalogue, news and portfolios. Row counts are what each returned for Apple in this test.
+
+### Use now — company page (Signals tab)
+
+| Tool | Why | Returned |
+| --- | --- | --- |
+| `marketbeat/get_insider_trades` | Who bought or sold, with dates, prices and amounts. Already wired in | 69 rows |
+| `marketbeat/get_institutional_ownership` | Which funds hold the stock, position sizes and changes | 103 rows |
+| `marketbeat/get_short_interest` | Short interest history and percentage of float | 121 rows |
+| `marketbeat/get_analyst_ratings` + `get_stock_forecast` | Consensus rating and price targets, with how they moved over a year | 7 rows each |
+| `nasdaq/get_stock_dividend_history` | Ex-dates, amounts, yield and payout ratio | 83 rows |
+| `nasdaq/get_stock_sec_filings` | 10-K, 10-Q and 8-K filings with links. Already wired in | 14 rows |
+| `marketbeat/get_profitability_metrics` | EPS, P/E, margins, return on equity in one record | 1 record |
+
+A company page showing all seven costs about **$0.07** uncached, and nothing for six hours after.
+
+### Use now — market-wide pages (catalogue, news, dashboard)
+
+These take no ticker: fetch once, cache, and filter locally for every company on screen. That is the cheap way to add data to list pages.
+
+| Tool | Why | Returned |
+| --- | --- | --- |
+| `finviz/get_stock_news_sentiment` | Headlines with sentiment, across the market | 103 rows |
+| `finviz/get_insider_trading` | Market-wide insider activity, newest first | 200 rows |
+| `finviz/get_market_movers` / `get_screener_results` | Gainers, losers and screened lists | 20 rows each |
+| `nasdaq/get_earnings_calendar` | Who reports when, with estimates and surprises | 15 rows |
+| `stockanalysis/get_market_movers_premarket` | Pre-market movers before the open | 10 rows |
+| `stockanalysis/get_ipo_calendar` | Upcoming and recent listings | 4 rows |
+| `secform4/get_insider_sales` / `get_insider_buys` | Market-wide Form 4 activity | 100 and 46 rows |
+
+One refresh of all seven costs about **$0.07**, regardless of how many companies are displayed.
+
+### Use when the feature needs it
+
+| Tool | Use for | Returned |
+| --- | --- | --- |
+| `yahoo-finance/get_historical_data` | The best daily price history here; $0.05 a call | 251 rows |
+| `defillama/equities/v1/filings` | Deep filing history with document links | 400 rows |
+| `nasdaq/get_stock_option_chain` | Option strikes, bids and volume | 60 rows |
+| `marketbeat/get_financial_statements` | Quarterly statements as reported | 144 rows |
+| `marketbeat/get_competitors` | Side-by-side peer comparison | 22 rows |
+| `secform4/get_company_insider_trading` | Insider trades by SEC CIK, to cross-check MarketBeat | 15 rows |
+| `nasdaq/search_symbols`, `marketbeat/search_stocks`, `stockanalysis/search_stocks` | Ticker lookup and autocomplete | 11, 9, 50 rows |
+
+### Skip
+
+- `nasdaq/get_stock_quote` — marketing text, not a price. Our Finnhub quotes already cover this.
+- `nasdaq/get_stock_financials` and `stockanalysis/get_stock_financials_income` — labels without figures. Use MarketBeat's statements instead.
+- `nasdaq/get_stock_screener` — returns its own filter options. Use Finviz's screener.
+- `defillama/equities/v1/statements` — unlabelled number arrays.
+- `defillama` price-history, ohlcv, companies-list — hand back a download link, so they need a second fetch.
+- `secform4/search`, `secform4/get_hedge_fund_portfolio`, `stockanalysis/get_stock_list` — returned nothing for our inputs.
+- Fund, ETF and crypto quote tools — untested here; only worth it if we add those asset types.
+
+### Before shipping any of this to customers
+
+Insider, ownership and filing data comes from SEC filings that are free on EDGAR, so for those tools we are paying for convenience. Monid's own terms could not be found, and StockAnalysis disclaims programmatic resale. Internal use is fine today; customer-facing display needs written confirmation.
 
 ## Every tool
+
+Verdicts are explained [below the table](#verdicts).
 
 | Tool | Verdict | Rows | Time | Input used | Notes |
 | --- | --- | --- | --- | --- | --- |
